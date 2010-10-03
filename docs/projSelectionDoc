@@ -29,3 +29,5 @@ Django on Python, MySQL, web browsers
 Overview:
 
 A brief, 1-3 paragraph description of what you intend to implement. If it is a game, include the name of the game, and a description if it's not well-known. Also describe, in general, how you plan to use networking capabilities if you plan to use them, and what sort of persistency you plan to implement. If you choose one of the other projects, please describe it in general.
+
+In terms of networking, we'll be using XML or JSON to transport data from the server to arbitrary clients (whether they're using our web interface, a mobile interface, or an interface brewed by a customer). Because some of these UIs are obviously stateless (namely the web interface, naturally) session information will have to be transported along with arbitrary data. Data stored in the database should persist even if the server is shut down.
