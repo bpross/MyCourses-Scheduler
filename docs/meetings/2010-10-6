@@ -1,11 +1,13 @@
 Date, Time, Location:
+4:30P in Jack's Lounge, 10/6/2010
 
 Members Present:
+All members present
 
 Roles:
-Moderator was 
-Notetaker was
-Timekeeper was
+Moderator was Will Crawford
+Notetaker was Sabba Petri
+Timekeeper was Will Crawford
 
 Agenda:
 -Start dividing tasks
@@ -17,4 +19,18 @@ Agenda:
 -Talk about what we need in our database
 
 Discussion Summary:
-
+Surveys will be created tonight.
+SCORE replied to Ben Ross; we're now registered as a project.
+TODO: We need to figure out what we need to submit.
+Erik Steggall is arranging a meeting with the registrars to discuss how they create their schedule.
+We reviewed one of our project scenarios.
+We reviewed our model for the program's workflow.
+We determined what data we will need in our database. (See notes.)
+Mockups were pushed to our next meeting.
+Django was pushed to our next meeting.
+*Task division*
+UI: Justin & Ben
+Documentation: Everyone
+Django: Will & Erik
+Algorithm: Erik, Ben, Sabba
+Misc: Sabba, Erik
