@@ -1,0 +1,34 @@
+Coding Style
+
+For this project, we'll be borrowing a significant portion of 
+Python's style guide (PEP 0008).
+PEP 0008 can be found at 
+http://www.python.org/dev/peps/pep-0008/
+
+Note that we will be ignoring the section on Version Bookkeeping.
+
+Any Python code should conform to this style guide as well as
+possible.
+
+We will also be using Django's design philosophy.
+Django's design philosophy can be found at 
+http://docs.djangoproject.com/en/dev/misc/design-philosophies/
+
+Most notable is the DRY principle - Don't Repeat Yourself when
+ever possible. Additionally, spaghetti code should be avoided as
+much as possible.
+
+
+
+
+Performance
+
+The scheduling algorithm shall run in no worse than O(n^n) time.
+All other operations in the system, except starting the server,
+should take negligible amounts of time. Negligible here is
+defined as an absolute maximum of 1 second.
+
+Note that DNS resolution and HTTP transport are not within the
+scope of this requirements document; slow interaction with the
+interface over the internet may be a symptom of a poor
+connection.
