@@ -1,3 +1,22 @@
+Reference Documents
+
+MyCourses Competition Description
+http://score-contest.org/2011/Projects.php#crnkovic
+
+Python Language Reference
+http://docs.python.org/reference/
+
+Django Framework Documentation
+http://docs.djangoproject.com/en/1.2/
+
+Django Book, another Django reference
+http://www.djangobook.com/en/2.0/
+
+MINION, a constraint solver
+http://minion.sourceforge.net/
+
+
+
 Coding Style
 
 For this project, we'll be borrowing a significant portion of 
