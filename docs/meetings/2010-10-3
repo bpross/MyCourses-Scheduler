@@ -1,0 +1,25 @@
+Date, Time, Location:
+10-3-2010 4PM BE109
+
+Members Present:
+Will Crawford
+Justin Lazaro
+Erik Stegall
+Sabba Petri
+
+Roles:
+Moderator was Will Crawford
+Notetaker was Will Crawford
+Time was not kept.
+
+Agenda:
+- Discuss high-level architecture of the program.
+- Discuss algorithm.
+- Print svn -ls -v project deliverable.
+
+Discussion Summary:
+We'll have a server-client model. In the beginning, the server will process all data on its side and send HTML/CSS output to a web interface. The server will have two parts - the Django software stack, and a MySQL data store.
+
+We would like to talk with the registrar regarding how they determine their schedule.
+
+Will printed the deliverable.
