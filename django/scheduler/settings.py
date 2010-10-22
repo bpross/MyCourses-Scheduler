@@ -1,4 +1,7 @@
 # Django settings for scheduler project.
+import os
+
+DIRNAME = os.path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -46,7 +49,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/var/django/scheduler/static/'
+MEDIA_ROOT = os.path.join(DIRNAME, 'static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
