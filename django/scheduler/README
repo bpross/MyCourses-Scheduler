@@ -1,2 +1,26 @@
 Questions? Talk to Will. =\
 The Django book might help. http://www.djangobook.com/en/2.0/
+
+Directory structure:
+scheduler/
+   README
+   settings.py
+   urls.py
+   docs/
+       This will hold the documentation for the project
+   static/
+       -In production this will be the root of the MEDIA_URL
+       css/
+       js/
+       images/
+   tests/
+       - Project level tests (Each app should also have tests)
+   uploads/
+       - content imgs, etc
+   templates/
+       - This area is used to override templates from any reusable apps
+       flatpages/
+       comments/
+       example/
+       app1/
+       app2/
