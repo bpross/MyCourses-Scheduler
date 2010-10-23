@@ -172,7 +172,6 @@ class RoomTable:
             out.write("\n")
             index = index + 1
 
-import sys
 import optparse
 
 def main():  
@@ -188,17 +187,21 @@ def main():
     
     (options, args) = parser.parse_args()
 
+    #Assign Files to respective variables
     class_file = options.class_file
     room_file = options.room_file
     outfile = options.outfile
-            
-    table = RoomTable(class_file, room_file)
-    table.get_room_info()
-    table.get_class_info()
-    row = ["Time"]
-    row = row + table.room_list
+
+    table = RoomTable(class_file, room_file)  #Create a New Table Class
+    table.get_room_info()                     #Read in the room info
+    table.get_class_info()                    #Read in the class info
+    row = ["Time"]                            #Initializes First row of output
+    row = row + table.room_list               #Finishes First row of output
     table.add_to_table(row)
 
+    #These loops run through all of the times for all of the rooms and
+    #calculate the fitness for each roomXtime
+    
     for time in range(len(table.times)):
         class_time = table.times[time]
         new_row = [class_time]
@@ -210,7 +213,8 @@ def main():
             count = count + 1
         table.add_to_table(new_row)
         
-    print table.room_table
+    #Prints the Table to the Files
     table.print_to_file(outfile)
 
+#Otherwise Python skips over it
 main()
