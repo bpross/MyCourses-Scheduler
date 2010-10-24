@@ -1,0 +1,45 @@
+body{
+background: #f7f4f1;
+margin: 0px;
+padding: 0px;
+color: #543;
+width: 650px;
+margin: 0 auto;
+}
+h1
+{
+font-family: Georgia;
+text-align:center;
+font-size: 32px;
+font-weight:400;
+}
+h2
+{
+font-size:26px;
+font-family: Georgia;
+text-align: center;
+font-weight:400;
+line-height: 0px;
+}
+p
+{
+color:blue;
+font-family:"Times New Roman";
+font-size:20px;
+font-color:yellow;
+text-align:center;
+}
+#the_form
+{
+margin-right: auto;
+margin-left: auto;
+width: 250px;
+}
+#the_submit
+{
+margin-left: 40%;
+}
+.input_field
+{
+float: right;
+}
