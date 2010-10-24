@@ -66,7 +66,7 @@ class RoomTable:
     @class_time: class Time Range
     @room_table: table that is created with fitness'
     """
-    room_sizes = {}
+    room_sizes = {} 
     num_rooms = 0
     room_list = []
     times = [1,2,3,4,5,6,7,8,9,10,11,12,13]
@@ -85,18 +85,21 @@ class RoomTable:
         self.room_file = room_file
 
     """
-    Reads the room_file and adds values to room_sizes
+    Reads the room_file and adds values to room_sizes and room_list
     """
     def get_room_info(self):
 
         file = open(self.room_file, 'r')
-        file_list = file.readlines()
+        file_list = file.readlines()                 #Reads in all the lines in the file
         
         for rooms in range (len(file_list)):
-            line = file_list[rooms].split()
+            line = file_list[rooms].split()          #Tokenizes the string
+
+            #Checks to see if the room has already been added
             if self.room_sizes.has_key(line[0]):
                 self.room_sizes.append(line[1])
             else:
+                #Room is new
                 self.room_sizes[line[0]] = [line[1]]
                 self.room_list.insert(rooms,line[0]) 
                 self.num_rooms = self.num_rooms + 1
@@ -108,13 +111,15 @@ class RoomTable:
     def get_class_info(self):
 
         file = open(self.class_file, 'r')
-        file_list = file.readlines()
+        file_list = file.readlines()                 #Reads in all the lines of the file
         
         self.class_name = file_list[0].rstrip()
         self.class_size = int(file_list[1].rstrip())
         range = file_list[2].split()
         count = int(range[0])
-        while count <= int(range[1]):
+
+        #Adds all of the times to the time range in class_time
+        while count <= int(range[1]):     
             self.class_time.append(count)
             count = count + 1
 
@@ -161,6 +166,9 @@ class RoomTable:
     def add_to_table(self, new_row):
         self.room_table.append(new_row)
 
+    """
+    Prints the room_table to a file as described in the docstring
+    """
     def print_to_file(self,outfile):
         out = open(outfile, 'w')
         for index in range(len(self.room_table)):
