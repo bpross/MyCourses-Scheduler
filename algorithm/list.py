@@ -3,11 +3,8 @@
 #Date: 10/25
 
 """
-This File implements a priority queue in python
-Except that this list will have the greatest fitness first
-
-The list contains data like so:
-[class_name,fitness]
+This File implements a linked list in python
+Code taken from List.java I implemented for CS 101 with Prof. Tantalo
 """
 
 class Node:
