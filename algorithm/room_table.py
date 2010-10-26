@@ -80,7 +80,7 @@ class RoomTable:
     @param class_file: file where class info is stored
     @param room_file: file where room info is stored
     """
-    def __init__(self, class_file, room_file):
+    def __init__(self, class_file=None, room_file=None):
         self.class_file = class_file
         self.room_file = room_file
 
@@ -89,11 +89,12 @@ class RoomTable:
     """
     def get_room_info(self):
 
-        file = open(self.room_file, 'r')
-        file_list = file.readlines()                 #Reads in all the lines in the file
+        if self.room_file is not None:
+            file = open(self.room_file, 'r')
+            file_list = file.readlines()                 #Reads in all the lines in the file
         
-        for rooms in range (len(file_list)):
-            line = file_list[rooms].split()          #Tokenizes the string
+            for rooms in range (len(file_list)):
+                line = file_list[rooms].split()          #Tokenizes the string
 
             #Checks to see if the room has already been added
             if self.room_sizes.has_key(line[0]):
@@ -109,19 +110,19 @@ class RoomTable:
     and class_time
     """
     def get_class_info(self):
-
-        file = open(self.class_file, 'r')
-        file_list = file.readlines()                 #Reads in all the lines of the file
-        
-        self.class_name = file_list[0].rstrip()
-        self.class_size = int(file_list[1].rstrip())
-        range = file_list[2].split()
-        count = int(range[0])
+        if self.class_file is not None:
+            file = open(self.class_file, 'r')
+            file_list = file.readlines()                 #Reads in all the lines of the file
+            
+            self.class_name = file_list[0].rstrip()
+            self.class_size = int(file_list[1].rstrip())
+            range = file_list[2].split()
+            count = int(range[0])
 
         #Adds all of the times to the time range in class_time
-        while count <= int(range[1]):     
-            self.class_time.append(count)
-            count = count + 1
+            while count <= int(range[1]):     
+                self.class_time.append(count)
+                count = count + 1
 
     """
     Calculates the fitness of the roomXtime
@@ -167,12 +168,32 @@ class RoomTable:
         self.room_table.append(new_row)
 
     """
+    Reads in a room_table from a file
+    @param room_table: file to be read from
+    """
+    def read_from_file(self,room_table):
+        if room_table is not None:
+            file = open(room_table, 'r')
+            file_list = file.readlines()
+            
+            self.class_name = file_list[0].rstrip('\n')
+
+            count = 1
+            while count in range(len(file_list)):
+                line = file_list[count].split()
+                self.room_table.append(line)
+                count += 1
+    
+    """
     Prints the room_table to a file as described in the docstring
     """
     def print_to_file(self,outfile):
-        out = open(outfile, 'w')
-        for index in range(len(self.room_table)):
-            row = self.room_table[index]
+        if outfile is not None:
+            out = open(outfile, 'w')
+            word = self.class_name + '\n'
+            out.write(word)
+            for index in range(len(self.room_table)):
+                row = self.room_table[index]
             for element in range(len(row)):
                 word = str(row[element]) + " "
                 out.write(word)
@@ -223,6 +244,8 @@ def main():
         
     #Prints the Table to the Files
     table.print_to_file(outfile)
+
+    table.read_from_file(outfile)
 
 #Otherwise Python skips over it
 main()
