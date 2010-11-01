@@ -10,8 +10,8 @@ TEMPLATE_DEBUG = DEBUG
 FORCE_SCRIPT_NAME = ''
 
 ADMINS = (
-     ('Will Crawford', 'wacrawfo@ucsc.edu'),
-     ('Ben Ross', 'benr22@gmail.com'),
+#     ('Will Crawford', 'wacrawfo@ucsc.edu'),
+#     ('Ben Ross', 'benr22@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -85,6 +85,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'scheduler.urls'
 
 TEMPLATE_DIRS = (
+    '/var/django/scheduler/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -97,7 +98,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+     'django.contrib.admindocs',
 )
