@@ -49,9 +49,6 @@ class MasterTable:
     """
     def create_empty(self, hours):
     
-        row = ["Time"] + self.room_list
-        self.master_table.append(row)
-
         count = 1
         while count <= hours:
             row = [count]
@@ -89,12 +86,13 @@ class MasterTable:
                 file_list.insert(count, filename)
                 count += 1
 
-        for file in file_list:
-            new_table = RoomTable()
-            new_table.read_from_file(file)
-            self.room_tables.append(new_table)
-            print self.room_tables
-
+        for iter in range(len(file_list)):
+            self.room_tables.append(RoomTable())
+        
+        for count in range(len(file_list)):
+            self.room_tables[count].read_from_file(file_list[count])
+            print self.room_tables[count]
+            print count
 
     """
     Creates the master table from the room_tables
@@ -104,14 +102,13 @@ class MasterTable:
         for table in self.room_tables:
             data = table.room_table
             first_row = data[0]
-            print data
             count = 1
             while count in range(len(data)):
                 line = data[count]
 
                 iter = 1
                 while iter in range(len(line)):
-                    print iter
+                    print first_row
                     fitness = line[iter]
 
                     master_index = first_row[iter]

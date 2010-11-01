@@ -183,7 +183,6 @@ class RoomTable:
                 line = file_list[count].split()
                 self.room_table.append(line)
                 count += 1
-    
     """
     Prints the room_table to a file as described in the docstring
     """
