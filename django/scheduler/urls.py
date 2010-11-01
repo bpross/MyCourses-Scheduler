@@ -7,7 +7,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('',
     # Example:
     # (r'^scheduler/', include('scheduler.foo.urls')),
-
+    (r'^$', 'scheduler.views.index'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
