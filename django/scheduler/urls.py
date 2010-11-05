@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Example:
     # (r'^scheduler/', include('scheduler.foo.urls')),
     (r'^$', 'scheduler.views.index'),
+    (r'^login/$', 'scheduler.views.login'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
