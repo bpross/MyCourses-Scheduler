@@ -2,23 +2,23 @@
 <!-- This is the home welcome page of the MyCourses page -->
 <head>
 <link rel="stylesheet"
-type="text/css" href="media/css/default.css" />
+type="text/css" href="media/css/suggestion-default.css" />
 
 <body>
 <h1>S.C.O.R.E MyCourses Scheduling System</h1>
 
 <p>Welcome to the MyCourses Scheduling System. Please enter your credentials  </p>
-<img src="media/images/ucsc_slug.jpg" alt="UCSC logo" />
-<div id="email"><form action="form_action.asp" method="get">
+<img id="logo" src="media/images/ucsc_slug.jpg" alt="UCSC logo" />
+<div id="email"><form action="form_action.asp" method="get" id="the_form">
 	<div id="email_input">
-		Email: <input type="text" name="fname"/><br />
+		Email: <input type="text" class="input_field" name="fname"/><br />
 	</div>
 	<div id="password_input">
-		<br><br/>	
-		Password: <input type="text" name="lname"/><br />
+		<br />
+		Password: <input type="text" class="input_field" name="lname"/><br />
 	</div>
 	<div id="submit">
-		<input type="submit" value="Submit" />
+		<input id="the_submit" type="submit" value="Submit" />
 	</div>
 	</form>
 </div>
