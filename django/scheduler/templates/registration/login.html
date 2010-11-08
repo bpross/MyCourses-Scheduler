@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block css %}<link rel="stylesheet"
+type="text/css" href="/media/css/login.css" />{% endblock %}
+{% block content%}
+<p>Please enter your credentials.</p>
+
+<img id="logo" src="/media/images/ucsc_slug.jpg" alt="UCSC logo" />
+<div id="email"><form action="form_action.asp" method="get" id="the_form">
+	<div id="email_input">
+		Email: <input type="text" class="input_field" name="fname"/><br />
+	</div>
+	<br />
+	<div id="password_input">
+		Password: <input type="text" class="input_field" name="lname"/><br />
+	</div>
+	<div id="submit">
+		<input id="the_submit" type="submit" value="Submit" />
+	</div>
+	</form>
+</div>
+{% endblock %}
