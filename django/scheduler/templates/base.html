@@ -3,19 +3,22 @@
 <!-- This is the home welcome page of the MyCourses page -->
 <head>
 <meta http-equiv="Content-Type content="text/html;charset=utf-8" />
-<link rel="stylesheet"
-type="text/css" href="/media/css/suggestion-default.css" />
+<link rel="stylesheet" type="text/css" href="/media/css/suggestion-default.css" />
+
 {% block css %}{% endblock %}
+
 <title>S.C.O.R.E. - {% block title %}{% endblock %}</title>
 </head>
 <body>
-<h1>S.C.O.R.E MyCourses Scheduling System</h1>
+<header>
+    <h1>S.C.O.R.E MyCourses Scheduling System</h1>
+</header>
 {% block content %}{% endblock %}
 {% block footer %}
 <hr>
-<div id="footer">
-	<span>© CS115 S.C.O.R.E. team at UCSC, 2010</span>
-</div>
+<footer>
+	<span>© 2010, CS115 S.C.O.R.E. team at UCSC</span>
+</footer>
 {% endblock %}
 </body>
 </html>
