@@ -64,6 +64,9 @@ MEDIA_URL = 'http://67.180.228.22/media/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
+#URL of the Login page
+LOGIN_URL = '/login'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'jzka9al606r)*og&ti8__&66*7=c&7u5tj8*qns*djw3@un!47'
 
@@ -85,7 +88,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'scheduler.urls'
 
 TEMPLATE_DIRS = (
-    '/var/django/scheduler/templates',
+    os.path.join(DIRNAME, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
