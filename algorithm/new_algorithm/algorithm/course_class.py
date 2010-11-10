@@ -15,15 +15,15 @@ class CourseClass:
             self.professor = None
         else:
             self.professor = professor
-        if course = None:
+        if course is None:
             self.course = None
         else:
             self.course = course
-        if num_seats = None:
+        if num_seats is None:
             self.num_seats = None
         else:
             self.num_seats = num_seats
-        if requires_lab = None:
+        if requires_lab is None:
             self.requires_lab = None
         else:
             self.requires_lab = requires_lab
