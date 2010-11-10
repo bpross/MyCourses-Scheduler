@@ -7,9 +7,9 @@
 import sys
 
 class Professor:
- 	id = 0
-        name = ''
-        #initializes professor with ID and name
+	id = 0
+	name = ''
+	#initializes professor with ID and name
 	def __init__(self, id = None, name = None,course_list = None):
 		if id is None:
 			self.id = None
@@ -22,9 +22,7 @@ class Professor:
 		if course_list is None:
 			self.course_list = None
 		else:
-			sself.course_list = course_list
-
-
+			self.course_list = course_list
 	#Returns the professor's ID
 	def get_id(self):
 		return self.id
@@ -48,7 +46,7 @@ class Professor:
 		
 	#Adds a course to the professor's list
 	def add_course(self,course):
-		if self.course_list = None:
+		if self.course_list is None:
 			self.course_list = []
 		self.course_list.append(course)
 		
@@ -56,11 +54,26 @@ class Professor:
 	def print_professor(self):
 		print "(%d, %s)" % (self.id, self.name)
 
+	def get_id(self):
+		return self.id
+	
+	def get_name(self):
+		return self.name
 
 if __name__ == '__main__':
-
+	num = 0
+	str = 'Steggall'
 	p1 = Professor(24, "Werner")
 	p1.print_professor()
+	id = p1.id
+	p1name = p1.name
+	print "(Professor's name is: %s ID is: %d)" % (p1name, id)
+	num = p1.get_id()
+	print "num should equal %d" % (num)
+	str = p1.get_name()
+	print "string should be %s" % (str)
+
+
 	sys.exit(0)
 
 

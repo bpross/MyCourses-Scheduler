@@ -9,7 +9,7 @@ import sys
 class Room:
 	
         #initializes room with ID and name
-        def __init__(self, seat_num, lab, name = None):
+        def __init__(self, seat_num = None, lab = None, name = None):
 		if seat_num is None:
 			self.seat_num = None
 		else:

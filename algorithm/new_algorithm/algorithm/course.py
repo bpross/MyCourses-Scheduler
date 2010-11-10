@@ -7,11 +7,10 @@
 import sys
 
 class Course:
-
- 	id = 0
-        name = ''
-        #initializes course with ID and name
-	def __init__(self, id, name = None):
+	id = 0
+	name = ''
+	#initializes course with ID and name
+	def __init__(self, id = None, name = None):
 		if id is None:
 			self.id = None
 		else:
@@ -41,10 +40,22 @@ class Course:
 	def print_course(self):
 		print "(%d, %s)" % (self.id, self.name)
 
+	def get_id(self):
+		return self.id
+
+	def get_name(self):
+		return self.name
 
 if __name__ == '__main__':
+	num = 0
+	str = 'steggall'
 
 	p1 = Course(115, "SoftwareDesign")
 	p1.print_course()
+	num = p1.get_id()
+	print "num should equal %d" % (num)
+	str = p1.get_name()
+	print "str should be %s" % (str)
+
 	sys.exit(0)
 
