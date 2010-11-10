@@ -2,7 +2,7 @@
 #CMPS 115
 #Linda Werner
 #course.py
-
+#Authors: egall24, bpross
 
 import sys
 
@@ -12,9 +12,23 @@ class Course:
         name = ''
         #initializes course with ID and name
 	def __init__(self, id, name = None):
-		self.id = id
-                self.name = name
+		if id is None:
+			self.id = None
+		else:
+			self.id = id
+		if name is None:
+			self.id = None
+		else:
+			self.name = name
 
+	#Returns the id of the course
+	def get_id(self):
+		return self.id
+	
+	#Returns the name of the course
+	def get_name(self):
+		return self.name
+	
 	#prints out the course data
 	def print_course(self):
 		print "(%d, %s)" % (self.id, self.name)
