@@ -207,4 +207,11 @@ class Configuration:
 
             #Parse Name
             if 'name' in words[0]:
-                room
+                room.add_name = words[2]
+            elif 'lab' in words[0]:
+                if words[2] is 'true':
+                    room.add_lab(True)
+                else:
+                    room.add_lab(False)
+            elif 'size' in words[0]:
+                room.add_seats(int(words[2]))
