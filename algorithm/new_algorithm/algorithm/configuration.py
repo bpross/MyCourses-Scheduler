@@ -9,6 +9,12 @@ http://www.thecodeproject.com. His full source code and license is included with
 This reads in a configuration file and stores the parsed objects
 """
 
+import Professor from professor
+import CourseClass from course_class
+import Room from room
+import Course from course
+
+
 class Configuration:
     
     def __init__(self,prof_list = None, course_list = None,
@@ -120,20 +126,85 @@ class Configuration:
             elif 'course' in line[0]:
                 parse_course(self,file_list[lines:lines+2])
             elif 'class' in line[0]:
-                parse_class(self,file_list[lines:lines+5])
+                parse_class(self,file_list[lines:lines+4])
             elif 'room' in line[0]:
                 parse_room(self.file_list(lines:lines+3])
 
     #Reads professor's data from config file, adds object to list
-    #Returns None if method cannot parse configuration data
     def parse_prof(self,line_list):
 
         self.prof_list.append(Professor())
+        prof = self.prof_list[len(self.prof_list)-1]
+        
         for line in range(len(line_list)):
             words = line_list[line].split()
 
             #Parse ID
             if 'id' in words[0]:
-                
-        
-        
+                prof.add_id(int(words[2]))
+
+            #Parse Name
+            elif 'name' in words[0]:
+                prof.add_name(str(words[2]))
+
+
+
+    #Reads course data from config file, adds object to list
+    def parse_course(self,line_list):
+
+        self.course_list.append(Course())
+        course = self.course_list[len(self.course_list)-1]
+
+        for line in rnage(len(line_list)):
+            words = line_list[line].split()
+
+            #Parse ID
+            if 'id' in words[0]:
+                course.add_id(int(words[2]))
+
+            #Parse Name
+            elf 'name' in words[0]:
+                course.add_name(str(words[2]))
+
+
+    #Reads class data from config file, adds object to list
+    def parse_class(self,line_list):
+
+        self.class_list.append(CourseClass())
+        new_class = self.class_list[len(self.class_list)-1]
+
+        for line in range(len(line_list)):
+            words = line_list[line].split()
+
+            #Parse Professor
+            if 'professor' in words[0]:
+                new_class.add_professor(int(words[2]))
+
+            #Parse Course
+            elif 'course' in words[0]:
+                new_class.add_course(int(words[2]))
+
+            #Parse Duration
+            elif 'duration' in words[0]:
+                new_class.add_course(int(words[2]))
+
+            #Parse Lab
+            elif 'lab' in words[0]:
+               if words[2] is 'true':
+                   new_class.add_lab(True)
+               else:
+                   new_class.add_lab(False)
+
+
+    #Reads room data from config file, adds object to list
+    def parse_room(self,line_list):
+
+        self.room_list.append(Room())
+        room = self.room_list[len(self.room_list)-1]
+
+        for line in range(len(line_list)):
+            words = line_list[line].split()
+
+            #Parse Name
+            if 'name' in words[0]:
+                room
