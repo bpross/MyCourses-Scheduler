@@ -24,7 +24,15 @@ class Course:
 	#Returns the id of the course
 	def get_id(self):
 		return self.id
-	
+
+	#Adds/Changes ID of the course
+	def add_id(self,id):
+		self.id = id
+
+	#Adds/changes name of the course
+	def add_name(self,name):
+		self.name = name
+		
 	#Returns the name of the course
 	def get_name(self):
 		return self.name
