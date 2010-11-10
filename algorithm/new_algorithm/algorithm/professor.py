@@ -36,7 +36,12 @@ class Professor:
 	#Returns the professor's course list
 	def get_courses(self):
 		return self.course_list
-	
+
+
+	#Adds a course to the professor's list
+	def add_course(self,course):
+		self.course_list.append(course)
+		
 	#prints out the professors data
 	def print_professor(self):
 		print "(%d, %s)" % (self.id, self.name)
