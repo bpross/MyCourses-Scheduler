@@ -2,20 +2,40 @@
 #CMPS 115
 #Linda Werner
 #room.py
-
+#Author: egall24, bpross
 
 import sys
 
 class Room:
-        name = ''
-	seat_num = 0
-	lab = False
+	
         #initializes room with ID and name
         def __init__(self, seat_num, lab, name = None):
-		self.seat_num = seat_num
-		self.lab = lab
-                self.name = name
+		if seat_num is None:
+			self.seat_num = None
+		else:
+			self.seat_num = seat_num
+		if lab is None:
+			self.lab = None
+		else:
+			self.lab = lab
+		if name is None:
+			self.name = None
+		else:
+			self.name = name
 
+
+	#Returns the seat number of the room
+	def get_seat_num(self):
+		return self.seat_num
+
+	#Returns the Name of the Room
+	def get_name(self):
+		return self.name
+
+	#Returns True if Room has lab, False if no Lab
+	def lab_status(self):
+		return self.lab
+	
         #prints out the room data
         def print_room(self):
                 print "(%d, %d, %s)" % (self.seat_num, self.lab, self.name)
