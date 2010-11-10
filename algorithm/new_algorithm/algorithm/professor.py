@@ -38,6 +38,14 @@ class Professor:
 		return self.course_list
 
 
+	#Adds/changes ID of the professor
+	def add_id(self,id):
+		self.id = id
+
+	#Adds/changes Name of the professor
+	def add_name(self,name):
+		self.name = name
+		
 	#Adds a course to the professor's list
 	def add_course(self,course):
 		self.course_list.append(course)
