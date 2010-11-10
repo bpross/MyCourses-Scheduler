@@ -9,11 +9,10 @@ http://www.thecodeproject.com. His full source code and license is included with
 This reads in a configuration file and stores the parsed objects
 """
 
-import Professor from professor
-import CourseClass from course_class
-import Room from room
-import Course from course
-
+from professor import Professor
+from course_class import CourseClass
+from room import Room
+from course import Course
 
 class Configuration:
     
@@ -31,12 +30,12 @@ class Configuration:
             self.room_list = None
         else:
             self.room_list = room_list
-        if classes_list = None:
+        if classes_list is None:
             self.classes_list = None
         else:
-            self.classes+list = classes_list
+            self.classes_list = classes_list
 
-        self.is_empty = True
+        self.empty = True
         self.num_professors = 0
         self.num_rooms = 0
         self.num_classes = 0
@@ -44,7 +43,7 @@ class Configuration:
 
 
     def is_empty(self):
-        return self.is_empty
+        return self.empty
 
     #Returns the professor with specified ID
     #If there is no professor with such ID method returns False
@@ -98,10 +97,10 @@ class Configuration:
     #IF there is no class with such ID method returns False
     def get_class_by_id(self,id):
 
-        for class in self.class_list:
-            new_id = class.get_id()
+        for new_class in self.class_list:
+            new_id = new_class.get_id()
             if new_id is id:
-                return class
+                return new_class
 
         #Not in list
         return false
@@ -128,7 +127,7 @@ class Configuration:
             elif 'class' in line[0]:
                 parse_class(self,file_list[lines:lines+4])
             elif 'room' in line[0]:
-                parse_room(self.file_list(lines:lines+3])
+                parse_room(self.file_list[lines:lines+3])
 
     #Reads professor's data from config file, adds object to list
     def parse_prof(self,line_list):
@@ -163,7 +162,7 @@ class Configuration:
                 course.add_id(int(words[2]))
 
             #Parse Name
-            elf 'name' in words[0]:
+            elif 'name' in words[0]:
                 course.add_name(str(words[2]))
 
 

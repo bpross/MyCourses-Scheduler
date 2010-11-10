@@ -1,0 +1,45 @@
+#prof
+    id = 1
+    name = John Smith
+#end
+
+#course
+    id = 1
+    name = Introduction to Programming
+#end
+
+#room
+    name = R1
+    lab = true
+    size = 24
+#end
+
+#group
+    id = 1
+    name = 1O1
+    size = 19
+#end
+
+#class
+    professor = 1
+    course = 1
+    duration = 2
+    group = 1
+    group = 2
+#end
+
+#class
+    professor = 1
+    course = 1
+    duration = 3
+    group = 1
+    lab = true
+#end
+
+#class
+    professor = 1
+    course = 1
+    duration = 3
+    group = 2
+    lab = true
+#end
