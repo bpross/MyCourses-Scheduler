@@ -48,6 +48,8 @@ class Professor:
 		
 	#Adds a course to the professor's list
 	def add_course(self,course):
+		if self.course_list = None:
+			self.course_list = []
 		self.course_list.append(course)
 		
 	#prints out the professors data
