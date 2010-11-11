@@ -14,7 +14,7 @@ urlpatterns = patterns('',
 
 	# Login / logout
     (r'^login/$', 'django.contrib.auth.views.login'),
-	(r'^logout/$', logout),
+	(r'^logout/$', logout_page),
 	# Web portal
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),

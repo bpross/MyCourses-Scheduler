@@ -9,7 +9,7 @@ def index(request):
 def login(request):
     return render_to_response('login.html')
 
-def logout(request):
+def logout_page(request):
 	"""
 	Log users out and redirect them to the main page.
 	"""

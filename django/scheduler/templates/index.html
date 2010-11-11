@@ -3,9 +3,12 @@
 {% block content %}
 <section>
     <p>Welcome to the MyCourses Scheduling System.</p>
-    <ul>
-        <li><a href="/login/">Log in.</a></li>
-        <li><a href="/logout/">Log out.</a></li>
-    </ul>
+    User authenticated? {{ user.is_authenticated }}
+    {% if user.is_authenticated %}
+    <p>You are {{ user.username }}. Thanks for logging in.</p>
+    <p>You may <a href="/logout/">log out.</a></p>
+    {% else %}
+    <p>Please <a href="/login/">log in</a>.</p>
+    {% endif %}
 </section>
 {% endblock %}

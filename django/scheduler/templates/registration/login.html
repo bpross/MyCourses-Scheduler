@@ -9,10 +9,10 @@ type="text/css" href="/media/css/login.css" />{% endblock %}
     <img id="logo" src="/media/images/ucsc_slug.jpg" alt="UCSC logo" />
 
     {% if form.errors %}
-        <p>Your username and password didn't match, please try again.</p>
+        <p>Your username or password was not found; please try again.</p>
     {% endif %}
 
-    <form method="post" action=".">
+    <form method="post" action="."> {% csrf_token %}
         <p>
             <label for="id_username">Username:</label>
             {{ form.username }}

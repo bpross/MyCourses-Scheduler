@@ -70,6 +70,16 @@ LOGIN_URL = '/login'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'jzka9al606r)*og&ti8__&66*7=c&7u5tj8*qns*djw3@un!47'
 
+# List of template context processors
+TEMPLATE_CONTEXT_PROCESSORS = (
+"django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.contrib.messages.context_processors.messages",
+)
+
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
