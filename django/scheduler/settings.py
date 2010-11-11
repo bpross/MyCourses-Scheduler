@@ -1,10 +1,7 @@
 # Django settings for scheduler project.
 import os
-
+from scheduler.local-settings import *
 DIRNAME = os.path.dirname(__file__)
-
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 # See http://docs.djangoproject.com/en/dev/howto/deployment/fastcgi/#forcing-the-url-prefix-to-a-particular-value
 FORCE_SCRIPT_NAME = ''
@@ -54,10 +51,7 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(DIRNAME, 'static')
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://67.180.228.22/media/'
+# MEDIA_URL has been moved to local-settings.py
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
