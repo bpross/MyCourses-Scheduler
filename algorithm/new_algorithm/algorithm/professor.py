@@ -54,12 +54,6 @@ class Professor:
 	def print_professor(self):
 		print "(%d, %s)" % (self.id, self.name)
 
-	def get_id(self):
-		return self.id
-	
-	def get_name(self):
-		return self.name
-
 if __name__ == '__main__':
 	num = 0
 	str = 'Steggall'

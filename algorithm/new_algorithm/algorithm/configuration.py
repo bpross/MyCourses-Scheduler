@@ -55,7 +55,7 @@ class Configuration:
                 return professor
 
         #Not in list
-        return False
+        return None
 
     #Returns the number of parsed professors
     def get_num_prof(self):
@@ -77,33 +77,34 @@ class Configuration:
     def get_num_course(self):
         return self.num_courses
 
-    #Returns the room with specified ID
+    #Returns the room with specified name
     #If there is no room with such ID method returns False
-    def get_room_by_id(self, id):
+    def get_room_by_name(self, name):
 
         for room in self.room_list:
-            new_id = room.get_id()
-            if new_id is id:
+            new_name = room.get_name()
+            if new_name in name:
                 return room
 
         #Not in List
-        return false
+        return False
 
     #Returns the number of parsed rooms
     def get_num_rooms(self):
         return self.num_rooms
 
-    #Returns the class with specified ID
+    #Returns the class with specified course
     #IF there is no class with such ID method returns False
-    def get_class_by_id(self,id):
+    def get_class_by_course(self,course_id):
 
-        for new_class in self.class_list:
-            new_id = new_class.get_id()
-            if new_id is id:
+        for new_class in self.classes_list:
+            new_course = new_class.get_course()
+            
+            if new_course is course_id:
                 return new_class
 
         #Not in list
-        return false
+        return False
 
     #Returns the number of parsed classes
     def get_num_classes(self):
@@ -113,104 +114,160 @@ class Configuration:
     def parse_file(self,file):
 
         f = open(file, 'r')
-        file_list = file.readlines()
+        file_list = f.readlines()
 
-        for lines in range(len(file_list)):
-
+        lines = 0
+        while lines in range (len(file_list)):
+            
             #Tokenizes the string
             line = file_list[lines].split()
+            
+            if line:
+                if 'prof' in line[0]:
+                    lines = self.parse_prof(file_list,lines)
+                elif 'course' in line[0]:
+                    lines = self.parse_course(file_list,lines)
+                elif 'class' in line[0]:
+                    lines =  self.parse_class(file_list,lines)
+                elif 'room' in line[0]:
+                    lines = self.parse_room(file_list,lines)
 
-            if 'prof' in line[0]:
-                parse_prof(self,file_list[lines:lines+2])
-            elif 'course' in line[0]:
-                parse_course(self,file_list[lines:lines+2])
-            elif 'class' in line[0]:
-                parse_class(self,file_list[lines:lines+4])
-            elif 'room' in line[0]:
-                parse_room(self.file_list[lines:lines+3])
+            lines += 1
 
-    #Reads professor's data from config file, adds object to list
-    def parse_prof(self,line_list):
-
-        self.prof_list.append(Professor())
-        prof = self.prof_list[len(self.prof_list)-1]
+        self.empty = False
         
-        for line in range(len(line_list)):
-            words = line_list[line].split()
+    #Reads professor's data from config file, adds object to list
+    def parse_prof(self,file_list,lines):
 
+        if self.prof_list is None:
+            self.prof_list = []
+            
+        self.prof_list.append(Professor())
+        prof = self.prof_list[-1]
+
+        line = file_list[lines]
+
+        while 'end' not in line:
             #Parse ID
-            if 'id' in words[0]:
-                prof.add_id(int(words[2]))
+            if 'id' in line:
+               words = line.split()
+               prof.add_id(int(words[2]))
 
             #Parse Name
-            elif 'name' in words[0]:
-                prof.add_name(str(words[2]))
+            elif 'name' in line:
+                words = line.split()
+                prof.add_name(words[2])
 
+            lines += 1
+            line = file_list[lines]
 
-
+        self.num_professors += 1
+        return lines
+        
     #Reads course data from config file, adds object to list
-    def parse_course(self,line_list):
+    def parse_course(self,file_list,lines):
 
+        if self.course_list is None:
+            self.course_list = []
+            
         self.course_list.append(Course())
-        course = self.course_list[len(self.course_list)-1]
+        course = self.course_list[-1]
 
-        for line in rnage(len(line_list)):
-            words = line_list[line].split()
+        line = file_list[lines]
 
+        while 'end' not in line:
             #Parse ID
-            if 'id' in words[0]:
+            if 'id' in line:
+                words = line.split()
                 course.add_id(int(words[2]))
 
             #Parse Name
-            elif 'name' in words[0]:
-                course.add_name(str(words[2]))
+            elif 'name' in line:
+                words = line.split()
+                course.add_name(words[2])
 
+            lines += 1
+            line = file_list[lines]
 
+        self.num_classes += 1
+        return lines
+        
     #Reads class data from config file, adds object to list
-    def parse_class(self,line_list):
+    def parse_class(self,file_list,lines):
 
-        self.class_list.append(CourseClass())
-        new_class = self.class_list[len(self.class_list)-1]
+        if self.classes_list is None:
+            self.classes_list = []
+            
+        self.classes_list.append(CourseClass())
+        new_class = self.classes_list[-1]
 
-        for line in range(len(line_list)):
-            words = line_list[line].split()
+        line = file_list[lines]
 
+        while 'end' not in line:
             #Parse Professor
-            if 'professor' in words[0]:
+            if 'professor' in line:
+                words = line.split()
                 new_class.add_professor(int(words[2]))
 
-            #Parse Course
-            elif 'course' in words[0]:
+            #parse Course
+            elif 'course' in line:
+                words = line.split()
                 new_class.add_course(int(words[2]))
 
             #Parse Duration
-            elif 'duration' in words[0]:
-                new_class.add_course(int(words[2]))
+            elif 'duration' in line:
+                words = line.split()
+                new_class.add_duration(int(words[2]))
 
             #Parse Lab
-            elif 'lab' in words[0]:
-               if words[2] is 'true':
-                   new_class.add_lab(True)
-               else:
-                   new_class.add_lab(False)
+            elif 'lab' in line:
+                words = line.split()
+                if words[2] is 'true':
+                    new_class.add_lab(True)
+                else:
+                    new_class.add_lab(False)
 
+            #Parse Num Seats
+            elif 'seats' in line:
+                words = line.split()
+                new_class.add_seats(int(words[2]))
 
+            lines += 1
+            line = file_list[lines]
+
+        self.num_courses += 1
+        return lines
+        
     #Reads room data from config file, adds object to list
-    def parse_room(self,line_list):
+    def parse_room(self,file_list,lines):
 
+        if self.room_list is None:
+            self.room_list = []
+            
         self.room_list.append(Room())
         room = self.room_list[len(self.room_list)-1]
 
-        for line in range(len(line_list)):
-            words = line_list[line].split()
+        line = file_list[lines]
 
+        while 'end' not in line:
             #Parse Name
-            if 'name' in words[0]:
-                room.add_name = words[2]
-            elif 'lab' in words[0]:
-                if words[2] is 'true':
+            if 'name' in line:
+                words = line.split()
+                room.add_name(words[2])
+
+            elif 'lab' in line:
+                words = line.split()
+                if 'true' in words[2]:
                     room.add_lab(True)
                 else:
                     room.add_lab(False)
-            elif 'size' in words[0]:
+
+            elif 'size' in line:
+                words = line.split()
                 room.add_seats(int(words[2]))
+
+            lines += 1
+            line = file_list[lines]
+
+        self.num_rooms += 1
+        return lines
