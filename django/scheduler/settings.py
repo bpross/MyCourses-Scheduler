@@ -1,7 +1,14 @@
 # Django settings for scheduler project.
 import os
-from scheduler.local-settings import *
+#from local_settings import *
+try:
+    from localsettings import *
+except ImportError:
+    DEVEL = False
+
 DIRNAME = os.path.dirname(__file__)
+DEBUG = DEVEL # DEVEL should be set in local-settings.py
+TEMPLATE_DEBUG = DEVEL
 
 # See http://docs.djangoproject.com/en/dev/howto/deployment/fastcgi/#forcing-the-url-prefix-to-a-particular-value
 FORCE_SCRIPT_NAME = ''
