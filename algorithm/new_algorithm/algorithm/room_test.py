@@ -20,6 +20,9 @@ lab = r2.lab_status()
 name = r2.get_name()
 
 r1.print_room()
+r1.id = 1
 
+test = r1.get_id()
+print test 
 
 print "Seats: %d,\nLab: %d,\nName: %s\n" % (seats, lab, name)

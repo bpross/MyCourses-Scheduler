@@ -23,7 +23,12 @@ class Room:
 		else:
 			self.name = name
 
+		self.id = None
 
+	#Returns the ID of the room
+	def get_id(self):
+		return self.id
+	
 	#Returns the seat number of the room
 	def get_seat_num(self):
 		return self.seat_num
