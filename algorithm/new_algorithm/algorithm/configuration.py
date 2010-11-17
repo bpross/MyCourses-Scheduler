@@ -77,13 +77,13 @@ class Configuration:
     def get_num_course(self):
         return self.num_courses
 
-    #Returns the room with specified name
+    #Returns the room with specified id
     #If there is no room with such ID method returns False
-    def get_room_by_name(self, name):
+    def get_room_by_id(self, id):
 
         for room in self.room_list:
-            new_name = room.get_name()
-            if new_name in name:
+            new_id = room.get_id()
+            if new_id is id:
                 return room
 
         #Not in List
@@ -117,6 +117,7 @@ class Configuration:
         file_list = f.readlines()
 
         lines = 0
+        room_id = 1
         while lines in range (len(file_list)):
             
             #Tokenizes the string
@@ -130,7 +131,8 @@ class Configuration:
                 elif 'class' in line[0]:
                     lines =  self.parse_class(file_list,lines)
                 elif 'room' in line[0]:
-                    lines = self.parse_room(file_list,lines)
+                    lines = self.parse_room(file_list,lines,room_id)
+                    room_id += 1
 
             lines += 1
 
@@ -239,7 +241,7 @@ class Configuration:
         return lines
         
     #Reads room data from config file, adds object to list
-    def parse_room(self,file_list,lines):
+    def parse_room(self,file_list,lines,room_id):
 
         if self.room_list is None:
             self.room_list = []
@@ -269,5 +271,6 @@ class Configuration:
             lines += 1
             line = file_list[lines]
 
+        room.id = room_id
         self.num_rooms += 1
         return lines

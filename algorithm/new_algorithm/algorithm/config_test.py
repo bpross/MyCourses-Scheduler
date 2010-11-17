@@ -33,7 +33,7 @@ print str(course.id) + " " + course.name
 num = config.get_num_rooms()
 print num
 
-room = config.get_room_by_name('R3')
+room = config.get_room_by_id(2)
 print str(room.name) + " " + str(room.seat_num) + " " + str(room.lab)
 
 num = config.get_num_classes()
