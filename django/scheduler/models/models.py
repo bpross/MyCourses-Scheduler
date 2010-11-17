@@ -8,19 +8,25 @@ from django.db import models
 class Professor(models.Model):
 	id = models.IntegerField()
 	name = models.CharField(max_length=50)
-	
+
+	__metaclass__ = models.SubfieldBase
+
 	def __unicode__(self):
 		return self.name
 
 class Course(models.Model):
 	id = models.IntegerField()
 	name = models.CharField(max_length=50)
-	
+
+	__metaclass__ = models.SubfieldBase
+
 	def __unicode__(self):
 		return self.name
 
 class Buildings(Course):
 	name = models.CharField(max_length=50)
+
+	__metaclass__ = models.SubfieldBase
 
 	def __unicode__(self):
 
@@ -29,7 +35,9 @@ class Room(models.Model):
 	lab = models.CharField(max_length=50)
 	name = models.CharField(max_length=50)
 	requires_lab = models.BooleanField()
-	
+
+	__metaclass__ = models.SubfieldBase
+
 	def __unicode__(self):
 		return self.name
 
@@ -41,10 +49,18 @@ class Course_Class(models.Model):
 	requires_lab = models.BooleanField()
 	duration = models.IntegerField()
 
+	__metaclass__ = models.SubfieldBase
+
+	def __unicode__(self):
+		return self.name
+
 class Master_table(models.Model):
 	professor = models.ManyToMany(Professor)
 	room = models.ManyToMany(Room)
 	course = models.ManyToMany(Course)
+
+	__metaclass__ = models.SubfieldBase
+
 	def __unicode__(self):
 		return self.name 
 	
@@ -54,20 +70,31 @@ class Person(models.Model):
 	last_name = models.CharField(max_length=50)
 	suffix = models.CharField(max_length=50)
 	prefix = modles.CharField(max_length=50)
+
+	__metaclass__ = models.SubfieldBase
+
 	def __unicode__(self):
 		return self.name 
 	
 
 class School(models.Model):
-    school = models.CharField(max_length=50)
-    def __unicode__(self):
-        return self.name 
+	school = models.CharField(max_length=50)
+
+	__metaclass__ = models.SubfieldBase
+
+	def __unicode__(self):
+		return self.name 
 	
 class Department(models.Model):
 	department = modles.CharField(max_lenght=50)
 	dep_abbrev = models.CharField(max=length=4)
 	chair_id = models.ForeignKey(Chair)
 	school_id = models.ForeignKey(School)
+
+	__metaclass__ = models.SubfieldBase
+
+	def __unicode__(self):
+		return self.name
 
     
 	
