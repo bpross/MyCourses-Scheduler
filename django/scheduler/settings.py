@@ -7,12 +7,14 @@ except ImportError:
     DEVEL = False
 
 DIRNAME = os.path.dirname(__file__)
-DEBUG = DEVEL # DEVEL should be set in local-settings.py
+# DEVEL should be set in localsettings.py
+DEBUG = DEVEL # DEVEL should be set in localsettings.py
 TEMPLATE_DEBUG = DEVEL
 
 # See http://docs.djangoproject.com/en/dev/howto/deployment/fastcgi/#forcing-the-url-prefix-to-a-particular-value
 FORCE_SCRIPT_NAME = ''
 
+# We currently aren't using this. Eventually, admins will get messages about errors that occur on the site when DEBUG is off.
 ADMINS = (
 #     ('Will Crawford', 'wacrawfo@ucsc.edu'),
 #     ('Ben Ross', 'benr22@gmail.com'),
@@ -22,12 +24,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'django_schedule',                      # Or path to database file if using sqlite3.
-        'USER': 'scheduler',                      # Not used with sqlite3.
-        'PASSWORD': 'n0TH4N><h4xxx',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'django_schedule',                       
+        'USER': 'scheduler',                       
+        'PASSWORD': 'n0TH4N><h4xxx',                    
+        'HOST': '',                      # When empty, uses default (localhost) 
+        'PORT': '',                      # Set to empty string for default. 
     }
 }
 
@@ -58,7 +60,7 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(DIRNAME, 'static')
 
-# MEDIA_URL has been moved to local-settings.py
+# MEDIA_URL has been moved to localsettings.py
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -116,5 +118,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
     # This line lets us do Django to UML.
-     'django_extensions',
+     #'django_extensions',
+    'scheduler.interface',
 )
