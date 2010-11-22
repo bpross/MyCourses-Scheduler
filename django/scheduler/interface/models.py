@@ -21,14 +21,14 @@ class Course(models.Model):
 
 class Buildings(models.Model):
 	name = models.CharField(max_length=50)
-	BuildingID = models.IntegerField(primary_key=True)
+	idBuilding = models.IntegerField(primary_key=True)
 
 	def __unicode__(self):
 		return self.name
 
 class Room(models.Model):
 	seat_num = models.IntegerField()
-	BuildingID = models.ForeignKey('Buildings', to_field="BuildingID")
+	BuildingID = models.ForeignKey('Buildings', to_field="idBuilding")
 	name = models.CharField(max_length=50)
 
 	def __unicode__(self):
@@ -45,13 +45,6 @@ class Course_Class(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class Master_table(models.Model):
-	professor = models.ManyToManyField('Professor')
-	room = models.ManyToManyField('Room')
-	course = models.ManyToManyField('Course')
-
-	def __unicode__(self):
-		return self.name 
 	
 class Person(models.Model):
 	first_name = models.CharField(max_length=50)

@@ -1,0 +1,49 @@
+Steps to get a test environment set up
+
+Install MySQL
+http://dev.mysql.com/downloads/mysql/
+Install MySQL Workbench
+http://wb.mysql.com/
+
+I'm going to assume you have Python installed.
+
+Install MySQLdb for Python
+http://sourceforge.net/projects/mysql-python/
+Configuring the setup process for this may be a little tricky - you may need to point it at your MySQL config file, mysql_config
+Google can help you find it =)
+
+Make sure the MySQL database is running.
+Open MySQL workbench. On the right hand side under Server Administration, click "New Server Instance." Your server is running on localhost.
+Once you have that connection established, you're going to make a new user named "scheduler" that connects from host "localhost" that has all permissions (except grant) on the schema "django_schedule" which doesn't exist yet.
+Save these changes, then go back to the inital MySQL workbench screen. 
+
+Under MySQL Development, open the new connection that should have appear. On the left hand side of the new window that opens, underneath "Test," right click, and add a new schema. You must name it "django_schedule"
+Save this; close MySQL Workbench.
+
+Install virtualenv
+easy_install virtualenv
+
+Now make a virtualenv somewhere
+virtualenv env
+
+Now install django to this virtualenv
+svn co http://code.djangoproject.com/svn/django/trunk/django env/lib/python2.7/site-packages/django
+
+That's it! We're finished setting up our development tools. 
+
+Anyway, now let's set up our specific stuff.
+source env/bin/activate
+Now we have access to Django. Let's go to our specific project in subversion. Once, you're in the scheduler folder, we're going to set up the database for the first time. MySQL (the database, not the workbench) should still be running.
+python manage.py syncdb
+It'll ask you to set up a new superuser. Do that.
+
+One more step. Create the file localsettings.py. The contents should be
+DEVEL=True
+MEDIA_URL='http://localhost:8000/media/'
+
+NOW WE'RE DONE. WASN'T THAT SO EASY?
+Now, we're done setting up Django. Next time you want to run it on your own computer, do
+source env/bin/activate
+Then switch to our django project folder and type
+python manage.py runserver 
+Now you can browse to it! Any time you change something, it's probably a good idea to restart manage.py.

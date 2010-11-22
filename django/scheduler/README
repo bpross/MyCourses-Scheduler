@@ -24,3 +24,13 @@ scheduler/
        example/
        app1/
        app2/
+   interface/
+       - This app should handle all our database interaction.
+   login/
+       - This app should handle all role-less UI stuff.
+   manager/
+       - This app should handle the "manager" user role.
+   student/
+       - This app should handle the "student" user role.
+   lecturer/
+       - This app should handle the "lecturer" user role.
