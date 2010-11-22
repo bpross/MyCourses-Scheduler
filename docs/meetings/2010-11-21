@@ -1,0 +1,52 @@
+Date, Time, Location:
+
+Members Present:
+Will Crawford
+Erik Steggall
+Justin Lazaro
+Sabba Petri
+
+Roles:
+Moderator was Justin Lazaro
+Notetaker was Will Crawford
+Timekeeper was Will Crawford
+
+Agenda:
+- Unit testing
+- Inspection
+- Project status
+
+Discussion Summary:
+4:00-4:10 We'll be unit testing the algorithm and its modules.
+
+4:10-4:15 According to Justin, running the algorithm from a command-line will be acceptable for our Acceptance Test. (We'd like to get a lot more done than that.)
+
+4:15-4:25 Reviewing test material.
+
+4:25-4:35 More unit test discussion.
+- Will is taking a database unit test.
+- Justin is doing a unit test for the course object's integrity and validity.
+- Sabba is doing a unit test for the room object's integrity and validity.
+- Erik is doing a unit test for the professor object's integrity and validity.
+- Ben may do a unit test for the interface between django and the algorithm.
+
+4:35-4:40 Project status
+- Sabba, UI:
+Over break, Sabba's going to modify what UI we have to template format, or rework the whole thing if possible.
+- Justin, Documentation:
+Design docs are finished. Class diagrams need work, but may need to wait on Django since it can generate them. Also, will work on docs for acceptance and unit tests.
+- Erik, Module integration:
+Gotta start working on integrating everything with Django.
+- Erik, for Ben:
+Algorithm's pretty much done; just gotta test everything.
+- Will, Django:
+Login is done; signup is done (see admin interface); waiting on templates for some functionality, like interfaces for the modules. Database design is done and needs to be implemented. Need to add roles to the user database.
+
+4:40-4:45 UI Design
+Will explained the templating system to Sabba, and explained what the difference between each role ought to be in implementation.
+
+4:45 Inspection
+We got contact with Ben; we'll be going over schedule.py, hopefully tomorrow
+
+4:45-4:50
+Went over database diagrams with Erik
