@@ -5,10 +5,16 @@
 
 
 from django.db import models
+import unittest
+
+class MyFuncTestCase(unittest.TestCase):
+    def testBasic(self):
+        a = ['larry', 'curly', 'moe']
+        self.assertEqual(my_func(a, 0), 'larry')
+        self.assertEqual(my_func(a, 10, 'curly')
 
 """
 The following code is written to test the models
-"""
 
 from django.utils import unittest
 
@@ -37,7 +43,7 @@ from django.core.management.color import no_style
 STYLE = no_style()
 
 def create_table(*models):
-    """create all tables for the given models"""
+#    create all tables for the given models
     cursor = connection.cursor()
     def execute(statments):
         for statement in statments:
@@ -48,9 +54,7 @@ def create_table(*models):
         execute(connection.creation.sql_indexes_for_model(model, STYLE))
         execute(sql.custom_sql_for_model(model, STYLE))
         execute(connection.creation.sql_for_many_to_many(model, STYLE))
-"""
 End of tester code
-"""
 
 # School:
 # Holds: school ID number, school name
@@ -61,10 +65,8 @@ class School(models.Model):
 
     def __unicode__(self):
         return self.SchoolName
-
-    class Meta:
-        app_label = APP_LABEL
-"""
+#    class Meta:
+#        app_label = APP_LABEL
 
 # Department:
 # Holds: the department ID, the department name, the deptartment's
@@ -202,7 +204,6 @@ class Role(models.Model):
     def __unicode__(self):
         return self.RoleName
 
-"""
 
 if __name__ == "__main__":
     print "- create the model tabels...",
@@ -221,5 +222,6 @@ if __name__ == "__main__":
     print instance._meta.pk
 
     print "-END -"
+"""
 
 
