@@ -10,10 +10,10 @@ from django.db import models
 # Returns: The school name
 class School(models.Model):
     idSchool = models.IntegerField(primary_key=True)
-    School = models.CharField(max_length=45)
+    SchoolName = models.CharField(max_length=45)
 
     def __unicode__(self):
-        return self.School
+        return self.SchoolName
 
 # Department:
 # Holds: the department ID, the department name, the deptartment's
@@ -22,11 +22,11 @@ class School(models.Model):
 class Department(models.Model):
     SchoolID = models.ForeignKey('School', to_field="idSchool")
     idDepartment = models.IntegerField(primary_key=True)
-    Department = models.CharField(max_length=45)
+    DepartmentName = models.CharField(max_length=45)
     DeptAbbrv = models.CharField(max_length=11)
 
     def __unicode__(self):
-        return self.Department
+        return self.DepartmentName
 
 # Prerequisite:
 # Holds: the prerequisite ID, the prerequisite's class ID
@@ -41,11 +41,11 @@ class Prerequisite(models.Model):
 class Class(modles.Model):
     DepartmentID = models.ForeignKey('Department', to_field="idDepartment")
     idClass = models.IntegerField(primary_key=True)
-    Class = models.CharField(max_length=45)
+    ClassName = models.CharField(max_length=45)
     ClassDescription = models.CharField(max_length=45)
 
     def __unicode__(self):
-        return self.Class
+        return self.ClassName
     
 # Buildings:
 # Holds: the building ID, the building name
@@ -146,10 +146,10 @@ class PersonRole(models.Model):
 # Returns: The role name
 class Role(models.Model):
     idRole = models.IntegerField(primary_key=True)
-    Role = models.CharField(max_length=45)
+    RoleName = models.CharField(max_length=45)
 
     def __unicode__(self):
-        return self.Role
+        return self.RoleName
 
 
 
