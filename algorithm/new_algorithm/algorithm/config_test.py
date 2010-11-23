@@ -62,7 +62,7 @@ This is testing the get_course_by_id() function in configuration.py
 It checks to see if the correct course ID and course name
 Input: config file (ID: 5)
 Expected output: 5 Descrete Mathematic I
-""""
+"""
 course = config.get_course_by_id(5)
 print str(course.id) + " " + course.name
 
