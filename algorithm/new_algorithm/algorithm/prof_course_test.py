@@ -1,7 +1,14 @@
-#test for professor.py
+# test for professor.py
+# Author: Erik Steggall
+
+"""
+This file tests professor and course classes for our algorithm
+"""
+
 from professor import Professor
 from course import Course
 
+#Initializes Variables to be used
 num = 0
 num2 = 0
 name = 's'
@@ -10,17 +17,27 @@ c_id = 0
 c_name = 's'
 
 
+# Test for constructors
 
+# Test constructor with valid information
+# Input: ID = 24 Name = Werner
+# Expected output: (24, Werner)
 p1 = Professor(24, 'Werner')
+p1.print_professor()
+# Test constructor, and add variables later
 p2 = Professor()
+
+# Add variables using manipulation procedure
 p2.add_id(42)
 p2.add_name('name')
 
+# Test access functions using variables initialized above
 num = p1.get_id()
 name = p1.get_name()
 num2 = p2.get_id()
 name2 = p2.get_name()
 
+# Print statment to insure that the variables 
 print "Professors name is %s,\n professor's ID is %d" % (name, num)
 print "Professors name is %s,\n professor's ID is %d" % (name2, num2)
 p1.print_professor()
