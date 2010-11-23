@@ -3,7 +3,54 @@
 # 11-15-10
 
 
+
 from django.db import models
+
+"""
+The following code is written to test the models
+"""
+
+from django.utils import unittest
+
+
+
+
+import os
+
+APP_LABEL = os.path.splitext(os.path.basename(__file__))[0]
+
+os.environ["DJANGO_SETTINGS_MODULE"] = "django.conf.global_settings"
+from django.conf import global_settings
+
+global_settings.INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    APP_LABEL,
+)
+global_settings.DATABASE_ENGINE = "MySQL"
+global_settings.DATABASE_NAME = ":memory:"
+
+from django.core.management import sql
+from django.db import models, connection
+
+from django.core.management.color import no_style
+STYLE = no_style()
+
+def create_table(*models):
+    """create all tables for the given models"""
+    cursor = connection.cursor()
+    def execute(statments):
+        for statement in statments:
+            cursor.execute(statement)
+
+    for model in models:
+        execute(connection.creation.sql_create_model(model. STYLE)[0])
+        execute(connection.creation.sql_indexes_for_model(model, STYLE))
+        execute(sql.custom_sql_for_model(model, STYLE))
+        execute(connection.creation.sql_for_many_to_many(model, STYLE))
+"""
+End of tester code
+"""
 
 # School:
 # Holds: school ID number, school name
@@ -15,12 +62,16 @@ class School(models.Model):
     def __unicode__(self):
         return self.SchoolName
 
+    class Meta:
+        app_label = APP_LABEL
+"""
+
 # Department:
 # Holds: the department ID, the department name, the deptartment's
 #   abbreviated name, the department's  school ID
 # Returns: The department name
 class Department(models.Model):
-    SchoolID = models.ForeignKey('School', to_field="idSchool")
+    SchoolID = models.ForeignKey(School, to_field='idSchool')
     idDepartment = models.IntegerField(primary_key=True)
     DepartmentName = models.CharField(max_length=45)
     DeptAbbrv = models.CharField(max_length=11)
@@ -32,14 +83,14 @@ class Department(models.Model):
 # Holds: the prerequisite ID, the prerequisite's class ID
 # Returns: nothing
 class Prerequisite(models.Model):
-    ClassID = models.ForeignKey('Class', to_field="idClass")
+    ClassID = models.ForeignKey(Class, to_field='idClass')
     idPrerequisite = models.IntegerField(primary_key=True)
 
 # Class:
 # Holds: the class ID, the class name, a description of the class, the class's department ID
 # Returns: The class name
 class Class(modles.Model):
-    DepartmentID = models.ForeignKey('Department', to_field="idDepartment")
+    DepartmentID = models.ForeignKey(Department, to_field='idDepartment')
     idClass = models.IntegerField(primary_key=True)
     ClassName = models.CharField(max_length=45)
     ClassDescription = models.CharField(max_length=45)
@@ -61,7 +112,7 @@ class Buildings(models.Model):
 # Holds: the room ID, the room number, the type of room, the room name, the rooms' building ID
 # Returns: The room name
 class Room(models.Model):
-    BuildingID = models.ForeignKey('Buildings', to_field="idBuilding")
+    BuildingID = models.ForeignKey(Buildings, to_field='idBuilding')
     idRoom = models.IntegerField(primary_key=True)
     RoomNumber = models.CharField(max_length=45)
     Type = models.CharField(max_length=45)
@@ -71,22 +122,6 @@ class Room(models.Model):
     def __unicode__(self):
         return self.RoomName
 
-# ClassLab:
-# Holds: the lab ID, the lab name, the lab time, the lab's room ID, the lab's
-#   building ID, the lab's class-instance ID
-# Returns: The lab name
-
-class ClassLab(models.Model):
-    ClassInstanceID = models.ForiegnKey('ClassInstance', to_field"idClassInstance")
-    idClassLab = models.IntegerField(primary_key=True)
-    LabName = models.CharField(max_length=45)
-    LabTime = models.CharField(max_length=45)
-    RoomID = models.ForiegnKey('Room', to_field"idRoom")
-    BuildingID = models.ForiegnKey('Building', to_field"idBuilding")
-
-    def __unicode__(self):
-        return self.LabName
-
 # ClassInstance:
 # Holds: the class-instance ID, the scheduled time, the section, the
 #   class-instance's class ID, the class-instance's period ID
@@ -95,17 +130,33 @@ class ClassLab(models.Model):
 #   class-instance's room ID
 # Returns: Nothing
 class ClassInstance(models.Model):
-    ClassID = models.ForeignKey('Class', to_field"idClass")
+    ClassID = models.ForeignKey(Class, to_field='idClass')
     idClassInstance = models.IntegerField(primary_key=True)
-    PeriodID = models.ForeignKey('Period', to_field"idPeriod")
+    PeriodID = models.ForeignKey(Period, to_field='idPeriod')
     ClassTime = models.CharField(max_length=45)
     Section = models.CharField(max_length=45)
-    LecturerID = models.ForeignKey('Lecturer', to_field"idLecturer")
+    LecturerID = models.ForeignKey(Lecturer, to_field='idLecturer')
     LecturerOfficeHours = models.CharField(max_length=45)
     TAOfficeHours = models.CharField(max_length=45)
-    idTA = models.IntegerField(primary_key=True)
-    BuildingID = models.ForeignKey('Building', to_field"idBuilding")
-    RoomID = models.ForiegnKey('Room', to_field"idRoom")
+    idTA = models.IntegerField()
+    BuildingID = models.ForeignKey(Building, to_field='idBuilding')
+    RoomID = models.ForiegnKey(Room, to_field='idRoom')
+
+# ClassLab:
+# Holds: the lab ID, the lab name, the lab time, the lab's room ID, the lab's
+#   building ID, the lab's class-instance ID
+# Returns: The lab name
+class ClassLab(models.Model):
+    ClassInstanceID = models.ForeignKey(ClassInstance, to_field='idClassInstance')
+    idClassLab = models.IntegerField(primary_key=True)
+    LabName = models.CharField(max_length=45)
+    LabTime = models.CharField(max_length=45)
+    RoomID = models.ForiegnKey(Room, to_field='idRoom')
+    BuildingID = models.ForiegnKey(Building, to_field='idBuilding')
+
+    def __unicode__(self):
+        return self.LabName
+
 
 # Lecturer:
 # Holds: the lecturer ID, the lecturer's status, comments, the
@@ -114,8 +165,8 @@ class ClassInstance(models.Model):
 class Lecturer(models.Model):
     idLecturer = IntegerField(primary_key=True)
     Status = models.CharField(max_length=45)
-    Comment = models.CharField(max_length=45)
-    DepartmentID = models.ForeignKey('Department', to_field="idDepartment")
+    Comment = models.TextField()
+    DepartmentID = models.ForeignKey(Department, to_field='idDepartment')
 
     def __unicode__(self):
         return self.Status
@@ -138,8 +189,8 @@ class Person(models.Model):
 # Holds: the Person-roles person ID and role ID
 # Returns: Nothing
 class PersonRole(models.Model):
-    PersonID = models.ForiegnKey('Person', to_field"idPerson")
-    RoleID = models.ForiegnKey('Role', to_field"idRole")
+    PersonID = models.ForiegnKey(Person, to_field='idPerson')
+    RoleID = models.ForiegnKey(Role, to_field='idRole')
 
 # Role:
 # Holds: the role ID, the role name
@@ -151,8 +202,24 @@ class Role(models.Model):
     def __unicode__(self):
         return self.RoleName
 
+"""
+
+if __name__ == "__main__":
+    print "- create the model tabels...",
+    from django.core import management
+    management.call_command('syncdb', verbosity=1, interactive=False)
+    print "OK"
 
 
+    create_table(School)
 
+    instance = School(SchoolName="UCSC")
+    print instance
+    for field in instance._meta.fields:
+      print field, field.SchoolName
+
+    print instance._meta.pk
+
+    print "-END -"
 
 
