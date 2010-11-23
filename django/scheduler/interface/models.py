@@ -10,20 +10,20 @@ from django.db import models
 # Returns: The school name
 class School(models.Model):
     idSchool = models.IntegerField(primary_key=True)
-	School = models.CharField(max_length=45)
+    School = models.CharField(max_length=45)
 
-	def __unicode__(self):
-		return self.School
+    def __unicode__(self):
+        return self.School
 
 # Department:
 # Holds: the department ID, the department name, the deptartment's
 #   abbreviated name, the department's  school ID
 # Returns: The department name
 class Department(models.Model):
-	SchoolID = models.ForeignKey('School', to_field="idSchool")
-	idDepartment = models.IntegerField(primary_key=True)
+    SchoolID = models.ForeignKey('School', to_field="idSchool")
+    idDepartment = models.IntegerField(primary_key=True)
     Department = models.CharField(max_length=45)
-	DeptAbbrv = models.CharField(max_length=11)
+    DeptAbbrv = models.CharField(max_length=11)
 
     def __unicode__(self):
         return self.Department
@@ -44,32 +44,32 @@ class Class(modles.Model):
     Class = models.CharField(max_length=45)
     ClassDescription = models.CharField(max_length=45)
 
-	def __unicode__(self):
-		return self.Class
+    def __unicode__(self):
+        return self.Class
     
 # Buildings:
 # Holds: the building ID, the building name
 # Returns: The building name
 class Buildings(models.Model):
-	idBuilding = models.IntegerField(primary_key=True)
-	BldgName = models.CharField(max_length=45)
+    idBuilding = models.IntegerField(primary_key=True)
+    BldgName = models.CharField(max_length=45)
 
-	def __unicode__(self):
-		return self.BldgName
+    def __unicode__(self):
+        return self.BldgName
 
 # Room:
 # Holds: the room ID, the room number, the type of room, the room name, the rooms' building ID
 # Returns: The room name
 class Room(models.Model):
-	BuildingID = models.ForeignKey('Buildings', to_field="idBuilding")
+    BuildingID = models.ForeignKey('Buildings', to_field="idBuilding")
     idRoom = models.IntegerField(primary_key=True)
     RoomNumber = models.CharField(max_length=45)
     Type = models.CharField(max_length=45)
-	RoomName = models.CharField(max_length=45)
+    RoomName = models.CharField(max_length=45)
 #	seat_num = models.IntegerField(primary_key=True)
 
-	def __unicode__(self):
-		return self.RoomName
+    def __unicode__(self):
+        return self.RoomName
 
 # ClassLab:
 # Holds: the lab ID, the lab name, the lab time, the lab's room ID, the lab's
@@ -84,8 +84,8 @@ class ClassLab(models.Model):
     RoomID = models.ForiegnKey('Room', to_field"idRoom")
     BuildingID = models.ForiegnKey('Building', to_field"idBuilding")
 
-	def __unicode__(self):
-		return self.LabName
+    def __unicode__(self):
+        return self.LabName
 
 # ClassInstance:
 # Holds: the class-instance ID, the scheduled time, the section, the
@@ -117,22 +117,22 @@ class Lecturer(models.Model):
     Comment = models.CharField(max_length=45)
     DepartmentID = models.ForeignKey('Department', to_field="idDepartment")
 
-	def __unicode__(self):
-		return self.Status
+    def __unicode__(self):
+        return self.Status
 # Person:
 # Holds: the person's ID, the persons's first name, middle initial, last
 #   name, suffix and prefix
 # Returns: The person's full title
 class Person(models.Model):
     idPerson = models.IntegerField(primary_key=True)
-	FName = models.CharField(max_length=45)
-	MInitial = models.CharField(max_length=1)
-	LName = models.CharField(max_length=45)
-	Suffix = models.CharField(max_length=10)
-	Prefix = models.CharField(max_length=10)
+    FName = models.CharField(max_length=45)
+    MInitial = models.CharField(max_length=1)
+    LName = models.CharField(max_length=45)
+    Suffix = models.CharField(max_length=10)
+    Prefix = models.CharField(max_length=10)
 
-	def __unicode__(self):
-		return u'%s %s %s %s %s' %  (self.Prefix, self.FName, self.MInitial, self.LName, self.Suffix)
+    def __unicode__(self):
+        return u'%s %s %s %s %s' %  (self.Prefix, self.FName, self.MInitial, self.LName, self.Suffix)
 
 # PersonRole:
 # Holds: the Person-roles person ID and role ID
