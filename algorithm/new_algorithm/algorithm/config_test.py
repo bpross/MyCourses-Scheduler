@@ -78,8 +78,6 @@ print num
 
 
 """
-BEN This test case does not look correct, it seems like you don't have an ID number under rooms in your config file
-
 This is testing the get_room_by_id() function in configuration.py
 It checks to see if the correct room name, seat number, and lab is returned 
 Input: config file (ID: 2)
