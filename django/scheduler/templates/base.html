@@ -3,21 +3,81 @@
 <!-- This is the home welcome page of the MyCourses page -->
 <head>
 <meta http-equiv="Content-Type content="text/html;charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/media/css/suggestion-default.css" />
-
+		<link rel="stylesheet" type="text/css" href="/media/css/suggestion-default.css" />
+		<link href="CSStest2.css" rel="stylesheet" type="text/css" /> 
+		<link href="CSStest1.css" rel="stylesheet" type="text/css" /> 
+		<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+		
 {% block css %}{% endblock %}
 
 <title>S.C.O.R.E. - {% block title %}{% endblock %}</title>
 </head>
 <body>
-<header>
-    <h1>S.C.O.R.E MyCourses Scheduling System</h1>
+			<div id="body-wrapper"> 
+				<header> 
+		<a id="logo" href="/">S.C.O.R.E.<span>*</span></a>	<nav id="menu"> 
+			<ul> 
+				<li><a href="/downloads">Home</a>				<ul> 
+						<li><a href="/downloads">Your Messages</a></li> 
+					</ul> 
+				</li> 
+				<li><a href="/docs">Course Chooser</a>				<ul> 
+						<li><a href="#">View Catalogue</a></li> 
+						<li><a href="#">Choose Courses</a></li> 
+					</ul> 
+				</li> 
+				<li><a href="#">Review Courses</a>				<ul> 
+						<li><a href="#">Review Courses</a></li>
+						<li><a href="#">View Current Courses</a></li>  
+					</ul> 
+				</li> 
+				<li><a href="#">Personal Information</a>				<ul> 
+						<li><a href="#">View Information</a></li> 
+						<li><a href="#">View Friends</a></li> 
+					</ul> 
+				</li>
+				<li><a href="#">Settings</a>				<ul> 
+						<li><a href="#">View Settings</a></li> 
+						<li><a href="#">Choose Courses</a></li> 
+						<li><a href="#">Review Courses</a></li> 
+					</ul> 
+				</li> 
+			</ul> 
+		</nav> 
+
+		<span class="clear"></span> 
+	</header>
 </header>
 {% block content %}{% endblock %}
 {% block footer %}
 <hr>
 <footer>
-	<span>© 2010, CS115 S.C.O.R.E. team at UCSC</span>
+	<div id="footer-wrapper"> 
+	    <div class="directory"> 
+	        <ul> 
+	            <li><strong>check browser</strong></li> 
+	            <li><a href="/downloads">mozilla firefox</a></li> 
+	            <li><a href="mozilla.com">google chrome</a></li> 
+	        </ul> 
+	        <ul> 
+	            <li><strong>support</strong></li> 
+	            <li><a href="http://en.wikipedia.org/wiki/FAQ">frequently asked questions</a></li> 
+	            <li><a href="http://www.mentalhelp.net/">help</a></li> 
+	        </ul> 
+	        <ul> 
+	            <li><strong>contact</strong></li> 
+	            <li><a href="#">phone</a></li> 
+	            <li><a href="#">website</a></li> 
+	        </ul> 
+	        <ul> 
+	            <li><strong>jobs</strong></li> 
+	            <li><a href="my.ucsc.edu">join our team!</a></li> 
+	        </ul> 
+	    </div> 
+	    <span class="clear"></span> 
+		<span>© 2010, CS115 S.C.O.R.E. team at UCSC</span>
+
+	</div>
 </footer>
 {% endblock %}
 </body>
