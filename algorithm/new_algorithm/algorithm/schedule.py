@@ -99,12 +99,12 @@ class Schedule:
         @param len_chromo_list: length of the new chromosome list
         @param config: config object to base the schedule on
         """
-        if len_chromo_list = None:
+        if len_chromo_list is None:
             self.chromo_list = []
         else:
             self.chromo_list = len_chromo_list*[None]
 
-        if config = None:
+        if config is None:
             self.config = None
         else:
             self.config = config
@@ -141,7 +141,7 @@ class Schedule:
         #Checks to see chromo_list has a size
         if not self.chromo_list: 
             if self.config is None:
-                print "You need to load a config,
+                print "You need to load a config,\
                 before initalizing chromosomes"
 
             else:
@@ -189,7 +189,8 @@ class Schedule:
         room = self.config.get_room_by_id(room_id)
 
         course = chromo.course
-        #Course might not overlap at current position, but could if duration is longer than 1, this checks for that
+        #Course might not overlap at current position, but could if duration is
+        #longer than 1, this checks for that
         if not chromo.overlap:
             if course.duration > 1:
                 count = 0
@@ -318,9 +319,9 @@ class Schedule:
         """
         count = 0
         randm.seed()
-        for count < self.mutation_size:
+        while count < self.mutation_size:
             #Gets a random class to move
-            move_class_index = random.randint(o,len(self.config.classes_list))
+            move_class_index = random.randint(0,len(self.config.classes_list))
             move_class = self.config.classes_list[move_class_index]
             
             #Gets new spot for the class
@@ -350,7 +351,7 @@ class Schedule:
                 self.calculate_fitness(chromosomes, new_spot)
                 new_spot += 1   
                
-    def insert_chromosome(self, chromosome = None, index):
+    def insert_chromosome(self, chromosome, index):
         """
         Inserts a chromosome into chromo_list at the given index
         Checks to see if there is over lap or not
@@ -448,3 +449,34 @@ class Schedule:
             return search_chromosomes
 
     def algorithm(self):
+        """
+        Runs the schedule algorithm. Flow of algorithm:
+            read in data
+            initialize chromosome
+            get_overall_fitness
+            while overall fitness != 1.0
+              get crossover points
+              perform crossover
+              get mutation size
+              perform mutations
+              get overall fitness
+
+            return schedule
+        """
+        self.get_config()
+        self.init_chromosomes()
+        self.get_overall_fitness()
+        random.seed()
+        while self.get_overall_fitness() < 1.0:
+            start_crossover = random.randint(0,len(self.chromo_list))
+            end_crossover = random.randint(0,len(self.chromo_list))
+
+            if start_crossover <= end_crossover:
+                self.perform_crossover(start_crossover,end_crossover)
+            else:
+                self.perform_crossover(end_crossover, start_crossover)
+
+            self.mutation_size = random.randint(0,len(self.chromo_list))
+            self.perform_mutations()
+
+        print "Done!"
