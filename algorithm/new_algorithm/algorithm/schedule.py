@@ -463,19 +463,27 @@ class Schedule:
 
             return schedule
         """
+        #Loads the config for the rooms/classes
         self.get_config()
+        #Creates the first chromosome
         self.init_chromosomes()
         self.get_overall_fitness()
+        #Seeds the random with system time
         random.seed()
+        
         while self.get_overall_fitness() < 1.0:
+            #Get random points for crossover
             start_crossover = random.randint(0,len(self.chromo_list))
             end_crossover = random.randint(0,len(self.chromo_list))
 
+            #Checks to see which crossover point is greater, Dont want to go
+            #From a greater value to lesser value
             if start_crossover <= end_crossover:
                 self.perform_crossover(start_crossover,end_crossover)
             else:
                 self.perform_crossover(end_crossover, start_crossover)
 
+            #Gets random mutation size and performs mutations
             self.mutation_size = random.randint(0,len(self.chromo_list))
             self.perform_mutations()
 
