@@ -37,7 +37,7 @@ class Class(models.Model):
     ClassDescription = models.TextField()
 
     def __unicode__(self):
-        return self.ClassName
+        return self.Class
 
 # Prerequisite:
 # Holds: the prerequisite ID, the prerequisite's class ID
@@ -89,11 +89,12 @@ class Period(models.Model):
 class Lecturer(models.Model):
     idLecturer = models.IntegerField(primary_key=True)
     Status = models.CharField(max_length=45)
+    Name = models.CharField(max_length=45)
     Comment = models.TextField()
     idDepartment = models.ForeignKey(Department, to_field='idDepartment')
 
     def __unicode__(self):
-        return self.Status
+        return self.Name
 
 # ClassInstance:
 # Holds: the class-instance ID, the scheduled time, the section, the
@@ -145,7 +146,7 @@ class Person(models.Model):
     Prefix = models.CharField(max_length=10, null=True)
 
     def __unicode__(self):
-        return u'%s %s %s %s %s' %  (self.Prefix, self.FName, self.LName, self.Suffix)
+        return self.LName
 
 # Role:
 # Holds: the role ID, the role name
