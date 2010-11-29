@@ -13,9 +13,6 @@ class School(models.Model):
 
     def __unicode__(self):
         return self.School
-# We're in interfaces/models.py so we don't need these lines below.
-#    class Meta:
-#        app_label = APP_LABEL
 
 # Department:
 # Holds: the department ID, the department name, the deptartment's
