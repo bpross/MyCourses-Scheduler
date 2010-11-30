@@ -16,3 +16,9 @@ def logout_page(request):
 	"""
 	logout(request)
 	return HttpResponseRedirect('/')
+
+def placeholder(request):
+    return render_to_response('placeholder.html')
+
+def shoppingcart(request):
+    return HttpResponseRedirect('/placeholder/')

@@ -14,9 +14,10 @@ urlpatterns = patterns('',
 
 	# Login / logout
     (r'^login/$', 'django.contrib.auth.views.login'),
-	(r'^logout/$', logout_page),
+    (r'^logout/$', logout_page),
 	# Web portal
-
+    # Nav
+    (r'^shopping-cart/', shoppingcart),
     # The student view
     (r'^student/', include('student.urls')),
     # The lecturer view
