@@ -6,7 +6,7 @@ from django.template import RequestContext
 from scheduler.algorithm.algotest import Algorithm
 
 def index(request):
-    return render_to_response('index.html', RequestContext(request))  
+    return render_to_response('base.html', RequestContext(request))  
 
 def login(request):
     return render_to_response('login.html')
@@ -14,12 +14,7 @@ def login(request):
 def algorithm(request):
     if request.user.is_staff:
        Algorithm()
-#       r = "<html><body>Called the algorithm.</body></html>"
-#       return HttpResponse(r)
-       return render_to_response('algorithm.html')
-    else:
-       r = "<html><body>An error occured. You are not logged in as an admin.</body></html>"
-       return HttpResponse(r)
+    return render_to_response('algorithm.html', RequestContext(request))
 
 def logout_page(request):
 	"""
@@ -29,13 +24,13 @@ def logout_page(request):
 	return HttpResponseRedirect('/')
 
 def placeholder(request):
-    return render_to_response('placeholder.html')
+    return render_to_response('placeholder.html', RequestContext(request))
 
 def shoppingcart(request):
-    return render_to_response('shoppingCart.html')
+    return render_to_response('shoppingCart.html', RequestContext(request))
 
 def managecourses(request):
-    return render_to_response('courseManager.html')
+    return render_to_response('courseManager.html', RequestContext(request))
 
 def settings(request):
-    return render_to_response('settings.html')
+    return render_to_response('settings.html', RequestContext(request))
