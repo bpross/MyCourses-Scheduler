@@ -3,12 +3,19 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from algotest import Algorithm
 
 def index(request):
     return render_to_response('index.html', RequestContext(request))  
 
 def login(request):
     return render_to_response('login.html')
+
+def algorithm(request):
+    Algorithm()
+    r = "<html><body>Called the algorithm.</body></html>"
+    return HttpResponse(r)
+    
 
 def logout_page(request):
 	"""
