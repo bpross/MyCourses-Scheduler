@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 	# Web portal
     # Nav
     (r'^shopping-cart/', shoppingcart),
+    (r'^placeholder/', placeholder),
     # The student view
     (r'^student/', include('student.urls')),
     # The lecturer view

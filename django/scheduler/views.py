@@ -21,4 +21,4 @@ def placeholder(request):
     return render_to_response('placeholder.html')
 
 def shoppingcart(request):
-    return HttpResponseRedirect('/placeholder/')
+    return render_to_response('shoppingCart.html')
