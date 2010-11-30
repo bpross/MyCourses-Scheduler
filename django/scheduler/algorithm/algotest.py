@@ -1,7 +1,7 @@
 print "Start Test"
 # Hopefully this will work
 # This statement imports all of the fields from interface/models.py
-from interface.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
+from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
 
 class Algorithm():
     # Create School in Database

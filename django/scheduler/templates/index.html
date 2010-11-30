@@ -13,7 +13,7 @@
 			{% endif %}
 		</div> 
 		<div> 
-			<h2>Other functions</h2> 
+			<h2>User functions</h2> 
 			{% if user.is_authenticated %}
 		    <p>You may <a href="/logout/">log out.</a></p>
 		    {% else %}
@@ -21,8 +21,18 @@
 		    {% endif %}
 		</div> 
 		<div> 
-			<h2>Testing Paragraph Header 3</h2> 
-			<p>Testing Paragraph 3.</p> 
+			<h2>Admin functions</h2>
+			<p>
+			{% if user.is_authenticated %}
+			    {% if user.is_staff %}
+			    <a href="/run-algorithm">Run</a> the algorithm
+			    {% else %}
+			    You are not an admin.
+			    {% endif %}
+			{% else %}
+			You are not logged in.
+			{% endif %}
+			<p></p> 
 		</div> 
 		<div> 
 			<h2>Testing Paragraph Header 4</h2> 
