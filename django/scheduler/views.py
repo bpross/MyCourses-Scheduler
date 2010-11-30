@@ -1,6 +1,6 @@
 # Create your views here.
 from django.contrib.auth import logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from scheduler.algorithm.algotest import Algorithm
