@@ -14,8 +14,9 @@ def login(request):
 def algorithm(request):
     if request.user.is_staff:
        Algorithm()
-       r = "<html><body>Called the algorithm.</body></html>"
-       return HttpResponse(r)
+#       r = "<html><body>Called the algorithm.</body></html>"
+#       return HttpResponse(r)
+       return render_to_response('algorithm.html')
     else:
        r = "<html><body>An error occured. You are not logged in as an admin.</body></html>"
        return HttpResponse(r)
