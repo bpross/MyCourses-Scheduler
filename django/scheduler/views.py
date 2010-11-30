@@ -12,7 +12,7 @@ def login(request):
     return render_to_response('login.html')
 
 def algorithm(request):
-    if user.is_staff:
+    if request.user.is_staff:
        Algorithm()
        r = "<html><body>Called the algorithm.</body></html>"
        return HttpResponse(r)
