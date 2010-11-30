@@ -1,18 +1,14 @@
 {% extends "base.html"%}
 {% block title %}Home{% endblock %}
 
-{% block description%}
+{% block description %}
 <p class="description"> 
     <img id="logo" src="/media/images/ucsc_slug.jpg" alt="UCSC logo" /> 
-
-    {% if form.errors %}
-        <span>Your username or password was not found; please try again.</span>
-    {% endif %}
 </p>
-</section>
 {% endblock %}
 
 {% block content %}
+
 <section id="features"> 
 		<div> 
 			<h2>Accept Cookies</h2> 
@@ -47,4 +43,5 @@
 		</div> 
 		<span class="clear"></span> 
 </section>
+
 {% endblock %}
