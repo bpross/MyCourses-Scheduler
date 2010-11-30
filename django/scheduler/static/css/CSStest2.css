@@ -14,7 +14,7 @@ body {
 }
 
 body #body-wrapper {
-    background: #3D3734 top center no-repeat;
+    background: #3D3734 top left no-repeat;
     margin: auto;
     padding: 70px;
     width: 820px;
