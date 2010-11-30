@@ -1,0 +1,15 @@
+from django.contrib import admin
+from scheduler.interface.models import *
+admin.site.register(School)
+admin.site.register(Department)
+admin.site.register(Class)
+admin.site.register(Prerequisite)
+admin.site.register(Building)
+admin.site.register(Room)
+admin.site.register(Period)
+admin.site.register(Lecturer)
+admin.site.register(ClassInstance)
+admin.site.register(ClassLab)
+admin.site.register(Person)
+admin.site.register(Role)
+admin.site.register(PersonRole)

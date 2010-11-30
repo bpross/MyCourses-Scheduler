@@ -9,18 +9,25 @@ urlpatterns = patterns('',
     # Example:
     # (r'^scheduler/', include('scheduler.foo.urls')),
 
-	# Interface
+	# Splash page
     (r'^$', 'scheduler.views.index'),
 
 	# Login / logout
     (r'^login/$', 'django.contrib.auth.views.login'),
 	(r'^logout/$', logout_page),
 	# Web portal
-    # Uncomment the admin/doc line below to enable admin documentation:
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # The student view
+    (r'^student/', include('student.urls')),
+    # The lecturer view
+    (r'^lecturer/', include('lecturer.urls')),
+    # The manager view
+    (r'^manager/', include('manager.urls')),
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    # Uncomment the admin/doc line below to enable admin documentation:
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
 
 if settings.DEVEL:

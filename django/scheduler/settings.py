@@ -119,6 +119,8 @@ INSTALLED_APPS = (
      'django.contrib.admindocs',
     # This line lets us do Django to UML.
      #'django_extensions',
-    'scheduler.interface',
-    
+    'scheduler.algorithm',
+    'scheduler.student',
+    'scheduler.lecturer',
+    'scheduler.manager',
 )
