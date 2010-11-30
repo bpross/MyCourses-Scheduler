@@ -22,3 +22,9 @@ def placeholder(request):
 
 def shoppingcart(request):
     return render_to_response('shoppingCart.html')
+
+def managecourses(request):
+    return render_to_response('courseManager.html')
+
+def settings(request):
+    return render_to_response('settings.html')
