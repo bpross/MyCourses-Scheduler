@@ -5,9 +5,8 @@
 <p class="description"> 
 	{% if user.is_staff %}
 		<strong>Success</strong> <br>The algorithm was called.
-		{%else%}
+	{% else %}
 		<strong>Algorithm Failed!</strong> <br>You're not logged in as an admin.
-
-		{%endif%}
+	{% endif %}
 	<a class="download-button" href="/downloads">Download</a>				</p> 
 {% endblock %}

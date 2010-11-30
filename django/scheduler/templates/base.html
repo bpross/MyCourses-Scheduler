@@ -11,7 +11,7 @@
 		
 {% block css %}{% endblock %}
 
-<title>S.C.O.R.E. - {% block title %}{% endblock %}</title>
+<title>S.C.O.R.E. - {% block title %}Home{% endblock %}</title>
 </head>
 <body>
 <div id="body-wrapper"> 
@@ -61,25 +61,43 @@
  
 {% block content %}
 <section id="features"> 
-	<div> 
-		<h2>Testing Paragraph Header</h2> 
-		<p>Testing Paragraph 1.</p> 
-	</div> 
-	<div> 
-		<h2>Testing Paragraph Header 2</h2> 
-		<p>Testing Paragraph 2.</p> 
-	</div> 
-	<div> 
-		<h2>Testing Paragraph Header 3</h2> 
-		<p>Testing Paragraph 3.</p> 
-	</div> 
-	<div> 
-		<h2>Testing Paragraph Header 4</h2> 
-		<p>Testing Paragraph 4.</p> 
-	</div> 
-	<span class="clear"></span> 
+		<div> 
+			{% if user.is_authenticated %}
+			<h2>Your username is...</h2> 
+			<p>{{ user.username }}</p> 
+			{% else %}
+			<h2>Please log in</h2>
+			<p><a href="/login/">Click here</a></p>
+			{% endif %}
+		</div> 
+		<div> 
+			<h2>User functions</h2> 
+			{% if user.is_authenticated %}
+		    <p>You may <a href="/logout/">log out.</a></p>
+		    {% else %}
+		    <p>You are not logged in..</p>
+		    {% endif %}
+		</div> 
+		<div> 
+			<h2>Admin functions</h2>
+			<p>
+			{% if user.is_authenticated %}
+			    {% if user.is_staff %}
+			    <a href="/run-algorithm">Run</a> the algorithm
+			    {% else %}
+			    You are not an admin.
+			    {% endif %}
+			{% else %}
+			You are not logged in.
+			{% endif %}
+			<p></p> 
+		</div> 
+		<div> 
+			<h2>Testing Paragraph Header 4</h2> 
+			<p>Testing Paragraph 4.</p> 
+		</div> 
+		<span class="clear"></span> 
 </section>
-</body>
 {% endblock %}
 {% block footer %}
 <hr>
