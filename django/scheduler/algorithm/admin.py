@@ -1,5 +1,5 @@
 from django.contrib import admin
-from scheduler.interface.models import *
+from scheduler.algorithm.models import *
 admin.site.register(School)
 admin.site.register(Department)
 admin.site.register(Class)
