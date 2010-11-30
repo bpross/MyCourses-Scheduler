@@ -2,31 +2,53 @@
 {% block title %}Login{% endblock %}
 {% block css %}<link rel="stylesheet"
 type="text/css" href="/media/css/login.css" />{% endblock %}
-{% block content%}
-<section>
-    <p>Please enter your credentials.</p>
-
+{% block description%}
+<p class="description"> 
     <img id="logo" src="/media/images/ucsc_slug.jpg" alt="UCSC logo" />
 
     {% if form.errors %}
-        <p>Your username or password was not found; please try again.</p>
+        <span>Your username or password was not found; please try again.</span>
     {% endif %}
-
-    <form method="post" action="."> {% csrf_token %}
-        <p>
-            <label for="id_username">Username:</label>
-            {{ form.username }}
-        </p>
-        <p>
-            <label for="id_password">Password:</label>
-            {{ form.password }}
-        </p>
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}" />
-        {% else %}
-            <input type="hidden" name="next" value="/" />
-        {% endif %}
-        <input type="submit" value="login" />
-    </form>
+</p>
 </section>
 {% endblock %}
+
+{% block content %}
+<section id="features"> 
+	<div> 
+		<h2>Please enter your credentials.</h2> 
+		<form class="description" method="post" action="."> {% csrf_token %}
+	        <span>
+	            <label for="id_username">Username:</label>
+	            {{ form.username }}
+	        </span>
+			<br>
+	        <span>
+	            <label for="id_password">Password:</label>
+	            {{ form.password }}
+	        </span><br>
+	        {% if next %}
+	            <input type="hidden" name="next" value="{{ next }}" />
+	        {% else %}
+	            <input type="hidden" name="next" value="/" />
+	        {% endif %}
+	        <input type="submit" value="login" />
+	    </form> 
+	</div> 
+	<div> 
+		<h2>Testing Paragraph Header 2</h2> 
+		<p>Testing Paragraph 2.</p> 
+	</div> 
+	<div> 
+		<h2>Testing Paragraph Header 3</h2> 
+		<p>Testing Paragraph 3.</p> 
+	</div> 
+	<div> 
+		<h2>Testing Paragraph Header 4</h2> 
+		<p>Testing Paragraph 4.</p> 
+	</div> 
+	<span class="clear"></span> 
+</section>
+</body>
+{% endblock %}
+

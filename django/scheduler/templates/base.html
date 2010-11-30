@@ -3,7 +3,7 @@
 <!-- This is the home welcome page of the MyCourses page -->
 <head>
 <meta http-equiv="Content-Type content="text/html;charset=utf-8" />
-		<link rel="stylesheet" type="text/css" href="/media/css/suggestion-default.css" />
+{#		<link rel="stylesheet" type="text/css" href="/media/css/suggestion-default.css" /> #}
 		<link href="/media/css/CSStest2.css" rel="stylesheet" type="text/css" /> 
 		<link href="/media/css/CSStest1.css" rel="stylesheet" type="text/css" /> 
 		<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
@@ -13,8 +13,8 @@
 <title>S.C.O.R.E. - {% block title %}{% endblock %}</title>
 </head>
 <body>
-			<div id="body-wrapper"> 
-				<header> 
+<div id="body-wrapper"> 
+	<header> 
 		<a id="logo" href="/">S.C.O.R.E.<span>*</span></a>	<nav id="menu"> 
 			<ul> 
 				<li><a href="/downloads">Home</a>				<ul> 
@@ -47,8 +47,38 @@
 
 		<span class="clear"></span> 
 	</header>
-</header>
-{% block content %}{% endblock %}
+<section id="mude"> 
+	<h2>Mude.</h2> 
+{% block description %}
+<p class="description"> 
+	<strong>S.C.O.R.E.<span>*</span></strong> Testing Title Here. Course Scheduling System. Currently Under Development
+	<a class="download-button" href="/downloads">Download</a>				</p> 
+{% endblock %} 
+</section>
+
+ 
+{% block content %}
+<section id="features"> 
+	<div> 
+		<h2>Testing Paragraph Header</h2> 
+		<p>Testing Paragraph 1.</p> 
+	</div> 
+	<div> 
+		<h2>Testing Paragraph Header 2</h2> 
+		<p>Testing Paragraph 2.</p> 
+	</div> 
+	<div> 
+		<h2>Testing Paragraph Header 3</h2> 
+		<p>Testing Paragraph 3.</p> 
+	</div> 
+	<div> 
+		<h2>Testing Paragraph Header 4</h2> 
+		<p>Testing Paragraph 4.</p> 
+	</div> 
+	<span class="clear"></span> 
+</section>
+</body>
+{% endblock %}
 {% block footer %}
 <hr>
 <footer>
@@ -75,10 +105,9 @@
 	        </ul> 
 	    </div> 
 	    <span class="clear"></span> 
-		<span>© 2010, CS115 S.C.O.R.E. team at UCSC</span>
+		<span>© 2010, [CS115] The S.C.O.R.E. team at UC Santa Cruz.</span>
 
 	</div>
 </footer>
 {% endblock %}
-</body>
 </html>
