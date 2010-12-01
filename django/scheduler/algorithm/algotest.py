@@ -69,39 +69,40 @@ class Algorithm():
         self.num_courses = 0
 
 
-    def is_empty(self):
+    def is_empty(self, Class):
         return self.empty
 
 
+    course_list = []
+
     all_courses = Class.objects.all()
-
+    
     print "This will print out all the courses currently in the database"
-
+    
     for Class in all_courses:
        print "Course = %s Course ID = %d" % (Class.Class, Class.idClass)
-       #new_course = Course()
-       #new_course.id = Class.idClass
-       #new_course.name = Class.Class
-       #if self.course_list is None:
-       #   self.course_list = []
-       #self.course_list.append(new_course)
+       new_course = Course()
+       new_course.id = Class.idClass
+       new_course.name = Class.Class
+       #if course_list is None:
+       #   course_list = []
+       course_list.append(new_course)
+
+    for Course in course_list
+        Course.print_course()
 
     all_rooms = Room.objects.all()
-  
+      
     print "This will print out all of the Rooms currently in the database"
-
+ 
     for Room in all_rooms:
         print "Room = %s, Room ID = %d" % (Room.RoomName, Room.idRoom)
-
-
+    
     print "This will print out all of the Rooms currently in the database"
 
     all_lecturers = Lecturer.objects.all()
-
+    
     for Lecturer in all_lecturers:
         print "Lecturer name = %s, Lecturer ID = %d" % (Lecturer.Name, Lecturer.idLecturer)
-
-
-
-
+    
     print "End Test"
