@@ -2,7 +2,6 @@ from django.conf.urls.defaults import *
 from scheduler.views import *
 from django.conf import settings
 from django.contrib import admin
-
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -22,14 +21,15 @@ urlpatterns = patterns('',
     (r'^shopping-cart/', shoppingcart),
     (r'^placeholder/', placeholder),
     (r'^managecourses/', managecourses),
-    (r'^settings/', settings),
+# Can't user this name.
+#    (r'^settings/', settings),
 
     # The student view
-    (r'^student/', include('student.urls')),
+#    (r'^student/', include('student.urls')),
     # The lecturer view
-    (r'^lecturer/', include('lecturer.urls')),
+#    (r'^lecturer/', include('lecturer.urls')),
     # The manager view
-    (r'^manager/', include('manager.urls')),
+#    (r'^manager/', include('manager.urls')),
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
