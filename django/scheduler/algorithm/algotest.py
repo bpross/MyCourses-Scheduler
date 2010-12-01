@@ -43,6 +43,36 @@ class Algorithm():
     l2.save()
 
 #######          This is what we'll need               ##############
+    def __init__(self,prof_list = None, course_list = None,
+                 room_list = None, classes_list = None):
+        if prof_list is None:
+            self.prof_list = None
+        else:
+            self.prof_list = prof_list
+        if course_list is None:
+            self.course_list = None
+        else:
+            self.course_list = course_list
+        if room_list is None:
+            self.room_list = None
+        else:
+            self.room_list = room_list
+        if classes_list is None:
+            self.classes_list = None
+        else:
+            self.classes_list = classes_list
+
+        self.empty = True
+        self.num_professors = 0
+        self.num_rooms = 0
+        self.num_classes = 0
+        self.num_courses = 0
+
+
+    def is_empty(self):
+        return self.empty
+
+
     all_courses = Class.objects.all()
 
     print "This will print out all the courses currently in the database"
@@ -52,7 +82,7 @@ class Algorithm():
        #new_course = Course()
        #new_course.id = Class.idClass
        #new_course.name = Class.Class
-       #if course_list is None:
+       #if self.course_list is None:
        #   self.course_list = []
        #self.course_list.append(new_course)
 
