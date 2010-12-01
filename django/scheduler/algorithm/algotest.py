@@ -73,36 +73,59 @@ class Algorithm():
         return self.empty
 
 
-    course_list = []
-
-    all_courses = Class.objects.all()
+# This section takes values from the database and stores them in course list 
     
     print "This will print out all the courses currently in the database"
+
+    course_list = []
+    all_courses = Class.objects.all()
     
     for Class in all_courses:
-       print "Course = %s Course ID = %d" % (Class.Class, Class.idClass)
+#       print "Course = %s Course ID = %d" % (Class.Class, Class.idClass)
        new_course = Course()
        new_course.id = Class.idClass
        new_course.name = Class.Class
+#       new_course.print_course()
        #if course_list is None:
        #   course_list = []
        course_list.append(new_course)
 
-    for Course in course_list
+    for Course in course_list:
         Course.print_course()
 
+# This section takes values from the database and stores them in room list 
+    room_list = []
     all_rooms = Room.objects.all()
       
     print "This will print out all of the Rooms currently in the database"
  
     for Room in all_rooms:
         print "Room = %s, Room ID = %d" % (Room.RoomName, Room.idRoom)
+        new_room = Rooms()
+#        new_room.seat_num = Room.RoomNumber
+#        new_room.lab = Room.Lab
+        new_room.name = Room.RoomName
+        room_list.append(new_room)
+
+#    for Rooms in room_list:
+#        Rooms.print_room()
+
+# This section takes values from the database and stores them in room list 
     
-    print "This will print out all of the Rooms currently in the database"
+    print "This will print out all of the professors currently in the database"
+    prof_list = []
 
     all_lecturers = Lecturer.objects.all()
     
     for Lecturer in all_lecturers:
         print "Lecturer name = %s, Lecturer ID = %d" % (Lecturer.Name, Lecturer.idLecturer)
+        new_prof = Professor()
+        new_prof.name = Lecturer.Name
+        new_prof.id = Lecturer.idLecturer
+
+    for Professor in prof_list:
+        Professor.print_professor()
+
+
     
     print "End Test"

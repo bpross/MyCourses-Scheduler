@@ -67,6 +67,8 @@ class Room(models.Model):
     RoomNumber = models.CharField(max_length=45)
     Type = models.CharField(max_length=45)
     RoomName = models.CharField(max_length=45)
+#    Lab = models.BooleanField(default=0)
+#    SeatNum = models.IntegerField()
 #	seat_num = models.IntegerField(primary_key=True)
 
     def __unicode__(self):
