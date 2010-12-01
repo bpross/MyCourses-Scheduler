@@ -22,9 +22,9 @@ urlpatterns = patterns('',
     # Nav
     (r'^shopping-cart/', shoppingcart),
     (r'^placeholder/', placeholder),
-    (r'^managecourses/', managecourses),
-# Can't user this name.
-#    (r'^settings/', settings),
+    (r'^coursemanager/', coursemanager),
+    (r'^mymessages/', messages),
+    (r'^settings/', mysettings),
 
     # The student view
 #    (r'^student/', include('student.urls')),
