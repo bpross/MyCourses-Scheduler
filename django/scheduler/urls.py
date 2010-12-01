@@ -20,12 +20,12 @@ urlpatterns = patterns('',
     (r'^logout/$', logout_page),
 	# Web portal
     # Nav
-    (r'^shopping-cart/', shoppingcart),
-    (r'^placeholder/', placeholder),
-    (r'^coursemanager/', coursemanager),
-    (r'^mymessages/', messages),
-    (r'^settings/', mysettings),
-
+#    (r'^shopping-cart/', shoppingcart),
+#    (r'^placeholder/', placeholder),
+#    (r'^coursemanager/', managecourses),
+#    (r'^mymessages/', messages),
+#    (r'^settings/', mysettings),
+#
     # The student view
 #    (r'^student/', include('student.urls')),
     # The lecturer view

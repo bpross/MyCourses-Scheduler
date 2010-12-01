@@ -23,17 +23,17 @@ def logout_page(request):
 	logout(request)
 	return HttpResponseRedirect('/')
 
-def manual(request):
-   return render_to_response('manual.html')
-
-def placeholder(request):
-    return render_to_response('placeholder.html', RequestContext(request))
-
-def shoppingcart(request):
-    return render_to_response('shoppingCart.html', RequestContext(request))
-
-def managecourses(request):
-    return render_to_response('courseManager.html', RequestContext(request))
-
+#def manual(request):
+#   return render_to_response('manual.html')
+#
+#def placeholder(request):
+#    return render_to_response('placeholder.html', RequestContext(request))
+#
+#def shoppingcart(request):
+#    return render_to_response('shoppingCart.html', RequestContext(request))
+#
+#def managecourses(request):
+#    return render_to_response('courseManager.html', RequestContext(request))
+#
 #def settings(request):
 #    return render_to_response('settings.html', RequestContext(request))
