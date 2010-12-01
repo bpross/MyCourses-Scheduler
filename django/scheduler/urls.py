@@ -21,7 +21,7 @@ urlpatterns = patterns('',
 	# Web portal
     # Nav
 #    (r'^shopping-cart/', shoppingcart),
-#    (r'^placeholder/', placeholder),
+    (r'^placeholder/', placeholder),
 #    (r'^coursemanager/', managecourses),
 #    (r'^mymessages/', messages),
 #    (r'^settings/', mysettings),
