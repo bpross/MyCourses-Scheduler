@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     (r'^$', 'scheduler.views.index'),
         # Temporary algorithm runner
     (r'^run-algorithm/', algorithm),
+	# Temporary manual link
+    (r'^manual/', manual),
 
 	# Login / logout
     (r'^login/$', 'django.contrib.auth.views.login'),
