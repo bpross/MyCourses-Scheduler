@@ -32,5 +32,5 @@ def shoppingcart(request):
 def managecourses(request):
     return render_to_response('courseManager.html', RequestContext(request))
 
-def settings(request):
-    return render_to_response('settings.html', RequestContext(request))
+#def settings(request):
+#    return render_to_response('settings.html', RequestContext(request))
