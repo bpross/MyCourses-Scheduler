@@ -1,0 +1,5 @@
+- Names of models in the admin UI need to be modified for readability.
+- Fitness should be modifiable from the UI
+- Add results of algorithm in requirements
+- In the requirements, clarify where the algorithm output will be available.
+- We need class diagrams. Will and Ben need to generate these.
