@@ -8,7 +8,6 @@ from course_class import CourseClass
 from room import Rooms
 from course import Course
 from configuration import Configuration
-
 class Algorithm():
     # Create School in Database
     s = School(idSchool = 1, School = "UC Santa Cruz")
@@ -17,17 +16,21 @@ class Algorithm():
 
 
 
-
     d = Department(idSchool = s, idDepartment = 1, Department = "CompSci", DeptAbbrev = "CMPS") 
-
+    d.save()
     c1 = Class(idClass = 1, idDepartment = d, Class = "CMPS 115", ClassDescription = "Kickin ass")
-
+    c1.Lab = False 
+    c1.SeatNum = 45
     c2 = Class(idClass = 2, idDepartment = d, Class = "CMPS 130", ClassDescription = "Sucks")
+    c2.Lab = False
+    c2.SeatNum = 45
 
     c1.save()
     c2.save()
 
     b = Building(idBuilding = 1, BldgName = "BE")
+
+    b.save()
 
 
     r1 = Room(idBuilding = b, idRoom = 1, RoomNumber = "BE105", Type = "Lab", RoomName = "Home")
@@ -92,7 +95,6 @@ class Algorithm():
 
     for Course in course_list:
         Course.print_course()
-
 # This section takes values from the database and stores them in room list 
     room_list = []
     all_rooms = Room.objects.all()
@@ -100,10 +102,10 @@ class Algorithm():
     print "This will print out all of the Rooms currently in the database"
  
     for Room in all_rooms:
-        print "Room = %s, Room ID = %d" % (Room.RoomName, Room.idRoom)
+        print "Room = %s, Room ID = %d seats = %d" % (Room.RoomName, Room.idRoom, Room.SeatNum)
         new_room = Rooms()
-#        new_room.seat_num = Room.RoomNumber
-#        new_room.lab = Room.Lab
+        new_room.seat_num = Room.SeatNum
+        new_room.lab = Room.Lab
         new_room.name = Room.RoomName
         room_list.append(new_room)
 
@@ -122,10 +124,10 @@ class Algorithm():
         new_prof = Professor()
         new_prof.name = Lecturer.Name
         new_prof.id = Lecturer.idLecturer
+        new_prof.course_list = course_list
 
     for Professor in prof_list:
         Professor.print_professor()
-
 
     
     print "End Test"

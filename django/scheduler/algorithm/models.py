@@ -35,8 +35,6 @@ class Class(models.Model):
     idClass = models.IntegerField(primary_key=True)
     Class = models.CharField(max_length=45)
     ClassDescription = models.TextField()
-    class Meta:
-       verbose_name_plural = "classes"
 
     def __unicode__(self):
         return self.Class
@@ -67,8 +65,8 @@ class Room(models.Model):
     RoomNumber = models.CharField(max_length=45)
     Type = models.CharField(max_length=45)
     RoomName = models.CharField(max_length=45)
-#    Lab = models.BooleanField(default=0)
-#    SeatNum = models.IntegerField()
+    Lab = models.BooleanField(default=False)
+    SeatNum = models.IntegerField(default=45)
 #	seat_num = models.IntegerField(primary_key=True)
 
     def __unicode__(self):
