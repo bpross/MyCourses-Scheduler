@@ -66,17 +66,17 @@
 
 #course
 	id = 1
-	name = Introduction to Programming
+	name = Programming
 #end
 
 #course
 	id = 2
-	name = Introduction to Computer Architecture
+	name = Architecture
 #end
 
 #course
 	id = 3
-	name = Business Applications
+	name = Applications
 #end
 
 #course
@@ -96,12 +96,12 @@
 
 #course
 	id = 7
-	name = Introduction to Information Technology I
+	name = Information
 #end
 
 #course
 	id = 8
-	name = System Administration and Maintenance I
+	name = Administration
 #end
 
 #room
@@ -130,37 +130,6 @@
 #end
 
 #class
-	professor = 1
-	course = 1
-	duration = 2
-	seats = 38
-#end
-
-#class
-	professor = 9
-	course = 1
-	duration = 3
-	seats = 19
-	lab = true
-#end
-
-#class
-	professor = 9
-	course = 1
-	duration = 3
-	seats = 19
-	lab = true
-#end
-
-#class
-	professor = 9
-	course = 1
-	duration = 3
-	seats = 19
-	lab = true
-#end
-
-#class
 	professor = 9
 	course = 1
 	duration = 3
@@ -176,63 +145,11 @@
 #end
 
 #class
-	professor = 2
-	course = 2
-	duration = 2
-	seats = 38
-#end
-
-#class
 	professor = 3
 	course = 2
 	duration = 2
 	seats = 19
 	lab = true
-#end
-
-#class
-	professor = 3
-	course = 2
-	duration = 2
-	seats = 19
-	lab = true
-#end
-
-#class
-	professor = 3
-	course = 2
-	duration = 2
-	seats = 19
-	lab = true
-#end
-
-#class
-	professor = 3
-	course = 2
-	duration = 2
-	seats = 19
-	lab = true
-#end
-
-#class
-	professor = 4
-	course = 4
-	duration = 2
-	seats = 38
-#end
-
-#class
-	professor = 4
-	course = 4
-	duration = 2
-	seats = 38
-#end
-
-#class
-	professor = 4
-	course = 4
-	duration = 2
-	seats = 38
 #end
 
 #class
@@ -250,24 +167,10 @@
 #end
 
 #class
-	professor = 5
-	course = 6
-	duration = 2
-	seats = 57
-#end
-
-#class
 	professor = 7
 	course = 5
 	duration = 2
 	seats = 57
-#end
-
-#class
-	professor = 7
-	course = 5
-	duration = 2
-	seats = 38
 #end
 
 #class
@@ -279,20 +182,6 @@
 
 #class
 	professor = 8
-	course = 3
-	duration = 2
-	seats = 19
-#end
-
-#class
-	professor = 8
-	course = 3
-	duration = 2
-	seats = 19
-#end
-
-#class
-	professor = 12
 	course = 3
 	duration = 2
 	seats = 19
