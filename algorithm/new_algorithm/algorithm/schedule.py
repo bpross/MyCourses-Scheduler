@@ -42,6 +42,9 @@ return schedule
 from configuration import Configuration
 import random
 
+def PrintStatic(a_string=''):
+    print '\b%s%s'%(a_string, '\b'*len(a_string)),
+
 class Chromosome:
     """
     Used to store the fitness of the class in a certain room
@@ -58,7 +61,6 @@ class Chromosome:
 
     def print_chromo(self):
         self._class.print_course_class()
-        print "Fitness" + str(self.fitness)
 
 class Schedule:
     """
@@ -71,7 +73,8 @@ class Schedule:
     If the class uses a spare room, fitness++
     If the room has enough seats for the class, fitness++
     If the class needs a lab and the room has a lab, fitness++
-    If the professor teaching the class does not have an overlapping class    ,fitness++
+    If the professor teaching the class does not have an overlapping class \
+    ,fitness++
 
     The algorithm is run, until the total fitness is = 1.0
     Total fitness = combined fitness/number of rooms * 4(best fitness)
@@ -127,6 +130,8 @@ class Schedule:
         self.day_length = 12
         #Days of the week classes can be held
         self.num_days = 5
+        #Best fitness achievable. Needs to reflect calculate_fitness()
+        self.best_fitness = 4
 
     def get_config(self):
         """
@@ -150,6 +155,7 @@ class Schedule:
                 before initalizing chromosomes"
 
             else:
+                #Initializes Empty List
                 self.chromo_list = ((self.day_length*self.num_days)*\
                                    (self.config.get_num_rooms()))*[None]
                 
@@ -163,17 +169,17 @@ class Schedule:
             #Used to place classes with long durations
             total_duration = 0
             temp_index = rand
+            if not self.hash_map.has_key(classes):
+                self.hash_map[classes] = temp_index
+ 
             #Places class in schedule
             while total_duration < classes.duration\
                       and temp_index < len(self.chromo_list):
                     new_chromo = self.insert_chromosome(Chromosome(),temp_index)
                     self.number_chromosomes += 1
-                    #Checks to see if the class is already in the hashmap, if not
-                    #Class object is added with value being location in list.
-                    #Only adds when the class starts
-                    if not self.hash_map.has_key(classes):
-                        self.hash_map[classes] = temp_index
-
+                    #Checks to see if the class is already in the hashmap,
+                    #if not Class object is added with value being location
+                    #in list Only adds when the class starts
                     #Assigns the class to the new chromosome
                     new_chromo._class = classes
                     self.calculate_fitness(new_chromo,temp_index)
@@ -191,9 +197,13 @@ class Schedule:
         chromo.fitness = 0
         
         hold_index = index
+        
+        #Figure out which room you are in
         data_tuple = self.get_room_day_numbers(hold_index)
         room_id = data_tuple[1]
+        #Get Room object
         room = self.config.get_room_by_id(room_id)
+
         course = chromo._class
         #Course might not overlap at current position, but could if duration is
         #longer than 1, this checks for that
@@ -226,7 +236,8 @@ class Schedule:
             if not room.lab_status():
                 chromo.fitness += 1
 
-        #Only way a Professor will have an overlapping class is if the class overlaps with another class
+        #Only way a Professor will have an overlapping class is if the
+        #class overlaps with another class
         if chromo.overlap:
             prof_overlap = False
             index = hold_index
@@ -247,8 +258,8 @@ class Schedule:
         else:
             chromo.fitness += 1
 
-        if chromo.fitness is 4:
-            self.best_of[chromo._class] = 4
+        if chromo.fitness is self.best_fitness:
+            self.best_of[chromo._class] = self.best_fitness
 
 
     def get_overall_fitness(self):
@@ -261,7 +272,8 @@ class Schedule:
                 for chromosomes in chromosome_list:
                     total_fitness += chromosomes.fitness
 
-        return float(total_fitness/(self.number_chromosomes*4.0))
+        return float(total_fitness/(self.number_chromosomes*\
+                                    float(self.best_fitness)))
 
     
 
@@ -273,31 +285,51 @@ class Schedule:
         @param start_index: index of the hashmap to start the crossover
         @param end_index: index of the hashmap to end the crossover
         """
+        #Generates a Random Schedule based off of the current Schedule
         random_schedule = self.randomize_schedule()
+        #Creats a list of hash values [(Class,index)]
         random_hash_list = random_schedule.hash_map.items()
+
         while start_index < end_index:
-            
+            #Get the touple to get class and index
             swap_tuple = random_hash_list[start_index]
+            #Gets the class object
             swap_class = swap_tuple[0]
 
+            #Checks to see if it has best_fitness
             if self.best_of.has_key(swap_class):
                 start_index += 1
 
+            #Does not have best_fitness
             else:
+                #Get the old position of the class
                 old_position = self.hash_map[swap_class]
                 total_duration = 0
 
-                while total_duration < swap_class.duration and old_position < len(self.chromo_list):
-                    swap_chromosome = self.get_chromosome_from_list(swap_class,old_position)
-                    self.remove_chromosome(swap_chromosome,old_position)
+                #Removes the class from its old position
+                while total_duration < swap_class.duration and \
+                            old_position < len(self.chromo_list):
+                    #Gets the chromosome to remove
+                    old_chromo = self.get_chromosome_from_list(swap_class,\
+                                                               old_position)
+                    self.remove_chromosome(old_chromo,old_position)
                     total_duration += 1
                     old_position += 1
-                new_position = swap_tuple[1]
-                self.hash_map[swap_class] = new_position
-                total_duration = 0
 
-                while total_duration < swap_class.duration and new_position < len(self.chromo_list):
-                    new_chromo = self.insert_chromosome(Chromosome(), new_position)
+                #Getst the new Position for the Class
+                new_position = swap_tuple[1]
+                #Updates the Hash Map with the new position
+                self.hash_map[swap_class] = new_position
+
+                #Inserts the class in the new position
+                total_duration = 0
+                while total_duration < swap_class.duration and\
+                         new_position < len(self.chromo_list):
+
+                    #Inserts the Chromosome into the new position
+                    new_chromo = self.insert_chromosome(Chromosome(),\
+                                                        new_position)
+                    #Assigns the chromosome the class being moved
                     new_chromo._class = swap_class
                     self.calculate_fitness(new_chromo, new_position)
                     total_duration += 1
@@ -314,23 +346,39 @@ class Schedule:
         """
         count = 0
         while count < self.mutation_size:
-            random_class_index = random.randint(0,len(self.config.classes_list)-1)
+            #Get random class to mutate
+            random_class_index = random.randint(0,\
+                                        len(self.config.classes_list)-1)
             random_class = self.config.classes_list[random_class_index]
-            
+
+            #Gets the new position for the random class
             new_position = random.randint(0,len(self.chromo_list))
 
+            #Gets the old position for the random class
             old_position = self.hash_map[random_class]
+            #Updates the hash map with new position
             self.hash_map[random_class] = new_position
+
+            #Removes the class from the old position
             total_duration = 0
-            while total_duration < random_class.duration and old_position < len(self.chromo_list):
-                removal_chromosome = self.get_chromosome_from_list(random_class,old_position)
+            while total_duration < random_class.duration and\
+                         old_position < len(self.chromo_list):
+
+                #Gets the chromosome to be removed
+                removal_chromosome = self.get_chromosome_from_list(\
+                                                     random_class,old_position)
                 self.remove_chromosome(removal_chromosome,old_position)
                 total_duration += 1
                 old_position += 1
 
+            #Inserts the class into the new position
             total_duration = 0
-            while total_duration < random_class.duration and new_position < len(self.chromo_list):
+            while total_duration < random_class.duration and\
+                         new_position < len(self.chromo_list):
+
+                #Inserts the chromosome at the new_position
                 new_chromo = self.insert_chromosome(Chromosome(),new_position)
+                #Assigns the random class to the chromosome
                 new_chromo._class = random_class
                 self.calculate_fitness(new_chromo, new_position)
                 total_duration += 1
@@ -363,7 +411,8 @@ class Schedule:
                 exist_list.append(Chromosome())
                 #Assigns new_chromo the empty chromosome object
                 new_chromo = exist_list[-1]
-                #Sets overlap to be true because another class is scheduled at the same time
+                #Sets overlap to be true because another class is
+                #scheduled at the same time
                 new_chromo.overlap = True
                 #Reassigns the list in chromo_list
                 self.chromo_list[index] = exist_list
@@ -477,23 +526,34 @@ class Schedule:
             self.mutation_size = random.randint(0,len(self.chromo_list))
             self.perform_mutations()
             generations += 1
+
+            #Updates the console with Number of Generations and Perfect Chromos
+            print_string_generation = "Generations: " + str(generations)
+            print_string_best = " Best Chromosomes: " + str(len(self.best_of))\
+                                          + "/" + str(self.number_chromosomes)
+            PrintStatic(print_string_generation + print_string_best)
             
-        print "Done! Took " + str(generations) + " Generations"
+        print "\nDone! Took " + str(generations) + " Generations"
 
     def print_chromosomes(self):
+        """
+        Prints the chromo_list to console
+        """
         count = 0
-        print "LENGTH: " + str(len(self.chromo_list))
         while count < len(self.chromo_list):
+            #Gets the list at counter
             chromo_list = self.chromo_list[count]
+            #Gets the tuple of (Day,Room)
             day_room = self.get_room_day_numbers(count)
+            
             if chromo_list is not None:
                 for chromosomes in chromo_list:
                     print "Day: " + str(day_room[0])
                     print "Hour: " + str(count%self.day_length+1)
                     print "Room: " + str(day_room[1])
                     chromosomes.print_chromo()
-                    
                     print "\n\n"
+                    
             count += 1
 
     def get_room_day_numbers(self,index):
@@ -506,6 +566,9 @@ class Schedule:
         old_count = 0
         day_num = 1
         found_day = False
+
+        #Iterates through until the index is less than the count
+        #Count is blocks of rooms*hours, which is days
         while not found_day:
             if index < count:
                 found_day = True
@@ -517,6 +580,9 @@ class Schedule:
         count = self.day_length
         room_num = 1
         found_room = False
+
+        #Iterates through until the index is less than the old_count
+        #old_count is the starting index of the day the index is in
         while not found_room:
             old_count += count
             if index < old_count:
@@ -524,6 +590,7 @@ class Schedule:
             else:
                 room_num += 1
 
+        #Creates the tuple
         tuple = (day_num,room_num)
         return tuple
 
@@ -531,20 +598,59 @@ class Schedule:
         """
         Returns a random schedule based on current schedule
         """
+        #Creates a new Schedule Object
         new_schedule = Schedule(len(self.chromo_list),self.config)
+
+        #For all of the entries in the hash map
         for classes,index in self.hash_map.items():
+            #Get New Random Position
             rand = random.randint(0,len(new_schedule.chromo_list))
             total_duration = 0
             temp_index = rand
+
+            #Adds the Class for the whole Duration
             while total_duration < classes.duration\
                   and temp_index < len(new_schedule.chromo_list):
-                new_chromo = new_schedule.insert_chromosome(Chromosome(),temp_index)
+                new_chromo = new_schedule.insert_chromosome(Chromosome(),\
+                                                                temp_index)
                 new_schedule.number_chromosomes += 1
+                #Enters the new class into the hash map
                 if not new_schedule.hash_map.has_key(classes):
                     new_schedule.hash_map[classes] = temp_index
+                #Assigns the class
                 new_chromo._class = classes
                 new_schedule.calculate_fitness(new_chromo,temp_index)
                 total_duration += 1
                 temp_index += 1
 
         return new_schedule
+
+import optparse
+def main():
+    #Help Message for Help Option
+    parser = optparse.OptionParser("usage: ./schedule.py [options]\nTo Run the\
+    algorithm:\n./schedule.py --run\nTo Display this message:\n./schedule.py \
+    --help\n\nOutput:\nWhile the Algorithm is running:\
+    \nThe number of generations is displayed as the algorithm is run. The number of perfect fitnesses are displayed as well.\
+    \n \nAfter The Algorithm Finishes:\
+    \nThe out put is formatted as follows:\nDay Class is \Schedule\
+    \nHour Class is Scheduled\nRoom Number\nName and ID of class\
+    \nName and ID of professor")
+
+    #Adds the option to run the algorithm
+    parser.add_option("-r","--run", "-R", help='Run the algorithm',dest='run'\
+                      ,default=False, action='store_true')
+
+    #Gets the Options
+    (options, args) = parser.parse_args()
+
+    run = options.run
+
+    #Runs the algorithm if the run option was passed
+    if run:
+        test_schedule = Schedule()
+        test_schedule.algorithm()
+        test_schedule.print_chromosomes()
+
+#Used to run with options
+main()
