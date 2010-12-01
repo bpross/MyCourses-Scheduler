@@ -23,8 +23,6 @@ class Department(models.Model):
     idDepartment = models.IntegerField(primary_key=True)
     Department = models.CharField(max_length=45)
     DeptAbbrev = models.CharField(max_length=11)
-    class Meta:
-       verbose_name_plural = "classes"
 
     def __unicode__(self):
         return self.Department
@@ -37,6 +35,8 @@ class Class(models.Model):
     idClass = models.IntegerField(primary_key=True)
     Class = models.CharField(max_length=45)
     ClassDescription = models.TextField()
+    class Meta:
+       verbose_name_plural = "classes"
 
     def __unicode__(self):
         return self.Class
