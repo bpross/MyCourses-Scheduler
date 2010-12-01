@@ -8,6 +8,7 @@ from course_class import CourseClass
 from room import Rooms
 from course import Course
 from configuration import Configuration
+from algo_config import Config
 class Algorithm():
     # Create School in Database
     s = School(idSchool = 1, School = "UC Santa Cruz")
@@ -45,6 +46,13 @@ class Algorithm():
     l1.save()
     l2.save()
 
+    configuration = Config()
+
+    course_list = configuration.get_course_list()
+
+    room_list = configuration.get_room_list()
+
+"""    
 #######          This is what we'll need               ##############
     def __init__(self,prof_list = None, course_list = None,
                  room_list = None, classes_list = None):
@@ -76,31 +84,29 @@ class Algorithm():
         return self.empty
 
 
+
+
+
 # This section takes values from the database and stores them in course list 
-    
     print "This will print out all the courses currently in the database"
 
     course_list = []
     all_courses = Class.objects.all()
     
     for Class in all_courses:
-#       print "Course = %s Course ID = %d" % (Class.Class, Class.idClass)
        new_course = Course()
        new_course.id = Class.idClass
        new_course.name = Class.Class
-#       new_course.print_course()
-       #if course_list is None:
-       #   course_list = []
        course_list.append(new_course)
 
     for Course in course_list:
         Course.print_course()
+
 # This section takes values from the database and stores them in room list 
     room_list = []
     all_rooms = Room.objects.all()
-      
     print "This will print out all of the Rooms currently in the database"
- 
+
     for Room in all_rooms:
         print "Room = %s, Room ID = %d seats = %d" % (Room.RoomName, Room.idRoom, Room.SeatNum)
         new_room = Rooms()
@@ -109,8 +115,8 @@ class Algorithm():
         new_room.name = Room.RoomName
         room_list.append(new_room)
 
-#    for Rooms in room_list:
-#        Rooms.print_room()
+    for Rooms in room_list:
+        Rooms.print_room()
 
 # This section takes values from the database and stores them in room list 
     
@@ -129,5 +135,6 @@ class Algorithm():
     for Professor in prof_list:
         Professor.print_professor()
 
+"""
     
-    print "End Test"
+print "End Test"
