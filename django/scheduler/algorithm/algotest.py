@@ -22,7 +22,7 @@ class Algorithm():
     c1 = Class(idClass = 1, idDepartment = d, Class = "CMPS 115", ClassDescription = "Kickin ass")
     c1.Lab = False 
     c1.SeatNum = 45
-    c2 = Class(idClass = 2, idDepartment = d, Class = "CMPS 130", ClassDescription = "Sucks")
+    c2 = Class(idClass = 2, idDepartment = d, Class = "CMPS 130", ClassDescription = "Meh")
     c2.Lab = False
     c2.SeatNum = 45
 
@@ -35,13 +35,13 @@ class Algorithm():
 
 
     r1 = Room(idBuilding = b, idRoom = 1, RoomNumber = "BE105", Type = "Lab", RoomName = "Home")
-    r2 = Room(idBuilding = b, idRoom = 2, RoomNumber = "BE104", Type = "Not Lab", RoomName = "HELL")
+    r2 = Room(idBuilding = b, idRoom = 2, RoomNumber = "BE104", Type = "Not Lab", RoomName = "HomeJr")
 
     r1.save()
     r2.save()
 
-    l1 = Lecturer(idLecturer = 1, Status = "Active", Name = "Linda Werner", Comment = "Good Teacher", idDepartment = d)
-    l2 = Lecturer(idLecturer = 2, Status = "Active", Name = "Van Guelder", Comment = "Is a douche", idDepartment = d)
+    l1 = Lecturer(idLecturer = 1, Status = "Active", Name = "Linda Werner", Comment = "Currently teaching CS115", idDepartment = d)
+    l2 = Lecturer(idLecturer = 2, Status = "Active", Name = "Patrick Tantalo", Comment = "Not teaching", idDepartment = d)
 
     l1.save()
     l2.save()
@@ -51,6 +51,13 @@ class Algorithm():
     course_list = configuration.get_course_list()
 
     room_list = configuration.get_room_list()
+
+    prof_list = configuration.get_prof_list(course_list)
+
+    course_class_list = configuration.get_course_class_list()
+
+
+    
 
 """    
 #######          This is what we'll need               ##############
