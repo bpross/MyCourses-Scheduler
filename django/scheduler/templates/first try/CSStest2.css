@@ -143,48 +143,10 @@ footer {
 
     #footer-wrapper {
         background: #1B1817;
-        margin: auto;
         padding: 40px 70px;
-        width: 820px;
+        width: 420px;
     }
-    
-    footer .logo {
-        float: left;
-        width: 100px;
-    }
-    
-        footer .logo a {
-            color: #FFF;
-            font: bold 18px "Helvetica Neue", Helvetica, arial, sans-serif;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            text-decoration: none;
-        }
-    
-            footer .logo a span {
-                color: #9C0;
-            }
         
-        footer .logo span.desc,    
-        footer .logo span.version {
-            color: #564E48;
-            display: block;
-            font-size: 11px;
-            line-height: 11px;
-            margin-bottom: 8px;
-        }
-        
-        footer .logo span.version {
-            border-top: 1px solid #2A2524;
-            padding-top: 12px;
-        }
-        
-        footer .logo span.version strong {
-            display: block;
-            font: lighter 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
-            margin-top: -3px;
-        }
-    
     footer .directory {
         float: right;
         width: 400px;
