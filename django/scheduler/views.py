@@ -23,11 +23,11 @@ def logout_page(request):
 	logout(request)
 	return HttpResponseRedirect('/')
 
-#def manual(request):
-#   return render_to_response('manual.html')
+def manual(request):
+   return render_to_response('manual.html')
 #
-#def placeholder(request):
-#    return render_to_response('placeholder.html', RequestContext(request))
+def placeholder(request):
+    return render_to_response('placeholder.html', RequestContext(request))
 #
 #def shoppingcart(request):
 #    return render_to_response('shoppingCart.html', RequestContext(request))
