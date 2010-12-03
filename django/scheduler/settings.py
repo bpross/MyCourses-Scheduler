@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
     # This line lets us do Django to UML.
-     #'django_extensions',
+    #'django_extensions',
     'scheduler.algorithm',
     'scheduler.student',
     'scheduler.lecturer',
