@@ -351,39 +351,44 @@ class Schedule:
                                         len(self.config.classes_list)-1)
             random_class = self.config.classes_list[random_class_index]
 
-            #Gets the new position for the random class
-            new_position = random.randint(0,len(self.chromo_list))
+            #Checks to see if the class has best fitness
+            if self.best_of.has_key(random_class):
+                count += 1
 
-            #Gets the old position for the random class
-            old_position = self.hash_map[random_class]
-            #Updates the hash map with new position
-            self.hash_map[random_class] = new_position
+            else:
+                #Gets the new position for the random class
+                new_position = random.randint(0,len(self.chromo_list))
 
-            #Removes the class from the old position
-            total_duration = 0
-            while total_duration < random_class.duration and\
-                         old_position < len(self.chromo_list):
+                #Gets the old position for the random class
+                old_position = self.hash_map[random_class]
+                #Updates the hash map with new position
+                self.hash_map[random_class] = new_position
+            
+                #Removes the class from the old position
+                total_duration = 0
+                while total_duration < random_class.duration and\
+                          old_position < len(self.chromo_list):
 
-                #Gets the chromosome to be removed
-                removal_chromosome = self.get_chromosome_from_list(\
+                   #Gets the chromosome to be removed
+                   removal_chromosome = self.get_chromosome_from_list(\
                                                      random_class,old_position)
-                self.remove_chromosome(removal_chromosome,old_position)
-                total_duration += 1
-                old_position += 1
+                   self.remove_chromosome(removal_chromosome,old_position)
+                   total_duration += 1
+                   old_position += 1
 
-            #Inserts the class into the new position
-            total_duration = 0
-            while total_duration < random_class.duration and\
-                         new_position < len(self.chromo_list):
+                #Inserts the class into the new position
+                total_duration = 0
+                while total_duration < random_class.duration and\
+                          new_position < len(self.chromo_list):
 
-                #Inserts the chromosome at the new_position
-                new_chromo = self.insert_chromosome(Chromosome(),new_position)
-                #Assigns the random class to the chromosome
-                new_chromo._class = random_class
-                self.calculate_fitness(new_chromo, new_position)
-                total_duration += 1
-                new_position += 1
-            count += 1
+                    #Inserts the chromosome at the new_position
+                    new_chromo = self.insert_chromosome(Chromosome(),new_position)
+                    #Assigns the random class to the chromosome
+                    new_chromo._class = random_class
+                    self.calculate_fitness(new_chromo, new_position)
+                    total_duration += 1
+                    new_position += 1
+                count += 1
             
     def insert_chromosome(self, chromosome, index):
         """
@@ -510,7 +515,7 @@ class Schedule:
         #Seeds the random with system time
         random.seed()
         generations = 1
-        while self.get_overall_fitness() < 1.0:
+        while self.get_overall_fitness() < .95:
             #Get random points for crossover
             start_crossover = random.randint(0,self.config.get_num_classes())
             end_crossover = random.randint(0,self.config.get_num_classes())
@@ -532,7 +537,7 @@ class Schedule:
             print_string_best = " Best Chromosomes: " + str(len(self.best_of))\
                                           + "/" + str(self.number_chromosomes)
             PrintStatic(print_string_generation + print_string_best)
-            
+
         print "\nDone! Took " + str(generations) + " Generations"
 
     def print_chromosomes(self):

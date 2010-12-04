@@ -104,6 +104,11 @@
 	name = Administration
 #end
 
+#course
+	id = 9
+	name = Unix
+#end
+
 #room
 	name = R3
 	lab = true
@@ -120,6 +125,13 @@
 	name = R7
 	lab = false
 	size = 60
+#end
+
+#class
+	professor = 5
+	course = 9
+	duration = 2
+	seats = 75
 #end
 
 #class
