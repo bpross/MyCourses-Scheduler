@@ -31,6 +31,9 @@ li > ul { /* extra styles for Internet Explorer (behavior file) */
 nav li:hover ul, nav li.over ul { /* to make things work in Internet Explorer (call for the behavior file) */
 	display: block;
 }
+nav li.current { /* If we figure out how to do dynamic current selection in Django... */
+	font-weight: bolder;
+}
 
 /* Hack for IE6 */
 body { behavior:url(csshover.htc); }
