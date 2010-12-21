@@ -1,0 +1,36 @@
+nav { /* the structure of our head-menu */
+
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}    
+nav li, nav li ul li { /* the structure of the first items */
+	float: left;
+	position: relative;
+	width: 100px;
+}
+nav li a { /* the links inside our first items */
+	display: block;
+}
+nav li a:hover { /* the roll-over styles for the links in our first items */
+	
+}
+nav li ul { /* first items > submenu structure */
+	display: none;
+	position: absolute;
+	width: 100px;
+	top: 18px;
+	left: 0;
+	margin-left: -1px;
+}
+nav ul li { /* the structure of our submenu items */}
+li > ul { /* extra styles for Internet Explorer (behavior file) */
+	top: auto;
+	left: auto;
+}
+nav li:hover ul, nav li.over ul { /* to make things work in Internet Explorer (call for the behavior file) */
+	display: block;
+}
+
+/* Hack for IE6 */
+body { behavior:url(csshover.htc); }
