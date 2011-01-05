@@ -1,3 +1,5 @@
+
+/** Dropdown Magic **/
 nav { /* the structure of our head-menu */
 
 	list-style: none;
@@ -37,3 +39,32 @@ nav li.current { /* If we figure out how to do dynamic current selection in Djan
 
 /* Hack for IE6 */
 body { behavior:url(csshover.htc); }
+
+/** Nav Styling **/
+nav {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	/*background: url("nav_background"); */
+}
+
+nav ul {
+	margin: 0 auto;
+	width: 940px;
+	list-style: none;
+}
+
+nav ul li {
+	float: left;
+}
+	nav ul li a {
+		display: block;
+		margin-right: 20px;
+		width: 140px;
+		font-size: 14px;
+		line-height: 44px;
+		text-align: center;
+		text-decoration: none;
+		color #777;
+	}
+		nav ul li a:hov

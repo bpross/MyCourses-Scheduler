@@ -1,0 +1,20 @@
+#banner {
+	margin-top: 66px;
+	background #467612;
+	border-radius: 22px;
+}
+
+#banner h2, #banner p{
+	width: 336px;
+}
+
+#banner h2 {
+	padding: 0 0 22px 0;
+	font-weight: normal
+	color: #fff;
+}
+
+#banner p {
+	padding: 0;
+}
+
