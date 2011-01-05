@@ -1,0 +1,14 @@
+Please do not convert this document to binary format except for submission.
+
+Major Topics
+3.1 Development Process (Will)
+- Initially Unified Process
+- Agile: Scrum?
+3.2 Requirements: Problem Statement (Justin)
+3.3 Requirements: Specification (Sabba)
+3.4 Architectural design (Erik)
+3.5 Project plan (Justin)
+3.6 Management plan (Erik & Will)
+3.7 Implementation (Ben)
+3.8 Validationa and verification (Ben & Erik)
+3.9 Outcomes and lessons learned (All)
