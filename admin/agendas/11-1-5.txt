@@ -1,0 +1,8 @@
+- Course number?
+- Course Scheduling vs. Employee Scheduling
+- Introduce Codaset, Pivotal, E-mail
+- Talk about SCORE report
+- Charlie's Role?
+
+Icebox:
+- Charlie wants a report on Django
