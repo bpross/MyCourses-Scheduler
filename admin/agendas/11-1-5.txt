@@ -1,8 +1,11 @@
 - Course number?
 - Course Scheduling vs. Employee Scheduling
+- - This will be addressed after Jan 14.
 - Introduce Codaset, Pivotal, E-mail
+- - Going to set up an account for McDowell.
 - Talk about SCORE report
 - Charlie's Role?
+- - Essentially oversight and resource.
 
 Icebox:
 - Charlie wants a report on Django
