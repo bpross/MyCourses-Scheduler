@@ -137,6 +137,13 @@ Security for our system was not something that came up in our initial discussion
 The other security features deal with the privacy of the user once they are in the system. These features are designed for the student role only. The integration of Facebook with our system provided another way for our system to lose security. When the student first logs into the system, a tutorial walks them through setting up their account and linking it with their Facebook. The student has the option to turn off sharing of information during this setup, and also anytime through the account settings page. This feature allows students complete access to what information they share through our system, and through Facebook. Allowing students this control will decrease the chances of a student sharing more information then they actually want.
 
 \chapter{Validation and Verification} % Ben and Erik
+Our test framework for our implementation has two forms. Testing for the algorithm and testing for the web UI. The testing for the algorithm is done by scripts, and the web UI testing is done through a software suite.
+
+The algorithm was first tested by running the algorithm and then manually checking the output. The output was checked to see if the proposed schedule was a valid schedule and to see if all of the constraints were met. This became very tedious for large class schedules, so a script was written that validates the output based on the constraints given in the database. This allowed large testing to be completed much faster.
+
+The web UI testing is done using a framework called Selenium. This open source tool allows automatic testing of the web UI. Two methods were used for writing tests for the web UI. Selenium has an IDE that allows you to record an interaction with the web UI and
+run that recording as a test. This was done for basic actions, such as logging in and out. The other way are python scripts that use Seleniums built in libraries to interact with the web interface. This allows the tester to check for output on a given page and to
+perform more complex actions. This was done for advanced actions, such as signing up for classes, or adding students to the database.
 \chapter{Outcomes and Lessons Learned} % All
 
 \end{document}
