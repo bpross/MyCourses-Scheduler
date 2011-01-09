@@ -1,0 +1,142 @@
+% Typeset by:
+%  Will Crawford (wacrawfo@ucsc.edu)
+
+\documentclass[12pt,article]{memoir}
+% \usepackage{amsmath}
+
+\pagestyle{empty} % no headers or footers
+
+\title{S.C.O.R.E Report \\ University Course Scheduler \\ UCSC Team}
+\author{Ben Ross \\
+	\and Erik Steggall \\
+	\and Justin Lazaro \\
+	\and Sabba Petri \\
+	\and Will Crawford}
+\date{}
+% \setcounter{secnumdepth}{-1}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Development Process} % Will
+\chapter{Requirements: Problem Statement} % Justin
+\chapter{Requirements: Specification} % Sabba
+This section is designed to provide an overview of S.C.O.R.E. Scheduling based upon the requirements above. Within this section, one will understand the power behind the technology used for this system: the web server technology and the algorithm used to schedule the classes. To begin, the web server for the S.C.O.R.E. Scheduling system is Django, strictly because of its ability to ease the creation of database-driven websites. It provides an abstracted framework for dynamic websites that is easy to learn and easy to integrate. The available components also will help us throughout this design process, such as the clever template system interfacing with the user interface. Django is written in Python, which is the language of choice for this project, as well as the language of our algorithm.
+
+When deciding upon an algorithm, we needed to decide whether to go with a constraint-based solver, or to design an algorithm in-house to fulfill out needs. Because the scheduling problem is an NP-Hard problem, by using a constraint-based solver, it would ease the programming end of the algorithm team; however, learning to use a constraint-based solver would require more time to learn. On the other side to this decision, designing an algorithm in-house would provide full control of the algorithm in how we decide to integrate it with the web server framework.
+
+Looking at figure three, the class diagram depicts an overall outlook of our in-house algorithm, of which will be the heart and engine of our Scheduling system. This class diagram shows the relationship between the configuration Python file with the different database attributes, such as professor, course, room, schedule, and course class. The configuration class is the primary driver that weaves all the user groups and database attributes together to function as a single entity.  
+
+ [INSERT classDiagram.jpg HERE]
+
+Figure 3: Class Diagram of Algorithm
+
+Once one understands the algorithm above, then it can then be applied to the multiple use cases that it will be serving for. The interaction diagrams below contain every interaction of each user: student, lecturer, program manager, and program administrator. Each diagram details a pictorial representation of the user’s interaction with the system, such as the HTML website, the Django engine, the database that’s handled, or the algorithm itself.  In all these diagrams, the HTML portal, or front-end website, is an input/output object wherein users will input items and receive output from Django. From behind the front-end website, Django serves as a control object that handles all aspects of user, algorithm, and database interactions. The database itself is an entity that stores information from user input processed by Django, and it also provides output to the user. Lastly, the algorithm is a control entity that manipulates the database courses, but all functionality of the algorithm remains hidden from the entire system. 
+
+[INSERT studentID.jpg HERE]
+
+Figure 3.1: Student interaction diagram
+
+\begin{enumerate}
+\item The student will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
+\item Once the database confirms user, the database will return the correct UI for the student.
+\item The student will want to get the schedule of classes to sign up for and “makes a request” to Django and the database to display the available courses. By “making a request”, this is done invisible to the user and the user will simply click on the courses tab. It will open automatically for the user. 
+\item The student can now select courses and store them into their profile on the database. 
+\end{enumerate}
+
+[INSERT programAdminID.jpg HERE]
+
+ Figure 3.2: Program Admin enters courses interaction diagram
+
+\begin{enumerate}
+\item The program administrator will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
+\item Once the database confirms user, the database will return the correct UI for the program administrator.
+\item The program administrator will want to know the status of the schedule, to see if it is finished or not, and will make a request to both Django and the database to find out the status. 
+\item The database will return the status. 
+\item The program administrator will begin filling out course information through a courseInfo object that will contain various data about a given course.
+\item When the program administrator feels done, they can choose to submit the course and lock the course in the database. 
+\end{enumerate}
+
+[INSERT programAdminID2.jpg HERE]
+
+ Figure 3.3: Program Administrator runs algorithm interaction diagram
+
+\begin{enumerate}
+\item The program administrator will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
+\item Once the database confirms user, the database will return the correct UI for the program administrator.
+\item The program administrator will want to know the status of the schedule, to see if it is finished or not, and will make a request to both Django and the database to find out the status. 
+\item The database will return the status to see if the program manager has completed the schedule. 
+\item If the schedule is complete, the program administrator will run the algorithm that will be passed through Django and straight into the algorithm engine.
+\item When the engine has completed, it will return a message that it is complete to the HTML website. 
+\item Once the program administrator reviews the schedule, the program administrator can submit and lock the schedule and provide it to students
+\end{enumerate}
+
+[INSERT lecturerID.jpg HERE]
+
+ Figure 4: Lecturer interaction diagram
+
+\begin{enumerate}
+\item The lecturer will login with their ID and password on the portal. Django will read the ID and password, and match it with the database. 
+\item Once the database confirms user, the database will return the correct UI for the lecturer.
+\item The lecturer will want to find out the constraint form has been completed. Upon logging in, Django will send a message on the status of his constraint form, based upon a status in the database.
+\item The lecturer will fill out the constraint form and store it in the database.
+\item Upon storing it in the database, the lecture status will be updated and confirmed. 
+\item The lecturer can now formally submit his constraints form to the database. 
+\end{enumerate}
+
+[INSERT programManagerID.jpg HERE]
+ 
+ Figure 5: Program Manager interaction diagram
+
+\begin{enumerate}
+\item The program manager will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
+\item Once the database confirms user, the database will return the correct UI for the program manager.
+\item Upon logging in, Django will automatically send a request to find out the department status of the courses. 
+\item If the status is not yet been completed, it will send a message to the program manager.
+\item The program manager can modify the courses that was made available from the program administrator and placed in the database. 
+\item Upon modifying the courses and the course info, the program manager can confirm and submit the finalized course. 
+\end{enumerate}
+
+
+\chapter{Architectural Design} % Erik
+Our architecture is broken into three main categories:
+\begin{enumerate}
+\item User interface or UI (The front end)
+\item Django (The back end)
+\item The algorithm (The engine)
+\end{enumerate}
+
+\section{The User Interface}
+There are four different user interfaces, each is assigned to one of the four roles that a user could be: Program administrator, program manager, lecturer, student. The students UI is the most complex and offers the most customization.
+
+The program administrators user interface is fairly simple, they are given fields such as courses, rooms, and professors to fill out, once they fill out the fields to the proper specifications for the quarter then they have an option to run the algorithm. The algorithm will run, and then post up the results back to the program manager.
+
+The program manager's interface will hold all of the courses and lecturers for their department. The program manager will have the option of selecting the lecturers and courses that they want to be active for the quarter.
+
+The lecturer will have an interface that will hold the courses that they can teach and the current courses that they are teaching. 
+The student will have a customizable interface which will hold their past, present and future schedules. It will also have other widgets that they will be able to add to their profile.
+\section{Django}
+Django connects the user interface, the database and the algorithm. Django manages the user interface by handling the user requests and providing the appropriate response. In the case of the algorithm it takes the request from the program administrator to run the algorithm and creates a request object and sends it through multiple middlewares (Python functions). Django then checks the URLs to decide which function it must send the request object to. The function in this case is the algorithm, which takes the information stored in the program administrators database and runs. The output of the algorithm is placed into a second database and the request object is sent back up through the middleware in the reverse order of the way it came in. The second database is then displayed to the program administrator.
+
+\section{The Algorithm}
+
+\chapter{Project Plan} % Justin
+\chapter{Management Plan} % Erik and Will
+\chapter{Implementation} % Ben
+
+Implementation of the MyCourses scheduling system was a multifaceted problem. The overall system was broken down into four main parts to implement: Web Interface, Database, Algorithm, and Security. Our implementation strategy was to find the best ways to implement the parts separately, and then integrate them together. This allowed us to be selective for each of the parts of the system.
+
+The implementation of the Web Interface is done in HTML 5, with a Django Server backend. HTML 5 was selected over previous versions of the markup language, because it allows development with less Javascript and Flash. Even though these technologies are very popular on the Internet, staying away from them allows us to increase the browser compatibility of our system. As newer browsers are released, HTML 5 support is increasing, which will allow us to use new features of the language to add new features to the system as the client desires. 
+
+The Django Server backend was selected for a few reasons. Django is a free Web Server backend that allows easy control of databases, and Pythonic ways to display information on web pages. This allowed us to integrate the algorithm with the database seamlessly. This was one of the major problems facing our system, but was quickly alleviated early in the process. Django uses forms and templates to display information from the database to web pages. This allowed us to create a few templates for each of the authentication levels, all of which are able to display information directly from the database with no SQL queries. Because Django performs the CRUD on the database, Python queries are performed very fast, letting pages load very fast.
+
+The Algorithm went through three different implementations before the best implementation was selected. The first implementation was a slow algorithm designed by one the team members. It was very inefficient, but allowed the program administrator complete history of the courses that were scheduled at a given time, in a given room. This allowed for easy manual edits of the proposed schedule. The second implementation was using a FLOSS constraint solver Minion. This solution was very fast, but needed a complicated script to translate from the database to the solver and back again. The third implementation was a scheduling algorithm using genetic algorithms. This algorithm was based off of a freeware genetic algorithm scheduler. The algorithm was written in Python allowing it to be fast, and to be easily modified. The genetic algorithm was selected as the best implementation solution, because it allowed seamless integration with the database, and it is fast, even for large solutions.
+
+Security for our system was not something that came up in our initial discussions of the system. However, security is one of the most important aspects of a web application. Also, Universities generally have lots of sensitive data displayed on similar applications, so security needs to be paramount. The security system we designed into our system also integrates with the privacy settings for the application. HTTPS is used instead of the HTTP; this allows all traffic coming to and from the system to be encrypted. This is a step above popular web applications like Facebook, and Myspace which will allow students, faculty and administrators the piece of mind knowing their traffic will be very difficult to decrypt. Our second important security feature are passwords. Our minimum password length is 8, with a minimum of one capital letter, one symbol, and one letter. This allows users increased security from brute force password attacks. Another security feature involving passwords is similar to what some banks do. We assign each user a sitekey, which is a random picture out of 50. The user is then asked to name the sitekey. When the user goes to enter their password, if an incorrect sitekey is displayed, the user is made aware of an attempt to compromise their information. 
+The other security features deal with the privacy of the user once they are in the system. These features are designed for the student role only. The integration of Facebook with our system provided another way for our system to lose security. When the student first logs into the system, a tutorial walks them through setting up their account and linking it with their Facebook. The student has the option to turn off sharing of information during this setup, and also anytime through the account settings page. This feature allows students complete access to what information they share through our system, and through Facebook. Allowing students this control will decrease the chances of a student sharing more information then they actually want.
+
+\chapter{Validation and Verification} % Ben and Erik
+\chapter{Outcomes and Lessons Learned} % All
+
+\end{document}
