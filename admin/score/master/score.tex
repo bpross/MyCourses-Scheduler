@@ -3,10 +3,11 @@
 
 \documentclass[12pt,article]{memoir}
 % \usepackage{amsmath}
+\usepackage{graphicx}
 
 \pagestyle{empty} % no headers or footers
 
-\title{S.C.O.R.E Report \\ University Course Scheduler \\ UCSC Team}
+\title{S.C.O.R.E Report for\\ MyCourses \\ A Course Scheduling System \\ UCSC Team}
 \author{Ben Ross \texttt{(benr22@gmail.com)} \\
 	\and Erik Steggall \texttt{(eqstegall@gmail.com)}\\
 	\and Justin Lazaro \texttt{(jlazaro@ucsc.edu)}\\
@@ -20,6 +21,7 @@
 \maketitle
 
 \chapter{Development Process} % Will
+
 \chapter{Requirements: Problem Statement} % Justin
 \chapter{Requirements: Specification} % Sabba
 This section is designed to provide an overview of S.C.O.R.E. Scheduling based upon the requirements above. Within this section, one will understand the power behind the technology used for this system: the web server technology and the algorithm used to schedule the classes. To begin, the web server for the S.C.O.R.E. Scheduling system is Django, strictly because of its ability to ease the creation of database-driven websites. It provides an abstracted framework for dynamic websites that is easy to learn and easy to integrate. The available components also will help us throughout this design process, such as the clever template system interfacing with the user interface. Django is written in Python, which is the language of choice for this project, as well as the language of our algorithm.
@@ -34,7 +36,7 @@ Figure 3: Class Diagram of Algorithm
 
 Once one understands the algorithm above, then it can then be applied to the multiple use cases that it will be serving for. The interaction diagrams below contain every interaction of each user: student, lecturer, program manager, and program administrator. Each diagram details a pictorial representation of the user’s interaction with the system, such as the HTML website, the Django engine, the database that’s handled, or the algorithm itself.  In all these diagrams, the HTML portal, or front-end website, is an input/output object wherein users will input items and receive output from Django. From behind the front-end website, Django serves as a control object that handles all aspects of user, algorithm, and database interactions. The database itself is an entity that stores information from user input processed by Django, and it also provides output to the user. Lastly, the algorithm is a control entity that manipulates the database courses, but all functionality of the algorithm remains hidden from the entire system. 
 
-[INSERT studentID.jpg HERE]
+%\includegraphics{studentID.jpg}
 
 Figure 3.1: Student interaction diagram
 
@@ -45,7 +47,7 @@ Figure 3.1: Student interaction diagram
 \item The student can now select courses and store them into their profile on the database. 
 \end{enumerate}
 
-[INSERT programAdminID.jpg HERE]
+%\includegraphics{programAdminID.jpg}
 
  Figure 3.2: Program Admin enters courses interaction diagram
 
@@ -58,7 +60,7 @@ Figure 3.1: Student interaction diagram
 \item When the program administrator feels done, they can choose to submit the course and lock the course in the database. 
 \end{enumerate}
 
-[INSERT programAdminID2.jpg HERE]
+%\includegraphics{programAdminID2.jpg}
 
  Figure 3.3: Program Administrator runs algorithm interaction diagram
 
@@ -72,7 +74,7 @@ Figure 3.1: Student interaction diagram
 \item Once the program administrator reviews the schedule, the program administrator can submit and lock the schedule and provide it to students
 \end{enumerate}
 
-[INSERT lecturerID.jpg HERE]
+%\includegraphics{lecturerID.jpg}
 
  Figure 4: Lecturer interaction diagram
 
@@ -85,7 +87,7 @@ Figure 3.1: Student interaction diagram
 \item The lecturer can now formally submit his constraints form to the database. 
 \end{enumerate}
 
-[INSERT programManagerID.jpg HERE]
+%\includegraphics{programManagerID.jpg}
  
  Figure 5: Program Manager interaction diagram
 
