@@ -4,7 +4,7 @@
 \documentclass[12pt,article]{memoir}
 % \usepackage{amsmath}
 \usepackage{graphicx}
-
+\graphicspath{{./img/}}
 \pagestyle{empty} % no headers or footers
 
 \title{S.C.O.R.E Report for\\ MyCourses \\ A Course Scheduling System \\ UCSC Team}
@@ -30,15 +30,18 @@ When deciding upon an algorithm, we needed to decide whether to go with a constr
 
 Looking at figure three, the class diagram depicts an overall outlook of our in-house algorithm, of which will be the heart and engine of our Scheduling system. This class diagram shows the relationship between the configuration Python file with the different database attributes, such as professor, course, room, schedule, and course class. The configuration class is the primary driver that weaves all the user groups and database attributes together to function as a single entity.  
 
- [INSERT classDiagram.jpg HERE]
-
-Figure 3: Class Diagram of Algorithm
+% See http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Images_as_Figures
+\begin{figure}[htb]
+%\includegraphics{classDiagram.jpg}
+\caption{Class Diagram of Algorithm}
+\end{figure}
 
 Once one understands the algorithm above, then it can then be applied to the multiple use cases that it will be serving for. The interaction diagrams below contain every interaction of each user: student, lecturer, program manager, and program administrator. Each diagram details a pictorial representation of the user’s interaction with the system, such as the HTML website, the Django engine, the database that’s handled, or the algorithm itself.  In all these diagrams, the HTML portal, or front-end website, is an input/output object wherein users will input items and receive output from Django. From behind the front-end website, Django serves as a control object that handles all aspects of user, algorithm, and database interactions. The database itself is an entity that stores information from user input processed by Django, and it also provides output to the user. Lastly, the algorithm is a control entity that manipulates the database courses, but all functionality of the algorithm remains hidden from the entire system. 
 
+\begin{figure}[htb]
 %\includegraphics{studentID.jpg}
-
-Figure 3.1: Student interaction diagram
+\caption{Student interaction diagram}
+\end{figure}
 
 \begin{enumerate}
 \item The student will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
@@ -47,9 +50,10 @@ Figure 3.1: Student interaction diagram
 \item The student can now select courses and store them into their profile on the database. 
 \end{enumerate}
 
+\begin{figure}[htb]
 %\includegraphics{programAdminID.jpg}
-
- Figure 3.2: Program Admin enters courses interaction diagram
+\caption{Program Admin enters courses interaction diagram}
+\end{figure}
 
 \begin{enumerate}
 \item The program administrator will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
@@ -60,9 +64,10 @@ Figure 3.1: Student interaction diagram
 \item When the program administrator feels done, they can choose to submit the course and lock the course in the database. 
 \end{enumerate}
 
+\begin{figure}[htb]
 %\includegraphics{programAdminID2.jpg}
-
- Figure 3.3: Program Administrator runs algorithm interaction diagram
+\caption{Program Administrator runs algorithm interaction diagram}
+\end{figure}
 
 \begin{enumerate}
 \item The program administrator will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
@@ -74,9 +79,10 @@ Figure 3.1: Student interaction diagram
 \item Once the program administrator reviews the schedule, the program administrator can submit and lock the schedule and provide it to students
 \end{enumerate}
 
+\begin{figure}[htb]
 %\includegraphics{lecturerID.jpg}
-
- Figure 4: Lecturer interaction diagram
+\caption{Lecturer interaction diagram}
+\end{figure}
 
 \begin{enumerate}
 \item The lecturer will login with their ID and password on the portal. Django will read the ID and password, and match it with the database. 
@@ -87,9 +93,10 @@ Figure 3.1: Student interaction diagram
 \item The lecturer can now formally submit his constraints form to the database. 
 \end{enumerate}
 
+\begin{figure}[htb]
 %\includegraphics{programManagerID.jpg}
- 
- Figure 5: Program Manager interaction diagram
+\caption{Program Manager interaction diagram}
+\end{figure}
 
 \begin{enumerate}
 \item The program manager will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
