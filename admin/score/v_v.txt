@@ -1,0 +1,20 @@
+Validation and Verification
+
+Our test framework for our implementation has two forms. Testing for the algorithm
+and testing for the web UI. The testing for the algorithm is done by scripts, and the
+web UI testing is done through a software suite.
+
+The algorithm was first tested by running the algorithm and then manually checking the
+output. The output was checked to see if the proposed schedule was a valid schedule
+and to see if all of the contraints were met. This became very tedious for large class
+schedules, so a script was written that validates the output based on the constraints
+given in the database. This allowed large testing to be completed much faster.
+
+The web UI testing is done using a framework called Selenium. This open source tool
+allows automatic testing of the web ui. Two methods were used for writing tests for the web
+UI. Selenium has an IDE that allows you to record an interaction with the web UI and
+run that recording as a test. This was done for basic actions, such as logging in and
+out. The other way are python scripts that use Seleniums built in libraries to interact
+with the web interface. This allows the tester to check for output on a given page and to
+perform more complex actions. This was done for advanced actions, such as signing up for
+classes, or adding students to the database.
