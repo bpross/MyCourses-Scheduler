@@ -10,5 +10,5 @@ Major Topics
 3.5 Project plan (Justin)
 3.6 Management plan (Erik & Will)
 3.7 Implementation (Ben)
-3.8 Validationa and verification (Ben & Erik)
+3.8 Validation and verification (Ben & Erik)
 3.9 Outcomes and lessons learned (All)
