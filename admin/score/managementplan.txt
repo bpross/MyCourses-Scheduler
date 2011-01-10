@@ -1,0 +1,16 @@
+Management Plan
+
+Our teams' management has been primarily democratic; the management is broken into two timeframes corresponding to our schools quarter system. For the first part of our project we would meet for class twice a week and at least once outside of class, meeting kept our team on the same page and allowed us to coordinate our project easily.
+It took months for us to each fall into our individual roles; for the first couple of phases of the project we were all involved in deciding how we were going to structure our system and what needed to be done. We would meet in class and discuss the best options from the research everyone had done before class. Then work in pairs or individually until our next class time. It wasn't until the implementation phase that we each chose specific parts of the project that we would work on. 
+We finished our first acceptance test before winter break, over the break we all had a chance too look at the code that our team mates had written so that we would all be on the same page again. 
+After the break our management plan was revised. We switched over to the SCRUM process, and now are meeting once a day for fifteen minutes. Additionally, Will took over as project manager, and has taken on the responsibility of coordinating our meetings and making important decisions involving the direction of our project. 
+	
+
+	Ben Ross - In charge of coding the algorithm
+	Charlie McDowell (Professor) - Project reviewer
+	Erik Steggall - In charge of connecting django and the algorithm
+	Justin Lazaro - In charge of documentation
+	Linda Werner (Professor) - Project reviewer
+	Sabba Petri - In charge of the user interface
+	Will Crawford - In charge of Django administration and overall expertise
+
