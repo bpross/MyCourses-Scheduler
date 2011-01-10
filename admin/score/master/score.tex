@@ -21,8 +21,16 @@
 \maketitle
 
 \chapter{Development Process} % Will
-This instance of the MyCourses course scheduling system was created as part of a project 
+This instance of the MyCourses course scheduling system was created as part of a class instructed by Professor Linda Werner here at UCSC. As such, our instructor required several deliverables from us apart from the requirements of the SCORE project - primarily presentations and the delivery of documents - as part of a modified Unified Process development process.
+
+Participation in this class required us to approach design very seriously before we started coding. This was a new approach to us; most of us were tempted to go directly for some sort of rapid prototype.
+
+After gathering the requirements from the SCORE project description, we analyzed them, immediately noticing that the problem space for scheduling classes would probably be NP-complete. Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on.
+
+During the design phase, 
+
 \chapter{Requirements: Problem Statement} % Justin
+
 \chapter{Requirements: Specification} % Sabba
 This section is designed to provide an overview of S.C.O.R.E. Scheduling based upon the requirements above. Within this section, one will understand the power behind the technology used for this system: the web server technology and the algorithm used to schedule the classes. To begin, the web server for the S.C.O.R.E. Scheduling system is Django, strictly because of its ability to ease the creation of database-driven websites. It provides an abstracted framework for dynamic websites that is easy to learn and easy to integrate. The available components also will help us throughout this design process, such as the clever template system interfacing with the user interface. Django is written in Python, which is the language of choice for this project, as well as the language of our algorithm.
 
@@ -131,15 +139,82 @@ Django connects the user interface, the database and the algorithm. Django manag
 \section{The Algorithm}
 
 \chapter{Project Plan} % Justin
+
+The project plan will describe the date and deliverables of our development process. The SCORE project followed a software methodology course and many of the deliverables are similar to those in the SCORE requirements. 
+
+Instruction and classes began on September 23, 2010 and would continue for 10 weeks until the end of the quarter. Further development of our scheduling system will continue on to the winter quarter starting January 4, 2011 through March 18, 2011. 
+
+\section*{Week 1: Initial Presentation}
+
+For the first week, we had to gather in groups of 5 to form teams for our project and give an initial presentation on a brief overview of our project. 
+
+We covered the following items:
+\begin{itemize}\item Team name\item Team members\item User experience\item Core functionality\item Wish list\item Possible project risks
+\end{itemize}
+
+\section*{Week 2: Requirements - Scenarios}
+
+During this week, our team designed several user scenarios related to our project. The scenarios will be a significant part of our requirement document and will be important in defining various aspects of our system’s functionality. We came up with 5 user scenarios:  (2) program administrators, program manager, lecturer professors, and students. 
+
+Each scenario outlined and described the end user’s interaction with the system, the data flows of information, and the interaction with different functions and systems as the user performed a particular action. 
+
+\section*{Week 3: Requirements - Complete}
+
+After defining our scenarios, we created a complete and defined requirements document which will be necessary for implementing our system in a clear and concise matter. It details the specification of the functionality and constraints on that functionality for our scheduling system. 
+
+The requirements we cover include the following:
+\begin{itemize}
+\item Functional - A specific and detailed description and list of what our system is\item Performance - Specific characteristics of the performance of our system\item Usability - How users interacts with our system\item Wish list - System features we hope to implement if time permits\item Coding Standards - Rules for organizing and formatting code\item Preliminary User interface - Preliminary sketch drawings of what our user interface will look like. 
+\end{itemize}In this week, we also had to give a Design Presentation which will basically outline everything in our requirement documents and how it is done. 
+
+\section*{Week 4: Architecture and Design Document}
+
+After defining our requirements and scenarios, we create an architecture and design document that will document the high-level architecture and the detailed design of our project. It will have a detailed description of the objects that we will use as well as relationships between objects. 
+
+We created the following items: 
+\begin{itemize}\item Overview - The overview document will provide context and an overview of our diagrams. It will include description of our major design decisions and modularization criteria. \item Architecture diagram - High-level overview of the components in our system and how they co-operate. \item UML Structure diagrams - Diagrams of our class objects in the form a UML structure diagrams that describe the attributes and operations.\item UML Interaction Diagrams - A developed UML diagram based on several of our scenarios we produced for our requirement documents. 
+\end{itemize}\section*{Week 5-6: Development and user manual}
+During this phase of our course, implementation of our system was to commence and continue for the next several weeks. This includes implementing our design and requirement documents. As we were creating this system, we were also simultaneously required to create a user manual that details how our system is to work. The user manual was broken down into the following parts:
+\begin{itemize}\item Purpose - Description of the UI and functionality \item How do you do this? - Defining user classes, convey the user experience level at each of the classes,  and provide computerized help.
+\end{itemize}
+
+\section*{Week 7: Software inspection}
+
+A software inspection is an in-class “presentation” where our group simultaneously and systematically reads source code and identifies and classifies defects as they are encountered. For our software inspection, we chose our algorithm class that will be the primary engine that will run our course scheduling system. 
+
+It is also important to note that a software inspection is strictly a time to catch defects and not make an attempt to discuss how to fix it or what to do to fix it. There is no discussion of the problem at this time, it is simply to define the problem and make not of it to the developer. 
+
+\section*{Week 8: Unit Test}
+
+Our group created several unit tests that tested various classes and modules of our system. These would be simple script code that automated and simplified testing for us. Since our project was primarily written in Python and Django, we created very simple Python scripts that quickly tested how each class and the expected responses. 
+
+\section*{Week 9-10: Acceptance Test}
+
+With our development, testing, and inspection complete, we demonstrate our system to our primary stake-holder (our professor). An acceptance test is generally a basic run-through of our entire end-to-end user experience of our system. At this point, the quarter is about to end and all our project deliverables should have been completed and ready to be delivered as a final product. Due to the scale of our particular project, we unfortunately did not have a complete end-to-end system, however, bits and pieces of our system worked well when isolated. Due to our system at this point of development was not complete; we would spend the next academic quarter completing development of our project. The next academic quarter at UC Santa Cruz would not begin until January 4, 2011 and will end on March 18, 2011. The following is our tentative plan for the quarter to complete this Scheduling system. 
+
+\section*{Week 1: Review}
+
+Our plan is to review our system and deliverables. We define items we need to complete or improve on. We also make the decision to revise our life cycle model from Unified Process to an Agile SCRUM software methodology. We plan on hosting small update meetings every evening to inform each other’s progress with development, along with weekly major meetings where we sit down and discuss items as necessary. 
+
+\section*{Week 2: Documentation improvement}
+
+With our SCORE submission coming near, we focus this week on improving and revising any necessary documents needed to be submitted under SCORE requirements. 
+
+\textbf{NOTE:} As of now, we have not yet defined the rest of our continued development after our SCORE submission.  
 \chapter{Management Plan} % Erik and Will
+Because the skill sets of our team members were remarkably heterogenous, proper management of our team was crucially important as it allowed us to delegate work that we considered specialized to the proper specialist on our team in order to complete work in an efficient manner.
+
 \section{An Overview of the Management Process}
+
 \section{Channels of Communication}
+
 \begin{description}
 \item{Subversion (SVN)} \\As part of the class, we were required to use Subversion as a project repository for our code, as well as other deliverables for the class. Subversion is a source control mechanism that allows multiple people to remotely collaborate on the same codebase. We used Subversion to transfer code and miscellaneous files between team members. We also used it to automatically merge source code files.
 \item{Google Groups} \\For the purposes of communicating by e-mail, we created an e-mail list with Google Groups; it allowed us to automatically archive our e-mail conversations and bounce all communication to each team member. Scheduling meetings was done primarily via this e-mail list. It also initially served as a rudimentary feature tracker.
 \item{Daily Skype Meetings} \\After the conclusion of the class, we continued to meet via Skype every night for 15 minutes to check in with each other. These meetings were intended to briefly answer three questions: ``What did you work on today?'' ``What are you working on tomorrow?'' and ``Is there anything preventing you from making progress?''
 \item{Git \& Codaset} \\After the class concluded, we switched from Subversion to Git as more of our team members were comfortable with it and preferred it. Git is another source control mechanism, but we found its granularity regarding which files it committed to be superior to that of Subversion. We also found its merging algorithm produced fewer conflicts during our usage. The website Codaset \texttt{(http://codaset.com/)} served as a central repository for the highly mobile team, as well as a GUI for viewing the repository's metadata, such as commit histories, volume, etc.
 \end{description}
+
 \chapter{Implementation} % Ben
 
 Implementation of the MyCourses scheduling system was a multifaceted problem. The overall system was broken down into four main parts to implement: Web Interface, Database, Algorithm, and Security. Our implementation strategy was to find the best way to implement the parts separately, and then collectively integrate them together. This would allow us to selectively work on each part of the combined system separately.
