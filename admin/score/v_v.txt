@@ -1,7 +1,6 @@
 Validation and Verification
 
-Our test framework for our implementation has three forms. Testing for the algorithm, testing for the web UI and testing the database through django. The testing for the algorithm is done by scripts, and the
-web UI testing is done through a software suite and testing django is done through django's testing suite.
+Our test framework for our implementation has three forms. Testing for the algorithm, testing for the web UI and testing the database through django. The testing for the algorithm is done by scripts, and the web UI testing is done through a software suite and testing django is done through django's testing suite.
 
 The algorithm was first tested by running the algorithm and then manually checking the
 output. The output was checked to see if the proposed schedule was a valid schedule
