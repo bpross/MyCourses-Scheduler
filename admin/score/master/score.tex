@@ -4,8 +4,12 @@
 % TODO:
 % Most occurrences of ``the algorithm'' should be replaced by ``the scheduler.'' DO NOT do a global find/replace.
 % Check on instances of ``he.'' They should probably be changed to ``he/she.''
+
+%%%
+
+% Development Process: Explain the phases of Unified Process.
 % Rewrite Scenario 4 and possibly provide a mockup.
-% %%% System should review integrity of schedules, not the administrator. 
+% - System should review integrity of schedules, not the administrator. 
 % New diagrams around line 200?
 % Replace symbols in the diagrams of Requirements: Specification
 % Consider removing the old diagrams
@@ -47,17 +51,19 @@
 
 Participation in this class required us to approach design very seriously before we started coding. This was a new approach to us; most of us were tempted to go directly for some sort of rapid prototype.
 
-After gathering the requirements from the SCORE project description, we analyzed them, immediately discovering that scheduling classes would probably be NP-hard. Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
+After gathering the requirements from the SCORE project description, we analyzed them, immediately discovering that scheduling classes would probably be NP-hard, meaning that there would be no way to find an optimal solution in polynomial time. In other words, it looked like a problem with no canonical ``best answer.'' Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
 
-We started out our project using the Unified Process, an iterative and incremental software development process, to plan our project. The Unified Process breaks down into four phases: inception, elaboration, construction and transition. 
+We started out our project using the Unified Process, an iterative and incremental software development process, to plan our project. The Unified Process is composed of four phases: inception, elaboration, construction and transition. 
 
-Because of our lack of familiarity with the technology we planned on using for our project - Django, our Python web framework, in particular - much of our inception and elaboration phases were spent learning about the functionality and capabilities of these technologies so that we would be more able to generate realistic design documents for our project.
+% Explain the phases here.
+
+Because of our lack of familiarity with the technology, we planned on using for our project - Django, our Python web framework, in particular - much of our inception and elaboration phases were spent learning about the functionality and capabilities of these technologies so that we would be more able to generate realistic design documents for our project.
 
 Since this project was being done as part of a class, our instructor required several deliverables from us apart from the requirements of the SCORE project - primarily presentations and the delivery of documents - as part of a modified Unified Process for development. 
 
 For our first deliverable, part of our inception phase, we wrote out scenarios for the use of our product. We included a scenario for each of the user categories that would be using our product. Our program administrator scenario described how the program administrator would initially set up the database in order to run the algorithm. The scenario for the program manager shows how the program manager should be able to inspect the courses that the administrator picked, and select the courses and lecturers for the upcoming quarter. The scenario for the lecturer shows how the lecturer should be able to specify their own individual constraints, such as the courses that they wish to teach, and the days and times that they are available. The scenario for the student shows how a student should be able to select a course for their upcoming quarter. We also included a scenario in which the program administrator can receive the master schedule from each individual program manager and is then able to set up and run the algorithm.
 
-Our second deliverable provided an overview of our requirements, also part of our inception phase. In this deliverable we provided a high-level view of our system and its functionality. It was broken into functionality, performance, usability, constraints, and our wish list. The functionality provides a description of what our system does, we included information on the algorithm, a breakdown of our database, the different sections of our user interface, and the specifications of our server.
+Our second deliverable provided an overview of our requirements, also part of our inception phase. In this deliverable we provided a broad overview of our system and its functionality. It was broken into functionality, performance, usability, constraints, and our wish list. The functionality provides a description of what our system does, we included information on the algorithm, a breakdown of our database, the different sections of our user interface, and the specifications of our server.
 
 Our third deliverable was an overall summary of our project, part of our elaboration phase. We provided a high level architecture that showed the break down of our system into user interface, Django, and the algorithm. We went into detail on how we planned to build our project and reasons for building it the way we did. We also included interaction diagrams, in which we elaborated on the scenarios we selected. 
 
@@ -87,11 +93,11 @@ In this scenario, we will outline a task of the Program Administrator: initializ
 	\begin{enumerate}
 	\item	A list of all classrooms and buildings available, including...
 		\begin{enumerate}	
-		\item Room capacity
-		\item Subject preference (e.g. Social Sciences belong in the Sociology building)
+		\item Room capacity.
+		\item Subject preference. (e.g. Social Sciences belong in the Sociology building)
 		\end{enumerate}
-	\item	List of all instruction time slots (e.g. Can classes be taught on Saturday? When are normal instruction hours?)
-	\item	List of courses offered for every subject 
+	\item	List of all instruction time slots. (e.g. Can classes be taught on Saturday? When are normal instruction hours?)
+	\item	List of courses offered for every subject. 
 	\end{enumerate}
 \item	The Program Administrator can also manually enter information (e.g. Baskin Engineering $\to$ Room 156 ) or modify imported information. This can be done by clicking on the appropriate element, modifying the appropriate fields, and submitting the changes.
 \item	Once the information has been imported and reviewed, the Program Administrator saves their work and can proceed to another step such as logging out or running the scheduling algorithm.
@@ -109,40 +115,40 @@ In this scenario, we will initial relationship between the Program Manager and t
 	\begin{enumerate}
 	\item	MyCourses will list all of their department's courses. These were previously populated by the Program Administrator.
 		\begin{enumerate}
-		\item	The course list will be displayed in a table-like interface and will highlight upon selection
-		\item	Selecting the courses will indicate that the course will be offered for this quarter
+		\item	The course list will be displayed in a table-like interface and will highlight upon selection.
+		\item	Selecting the courses will indicate that the course will be offered for this quarter.
 		\end{enumerate}
 	\item	Upon selecting the lecturers for the course, another small table will pop up next to the selected course and the Program Manager will be able to select which professors to teach this course
 		\begin{enumerate}
-		\item	The table will display all available professors in the Computer Science Department 
-		\item	It will also place the professors that have previously taught the course at the top of the table
+		\item	The table will display all available professors in the Computer Science Department.
+		\item	It will also place the professors that have previously taught the course at the top of the table.
 		\end{enumerate}
 	\end{enumerate}
-\item	The Program Manager selects the following courses to be offered in Fall 2010: CMPS 115, CMPS 12A, CMPS 101, CMPS 12B, etc 
+\item	The Program Manager selects the following courses to be offered in Fall 2010: CMPS 115, CMPS 12A, CMPS 101, CMPS 12B, etc.
 \item	Upon selecting CMPS 12A, a table will pop up of the teachers that have previously taught the course: Wesley Mackey, Patrick Tantalo, etc. 
-\item	The Program Manager selects and highlights Wesley Mackey and Patrick Tantalo in the table as possible candidates to teach CMPS 12A for Fall 2010
-\item	When finished, the Program Manager clicks the “submit” button, and the courses selected will be stored onto another table in the database titled: “Fall 2010” 
+\item	The Program Manager selects and highlights Wesley Mackey and Patrick Tantalo in the table as possible candidates to teach CMPS 12A for Fall 2010.
+\item	When finished, the Program Manager clicks the ``submit'' button, and the courses selected will be stored onto another table in the database titled: ``Fall 2010.'' 
 	\begin{enumerate}
 	\item	At this point, the table is ready to be reviewed upon completion of the table of the Lecturer constraints. 
-	\item	Once the lecturers submit their constraints, the Fall 2010 database will be submitted for approval to the Program Administrator
+	\item	Once the lecturers submit their constraints, the Fall 2010 database will be submitted for approval to the Program Administrator.
 	\end{enumerate}
 \end{enumerate}
 
 \subsection{Scenario 3}
 In this scenario, we will outline the initial relationship between a Lecturer’s first time logging into the MyCourses system before the new quarter begins. The lecturer submits constraint information.
 \begin{enumerate}
-\item	The Lecturer signs  into the browser-based MyCourses Portal with their credentials
+\item	The Lecturer signs  into the browser-based MyCourses Portal with their credentials.
 	\begin{enumerate}
-	\item	This lecturer is a Computer Science Professor
+	\item	This lecturer is a Computer Science Professor.
 	\end{enumerate}
-\item	Once logged in, a message pops up indicating that the Lecturer has not yet filled out his personal information about his constraints for the quarter and he must fill it out in order to continue using the MyCourses portal
+\item	Once logged in, a message pops up indicating that the Lecturer has not yet filled out his personal information about his constraints for the quarter and he must fill it out in order to continue using the MyCourses portal.
 \item	The lecturer opens the form and fills out the constraints which include, in pull down-menu-style:
 	\begin{enumerate}
-	\item	Courses - This will display the courses available to the professor pre-determined by the Program Manager and can select multiple at a time
-	\item	Time – This will display his preferred time slots 
-	\item	Days – This will display his preferred day slots 
+	\item	Courses - This will display the courses available to the professor pre-determined by the Program Manager and can select multiple at a time.
+	\item	Time – This will display his preferred time slots.
+	\item	Days – This will display his preferred day slots.
 	\end{enumerate}
-\item	After the lecturer completes the form, they will submit the form into the database where it will await for further approval from the Program Administrator
+\item	After the lecturer completes the form, they will submit the form into the database where it will await for further approval from the Program Administrator.
 \end{enumerate}
 
 \subsection{Scenario 4}
@@ -150,48 +156,48 @@ In this scenario, we will outline the initial relationship between a Lecturer’s 
 In this scenario, the Program Manager has already specified which courses and which preferred lecturers will be teaching next quarter. The lecturer has also specified their scheduling and class constraints for the quarter into another database table. After both parties have submitted the proper information, the data is sent to the Program Administrator.
 \begin{enumerate}
 \item	The Program Administrator logs into the MyCourses Portal and a message pops up indicating that all the Program Managers and Lecturers have completed their necessary information and everything has been merged onto a new database table. 
-\item	The Program Administrator opens the database and pops up a big table with all the information submitted by the Program Manager and Lecturer
+\item	The Program Administrator opens the database and pops up a big table with all the information submitted by the Program Manager and Lecturer.
 	\begin{enumerate}
 	\item	The Program Administrator is able to see the following:
 		\begin{enumerate}
-		\item	Subjects offered this quarter
-		\item	Lecturers available
+		\item	Subjects offered this quarter.
+		\item	Lecturers available.
 		\end{enumerate}
 	\item	As he selects the Subjects offered he sees:
 		\begin{enumerate}
-		\item	All the courses offered this quarter specified by the Program Manager
-		\item	When the Program Administrator selects the courses, he can see also the recommended professors to teach the course
-		\item	It will also display all the Professor information provided in a window
+		\item	All the courses offered this quarter specified by the Program Manager.
+		\item	When the Program Administrator selects the courses, he can see also the recommended professors to teach the course.
+		\item	It will also display all the Professor information provided in a window.
 		\end{enumerate}
 	\end{enumerate}
-\item	The Program Administrator reviews everything and ensures that all the information has been filled and/or not missing
+\item	The Program Administrator reviews everything and ensures that all the information has been filled and/or not missing.
 	\begin{enumerate}
-	\item	He can also view a summary of the information indicating statistical analysis of the information
+	\item	He can also view a summary of the information indicating statistical analysis of the information.
 	\end{enumerate}
-\item	Once approved, the Program Administrator runs the MyCourses algorithm to create the course schedule
-\item	Once the program has finished running, then the MyCourses Portal will send a message to the Program Administrator that it is complete running the program
-\item	The Program Administrator reviews the course schedule and once he approves, he submits it to the Program Managers of each department for further review and approval
+\item	Once approved, the Program Administrator runs the MyCourses algorithm to create the course schedule.
+\item	Once the program has finished running, then the MyCourses Portal will send a message to the Program Administrator that it is complete running the program.
+\item	The Program Administrator reviews the course schedule and once he approves, he submits it to the Program Managers of each department for further review and approval.
 	\begin{enumerate}
-	\item	The course schedule can be displayed in a summary page or in a detailed table
+	\item	The course schedule can be displayed in a summary page or in a detailed table.
 	\end{enumerate}
-\item	Once the Program Managers approves the course schedule, the schedule will be made available online and available to the public (students) 
+\item	Once the Program Managers approves the course schedule, the schedule will be made available online and available to the public (students).
 \end{enumerate}
 
 
 
 \subsection{Scenario 5}
-In this scenario, the MyCourses scheduling system is complete and posted on the website. The students can now log into the system and sign up for classes
+In this scenario, the MyCourses scheduling system is complete and posted on the website. The students can now log into the system and sign up for classes.
 \begin{enumerate}
-\item	The student user logs into the MyCourses Portal and sees that he is able to sign up for classes
-\item	A pull-down menu is initially shown to show which subjects are available this quarter and also right next to it, a table of courses selected along with the professor and times and dates
+\item	The student user logs into the MyCourses Portal and sees that he is able to sign up for classes.
+\item	A pull-down menu is initially shown to show which subjects are available this quarter and also right next to it, a table of courses selected along with the professor and times and dates.
 	\begin{enumerate}
-	\item	This table next to the pull-down menu will be known as a shopping cart
+	\item	This table next to the pull-down menu will be known as a shopping cart.
 	\end{enumerate}
-\item	The student selects Computer Science
-\item	Upon selection of Computer Science, a list of courses appears 
-\item	The student selects CS 12A
-\item	After selecting the course, he can click “submit” and the course will transfer over to his shopping cart
-\item	After filling their shopping carts with their desired classes, they can submit their shopping cart and will automatically sign up for his classes
+\item	The student selects Computer Science.
+\item	Upon selection of Computer Science, a list of courses appears.
+\item	The student selects CS 12A.
+\item	After selecting the course, he can click “submit” and the course will transfer over to his shopping cart.
+\item	After filling their shopping carts with their desired classes, they can submit their shopping cart and will automatically sign up for his classes.
 \end{enumerate}
 
 \section{Requirements: Specification} % Sabba
