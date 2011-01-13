@@ -1,11 +1,32 @@
 % Typeset by:
 %  Will Crawford (wacrawfo@ucsc.edu)
 
+% TODO:
+% Most occurrences of ``the algorithm'' should be replaced by ``the scheduler.'' DO NOT do a global find/replace.
+% Check on instances of ``he.'' They should probably be changed to ``he/she.''
+% Rewrite Scenario 4 and possibly provide a mockup.
+% %%% System should review integrity of schedules, not the administrator. 
+% New diagrams around line 200?
+% Replace symbols in the diagrams of Requirements: Specification
+% Consider removing the old diagrams
+% Do we need to mention the fitness function in 4.3: The Algorithm?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\lhead{UCSC MyCourses Scheduler}
+\rhead{\thesection}
+\rfoot{\thepage}
+
 \graphicspath{{./img/}}
-\pagestyle{empty} % no headers or footers
 \setlength{\parskip}{0.15in}
 
 \title{S.C.O.R.E Report for\\ MyCourses \\ A Course Scheduling System \\ UCSC Team}
@@ -23,12 +44,13 @@
 \tableofcontents
 \pagebreak
 
+
 \section{Development Process} % Will
 \indent This instance of the MyCourses course scheduling system was created as part of a class instructed by Professor Linda Werner here at UCSC.
 
 Participation in this class required us to approach design very seriously before we started coding. This was a new approach to us; most of us were tempted to go directly for some sort of rapid prototype.
 
-After gathering the requirements from the SCORE project description, we analyzed them, immediately noticing that the problem space for scheduling classes would probably be NP-complete. Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
+After gathering the requirements from the SCORE project description, we analyzed them, immediately noticing that scheduling classes would probably be NP-hard. Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
 
 We started out our project using the Unified Process, an iterative and incremental software development process, to plan our project. The Unified Process breaks down into four phases: inception, elaboration, construction and transition. 
 
@@ -40,9 +62,9 @@ For our first deliverable, part of our inception phase, we wrote out scenarios f
 
 Our second deliverable provided an overview of our requirements, also part of our inception phase. In this deliverable we provided a high-level view of our system and its functionality. It was broken into functionality, performance, usability, constraints, and our wish list. The functionality provides a description of what our system does, we included information on the algorithm, a breakdown of our database, the different sections of our user interface, and the specifications of our server.
 
-Our third deliverable was an overall summary of our project, part of our elaboration phase. We provided a high level architecture that showed the break down of our system into user interface, Django, and the algorithm. We go into detail on how we plan to build our project and reasons for building it the way we did. We also included interaction diagrams, which take the information from the scenarios we selected and goes into much more detail with them. 
+Our third deliverable was an overall summary of our project, part of our elaboration phase. We provided a high level architecture that showed the break down of our system into user interface, Django, and the algorithm. We went into detail on how we planned to build our project and reasons for building it the way we did. We also included interaction diagrams, in which we take the elaborate on the scenarios we selected. 
 
-Our fourth deliverable was a user manual for our project, part of our construction phase. This deliverable is primarily a tutorial for each user role showing how they will use our final product. It has a step-by-step process for setting up accounts and performing the necessary tasks for each role. Our user manual also includes a system overview so that it is more clear for the user reading it.
+Our fourth deliverable was a user manual for our project, part of our construction phase. This deliverable was primarily a tutorial for each user role showing how they will use our final product. It had a step-by-step process for setting up accounts and performing the necessary tasks for each role. Our user manual also includes a system overview so that it is more clear for the user reading it.
 
 Our final deliverable was an acceptance test for our project. This deliverable was a working prototype designed to exhibit the same qualities that our final product will have. It demonstrated most of  our project's functionality, though it was far from feature-complete.
 
@@ -51,9 +73,14 @@ The MyCourses Scheduling system is an end-to-end course management system that s
 
 Our system will let Program Managers select courses to offer and the requirements attached to them and professors to teach them. Professors will be able to define time constraints regarding their potential teaching periods as well as class preferences. Program Administrators will be able to manage logistics of the system such as importing course lists, classrooms and users. Administrators will have very granular control over these elements in the database. This user category will also be permitted to run the scheduling function to organize the courses for a given quarter or semester. Finally, the students will be able to sign up for the courses scheduled by the system.
 
-The novelty of our project lies in its ability to define the constraints of courses, classrooms and professors. By offering this amount of flexibility, we can reduce the overhead cost and time necessary to schedule courses. Below we outline a common scenario for each category of users. 
+Our project includes the ability to define the constraints of courses, classrooms and professors. By offering this amount of flexibility, we can reduce the overhead cost and time necessary to schedule courses. Below we outline a common scenario for each category of users. 
+
+% Delete this
+\marginpar{Scenarios should be stories of tasks users complete.\\
+They should not be descriptions of the front end or back end.}
+% Delete this
 \subsection{Scenario 1}
-In this scenario, we will outline the initial role of the Program Administrator who, similar to a Registrar, will be adding a course to the system.
+In this scenario, we will outline a task of the Program Administrator: initializing the MyCourses database.
 
 \begin{enumerate}
 \item	The Program Administrator signs in to the browser-based MyCourses Portal by supplying their credentials to the website.
@@ -64,10 +91,9 @@ In this scenario, we will outline the initial role of the Program Administrator 
 	\item	A list of all classrooms and buildings available, including...
 		\begin{enumerate}	
 		\item Room capacity
-		\item Subject preference (Social Sciences belong in the Sociology building)
+		\item Subject preference (e.g. Social Sciences belong in the Sociology building)
 		\end{enumerate}
-	\item	List of all the day slots (e.g. Can classes be taught on Saturday?)
-	\item	List of time slots (e.g. 8am to 10pm, but not 12pm to 1pm)
+	\item	List of all instruction time slots (e.g. Can classes be taught on Saturday? When are normal instruction hours?)
 	\item	List of courses offered for every subject 
 	\end{enumerate}
 \item	The Program Administrator can also manually enter information (e.g. Baskin Engineering $\to$ Room 156 ) or modify imported information. This can be done by clicking on the appropriate element, modifying the appropriate fields, and submitting the changes.
@@ -82,9 +108,9 @@ In this scenario, we will initial relationship between the Program Manager and t
 	\begin{enumerate}
 	\item	This particular Program Manager is in charge of the Computer Science department.
 	\end{enumerate}
-\item	Once logged in, a message pops up saying that the database is ready for information about the Fall 2010 quarter. The Program Manager opens a database of all listed courses for the Computer Science department specified by the Program Administrator
+\item	Once logged in, the Program Manager can select which quarter to edit (e.g. Fall 2010 quarter). 
 	\begin{enumerate}
-	\item	This database will list all of the courses (in this case Computer Science courses) offered at UCSC.
+	\item	MyCourses will list all of their department's courses. These were previously populated by the Program Administrator.
 		\begin{enumerate}
 		\item	The course list will be displayed in a table-like interface and will highlight upon selection
 		\item	Selecting the courses will indicate that the course will be offered for this quarter
@@ -123,7 +149,8 @@ In this scenario, we will outline the initial relationship between a Lecturer�s 
 \end{enumerate}
 
 \subsection{Scenario 4}
-In this scenario, the Program Manager has already determined which courses and which preferred lecturers will be teaching next quarter into a database table. The lecturer has also determined their scheduling and class constraints for the quarter into another database table. After both parties have submitted the proper information, the table is merged together and sent to the Program Administrator.
+% Rewrite, or provide mockups!
+In this scenario, the Program Manager has already specified which courses and which preferred lecturers will be teaching next quarter. The lecturer has also specified their scheduling and class constraints for the quarter into another database table. After both parties have submitted the proper information, the data is sent to the Program Administrator.
 \begin{enumerate}
 \item	The Program Administrator logs into the MyCourses Portal and a message pops up indicating that all the Program Managers and Lecturers have completed their necessary information and everything has been merged onto a new database table. 
 \item	The Program Administrator opens the database and pops up a big table with all the information submitted by the Program Manager and Lecturer
@@ -169,12 +196,13 @@ In this scenario, the MyCourses scheduling system is complete and posted on the 
 \item	After selecting the course, he can click �submit� and the course will transfer over to his shopping cart
 \item	After filling their shopping carts with their desired classes, they can submit their shopping cart and will automatically sign up for his classes
 \end{enumerate}
+
 \section{Requirements: Specification} % Sabba
-This section is designed to provide an overview of S.C.O.R.E. Scheduling based upon the requirements above. Within this section, one will understand the power behind the technology used for this system: the web server technology and the algorithm used to schedule the classes. To begin, the web server for the S.C.O.R.E. Scheduling system is Django, strictly because of its ability to ease the creation of database-driven websites. It provides an abstracted framework for dynamic websites that is easy to learn and easy to integrate. The available components also will help us throughout this design process, such as the clever template system interfacing with the user interface. Django is written in Python, which is the language of choice for this project, as well as the language of our algorithm.
+This section is designed to provide an overview of the MyCourses Scheduler based on the requirements above. Within this section, one will understand the power behind the technology used for this system: the web server technology and the algorithm used to schedule the classes. To begin, the web server for the MyCourses Scheduler system is irrelevant so long as it works with Django, the web framework we chose. The strictly because of its ability to ease the creation of database-driven websites. It provides an abstracted framework for dynamic websites that is easy to learn and easy to integrate. The available components also will help us throughout this design process, such as the templating system interfacing with the user interface. Django is written in Python, which is the language of choice for this project, as well as the language of our algorithm.
 
-When deciding upon an algorithm, we needed to decide whether to go with a constraint-based solver, or to design an algorithm in-house to fulfill out needs. Because the scheduling problem is an NP-Hard problem, by using a constraint-based solver, it would ease the programming end of the algorithm team; however, learning to use a constraint-based solver would require more time to learn. On the other side to this decision, designing an algorithm in-house would provide full control of the algorithm in how we decide to integrate it with the web server framework.
+When deciding upon an algorithm, we needed to decide whether to go with a constraint-based solver, or to design an algorithm in-house to fulfill out needs. Because the scheduling problem is an NP-Hard problem, a constraint-based solver would facilitate the implementation of the scheduler. However, learning to use a constraint-based solver would require more time to learn. On the other side to this decision, designing an algorithm in-house would provide full control of the algorithm in how we decide to integrate it with the web server framework.
 
-Looking at figure three, the class diagram depicts an overall outlook of our in-house algorithm, of which will be the heart and engine of our Scheduling system. This class diagram shows the relationship between the configuration Python file with the different database attributes, such as professor, course, room, schedule, and course class. The configuration class is the primary driver that weaves all the user groups and database attributes together to function as a single entity.  
+Figure three displays the class diagram of our project., the class diagram depicts an overall outlook of our in-house algorithm, of which will be the heart and engine of our Scheduling system. This class diagram shows the relationship between the configuration Python file with the different database attributes, such as professor, course, room, schedule, and course class. The configuration class is the primary driver that weaves all the user groups and database attributes together to function as a single entity.  
 
 % See http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Images_as_Figures
 \begin{figure}[!h]
@@ -182,7 +210,8 @@ Looking at figure three, the class diagram depicts an overall outlook of our in-
 \caption{Class Diagram of Algorithm}
 \end{figure}
 
-Once one understands the algorithm above, then it can then be applied to the multiple use cases that it will be serving for. The interaction diagrams below contain every interaction of each user: student, lecturer, program manager, and program administrator. Each diagram details a pictorial representation of the user’s interaction with the system, such as the HTML website, the Django engine, the database that’s handled, or the algorithm itself.  In all these diagrams, the HTML portal, or front-end website, is an input/output object wherein users will input items and receive output from Django. From behind the front-end website, Django serves as a control object that handles all aspects of user, algorithm, and database interactions. The database itself is an entity that stores information from user input processed by Django, and it also provides output to the user. Lastly, the algorithm is a control entity that manipulates the database courses, but all functionality of the algorithm remains hidden from the entire system. 
+% Perhaps there could be a diagram for the below.
+The interaction diagrams below contain interactions of each user: student, lecturer, program manager, and program administrator. Each diagram details a pictorial representation of the user: interaction with the system, such as the website, the Django engine, the database that handled, or the algorithm itself.  In all these diagrams, the portal, or front-end website, is an input/output object wherein users will input items and receive output from Django. From behind the front-end website, Django serves as a control object that handles all aspects of user, algorithm, and database interactions. The database itself is an entity that stores information from user input processed by Django, and it also provides output to the user. Lastly, the algorithm is a control entity that manipulates the database courses, but all functionality of the algorithm remains hidden from the entire system. 
 \pagebreak
 \begin{figure}[!h]
 \includegraphics{studentID.png}
@@ -192,7 +221,7 @@ Once one understands the algorithm above, then it can then be applied to the mul
 \begin{enumerate}
 \item The student will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
 \item Once the database confirms user, the database will return the correct UI for the student.
-\item The student will want to get the schedule of classes to sign up for and “makes a request” to Django and the database to display the available courses. By “making a request”, this is done invisible to the user and the user will simply click on the courses tab. It will open automatically for the user. 
+\item The student will want to get the schedule of classes to sign up for and makes a request to Django and the database to display the available courses. By making a request, this is done invisible to the user and the user will simply click on the courses tab. It will open automatically for the user. 
 \item The student can now select courses and store them into their profile on the database. 
 \end{enumerate}
 
@@ -397,7 +426,7 @@ Implementation of the MyCourses scheduling system was a multifaceted problem. Th
 
 The implementation of the Web Interface is done in HTML5, with a Django Server backend. HTML5 was selected over previous versions of the markup language because it allows development with less JavaScript and Flash. Even though these technologies are very popular on the Internet, staying away from them allows us to increase the browser compatibility of our system. As newer browsers are released, HTML5 support increases, which permits us to use newer features of the language to add newer features to the system as the client desires. 
 
-The Django Server backend was selected for a few reasons. Django is a free Web Server backend that allows for easy control of databases, as well as Pythonic ways to display information on varying web pages. This allows us to integrate the algorithm with the database seamlessly. This was to be a major problem facing our system, but was quickly alleviated earlier in the process. Django uses forms and templates to display information from the database to web pages and this allows us to create a few templates for each of the authentication levels, all of which are able to display information directly from the database with no SQL queries. Because Django performs the CRUD on the database, Python queries are performed with great speed, letting pages to load quicker.
+The Django Server backend was selected for a few reasons. Django is a free Web Server backend that allows for easy control of databases, as well as Pythonic ways to display information on varying web pages. This allows us to integrate the algorithm with the database seamlessly. This was to be a major problem facing our system, but was quickly alleviated earlier in the process. Django uses forms and templates to display information from the database to web pages and this allows us to create a few templates for each of the authentication levels, all of which are able to display information directly from the database with no SQL queries. Because Django performs operations on the database transparently, Python queries are performed with great speed, letting pages to load quicker. % Is this last sentence true?
 
 The Algorithm went through three different implementations before the best implementation was selected. The first implementation was a slow Algorithm designed by one of the team members. It was very inefficient, but allowed the program administrator complete history of the courses that were scheduled at a given time, in a given room. This allowed for easier manual edits of the proposed schedule. The second implementation was using a FLOSS constraint-solver Minion. This solution was very fast, but needed a complicated script to translate from the database to the solver and back again. The third implementation was a scheduling algorithm using a genetic Algorithm. This Algorithm was based off of a freeware genetic algorithm scheduler. The Algorithm was written in Python, allowing it to be fast and easily modifiable. The genetic Algorithm was selected as the best implementation solution, because it allowed seamless integration with the database, and it proves incredibly fast, even for larger solutions.
 
