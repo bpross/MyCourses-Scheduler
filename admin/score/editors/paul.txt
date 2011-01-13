@@ -1,0 +1,62 @@
+Ok, here you are.  If you need more explanation, let me know. We are expecting a snow storm here on the East Coast, so I expect to be around all day. We could Skype, if that would be more effective.
+
+1. Use "block" paragraph formatting -- no indents. Consistency is next to godliness.
+# Normally I would agree, but in this case this indentation is customary for professional publications; LaTeX does it intentionally - I'm not going to consider it an error.
+
+2. When you list a number of points, use numbers or "bullets" -- makes them stand out better.
+# Where is this a problem? Did I miss an enumeration?
+
+3. Look for "run-on" sentences, where there is more than one thought in a sentence. Break into two sentences. This problem is pervasive, and a standard problem with student writing.
+# Pointing out some of these would be wonderfully helpful.
+
+4. Pages need to be numbered -- typically at the bottom in a footer. I am not familiar with TeX, but I believe that is possible.  A quick look at the TeX file seems to show pretty conventional scripting techniques (like HTML, for instance).
+# Sorry! I can't believe I accidentally turned numbering off. I've added nice footers and headers.
+
+5. Beware of jargon. Keep your audience in mind. Do not assume that they are familiar with the technical terms that you have used. I had to look up a lot of stuff. If some longer discussion is needed on some fine point, move it to an appendix. The use of "deliverable" is such an example. Use of a verb as a noun is frowned upon. Or, a noun as a verb, for example, "disrespect." They are like finger nails on a blackboard....
+# A list of these would be good; it's hard for me to tell what's jargon and what's not while I'm reading due to my familiarity with the jargon. 
+
+6. The first paragraph of the "Problem Statement" is unreadable. I have no idea what you said. Incomplete and run-on sentences.
+# I rewrote this; I hope it's more intelligible now.
+
+7. Good use of numbered points in the scenarios. Just what I had in mind in #2 above. Outline format is a good idea... easy to follow just what takes place.
+
+8. Again, the first paragraph in #3 Requirements: Specification suffers from incomplete sentences, etc., etc.  A re-write for clarity is important here. You must quickly explain the point to the reader, or their mind turns to oatmeal...
+# Duly noted. Sabba may be rewriting this entire section, so I haven't touched it yet for this iteration.
+
+9. Put some information on Django in an appendix. Ditto for explanations of the software tools that you use. A couple of links would be nice. I had to look up Django in Google.
+# Ah, a great idea. Would links in a footer on the page be more useful, or would a link in the appendix along with an explanation be better?
+
+10. Why was Python the language of choice?  I know. You know, but does your reader know? You might not even mention the issue at all?
+# Is there somewhere we addressed this? I don't think the choice bears mentioning - Python is not specifically suited to this problem space. ("R" is a language that, by contrast, is specifically suited to statistics. Python is very general purpose.) I feel like a technical reader will know that Python is general purpose, and a non-programmer won't care why we picked Python.
+
+11. Art (anything not text) is good, but it comes off a little "fuzzy" on my screen. Not sure what you want to do here.
+# I'd like to get rid of our diagrams. They're too small to fit well into the PDF and I didn't feel like they were very helpful, even when clear. They're really an internal tool.
+
+12. After Figure #1, you state "Once one...." This is awkward. The sentence doesn't make sense. Rewrite. Look for similar problems in the manuscript.
+# Sabba's hopefully rewriting this section.
+
+13. Problem with "thats" -- you mean "that is."  Avoid contractions, hyphenations, and abbreviations whenever possible. However, if you use something like NASA, explain it once, then use NASA from there on in. Consistency....
+
+14. Explain the symbols at the top of Figure #2. Are they from an Egyptian tomb? <grin>  Nordic runes?  Unknown language from an extinct tribe in Mongolia?
+# Yep. Getting rid of the diagrams.
+
+15. You attribute human properties (Anthropomorphism) to Django. Hmm..... What does Django eat? Rare, or well done undergraduates??
+# Pointing out places that we do this would help speed up our editing process.
+
+16. List following Figure #5 seems funny???
+# Yeah, that's technically my fault; the way LaTeX puts images inline is a little strange and I gave up due to time constraints, hoping to fix it later.
+
+17. Anthropomorphism rears its head again on the first sentence in 4.2. Say it differently.
+
+18. I like your narrative about how the project progressed. Don't be so hard on yourselves! Did you do a group Skype?  If everybody is local, it seems to work well. When I had a three-way conversation between Wales, Delaware, and California once, I found it worked best if the guy in the middle (me) hosted the session.
+
+19. Is the word "backend" or "back end"?? I think the later. HTML5 is pretty cool. Jolicloud uses that, by my understanding.
+# Backend and back end are used interchangably. I'll go with back end for consistency.
+
+20. On page 29, you get around to discussing why you used Django. Maybe that might come earlier, as it is crucial to the success of the project. Just my thought.
+
+21. Numbers less than 10 (and often less than 100) when used in text are spelled out. I notice this in your "lessons learned."
+
+Overall conclusion... good report, with a few minor edits and you are good to go!  Let me see the final results, perhaps!
+
+/paul
