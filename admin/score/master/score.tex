@@ -41,13 +41,13 @@
 \tableofcontents
 \pagebreak
 
-
+% Review again for tense
 \section{Development Process} % Will
 \indent This instance of the MyCourses course scheduling system was created as part of a class instructed by Professor Linda Werner here at UCSC.
 
 Participation in this class required us to approach design very seriously before we started coding. This was a new approach to us; most of us were tempted to go directly for some sort of rapid prototype.
 
-After gathering the requirements from the SCORE project description, we analyzed them, immediately noticing that scheduling classes would probably be NP-hard. Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
+After gathering the requirements from the SCORE project description, we analyzed them, immediately discovering that scheduling classes would probably be NP-hard. Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
 
 We started out our project using the Unified Process, an iterative and incremental software development process, to plan our project. The Unified Process breaks down into four phases: inception, elaboration, construction and transition. 
 
@@ -55,11 +55,11 @@ Because of our lack of familiarity with the technology we planned on using for o
 
 Since this project was being done as part of a class, our instructor required several deliverables from us apart from the requirements of the SCORE project - primarily presentations and the delivery of documents - as part of a modified Unified Process for development. 
 
-For our first deliverable, part of our inception phase, we wrote out scenarios for the use of our product. We included a scenario for each of the user categories that would be using our product. Our program administrator scenario described how the program administrator would initially set up the database in order to run the algorithm. The scenario for the program manager shows how the program manager should be able to inspect the courses that the administrator picked, and select the courses and lecturers for the upcoming quarter. The scenario for the lecturer shows how the lecturer should be able to specify their own individual constraints, such as the courses that they wish to teach, and the days and times that they are available. The scenario for the student shows how a student should be able to select a course for their upcoming quarter. We also included a scenario in which the program administrator can receive the master schedule from each individual program manager, and is then able to set up and run the algorithm.
+For our first deliverable, part of our inception phase, we wrote out scenarios for the use of our product. We included a scenario for each of the user categories that would be using our product. Our program administrator scenario described how the program administrator would initially set up the database in order to run the algorithm. The scenario for the program manager shows how the program manager should be able to inspect the courses that the administrator picked, and select the courses and lecturers for the upcoming quarter. The scenario for the lecturer shows how the lecturer should be able to specify their own individual constraints, such as the courses that they wish to teach, and the days and times that they are available. The scenario for the student shows how a student should be able to select a course for their upcoming quarter. We also included a scenario in which the program administrator can receive the master schedule from each individual program manager and is then able to set up and run the algorithm.
 
 Our second deliverable provided an overview of our requirements, also part of our inception phase. In this deliverable we provided a high-level view of our system and its functionality. It was broken into functionality, performance, usability, constraints, and our wish list. The functionality provides a description of what our system does, we included information on the algorithm, a breakdown of our database, the different sections of our user interface, and the specifications of our server.
 
-Our third deliverable was an overall summary of our project, part of our elaboration phase. We provided a high level architecture that showed the break down of our system into user interface, Django, and the algorithm. We went into detail on how we planned to build our project and reasons for building it the way we did. We also included interaction diagrams, in which we take the elaborate on the scenarios we selected. 
+Our third deliverable was an overall summary of our project, part of our elaboration phase. We provided a high level architecture that showed the break down of our system into user interface, Django, and the algorithm. We went into detail on how we planned to build our project and reasons for building it the way we did. We also included interaction diagrams, in which we elaborated on the scenarios we selected. 
 
 Our fourth deliverable was a user manual for our project, part of our construction phase. This deliverable was primarily a tutorial for each user role showing how they will use our final product. It had a step-by-step process for setting up accounts and performing the necessary tasks for each role. Our user manual also includes a system overview so that it is more clear for the user reading it.
 
@@ -393,15 +393,16 @@ Because the skill sets of our team members were remarkably heterogenous, proper 
 \subsection{An Overview of the Management Process}
 Our teams' management has been primarily democratic; the management is broken into two timeframes corresponding to our schools quarter system. For the first part of our project we would meet for class twice a week and at least once outside of class. Meetings kept our team on the same page and allowed us to coordinate our project efforts.
 
-It took months for us to each fall into our individual roles; for the first couple of phases of the project we were all involved in deciding how we were going to structure our system and what needed to be done. We would meet in class and discuss the best options from the research everyone had done before class. Then work in pairs or individually until our next class time. It wasn't until the implementation phase that we each chose specific parts of the project that we would work on. 
+It took weeks for us to each fall into our individual roles. For the first couple of phases of the project we were all involved in deciding how we were going to structure our system and what needed to be done. We would meet in class and discuss the best options from the research everyone had done before class and then work in pairs or individually until our next class meeting. It wasn't until the implementation phase that we each chose specific parts of the project that we would each work on. 
 
-We finished our first acceptance test before winter break, over the break we all had a chance too look at the code that our team mates had written so that we would all be on the same page again. 
+We finished our first acceptance test before winter break; over the break we all had a chance to look at the code that our team mates had written so that we would all be familiar with all aspects of the project.
+ 
 After the break our management plan was revised. We switched over to the Scrum process, and we now are meeting once a day for fifteen minutes. Additionally, Will took over as project manager, and has taken on the responsibility of coordinating our meetings and resolving any issues that prevent team members from making progress. 
 	
 \begin{description}
 \item{\textbf{Ben Ross}} - In charge of coding the algorithm
 \item{\textbf{Professor Charlie McDowell}} - Project reviewer
-\item{\textbf{Erik Steggall}} - In charge of connecting Django and the algorithm
+\item{\textbf{Erik Steggall}} - In charge of connecting Django and the scheduler
 \item{\textbf{Justin Lazaro}} - In charge of documentation
 \item{\textbf{Professor Linda Werner}} - Project reviewer
 \item{\textbf{Sabba Petri}} - In charge of the user interface
