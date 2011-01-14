@@ -46,12 +46,12 @@
 \pagebreak
 
 \section{Executive Summary}
-The S.C.O.R.E MyCourses is an end-to-end scheduling system that automates and reduces the manual labor of scheduling university courses. We seek to provide universities an easy-to-use and automated service that can help reduce staff costs, reduce implementation costs and decrease the complications and time involved in organizing an entire schedule.
+The MyCourses Scheduler is an end-to-end scheduling system that automates and reduces the manual labor of scheduling university courses. We seek to provide universities an easy-to-use and automated service that can help reduce staff costs, reduce implementation costs and decrease the complications and time involved in organizing an entire schedule.
 
 
-The S.C.O.R.E MyCourses team started in mid-September by a group of 5 engineering students taking a ``Software Methodology'' course. We chose to do a course scheduling system as our class project because, like many other students and faculty, we felt that the problem was an interesting one, and that we would learn a lot by writing a system to solve it.
+The team started in mid-September by a group of 5 engineering students taking a ``Software Methodology'' course. We chose to do a course scheduling system as our class project because, like many other students and faculty, we felt that the problem was an interesting one, and that we would learn a lot by writing a system to solve it.
 
-The management of the S.C.O.R.E team includes Justin Lazaro, Will Crawford, Ben Ross, Erik Steggall, and Sabba Petri. Several of the team members have held a variety of roles in the technology industry experience in roles such as IT, QA, and Marketing at top technology firms including Hewlett Packard, Riverbed Technologies, and Yahoo!. 
+The members of our team are Justin Lazaro, Will Crawford, Ben Ross, Erik Steggall, and Sabba Petri. Our team members have held a variety of roles in the technology industry such as IT, QA, Marketing and System Administration at top technology firms including Hewlett Packard, Riverbed Technologies, and Yahoo!. 
 
 
 We believe that our solution can provide value to universities and ease the frustrations of faculty, students, and staff. In addition to a course scheduling system, we plan on expanding our product line to include an employee scheduling system and offer that as a Software-as-a-Service to businesses nationwide. 
@@ -127,30 +127,32 @@ When deciding upon an algorithm, we needed to decide whether to go with a constr
 Figure three displays the class diagram of our project., the class diagram depicts an overall outlook of our in-house algorithm, of which will be the heart and engine of our Scheduling system. This class diagram shows the relationship between the configuration Python file with the different database attributes, such as professor, course, room, schedule, and course class. The configuration class is the primary driver that weaves all the user groups and database attributes together to function as a single entity.  
 
 % See http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Images_as_Figures
-\begin{figure}[!h]
-\includegraphics{classDiagram.png}
-\caption{Class Diagram of Algorithm}
-\end{figure}
+%\begin{figure}[!h]
+%\includegraphics{classDiagram.png}
+%\caption{Class Diagram of Algorithm}
+%\end{figure}
 
 % Perhaps there could be a diagram for the below.
 The interaction diagrams below contain interactions of each user: student, lecturer, program manager, and program administrator. Each diagram details a pictorial representation of the user: interaction with the system, such as the website, the Django engine, the database that handled, or the algorithm itself.  In all these diagrams, the portal, or front-end website, is an input/output object wherein users will input items and receive output from Django. From behind the front-end website, Django serves as a control object that handles all aspects of user, algorithm, and database interactions. The database itself is an entity that stores information from user input processed by Django, and it also provides output to the user. Lastly, the algorithm is a control entity that manipulates the database courses, but all functionality of the algorithm remains hidden from the entire system. 
-\pagebreak
-\begin{figure}[!h]
-\includegraphics{studentID.png}
-\caption{Student interaction diagram}
-\end{figure}
-\pagebreak
+%\pagebreak
+
+%\begin{figure}[!h]
+%\includegraphics{studentID.png}
+%\caption{Student interaction diagram}
+%\end{figure}
+%\pagebreak
 \begin{enumerate}
+
 \item The student will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
 \item Once the database confirms user, the database will return the correct UI for the student.
 \item The student will want to get the schedule of classes to sign up for and makes a request to Django and the database to display the available courses. By making a request, this is done invisible to the user and the user will simply click on the courses tab. It will open automatically for the user. 
 \item The student can now select courses and store them into their profile on the database. 
 \end{enumerate}
 
-\begin{figure}[!h]
-\includegraphics{programAdminID.png}
-\caption{Program Admin enters courses interaction diagram}
-\end{figure}
+%\begin{figure}[!h]
+%\includegraphics{programAdminID.png}
+%\caption{Program Admin enters courses interaction diagram}
+%\end{figure}
 
 \begin{enumerate}
 \item The program administrator will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
@@ -161,10 +163,10 @@ The interaction diagrams below contain interactions of each user: student, lectu
 \item When the program administrator feels done, they can choose to submit the course and lock the course in the database. 
 \end{enumerate}
 
-\begin{figure}[!h]
-\includegraphics{programAdminID2.png}
-\caption{Program Administrator runs algorithm interaction diagram}
-\end{figure}
+%\begin{figure}[!h]
+%\includegraphics{programAdminID2.png}
+%\caption{Program Administrator runs algorithm interaction diagram}
+%\end{figure}
 
 \begin{enumerate}
 \item The program administrator will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
@@ -176,10 +178,10 @@ The interaction diagrams below contain interactions of each user: student, lectu
 \item Once the program administrator reviews the schedule, the program administrator can submit and lock the schedule and provide it to students
 \end{enumerate}
 
-\begin{figure}[!h]
-\includegraphics{lecturerID.png}
-\caption{Lecturer interaction diagram}
-\end{figure}
+%\begin{figure}[!h]
+%\includegraphics{lecturerID.png}
+%\caption{Lecturer interaction diagram}
+%\end{figure}
 
 \begin{enumerate}
 \item The lecturer will login with their ID and password on the portal. Django will read the ID and password, and match it with the database. 
@@ -190,10 +192,10 @@ The interaction diagrams below contain interactions of each user: student, lectu
 \item The lecturer can now formally submit his constraints form to the database. 
 \end{enumerate}
 
-\begin{figure}[!h]
-\includegraphics{programManagerID.png}
-\caption{Program Manager interaction diagram}
-\end{figure}
+%\begin{figure}[!h]
+%\includegraphics{programManagerID.png}
+%\caption{Program Manager interaction diagram}
+%\end{figure}
 
 \begin{enumerate}
 \item The program manager will login with their ID and password on the portal. Django will read the ID and password and match it with the database. 
@@ -244,17 +246,7 @@ Instruction and classes began on September 23, 2010 and continued for 10 weeks u
 
 \subsection*{Week 1: Initial Presentation}
 
-For the first week, we had to gather in groups of 5 to form teams for our project and give an initial presentation on a brief overview of our project. 
-
-We covered the following items:
-\begin{itemize}
-\item Team name
-\item Team members
-\item User experience
-\item Core functionality
-\item Wish list
-\item Possible project risks
-\end{itemize}
+For the first week, we had to gather in groups of 5 to form teams for our project and give an initial presentation on a brief overview of our project. In the presentation, we introduced our project's name and our team's members. We also introduced our ideas about the potential user experience, our desired core functionality, and the potential project risks we saw at the time. We also mentioned a few features that we thought would be nice to add if we had time for them.
 
 \subsection*{Week 2: Requirements - Scenarios}
 
