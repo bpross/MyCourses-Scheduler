@@ -226,9 +226,9 @@ The program manager's interface will display all of the courses and lecturers fo
 The lecturer will have an interface that will hold the courses that they can teach and the current courses that they are teaching. 
 The student will have a customizable interface which will hold their past, present and future schedules. It will also have other widgets that they will be able to add to their profile.
 \subsection{The Database}
-Our database holds two different tables; a table that the program administrator modifies, and a table that The Scheduler outputs to.
-    The program administrators' table holds the following fields; School, Department, Class, Class lab, Prerequisites, Building, Room, Period, Lecturer, Person, Role, and Person Role.
-	The table that the scheduler outputs to holds a complete quarter schedule, along with a list of the students signed up for the classes within the schedule. Additionally, this table holds past schedules and records of the students that were enrolled in the courses to keep a record of which student has taken which class.  
+Our database holds two different tables: a table that the program administrator modifies, and a table that the scheduler outputs to.
+    The program administrators' table holds the following fields: School, Department, Class, Class lab, Prerequisites, Building, Room, Period, Lecturer, Person, Role, and Person Role.
+	The scheduler outputs to a set of tables that hold a complete schedule of the quarter. Past schedules will also be stored in the database in the same format. Students who have taken or are enrolled in will be noted by a foreign key pointing from the student's entry to the corresponding class entries. The entry for each class will have a field that increments each time a new foreign key points to it from the table of students.
 
 
 \subsection{The Scheduler}
