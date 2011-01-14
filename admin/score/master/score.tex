@@ -209,8 +209,9 @@ The interaction diagrams below contain interactions of each user: student, lectu
 Our architecture is broken into three main categories:
 \begin{enumerate}
 \item User interface or UI (The front end)
-\item Django (The back end)
+\item The database  (The backend)
 \item The Scheduler (The engine)
+\item Django (The framework)
 \end{enumerate}
 
 \subsection{The User Interface}
@@ -222,11 +223,18 @@ The program manager's interface will display all of the courses and lecturers fo
 
 The lecturer will have an interface that will hold the courses that they can teach and the current courses that they are teaching. 
 The student will have a customizable interface which will hold their past, present and future schedules. It will also have other widgets that they will be able to add to their profile.
-\subsection{Django}
-Django connects the user interface, the database and the Scheduler. Django manages the user interface by handling the user requests and providing the appropriate response. In the case of the Scheduler it takes the request from the program administrator to run the Scheduler and creates a request object and sends it through multiple middlewares (Python functions). Django then checks the URLs and determines which function it must send the request object. The function in this case is the Scheduler, which takes the information stored in the program administrators database and runs. The output of the Scheduler is placed into a second database and the request object is sent back up through the middleware in the reverse order of the way it came in. The second database is then displayed to the program administrator.
+\subsection{The Database}
+Our database holds two different tables; a table that the program administrator modifies, and a table that The Scheduler outputs to.
+    The program administrators' table holds the following fields; School, Department, Class, Class lab, Prerequisites, Building, Room, Period, Lecturer, Person, Role, and Person Role.
+	The table that the scheduler outputs to holds a complete quarter schedule, along with a list of the students signed up for the classes within the schedule. Additionally, this table holds past schedules and records of the students that were enrolled in the courses to keep a record of which student has taken which class.  
+
 
 \subsection{The Scheduler}
 The algorithm we use is a modified genetic algorithm, which mimics the process of natural selection in order to find the solution to our scheduling problem. The algorithm represents the variables as chromosomes. A full set of chromosomes make up a parent, each parent is given a fitness value according to how well they fit into the schedule. Fitness is higher for matches that fit into empty classrooms, have the appropriate number of seats, or if the class has a lab in it. The parents make up a population, the algorithm takes 'n' number of parents from the population and does a crossover on pairs of the selected parents to create 'n' new chromosomes. The algorithm replaces 'n' chromosomes from the existing population with the new chromosomes that were created by the crossover, however it does not replace the chromosomes with the best fitness. After the crossover is performed, mutations take place. A random number is generated, which represents the mutation size. While the size has not been reached, classes are moved at random to a random room. Classes with the best fitness are ignored. The algorithm repeats this process until it reaches a fitness of one, in which has it has found an optimum solution. The algorithm pulls information from the database, and enters it into four different list: a professor list, a course list, a room list and a classes list. It then outputs into a second database which is then displayed to the user interface.
+
+\subsection{Django}
+Django connects the user interface, the database and the Scheduler. Django manages the user interface by handling the user requests and providing the appropriate response. In the case of the Scheduler it takes the request from the program administrator to run the Scheduler and creates a request object and sends it through multiple middlewares (Python functions). Django then checks the URLs and determines which function it must send the request object. The function in this case is the Scheduler, which takes the information stored in the program administrators database and runs. The output of the Scheduler is placed into a second database and the request object is sent back up through the middleware in the reverse order of the way it came in. The second database is then displayed to the program administrator.
+
 
 \section{Project Plan} % Justin
 
