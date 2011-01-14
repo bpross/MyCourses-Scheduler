@@ -139,70 +139,70 @@ For the scheduler, we must have an algorithm that must first be able to hand mul
 Lastly, there must be a connecting component that links the user interface, the database, and the scheduler. This connecting component, just like the scheduler, must be scalable, allowing for both larger and smaller systems and it must work well with database-driven websites.  
 
 \begin{enumerate}
-\item I. User Interface
+\item User Interface
 	\begin{enumerate}
-	\item a. Web-based, multiple browser compatible:
+	\item Web-based, multiple browser compatible:
 		\begin{enumerate}
-		\item i. Must meet HTML5 Validation Standard.
-		\item ii.	Must be intuitive, and easy to understand.
+		\item Must meet HTML5 Validation Standard.
+		\item	Must be intuitive, and easy to understand.
 		\end{enumerate}
-	\item b. Views based on user roles:
+	\item Views based on user roles:
 		\begin{enumerate}
-		\item i. Program Administrator:
+		\item Program Administrator:
 			\begin{enumerate}
-		    \item 1. Must be able to log in and out.
-		    \item 2. Must be able to modify the database.
-		    \item 3. Must be able to perform operations on the database.
-		    \item 4. Must be able to run the algorithm.
-		    \item 5. Must be able to send and view messages from program manager.
+		    \item Must be able to log in and out.
+		    \item Must be able to modify the database.
+		    \item Must be able to perform operations on the database.
+		    \item Must be able to run the algorithm.
+		    \item Must be able to send and view messages from program manager.
 		    \end{enumerate}
-		\item ii. Program Manager:
+		\item Program Manager:
 			\begin{enumerate}
-		   \item 1. Must be able to log in and out.
-		   \item 2. Must be able to retrieve population information set by program administrator.
-		   \item 3. Must be able to specify the courses for the upcoming school session.
-		   \item 4. Must be able to send messages to program administrator and lecturer.
+		   \item Must be able to log in and out.
+		   \item Must be able to retrieve population information set by program administrator.
+		   \item Must be able to specify the courses for the upcoming school session.
+		   \item Must be able to send messages to program administrator and lecturer.
 		   \end{enumerate}
-		\item iii. Lecturer:
+		\item Lecturer:
 			\begin{enumerate}
-			\item 1. Must be able to log in and out.
-			\item 2. Must be able to view available times from program manager.
-			\item 3. Must be able to choose constraints.
+			\item Must be able to log in and out.
+			\item Must be able to view available times from program manager.
+			\item Must be able to choose constraints.
 			\end{enumerate}
-		\item iv. Student:
+		\item Student:
 			\begin{enumerate}
-		   \item 1. Must be able to log in and out.
-		   \item 2. Must be able to choose courses.
-		   \item 3. Must be able to edit, modify, swap, or delete courses.
+		   \item Must be able to log in and out.
+		   \item Must be able to choose courses.
+		   \item Must be able to edit, modify, swap, or delete courses.
 		   \end{enumerate}
 		\end{enumerate}
-	\item c. Must be able to connect through the connecting component to the database and the scheduler.
+	\item Must be able to connect through the connecting component to the database and the scheduler.
 	\end{enumerate}
-\item II. Database
+\item Database
 	\begin{enumerate}
-	\item a. A proper database system:
+	\item A proper database system:
 	      \begin{enumerate}
-	      \item i. Must let us be able to store and retrieve data efficiently and reliably.
-	      \item ii. Must let us continuously store and retrieve data per logged in user session.
+	      \item Must let us be able to store and retrieve data efficiently and reliably.
+	      \item Must let us continuously store and retrieve data per logged in user session.
 	      \end{enumerate}
-	\item b. Must be able to connect through the connecting component to both the scheduler and the user interface.
+	\item Must be able to connect through the connecting component to both the scheduler and the user interface.
 	\end{enumerate}
-\item III. Scheduler
+\item Scheduler
       \begin{enumerate}
-      \item a. Constraint-based algorithm:
+      \item Constraint-based algorithm:
       	    \begin{enumerate}
-            \item i. Must be able to handle multiple constraints (e.g. room capacity, lecturer availability, subject preference, etc.).
-	    \item ii. Must be precise in handling schedules for the program administrator.
-	    \item iii. Must be able to provide an output that is easy to modify, should the algorithm not provide a solution for the given inputs.
+            \item Must be able to handle multiple constraints (e.g. room capacity, lecturer availability, subject preference, etc.).
+	    \item Must be precise in handling schedules for the program administrator.
+	    \item Must be able to provide an output that is easy to modify, should the algorithm not provide a solution for the given inputs.
 	    \end{enumerate}
-     \item b. Must be able to connect with the connecting component to display necessary information to the user interface.
+     \item Must be able to connect with the connecting component to display necessary information to the user interface.
      \end{enumerate}
-\item IV. Connecting Component
+\item Connecting Component
       \begin{enumerate}
-      \item a. Interfacing between the user interface, the database, and the scheduler:
+      \item Interfacing between the user interface, the database, and the scheduler:
       	    \begin{enumerate}
-	    \item i. Must be scalable to allow for systems both small and large.
-	    \item ii.	Must work well with database-driven websites.
+	    \item Must be scalable to allow for systems both small and large.
+	    \item	Must work well with database-driven websites.
 	    \end{enumerate}
      \end{enumerate}
 \end{enumerate}
