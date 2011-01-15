@@ -23,6 +23,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+\usepackage{array}
 \pagestyle{fancy}
 \fancyfoot{}
 \rfoot{\thepage}
@@ -46,33 +47,30 @@
 \pagebreak
 
 \section{Executive Summary}
-The MyCourses Scheduler is an end-to-end scheduling system that automates and reduces the manual labor of scheduling university courses. We seek to provide universities an easy-to-use and automated service that can help reduce staff costs, reduce implementation costs and decrease the complications and time involved in organizing an entire schedule.
+The MyCourses Scheduler is an end-to-end scheduling system that automates most of the manual labor involved in scheduling university courses. We seek to provide universities an easy-to-use service that can help reduce the costs and complications involved in organizing an entire schedule.
 
 
-The team started in mid-September by a group of 5 engineering students taking a ``Software Methodology'' course. We chose to do a course scheduling system as our class project because, like many other students and faculty, we felt that the problem was an interesting one, and that we would learn a lot by writing a system to solve it.
+Our team started in mid-September as a group of 5 engineering students taking a ``Software Methodology'' course. We chose to do a course scheduling system as our class project because we felt that the problem was interesting, and that we would learn a lot by writing a system to solve it.
 
 The members of our team are Justin Lazaro, Will Crawford, Ben Ross, Erik Steggall, and Sabba Petri. Our team members have held a variety of roles in the technology industry such as IT, QA, Marketing and System Administration at top technology firms including Hewlett Packard, Riverbed Technologies, and Yahoo!. 
 
 
-We believe that our solution can provide value to universities and ease the frustrations of faculty, students, and staff. In addition to a course scheduling system, we plan on expanding our product line to include an employee scheduling system and offer that as a Software-as-a-Service to businesses nationwide. 
-
 % Review again for tense
 \section{Development Process} % Will
-\indent This instance of the MyCourses course scheduling system was created as part of a class instructed by Professor Linda Werner here at UCSC.
+\indent This instance of the MyCourses scheduling system was created as part of a class instructed by Professor Linda Werner here at UCSC. Participation in this class required that we approach design very seriously before we started coding. This was a new approach to us as most of our team was accustomed to developing through rapidly iterated prototypes.
 
-Participation in this class required us to approach design very seriously before we started coding. This was a new approach to us; most of us were tempted to go directly for some sort of rapid prototype.
+After gathering the requirements from the SCORE project description, we immediately discovered that scheduling classes would likely be an NP-hard problem, meaning that there would be no way to find an optimal solution in polynomial time. In other words, it looked like a problem with no canonical ``best answer.'' Much of our time in this phase was spent shopping around for a similar problem whose solution we could apply to our problem. We eventually found a solution in the form of a freely available course scheduling algorithm written by a graduate student named Mladen Jankovic. It was written in C++, so we converted it into Python.
 
-After gathering the requirements from the SCORE project description, we analyzed them, immediately discovering that scheduling classes would probably be NP-hard, meaning that there would be no way to find an optimal solution in polynomial time. In other words, it looked like a problem with no canonical ``best answer.'' Much of our time in this phase was spent shopping around for an appropriately similar problem that we could model our actual problem on. We eventually found a solution to the problem in the form of a freely available course scheduling algorithm written by a graduate student in C++ which we converted into Python.
+We started out planning our project using the Unified Process, an iterative and incremental software development model. The Unified Process is composed of four phases: inception, elaboration, construction and transition. 
 
-We started out our project using the Unified Process, an iterative and incremental software development process, to plan our project. The Unified Process is composed of four phases: inception, elaboration, construction and transition. 
+We lacked familiarity with the some of the technologies we planned on using for our project (Django, our Python web framework, in particular). Because of this, we spent much of our inception phase and elaboration phase learning about the functionality and capabilities of these technologies. This allowed us to generate more realistic design documents for our project.
 
-% Explain the phases here.
+Since this project was being done as part of a class, our instructor required several deliverables from us apart from the requirements of the SCORE project as part of a modified Unified Process. These were primarily presentations and the delivery of documents that we will discuss further in our Project Plan section. 
 
-Because of our lack of familiarity with the technology, we planned on using for our project - Django, our Python web framework, in particular - much of our inception and elaboration phases were spent learning about the functionality and capabilities of these technologies so that we would be more able to generate realistic design documents for our project.
+%% Cut section here %%
 
-Since this project was being done as part of a class, our instructor required several deliverables from us apart from the requirements of the SCORE project - primarily presentations and the delivery of documents - as part of a modified Unified Process for development. 
-
-For our first deliverable, part of our inception phase, we wrote out scenarios for the use of our product. We included a scenario for each of the user categories that would be using our product. Our program administrator scenario described how the program administrator would initially set up the database in order to run the algorithm. The scenario for the program manager shows how the program manager should be able to inspect the courses that the administrator picked, and select the courses and lecturers for the upcoming quarter. The scenario for the lecturer shows how the lecturer should be able to specify their own individual constraints, such as the courses that they wish to teach, and the days and times that they are available. The scenario for the student shows how a student should be able to select a course for their upcoming quarter. We also included a scenario in which the program administrator can receive the master schedule from each individual program manager and is then able to set up and run the algorithm.
+% Move below to Project Plan %
+For our first deliverable, part of our inception phase, we wrote out scenarios for the use of our product. We included a scenario for each of the user categories that would be using our product. Our Program Administrator scenario described how the Program Administrator would initially set up the database in order to run the algorithm. The scenario for the Program Manager shows how the Program Manager should be able to inspect the courses that the administrator picked, and select the courses and lecturers for the upcoming quarter. The scenario for the lecturer shows how the lecturer should be able to specify their own individual constraints, such as the courses that they wish to teach, and the days and times that they are available. The scenario for the student shows how a student should be able to select a course for their upcoming quarter. We also included a scenario in which the Program Administrator can receive the master schedule from each individual Program Manager and is then able to set up and run the algorithm.
 
 Our second deliverable provided an overview of our requirements, also part of our inception phase. In this deliverable we provided a broad overview of our system and its functionality. It was broken into functionality, performance, usability, constraints, and our wish list. The functionality provides a description of what our system does, we included information on the algorithm, a breakdown of our database, the different sections of our user interface, and the specifications of our server.
 
@@ -83,18 +81,16 @@ Our fourth deliverable was a user manual for our project, part of our constructi
 Our final deliverable was an acceptance test for our project. This deliverable was a working prototype designed to exhibit the same qualities that our final product will have. It demonstrated most of  our project's functionality, though it was far from feature-complete.
 
 \section{Requirements: Problem Statement} % Justin
-At many Universities, scheduling courses becomes a difficult task for many registrars office. The task of manually scheduling hundreds of courses with limited classroom space, limited professor availability, and limited time is an extremely difficult and long task. With our Scheduling system, we developed an end-to-end course management system that simplifies and automates the quarterly (or semesterly) scheduling of courses for universities. Our system will offer features including automated organization of these courses and management of classes \& professors. It will also allow students to sign up for classes. With this system, we hope that it will reduce the difficulty and time of managing and scheduling courses. 
+Scheduling courses is a difficult task for many universities. Manually scheduling hundreds of courses can be very tricky due to limited classroom space, limited professor availability, and limited time to teach these classes. 
 
-Our system will have four primary user groups: Program Managers, Program Administrators, lecturers, and students. The Program Administrator will be responsible for managing and populating of the system with courses, classrooms and time slots. Program Administrators will also be responsible for running the Scheduler. The Program Managers will select courses to offer in the given quarter and provide additional information such as class size and class location. The lecturers (or professors) will be able to define their course preferences and also their time slots they prefer.  The students will be able to sign up for the courses scheduled by the system.
-
-Our project includes the ability to define the constraints of courses, classrooms and professors. By offering this amount of flexibility, we can reduce the overhead cost and time necessary to schedule courses. Below we outline a common scenario for each category of users. 
-
+We imagine four primary stakeholders for this task: Program Administrators, Program Managers, lecturers, and students. The Program Administrator will be responsible for determining a master list of courses, classrooms and time slots. The Program Managers will select which courses to offer in a given quarter and provide additional information about them such as class size and class location. The lecturers (or professors) will prefer to teach certain courses. They will also prefer to teach at certain times. The students will need to enroll in courses offer in a certain quarter.
 
 \subsection{Scenario}
-At the beginning of the inception phase, we generated and utilized scenarios to help us understand the expected user interaction with our system. We developed several scenarios that relate to each user groups’ interaction with our scheduling system. The following is an example of a Program Administrator’s and Program Manager’s interaction with the Scheduling system and how the database is initially populated and managed after it is populated.
+
+Below, we outline a common use-case scenario. This scenario was generated along with many others during our inception phase in order to help us understand how users would interact with a system designed to solve this problem. This particular scenario involves a Program Administrator and several Program Managers.
 
 \begin{enumerate}
-\item	The Program Administrator signs in to the browser-based MyCourses system by supplying their credentials to the website.
+\item	The Program Administrator signs in to a browser-based system by supplying their credentials to the website.
 \item	Once logged in, the Program Administrator is presented with a panel illustrating their privileges - there will be links to pages that let the admin modify the database, add users, etc.
 \item	The Program Administrator can click on the database modification link, and will subsequently be presented with its contents in a tabular format.
 \item	Choosing to import data, the Program Administrator will need to provide the following: 
@@ -104,133 +100,137 @@ At the beginning of the inception phase, we generated and utilized scenarios to 
 		\item Room capacity.
 		\item Subject preference. (e.g. Social Sciences belong in the Sociology building)
 		\end{enumerate}
-	\item	List of all instruction time slots. (e.g. Can classes be taught on Saturday? When are normal instruction hours?)
-	\item	List of courses offered for every subject. 
+	\item	A list of all instruction time slots. (e.g. Can classes be taught on Saturday? When are normal instruction hours?)
+	\item	A list of courses offered for every subject. 
 	\end{enumerate}
 \item	The Program Administrator can also manually enter information (e.g. Baskin Engineering $\to$ Room 156 ) or modify imported information. This can be done by clicking on the appropriate element, modifying the appropriate fields, and submitting the changes.
-\item	Once the information has been imported and reviewed, each Program Manager can determine which courses will be offering in the upcoming quarter.
-\item The Program Manager sign in to the browser-based MyCourses system by supplying their credentials to the website.
-\item The Program Manager sees a message that notifies them that the system has been populated by the Program Administrator for a new quarter and opens a list of all the courses in their department.
-	\begin{enumerate}
-	\item The Program Manager will be able to select which courses will be offered for this particular quarter.
-	\item The Program Manager will also be able to specify which instructor will teach each course.
-	\end{enumerate}
-\item After each Program Manager has completed this task and their work has been saved, the Program Administrator will be notified via e-mail.
-\item The Program Administrator can then log in. He or she can review the entire list of courses if he or she chooses. The Program Administrator is also able to run the scheduler at this point, which will algorithmically determine when courses will be taught. The system will attempt to provide a best fit and present that to Program Administrator for review, modification, and/or acceptance.
+\item	Once the information has been imported and reviewed, each Program Manager can determine which courses will be offered in the upcoming quarter.
+\item The Program Manager signs in to the browser-based system by supplying their credentials to the website.
+\item The Program Manager sees a message that notifies them that the system has been populated by the Program Administrator for a new quarter. He or she opens a list of all the courses in their department.
+\item The Program Manager will select which courses will be offered for this particular quarter.
+\item The Program Manager will also specify which instructor will teach each course.
+\item After each Program Manager has selected each course to be offered and its corresponding instructor, the Program Administrator will be notified via e-mail.
+\item The Program Administrator can then review the entire list of offered courses if he or she chooses. The Program Administrator will also be able to run the scheduler at this point. The scheduler will algorithmically determine when courses will be taught. The system will attempt to provide a best fit and present that to Program Administrator for review, modification, or acceptance.
 \end{enumerate}
 
 \section{Requirements: Specification} % Sabba
-For the MyCourses Scheduler, we separated our project into four generalized sections: the user interface, the database, the scheduler, and the connecting component. 
+There are four sections to this system: the user interface, the database, the scheduler, and the connecting component. 
 
-Looking at the user interface, our group wanted the interface to be as clean and user-friendly as possible. It must cater to all youth to adult ages, from a freshman student of eighteen years to a senior professor of seventy. Therefore, the system must be intuitive for a wide range of people. Also, due to the dynamic progression of the Internet that is adopting the standard of HTML5, we felt that our system should also utilize a system that is up-to-date and constantly evolving. To meet this standard, our user interface must be built in HTML5 as well.
+The user interface must be very clean and user-friendly. It must be intuitive both to freshmen students of eighteen and to senior professors of seventy.  
 
-For the program administrator, the system must have a login function to log in and out of the system, as well as allow the user to modify or perform operations on the database. The program administrator must also be allowed to run the scheduler, as well as have a logical way of communicating with the program manager. 
+Program Administrators must be able to modify and perform operations on the database. Program Administrators must also be allowed to run the scheduler. They must also have a simple way to communicate with the Program Managers. 
 
-The program manager role is similar in that the user must utilize the login function. From there, the program manager must be able to retrieve the information from the program administrator, and most importantly, specify the courses for the upcoming school session. Once this is completed, they need to be able to communicate back with the program administrator, as well as the lecturers, to specify the courses chosen.
+Program Managers must be able to retrieve course information specified by a Program Administrator.  With this information, Program Managers must be able to specify the courses for the upcoming school session. This selection must propagate automatically for the scheduler's usage.
 
-The lecturer role, just as the previous roles, must be use the login function of the user interface. From here, the lecturer needs to be able to see the updated available times from the program manager to choose their own constraints. Once this is handled, there must be a form of communication back to the program manager to show their specified constraints.
+Lecturers must be able to specify preferred teaching times and preferred courses. They must also be able to see which courses they have been selected to teach. This information must be automatically added to the database for the scheduler's usage.
 
-Lastly, the student role must also be able to log in and out of the system. They need to see the course catalogue online and be able to edit, view, or modify their own selection of courses. We must make the user interface incredibly intuitive especially for the student, as they will be in and out of the system the most, consistently checking classes, updating their schedules, and modifying their decisions. As students, our team is capable of being both designers and users of the student role, which gives us an advantage over other development teams who may not grasp the type of interface that a student would find useful and easy to understand. We plan to integrate technologies that are currently used by our peers to make the student's interface more appealing to our clients.
+Students must be able to see the scheduler's output once a Program Administrator has accepted it. They must be able to search, view, and select courses from the catalog. As students will traffic the system most heavily, the student's user interface must be especially simple and efficient. 
 
-For the database, we need to store and retrieve data efficiently and reliably. The database must be able to hold many constraints and allow for the program administrator to modify it at their behest. At the same time, it must be able to also remain active while users are pulling information from it.
+As students, our team has an advantage in that we are keenly aware of the needs of this particular user role. We are capable of being both designing it from the vantage point of an engineer and testing it from the perspective of a student. 
 
-For the scheduler, we must have an algorithm that must first be able to hand multiple constraints and dynamically work with them. This algorithm must be highly scalable in that, given more constraints, it should be robust and not break under pressure. At the same time, accuracy and precision must also be vital in achieving the right results for the program administrator. Lastly, assuming the algorithm cannot find an optimal schedule, there should be solutions on how the schedule might possibly work.
+The database must perform read and write operations efficiently and reliably. It must be robust as potential user bases at some universities are quite large; load on the database will be proportionally large. 
 
-Lastly, there must be a connecting component that links the user interface, the database, and the scheduler. This connecting component, just like the scheduler, must be scalable, allowing for both larger and smaller systems and it must work well with database-driven websites.  
+The scheduler must have an algorithm that is first able to handle multiple constraints. This algorithm must be scalable so that, given increasing constraints, it will remain both functional and efficient. If the algorithm cannot find an optimal schedule, it must be able to convey conflicts to Program Administrators and allow them to manually resolve these conflicts.
+
+Lastly, there must be a connecting component that links the user interface, the database, and the scheduler. This connecting component, as with the rest of the system, must be robust under high loads, allowing for both larger and smaller systems.
 
 \begin{enumerate}
 \item User Interface
 	\begin{enumerate}
-	\item Web-based, multiple browser compatible:
+<<<<<<< HEAD
+	\item Web-based, multiple browser compatible must:
 		\begin{enumerate}
-		\item Must meet HTML5 Validation Standard.
+		\item meet HTML5 Validation Standard.
+		\item be intuitive, and easy to understand.
+=======
+	\item Web platform:
+		\begin{enumerate}
+		\item Must be compatible with multiple browsers.
 		\item	Must be intuitive, and easy to understand.
+>>>>>>> f86dab0628098dff133f26fc3ec3841ee81b24e1
 		\end{enumerate}
 	\item Views based on user roles:
 		\begin{enumerate}
-		\item Program Administrator:
+		\item Program Administrator must be able to:
 			\begin{enumerate}
+<<<<<<< HEAD
+		    \item log in and out.
+		    \item modify the database.
+		    \item perform operations on the database.
+		    \item run the algorithm.
+		    \item be able to send and view messages from program manager.
+=======
 		    \item Must be able to log in and out.
 		    \item Must be able to modify the database.
-		    \item Must be able to perform operations on the database.
-		    \item Must be able to run the algorithm.
-		    \item Must be able to send and view messages from program manager.
+		    \item Must be able to choose constraints for the scheduler.
+		    \item Must be able to run the scheduler.
+		    \item Must be able to send and view messages from Program Manager.
+>>>>>>> f86dab0628098dff133f26fc3ec3841ee81b24e1
 		    \end{enumerate}
-		\item Program Manager:
+		\item Program Manager must be able to:
 			\begin{enumerate}
 		   \item Must be able to log in and out.
-		   \item Must be able to retrieve population information set by program administrator.
+		   \item Must be able to retrieve information specified by Program Administrator.
 		   \item Must be able to specify the courses for the upcoming school session.
-		   \item Must be able to send messages to program administrator and lecturer.
+		   \item Must be able to send messages to Program Administrator and lecturer.
 		   \end{enumerate}
 		\item Lecturer:
 			\begin{enumerate}
 			\item Must be able to log in and out.
-			\item Must be able to view available times from program manager.
-			\item Must be able to choose constraints.
+			\item Must be able to submit preferences to the Program Manager.
 			\end{enumerate}
 		\item Student:
 			\begin{enumerate}
 		   \item Must be able to log in and out.
 		   \item Must be able to choose courses.
-		   \item Must be able to edit, modify, swap, or delete courses.
 		   \end{enumerate}
 		\end{enumerate}
-	\item Must be able to connect through the connecting component to the database and the scheduler.
+	\item Must interact with the connecting component.
 	\end{enumerate}
 \item Database
 	\begin{enumerate}
-	\item A proper database system:
-	      \begin{enumerate}
-	      \item Must let us be able to store and retrieve data efficiently and reliably.
-	      \item Must let us continuously store and retrieve data per logged in user session.
-	      \end{enumerate}
-	\item Must be able to connect through the connecting component to both the scheduler and the user interface.
+	\item Must be able to store and retrieve data efficiently and reliably.
+	\item Must handle load well.
+	\item Must interact with the connecting component.
 	\end{enumerate}
 \item Scheduler
       \begin{enumerate}
       \item Constraint-based algorithm:
       	    \begin{enumerate}
             \item Must be able to handle multiple constraints (e.g. room capacity, lecturer availability, subject preference, etc.).
-	    \item Must be precise in handling schedules for the program administrator.
-	    \item Must be able to provide an output that is easy to modify, should the algorithm not provide a solution for the given inputs.
+	    \item Must be precise in handling schedules for the Program Administrator.
+	    \item Must provide an output that is easy to modify, in case the algorithm does not provide a solution for a set of inputs.
 	    \end{enumerate}
-     \item Must be able to connect with the connecting component to display necessary information to the user interface.
+	\item Must interact with the connecting component.
      \end{enumerate}
 \item Connecting Component
       \begin{enumerate}
-      \item Interfacing between the user interface, the database, and the scheduler:
-      	    \begin{enumerate}
-	    \item Must be scalable to allow for systems both small and large.
-	    \item	Must work well with database-driven websites.
-	    \end{enumerate}
+      \item Must provide an interfacing between the user interface, the database and the scheduler:
+    \item Must be robust to allow for systems both small and large.
      \end{enumerate}
 \end{enumerate}
 
-
-
-
 \section{Architectural Design} % Erik
-Our architecture is broken into three main categories:
+Our architecture is broken into four main categories:
 \begin{enumerate}
 \item User interface or UI (The front end)
-\item The database  (The backend)
-\item The Scheduler (The engine)
+\item The database  (The back end)
+\item The scheduler (The engine)
 \item Django (The framework)
 \end{enumerate}
 
 \subsection{The User Interface}
-There are four different user interfaces, each is assigned to one of the four roles that a user could be: Program administrator, program manager, lecturer, student. The students UI is the most complex and offers the most customization.
+There are four different user interfaces, each is assigned to one of the four roles that a user could be: Program administrator, Program Manager, lecturer, student. The students UI is the most complex and offers the most customization.
 
-The program administrator's user interface is fairly simple, they are given fields such as courses, rooms, and professors to fill out, once they fill out the fields to the proper specifications for the quarter then they have an option to run the Scheduler. The Scheduler will run, and then post the results to the program manager.
+The Program Administrator's user interface is fairly simple, they are given fields such as courses, rooms, and professors to fill out, once they fill out the fields to the proper specifications for the quarter then they have an option to run the Scheduler. The Scheduler will run, and then post the results to the Program Manager.
 
-The program manager's interface will display all of the courses and lecturers for their department. The program manager will have the option of selecting the lecturers and courses that they want to be active for the quarter.
+The Program Manager's interface will display all of the courses and lecturers for their department. The Program Manager will have the option of selecting the lecturers and courses that they want to be active for the quarter.
 
 The lecturer will have an interface that will hold the courses that they can teach and the current courses that they are teaching. 
 The student will have a customizable interface which will hold their past, present and future schedules. It will also have other widgets that they will be able to add to their profile.
 \subsection{The Database}
-Our database holds two different tables: a table that the program administrator modifies, and a table that the scheduler outputs to.
-    The program administrators' table holds the following fields: School, Department, Class, Class lab, Prerequisites, Building, Room, Period, Lecturer, Person, Role, and Person Role.
+Our database holds two different tables: a table that the Program Administrator modifies, and a table that the scheduler outputs to.
+    The Program Administrators' table holds the following fields: School, Department, Class, Class lab, Prerequisites, Building, Room, Period, Lecturer, Person, Role, and Person Role.
 	The scheduler outputs to a set of tables that hold a complete schedule of the quarter. Past schedules will also be stored in the database in the same format. Students who have taken or are enrolled in will be noted by a foreign key pointing from the student's entry to the corresponding class entries. The entry for each class will have a field that increments each time a new foreign key points to it from the table of students.
 
 
@@ -238,9 +238,9 @@ Our database holds two different tables: a table that the program administrator 
 The algorithm we use is a modified genetic algorithm, which mimics the process of natural selection in order to find the solution to our scheduling problem. The algorithm represents the variables as chromosomes. A full set of chromosomes make up a parent, each parent is given a fitness value according to how well they fit into the schedule. Fitness is higher for matches that fit into empty classrooms, have the appropriate number of seats, or if the class has a lab in it. The parents make up a population, the algorithm takes 'n' number of parents from the population and does a crossover on pairs of the selected parents to create 'n' new chromosomes. The algorithm replaces 'n' chromosomes from the existing population with the new chromosomes that were created by the crossover, however it does not replace the chromosomes with the best fitness. After the crossover is performed, mutations take place. A random number is generated, which represents the mutation size. While the size has not been reached, classes are moved at random to a random room. Classes with the best fitness are ignored. The algorithm repeats this process until it reaches a fitness of one, in which has it has found an optimum solution. The algorithm pulls information from the database, and enters it into four different list: a professor list, a course list, a room list and a classes list. It then outputs into a second database which is then displayed to the user interface.
 
 \subsection{Django}
-Django connects the user interface, the database and the Scheduler. Django manages the user interface by handling the user requests and providing the appropriate response. In the case of the Scheduler it takes the request from the program administrator to run the Scheduler and creates a request object and sends it through multiple middlewares (Python functions). Django then checks the URLs and determines which function it must send the request object. The function in this case is the Scheduler, which takes the information stored in the program administrators database and runs. The output of the Scheduler is placed into a second database and the request object is sent back up through the middleware in the reverse order of the way it came in. The second database is then displayed to the program administrator.
+Django connects the user interface, the database and the Scheduler. Django manages the user interface by handling the user requests and providing the appropriate response. In the case of the Scheduler it takes the request from the Program Administrator to run the Scheduler and creates a request object and sends it through multiple middlewares (Python functions). Django then checks the URLs and determines which function it must send the request object. The function in this case is the Scheduler, which takes the information stored in the Program Administrators database and runs. The output of the Scheduler is placed into a second database and the request object is sent back up through the middleware in the reverse order of the way it came in. The second database is then displayed to the Program Administrator.
 
-
+% Work the deliverables from Development Process into this section.
 \section{Project Plan} % Justin
 
 The project plan will describe the date and deliverables of our development process. The SCORE project followed a software methodology course and many of the deliverables are similar to those in the SCORE requirements. 
@@ -251,9 +251,11 @@ Instruction and classes began on September 23, 2010 and continued for 10 weeks u
 
 For the first week, we had to gather in groups of 5 to form teams for our project and give an initial presentation on a brief overview of our project. In the presentation, we introduced our project's name and our team's members. We also introduced our ideas about the potential user experience, our desired core functionality, and the potential project risks we saw at the time. We also mentioned a few features that we thought would be nice to add if we had time for them.
 
+\includegraphics[scale=0.45]{risktable.png}
+
 \subsection*{Week 2: Requirements - Scenarios}
 
-During this week, our team designed several user scenarios related to our project. The scenarios will be a significant part of our requirement document and will be important in defining various aspects of our system's functionality. We came up with 5 user scenarios:  (2) program administrators, program manager, lecturer professors, and students. 
+During this week, our team designed several user scenarios related to our project. The scenarios will be a significant part of our requirement document and will be important in defining various aspects of our system's functionality. We came up with 5 user scenarios:  (2) Program Administrators, Program Manager, lecturer professors, and students. 
 
 Each scenario outlined and described the end user's interaction with the system, the data flows of information, and the interaction with different functions and systems as the user performed a particular action. 
 
@@ -368,7 +370,9 @@ The Database's testing is done through  Django's test framework.The suite can te
 \section{Outcomes and Lessons Learned} % All
 The development of this project has taught our team many valuable lessons in software development. First, and foremost is learning how to work together as a team to develop a software system. Previous to this project, none of the group members had developed a project of this magnitude. Learning how to divide tasks and break up the work based on skill sets of team members was something that we struggled with at the onset of the project. Because we did not understand the magnitude of the project, we divided tasks based on member's interests of specific tasks. We soon realized this was not the best decision, and our initial development cycle was thrown off because we had to choose roles that we were best suited, even if it was not our first choice.
 
-After using the intial development process for ten weeks, our group decided to change our development process from the Unified Process to Scrum. This decision was made, because our initial process was not suited for the fast paced development that our system needs. The Unified Process had slow increments,the long time delays between due dates allowed members of our group to fall behind on the project. Our new method allows us to keep all members accountable, and to keep everyone updated on the current status of the system. Realizing that one development process does not fit all was a great lesson learned through this project.
+After using the initial development process for ten weeks, our group decided to change our development process from the Unified Process to Scrum. This decision was made, because our initial process was not suited for the fast paced development that our system needs. The Unified Process had slow increments,the long time delays between due dates allowed members of our group to fall behind on the project. Our new method allows us to keep all members accountable, and to keep everyone updated on the current status of the system. Realizing that one development process does not fit all was a great lesson learned through this project.
 
-Throughout the development of our system, the tools and technologies, that our group was using, were under constant change. Our solution to scheduling changed three times until a suitable solution was found, as a result, there was a lot of time wasted researching technology that was never implimented. Once we were able to utilize our teammember's skills to find the right technology, the development of our project became easier, and was quickly gained speed. The combination of adopting a new development process, locking down the technologies needed, and understanding one another has increased our productivity and our understanding of working on a development team. 
+Throughout the development of our system, the tools and technologies, that our group was using, were under constant change. Our solution to scheduling changed three times until a suitable solution was found, as a result, there was a lot of time wasted researching technology that was never implemented. Once we were able to utilize our teammember's skills to find the right technology, the development of our project became easier, and was quickly gained speed. The combination of adopting a new development process, locking down the technologies needed, and understanding one another has increased our productivity and our understanding of working on a development team. 
+
 \end{document}
+
