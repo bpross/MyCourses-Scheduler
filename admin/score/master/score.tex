@@ -219,11 +219,12 @@ Our architecture is broken into three main categories:
 \subsection{The User Interface}
 There are four different user interfaces, each is assigned to one of the four roles that a user could be: Program administrator, program manager, lecturer, student. The students UI is the most complex and offers the most customization.
 
-The program administrator's user interface is fairly simple, they are given fields such as courses, rooms, and professors to fill out, once they fill out the fields to the proper specifications for the quarter then they have an option to run the Scheduler. The Scheduler will run, and then post the results to the program manager.
+The program administrator's user interface is fairly simple, they are given fields such as courses, rooms, and professors to fill out, once they fill out the fields to the proper specifications for the quarter then they will submit the data to the program manager. Once the program manager has completed their portion of the work the program administrator wil have an option to run the Scheduler. The Scheduler will run, and the results will be available to the rest of the users.
 
-The program manager's interface will display all of the courses and lecturers for their department. The program manager will have the option of selecting the lecturers and courses that they want to be active for the quarter.
+The program manager's interface will display all of the courses and lecturers for their department. The program manager will have the option of selecting the lecturers and courses that they want to be active for the quarter and will have a submit option, which will submit their choices to the program administrator.
 
 The lecturer will have an interface that will hold the courses that they can teach and the current courses that they are teaching. 
+
 The student will have a customizable interface which will hold their past, present and future schedules. It will also have other widgets that they will be able to add to their profile.
 \subsection{The Database}
 Our database holds two different tables: a table that the program administrator modifies, and a table that the scheduler outputs to.
@@ -360,7 +361,7 @@ The Scheduler was first tested manually by checking the output for a valid sched
 
 The Web Interface testing is done using a framework called Selenium. This open source tool allows automatic testing of the web UI. Two methods were used for writing tests for the web UI. Selenium has an IDE that allows you to record an interaction with the web UI and run that recording as a test. This was done for basic actions, such as logging in and out. The other way our python scripts that use Selenium's built in libraries to interact with the web interface. This allowed us to check for output on a given page. This was done for advanced actions, such as signing up for classes, or adding students to the database.
 
-The Database's testing is done through  Django's test framework.The suite can test the framework with and other utilities. The testing suite is split into two different sections; doctests and unit tests. The tests are run through Python's manager; Python's manager can test the entire Database, or specific modules of it. Our project used the unit test portion of the test suite to test the database and the database to algorithm connection.
+The Database's testing is done through  Django's test framework. The suite can test the framework with and other utilities. The testing suite is split into two different sections; doctests and unit tests. The tests are run through Python's manager; Python's manager can test the entire Database, or specific modules of it. Our project used the unit test portion of the test suite to test the database and the database to algorithm connection.
 
 \section{Outcomes and Lessons Learned} % All
 The development of this project has taught our team many valuable lessons in software development. First, and foremost is learning how to work together as a team to develop a software system. Previous to this project, none of the group members had developed a project of this magnitude. Learning how to divide tasks and break up the work based on skill sets of team members was something that we struggled with at the onset of the project. Because we did not understand the magnitude of the project, we divided tasks based on member's interests of specific tasks. We soon realized this was not the best decision, and our initial development cycle was thrown off because we had to choose roles that we were best suited, even if it was not our first choice.
