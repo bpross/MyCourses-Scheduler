@@ -141,22 +141,22 @@ Lastly, there must be a connecting component that links the user interface, the 
 \begin{enumerate}
 \item User Interface
 	\begin{enumerate}
-	\item Web-based, multiple browser compatible must:
+	\item Web-based, multiple browser compatible:
 		\begin{enumerate}
-		\item meet HTML5 Validation Standard.
-		\item be intuitive, and easy to understand.
+		\item Must meet HTML5 Validation Standard.
+		\item	Must be intuitive, and easy to understand.
 		\end{enumerate}
 	\item Views based on user roles:
 		\begin{enumerate}
-		\item Program Administrator must be able to:
+		\item Program Administrator:
 			\begin{enumerate}
-		    \item log in and out.
-		    \item modify the database.
-		    \item perform operations on the database.
-		    \item run the algorithm.
-		    \item be able to send and view messages from program manager.
+		    \item Must be able to log in and out.
+		    \item Must be able to modify the database.
+		    \item Must be able to perform operations on the database.
+		    \item Must be able to run the algorithm.
+		    \item Must be able to send and view messages from program manager.
 		    \end{enumerate}
-		\item Program Manager must be able to:
+		\item Program Manager:
 			\begin{enumerate}
 		   \item Must be able to log in and out.
 		   \item Must be able to retrieve population information set by program administrator.
