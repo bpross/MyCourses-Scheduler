@@ -1,0 +1,5 @@
+Questions for Linda:
+
+Can we assume that the audience knows software engineering fundamentals? Is software engineering jargon okay?
+
+The requirements specification seems redudent, should we cut either the list or the paragraph discription of it?
