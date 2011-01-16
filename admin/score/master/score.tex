@@ -1,21 +1,6 @@
 % Typeset by:
 %  Will Crawford (wacrawfo@ucsc.edu)
 
-% TODO:
-% Most occurrences of ``the algorithm'' should be replaced by ``the scheduler.'' DO NOT do a global find/replace.
-% Check on instances of ``he.'' They should probably be changed to ``he/she.''
-
-%%%
-
-% Development Process: Explain the phases of Unified Process.
-% Rewrite Scenario 4 and possibly provide a mockup.
-% - System should review integrity of schedules, not the administrator. 
-% New diagrams around line 200?
-% Replace symbols in the diagrams of Requirements: Specification
-% Consider removing the old diagrams
-% Do we need to mention the fitness function in 4.3: The Algorithm?
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -205,7 +190,7 @@ The scheduler outputs to a set of tables that hold a complete schedule of the qu
 
 
 \subsection{The Scheduler}
-The algorithm we use is a modified genetic algorithm written by Mladen Jankovich, a Serbian software developer. It mimics the process of natural selection in order to find a solution to our scheduling problem. The algorithm represents the variables as ``chromosomes.'' A full set of chromosomes make up a parent. Each parent is given a fitness value according to how well they fit into the schedule. Fitness is higher for matches that fit into empty classrooms, have the appropriate number of seats, or if the classroom has a lab in it. 
+The algorithm we use to schedule classes is a modified genetic algorithm written by Mladen Jankovich, a Serbian software developer. It mimics the process of natural selection in order to find a solution to our scheduling problem. The algorithm represents the variables as ``chromosomes.'' A full set of chromosomes make up a parent. Each parent is given a fitness value according to how well they fit into the schedule. Fitness is higher for matches that fit into empty classrooms, have the appropriate number of seats, or if the classroom has a lab in it. 
 
 A group of parents make up a population. The algorithm takes 'n' number of parents from the population and does a crossover on pairs of the selected parents to create 'n' new chromosomes. The algorithm replaces 'n' chromosomes from the existing population with the new chromosomes that were created by the crossover. It does not replace the chromosomes with the best fitness. After the crossover is performed, mutations take place. A random number is generated, which represents the mutation size. While the size has not been reached, classes are moved to different rooms randomly. Classes with the best fitness are ignored. 
 
@@ -268,7 +253,7 @@ During this phase of our course, implementation of our system commenced and cont
 
 \subsection*{Week 7: Software Inspection}
 
-Our software inspection was an in-class presentation in which we systematically read source code. We identified and classified defects as we noticed them. For our software inspection, we chose to review our algorithm as it was one of the most difficult parts of our project to debug.
+Our software inspection was an in-class presentation in which we systematically read source code. We identified and classified defects as we noticed them. For our software inspection, we chose to review our scheduling algorithm as it was one of the most difficult parts of our project to debug.
 
 %It is also important to note that a software inspection is strictly a time to catch defects and not make an attempt to discuss how to fix them or what to do to fix. There is no discussion of the problem at this time, it is simply to define the problem and make note of it to the developer. 
 
@@ -309,7 +294,7 @@ We revised our management plan at the beginning of the second quarter. We switch
 The roles below are not exclusive; these are where our team members tend to focus.
 	
 \begin{description}
-\item{\textbf{Ben Ross}} - In charge of coding the algorithm
+\item{\textbf{Ben Ross}} - In charge of coding the scheduling algorithm
 \item{\textbf{Erik Steggall}} - In charge of testing
 \item{\textbf{Justin Lazaro}} - In charge of documentation
 \item{\textbf{Sabba Petri}} - In charge of the user interface
@@ -340,11 +325,11 @@ The scheduler posed the greatest challenge in developing the system. We choose t
 \section{Validation and Verification} % Ben and Erik
 Our test framework for our implementation has three components: testing for the scheduler, testing for the web interface and testing the database through the Django framework. The scheduler is tested by scripts, the web interface is tested through a software tool, and the database is tested through Django's testing suite.
 
-The scheduler was first tested manually by checking the output for a valid schedule. This proved to be very tedious. The algorithm team developed an automated script that was able to check the schedule, verifying its validity. This script allowed us to verify the output from small datasets, but also scaled to verify large datasets as well.
+The scheduler was first tested manually by checking the output for a valid schedule. This proved to be very tedious. The scheduling algorithm team developed an automated script that was able to check the schedule, verifying its validity. This script allowed us to verify the output from small datasets, but also scaled to verify large datasets as well.
 
 The web interface testing was done using a framework called Selenium. This open source tool allowed automatic testing of the web UI. Two methods were used for writing tests for the web UI. Selenium provided an IDE that allowed us to record an interaction with the web UI and run it as a test. This was done for basic actions, such as logging in and out. The other way our Python scripts used Selenium's built-in libraries was to interact with the web interface. This allowed us to check for output on a given page. This was done for advanced actions, such as signing up for classes, or adding students to the database.
 
-The database's testing is done through Django's test framework. The suite can test the framework with other utilities. The testing suite is split into two different sections: doctests and unit tests. The tests are run through Python's manager. Python's manager can test the entire database, or specific modules of it. Our project used the unit test portion of the test suite to test the database and its connection to the algorithm.
+The database's testing is done through Django's test framework. The suite can test the framework with other utilities. The testing suite is split into two different sections: doctests and unit tests. The tests are run through Python's manager. Python's manager can test the entire database, or specific modules of it. Our project used the unit test portion of the test suite to test the database and its connection to the scheduler.
 
 \section{Outcomes and Lessons Learned} % All
 The development of this project has taught our team many valuable lessons in software engineering. First and foremost, we learned how to work together as a team to develop a software system. Previous to this project, none of the group members had developed a project of this magnitude. Learning how to divide tasks and break up the work based on skill sets of team members was something that we struggled with at the beginning of the project. Because we did not understand the magnitude of the project, we divided tasks based on member's interests. We soon realized this was not the best decision, and our initial development cycle was thrown off because we had to choose roles to which we were best suited, even if it was not our first choice.
