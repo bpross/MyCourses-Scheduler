@@ -31,7 +31,7 @@
 \graphicspath{{./img/}}
 \setlength{\parskip}{0.15in}
 
-\title{S.C.O.R.E Report for\\ MyCourses \\ A Course Scheduling System \\ UCSC Team}
+\title{SCORE Report for\\ MyCourses \\ A Course Scheduling System \\ UCSC Team}
 \author{Ben Ross \texttt{(bpross@ucsc.edu)} \\
 	\and Erik Steggall \texttt{(esteggal@ucsc.edu)}\\
 	\and Justin Lazaro \texttt{(jlazaro@ucsc.edu)}\\
@@ -66,19 +66,6 @@ We started out planning our project using the Unified Process, an iterative and 
 We lacked familiarity with the some of the technologies we planned on using for our project (Django, our Python web framework, in particular). Because of this, we spent much of our inception phase and elaboration phase learning about the functionality and capabilities of these technologies. This allowed us to generate more realistic design documents for our project.
 
 Since this project was being done as part of a class, our instructor required several deliverables from us apart from the requirements of the SCORE project as part of a modified Unified Process. These were primarily presentations and the delivery of documents that we will discuss further in our Project Plan section. 
-
-%% Cut section here %%
-
-% Move below to Project Plan %
-For our first deliverable, part of our inception phase, we wrote out scenarios for the use of our product. We included a scenario for each of the user categories that would be using our product. Our Program Administrator scenario described how the Program Administrator would initially set up the database in order to run the algorithm. The scenario for the Program Manager shows how the Program Manager should be able to inspect the courses that the administrator picked, and select the courses and lecturers for the upcoming quarter. The scenario for the lecturer shows how the lecturer should be able to specify their own individual constraints, such as the courses that they wish to teach, and the days and times that they are available. The scenario for the student shows how a student should be able to select a course for their upcoming quarter. We also included a scenario in which the Program Administrator can receive the master schedule from each individual Program Manager and is then able to set up and run the algorithm.
-
-Our second deliverable provided an overview of our requirements, also part of our inception phase. In this deliverable we provided a broad overview of our system and its functionality. It was broken into functionality, performance, usability, constraints, and our wish list. The functionality provides a description of what our system does, we included information on the algorithm, a breakdown of our database, the different sections of our user interface, and the specifications of our server.
-
-Our third deliverable was an overall summary of our project, part of our elaboration phase. We provided a high level architecture that showed the break down of our system into user interface, Django, and the algorithm. We went into detail on how we planned to build our project and reasons for building it the way we did. We also included interaction diagrams, in which we elaborated on the scenarios we selected. 
-
-Our fourth deliverable was a user manual for our project, part of our construction phase. This deliverable was primarily a tutorial for each user role showing how they will use our final product. It had a step-by-step process for setting up accounts and performing the necessary tasks for each role. Our user manual also includes a system overview so that it is more clear for the user reading it.
-
-Our final deliverable was an acceptance test for our project. This deliverable was a working prototype designed to exhibit the same qualities that our final product will have. It demonstrated most of  our project's functionality, though it was far from feature-complete.
 
 \section{Requirements: Problem Statement} % Justin
 Scheduling courses is a difficult task for many universities. Manually scheduling hundreds of courses can be very tricky due to limited classroom space, limited professor availability, and limited time to teach these classes. 
@@ -291,11 +278,9 @@ Our group created several unit tests using Python, the Django testing suite, and
 
 \subsection*{Week 9-10: Acceptance Test}
 
-With our development, testing, and inspection complete, we demonstrated our system to our professor. 
+Our final deliverable was an acceptance test for our project. This deliverable was a working prototype designed to exhibit the same qualities that our final product will have. It demonstrated most of  our project's functionality, though it was far from feature-complete.
 
-At this point, the quarter was ending and all our project deliverables were completed and ready to be delivered as a final product. Due to the size of our project, we did not manage to integrate all of its separate modules. However, in isolation, each module worked well. 
-
-Because our system was incomplete at this point, we decided to spend the next academic quarter completing development of our project. The next academic quarter at UC Santa Cruz began January 4, 2011 and would end on March 18, 2011. 
+Because our system was still incomplete at this point, we decided to spend the next academic quarter completing development of our project. The next academic quarter at UC Santa Cruz began January 4, 2011 and would end on March 18, 2011. 
 
 The following is our plan for the second quarter. 
 
@@ -315,54 +300,54 @@ During this period, we will return to integrating the disparate modules of our s
 
 \section{Management Plan} % Erik and Will
 
-We chose a democratic team structure. The management is broken into two timeframes corresponding to our school's quarter system. For the first part of our project we would meet twice a week for a short period of time during our scheduled class time, and at least once each week outside of class. Meeting often was crucial in coordinate our project early on in development.
+Initially, we chose a democratic team structure. During our first quarter we would meet twice a week for a short period during our scheduled class time. We also met at least once each week outside of class. Meeting often was crucial in coordinating our project early in its development. 
 
-For the first quarter, course requirements guided our deliverables and project plan. It took a few weeks for us to settle in our team roles (specified below). For the first few weeks of the project we were all involved in deciding how we were going to structure our system and what needed to be done. We would meet in class and discuss the research everyone had done since our last meeting. We then worked in pairs or individually until our next meeting. We waited until implementation phase to choose specific parts of the project that we would work on. 
+For the first quarter, course requirements guided our deliverables and project plan. It took a few weeks for us to settle into the team roles shown below. For the first few weeks of the project we were all involved in deciding how we were going to structure our system and what needed to be done. We would meet in class and discuss the research everyone had done since our last meeting. We then worked in pairs or individually until our next meeting. We waited until implementation phase to choose specific parts of the project that we would work on. 
  
-We revised our management plan at the beginning of the second quarter. We switched to the Scrum process, and we are now meeting once a day for fifteen minutes. Will took over as project manager, and has taken on the responsibility of coordinating our meetings and resolving any issues that prevent team members from making progress. 
+We revised our management plan at the beginning of the second quarter. We switched to the Scrum process - we determine as a group which features and tasks need to be completed, and then select them ourselves. We are now meeting once a day for fifteen minutes. We also have a weekly planning meeting. Will took over as project manager, and has taken on the responsibility of coordinating our meetings and resolving any issues that prevent team members from making progress. 
+
+The roles below are not exclusive; these are where our team members tend to focus.
 	
 \begin{description}
 \item{\textbf{Ben Ross}} - In charge of coding the algorithm
-\item{\textbf{Professor Charlie McDowell}} - Project reviewer
-\item{\textbf{Erik Steggall}} - In charge of connecting Django and the scheduler
+\item{\textbf{Erik Steggall}} - In charge of testing
 \item{\textbf{Justin Lazaro}} - In charge of documentation
-\item{\textbf{Professor Linda Werner}} - Project reviewer
 \item{\textbf{Sabba Petri}} - In charge of the user interface
-\item{\textbf{Will Crawford}} - In charge of Django administration and overall expertise
+\item{\textbf{Will Crawford}} - In charge of Django administration and overall expertise \\ \\
+\item{\textbf{Professor Charlie McDowell}} - Project reviewer
+\item{\textbf{Professor Linda Werner}} - Project reviewer
 \end{description}
 
 \subsection{Channels of Communication}
 
 \begin{description}
 \item{\textbf{Subversion (SVN)}} \\As part of the class, we were required to use Subversion as a source control mechanism. It that allowed multiple people to remotely collaborate on the same codebase. We used Subversion to transfer code and miscellaneous files between team members. We also used it to automatically merge source code files.
-\item{\textbf{Google Groups}} \\For the purposes of communicating by e-mail, we created an e-mail list with Google Groups. This allowed us to bounce all e-mails to each team member. It also automatically archived our discussions. Scheduling meetings was done primarily via this e-mail list. It also initially served as a rudimentary feature tracker.
+\item{\textbf{Google Groups}} \\For the purposes of communicating by e-mail, we created an e-mail list with Google Groups. This allowed us to bounce our e-mails to each team member. It also automatically archived our discussions. Meetings were scheduled primarily via this e-mail list. It also initially served as a rudimentary feature tracker.
 \item{\textbf{Daily Skype Meetings}} \\After the conclusion of the class, we continued to meet via Skype every night for 15 minutes to check in with each other. These meetings were intended to briefly answer three questions: ``What did you work on today?'' ``What are you working on tomorrow?'' and ``Is there anything preventing you from making progress?''
 \item{\textbf{Git \& Codaset}} \\After the class concluded, we switched from Subversion to Git as more of our team members were comfortable with it. Git is another source control mechanism, but we found its granularity regarding which files it committed to be superior to that of Subversion. We also found its merging algorithm produced fewer conflicts during our usage. The website Codaset \texttt{(http://codaset.com/)} served as a central repository for our highly mobile team, as well as a GUI for viewing the repository's metadata, such as commit histories, volume, etc.
 \end{description}
 
 \section{Implementation} % Ben
 
-The overall system was broken down into three main parts: the web interface, the database, the scheduler. Our implementation strategy was to find the best way to implement these parts separately, and then collectively integrate them.
+The overall system was broken down into three main parts: the web interface, the database and the scheduler. Our implementation strategy was to find the best way to implement these parts separately, and then collectively integrate them.
 
-The front end of our system was written in HTML and CSS. We picked HTML and CSS because they are standard for web design. We decided to use Javascript to add functionality to the front end because it is widely supported and renders much faster than Flash. In addition, unlike Flash, Javascript is rendered in browsers without a plugin.
+The front end of our system was written in HTML, CSS and Javascript. We picked HTML and CSS because they are standard for web design. We decided to use Javascript to add functionality to the front end because it is widely supported by browsers and renders much faster than Flash. In addition, unlike Flash, Javascript is rendered in browsers without a plugin.
 
 The Django framework was selected for a few reasons. Django has an interface that allows for robust database operations without manually writing SQL queries. It also has a Pythonic template system to display information on dynamic web pages. The use of this framework allowed us to seamlessly integrate the scheduler with the database. We predicted that the integration of the scheduler with the database would pose a major risk to our system's development, but we managed to solve this early in the process. Django uses forms and templates to display information from the database to web pages. This allows us to create a few templates for each of the authentication levels. % Is this last sentence true?
 
-The scheduler posed the greatest challenge in developing the system. We choose to implement the scheduler using a genetic algorithm. This algorithm was based off of a freeware genetic algorithm scheduler[citation goes here]. The algorithm was written in Python, allowing it to be fast and easily modifiable. The genetic algorithm was selected as the best implementation solution.
+The scheduler posed the greatest challenge in developing the system. We choose to implement the scheduler using a genetic algorithm. This algorithm was based off of a freeware genetic algorithm written in C++ by Mladen Jankovic. 
 
 \section{Validation and Verification} % Ben and Erik
-Our test framework for our implementation has three components: testing for the scheduler, testing for the web interface and testing the database through the Django framework. The scheduler tests are done by scripts, the web interface tests are done through a software suite, and database tests are done through Django's testing suite.
+Our test framework for our implementation has three components: testing for the scheduler, testing for the web interface and testing the database through the Django framework. The scheduler is tested by scripts, the web interface is tested through a software tool, and the database is tested through Django's testing suite.
 
 The scheduler was first tested manually by checking the output for a valid schedule. This proved to be very tedious. The algorithm team developed an automated script that was able to check the schedule, verifying its validity. This script allowed us to verify the output from small datasets, but also scaled to verify large datasets as well.
 
-The web interface testing is done using a framework called Selenium. This open source tool allows automatic testing of the web UI. Two methods were used for writing tests for the web UI. Selenium has an IDE that allows you to record an interaction with the web UI and run it as a test. This was done for basic actions, such as logging in and out. The other way our Python scripts use Selenium's built-in libraries was to interact with the web interface. This allowed us to check for output on a given page. This was done for advanced actions, such as signing up for classes, or adding students to the database.
+The web interface testing was done using a framework called Selenium. This open source tool allowed automatic testing of the web UI. Two methods were used for writing tests for the web UI. Selenium provided an IDE that allowed us to record an interaction with the web UI and run it as a test. This was done for basic actions, such as logging in and out. The other way our Python scripts used Selenium's built-in libraries was to interact with the web interface. This allowed us to check for output on a given page. This was done for advanced actions, such as signing up for classes, or adding students to the database.
 
 The database's testing is done through Django's test framework. The suite can test the framework with other utilities. The testing suite is split into two different sections: doctests and unit tests. The tests are run through Python's manager. Python's manager can test the entire database, or specific modules of it. Our project used the unit test portion of the test suite to test the database and its connection to the algorithm.
 
 \section{Outcomes and Lessons Learned} % All
 The development of this project has taught our team many valuable lessons in software engineering. First and foremost, we learned how to work together as a team to develop a software system. Previous to this project, none of the group members had developed a project of this magnitude. Learning how to divide tasks and break up the work based on skill sets of team members was something that we struggled with at the beginning of the project. Because we did not understand the magnitude of the project, we divided tasks based on member's interests. We soon realized this was not the best decision, and our initial development cycle was thrown off because we had to choose roles to which we were best suited, even if it was not our first choice.
-
-After using the Unified Process for ten weeks, our group decided to change our development process to Scrum. The Unified Process had slow increments. The long time delays between due dates allowed members of our group to fall behind on the project. Our new method allows us to keep all members accountable, and to keep everyone updated on the current status of the system. Discovering that one development process does not always work was a great lesson learned.
 
 Throughout the development of our system, the tools and technologies that our group was using were under constant change. Our scheduling solution changed three times until a suitable solution was found, as a result, there was a lot of time spent researching technology that was never implemented. Once we  utilized our team member's skills to find the right technology, the development of our project became easier and accelerated. The combination of adopting a new development process, locking down the technologies needed, and understanding one another has increased our productivity and our understanding of working on a development team. 
 
