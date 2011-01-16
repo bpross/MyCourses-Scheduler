@@ -225,7 +225,9 @@ A group of parents make up a population. The algorithm takes 'n' number of paren
 The algorithm repeats this process until it reaches a fitness of one hundred percent. This means it has found a solution that satisfies all of its constraints. The algorithm pulls information from the database, and enters it into four different lists: a professor list, a course list, a room list and a classes list. It then outputs into a second database which is then accessible from the user interface. 
 
 \subsection{Django}
-Django connects the user interface, the database and the scheduler. Django manages the user interface by handling the user requests and providing the appropriate response. In the case of the scheduler it takes the request from the Program Administrator to run the scheduler and creates a request object and sends it through multiple middlewares (Python functions). Django then checks the URLs and determines which function it must send the request object. The function in this case is the scheduler, which takes the information stored in the Program Administrators database and runs. The output of the scheduler is placed into a second database and the request object is sent back up through the middleware in the reverse order of the way it came in. The second database is then displayed to the Program Administrator.
+Django connects the user interface, the database and the scheduler. Django manages the user interface by handling the user requests and providing the appropriate response. 
+
+For example, when the scheduler is called by the Program Administrator, the browser creates an HTTP request. Django receives this request and transforms it into an object. It checks the URL and determines to which function it must send the request object. The function in this case is the scheduling algorithm, which takes the information stored in the database and attempts to find a solution. The output of the scheduler is placed into a second database and a response to the request object is generated and sent to the Program Administrator.
 
 % Work the deliverables from Development Process into this section.
 \section{Project Plan} % Justin
