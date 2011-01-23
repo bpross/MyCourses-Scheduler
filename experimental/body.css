@@ -6,13 +6,13 @@
 
 
 /* The Basics */
-header, footer, aside, nav {
+header, footer, aside, section, nav {
 	display: block;
 }
 
 body {
 	margin: 0 auto;
-	width: 940px;
+	width: 650px;
 	font 13px/22px Helvetica, Arial, sans-serif;
 	background: #f0f0f0;
 }
@@ -31,4 +31,10 @@ h3 {
 
 p {
 	padding-bottom: 22px;
+}
+
+aside {
+	float: right;
+	position: absolute;
+	right: 50px;
 }
