@@ -1,0 +1,4 @@
+#! /bin/bash
+virtualenv env
+svn co http://code.djangoproject.com/svn/django/trunk/django env/lib/python2.7/site-packages/django
+cp env/lib/python2.7/site-packages/django/bin/django-admin.py django-admin.py
