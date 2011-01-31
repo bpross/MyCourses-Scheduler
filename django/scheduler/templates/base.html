@@ -1,137 +1,71 @@
-<!DOCTYPE html>
-<html>
-<!-- This is the home welcome page of the MyCourses page -->
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-{#		<link rel="stylesheet" type="text/css" href="/media/css/suggestion-default.css" /> #}
-
-		<link href="/media/css/CSStest2.css" rel="stylesheet" type="text/css" /> 
-		<link href="/media/css/CSStest1.css" rel="stylesheet" type="text/css" /> 
-		<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
-		
-{% block css %}{% endblock %}
-
-<title>S.C.O.R.E. - {% block title %}Home{% endblock %}</title>
+	<meta charset="utf-8">
+	<title>BLOCK TITLE - Scheduler</title>
+	<link rel="stylesheet" href="/media/css/body.css">
+	<link rel="stylesheet" href="/media/css/nav.css">
+	<link rel="stylesheet" href="/media/css/banner.css">
+	{%block cass%}{%endblock%}
+	{#<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />#}
 </head>
 <body>
-<div id="body-wrapper"> 
-	<header> 
-		<a id="logo" href="/">S.C.O.R.E.<span>*</span></a>	<nav id="menu"> 
-			<ul> 
-				<li><a href="#">Home</a>				
-				    <ul> 
-					    <li><a href="/placeholder/">Your Messages</a></li> 
-					</ul> 
-				</li> 
-				<li><a href="#">Course Chooser</a>				
-				    <ul> 
-						<li><a href="/placeholder/">View Catalogue</a></li> 
-						<li><a href="/placeholder/">Choose Courses</a></li> 
-					</ul> 
-				</li> 
-				<li><a href="#">Review Courses</a>				
-				    <ul> 
-						<li><a href="/placeholder/">Shopping Cart</a></li>
-						<li><a href="/placeholder">View Current Courses</a></li>  
-					</ul> 
-				</li> 
-				<li><a href="#">Personal</a>				
-				    <ul> 
-						<li><a href="/placeholder/">View Information</a></li> 
-						<li><a href="/placeholder/">View Friends</a></li> 
-					</ul> 
-				</li>
-				<li><a href="#">Settings</a>				
-				    <ul> 
-						<li><a href="/placeholder/">View Settings</a></li> 
-						<li><a href="/placeholder/">Choose Courses</a></li> 
-						<li><a href="/placeholder/">Review Courses</a></li> 
-					</ul> 
-				</li> 
-			</ul> 
-		</nav> 
-
-		<span class="clear"></span> 
+	<header>
+		<h1>SCORE - {%block title%}UCSC Scheduler{% endblock %}</h1>
 	</header>
-<section id="mude"> 
-	<h2>Mude.</h2> 
-    {% block description %}
-    <p class="description"> 
-    	<strong>S.C.O.R.E.<span>*</span></strong> <br>Course Scheduling System. <br>Currently Under Development
-    	<a class="download-button" href="/downloads">Download</a>				</p> 
-    {% endblock %} 
-</section>
-
- 
-{% block content %}
-<section id="features"> 
-		<div> 
+	<nav>
+		<!-- Navigation-->
+		<ul>
+			<li><a href="/" title="Home">Home</a></li>
+			{%block nav%}
+			<li>
+				<a href="/login" title="Nav Link 2">Log in</a>
+				<ul>
+					<li><a href="#" title="Sub Nav 1">Sub Nav 1</a></li>
+				</ul>
+			</li>
+			{%endblock%}
+		</ul>
+	</nav>
+	<section id="banner">
+		<!-- Optional Banner -->
+		<header>
+			{%block banner%}<h2>Welcome to the scheduling site!</h2>{%endblock%}
+		</header>
+		<hr>
+	</section>
+	<section id="main">
+		<!-- Main content -->
+		{%block content%}
+		<p>This scheduling site is designed to handle all of your university course scheduling needs.</p>
+		<p>If you're unable to log in, you'll need to contact the admin to activate your account.</p>
+		{%endblock%}
+	</section>
+	<aside>
+		<!-- Sidebar -->
+		{%block sidebar%}
+		<ul>Debug Information
 			{% if user.is_authenticated %}
-			<h2>Your username is...</h2> 
-			<p>{{ user.username }}</p> 
-			{% else %}
-			<h2>Please log in</h2>
-			<p><a href="/login/">Click here</a></p>
-			{% endif %}
-		</div> 
-		<div> 
-			<h2>User functions</h2> 
-			{% if user.is_authenticated %}
-			<p>
-		    You may <a href="/logout/">log out.</a>
-		    {% else %}
-		    You are not logged in..
-		    {% endif %}
-		    <br><a href="/manual/">Access</a> the user manual.</a>
-		    </p>
-		</div> 
-		<div> 
-			<h2>Admin functions</h2>
-			<p>
-			{% if user.is_authenticated %}
-			    {% if user.is_staff %}
-			    <a href="/run-algorithm">Run</a> the algorithm
-			    <br><a href="/admin/">Admin</a> interface
-			    {% else %}
-			    You are not an admin.
-			    {% endif %}
-			{% else %}
-			You are not logged in.
-			{% endif %}
-			<p></p> 
-		</div> 
-		<div> 
-			<h2>Debug info</h2> 
-			<p>User: {{user.username}}<br>
-			    Staff: {{user.is_staff}}<br>
-			    Super: {{user.is_superuser}}<br>
-			    Last: {{user.last_login}}</p> 
-		</div> 
-		<span class="clear"></span> 
-</section>
-{% endblock %}
-{% block footer %}
-<footer>
-	<div id="footer-wrapper"> 
-	    <div class="directory"> 
-	        <ul> 
-	            <li><strong>validate</strong></li> 
-	            <li><a href="http://validator.w3.org/check/referer">W3C Validator</a></li>
-	        </ul> 
-	        <ul> 
-	            <li><strong>support</strong></li> 
-	            <li><a href="/placeholder">frequently asked questions</a></li> 
-	            <li><a href="/placeholder">help</a></li> 
-	        </ul> 
-	        <ul> 
-	            <li><strong>contact</strong></li> 
-	            <li><a href="/placeholder">the team</a></li> 
-	        </ul> 
-	    </div> 
-	    <span class="clear"></span> 
-		<span>© 2010, [CS115] The S.C.O.R.E. team at UC Santa Cruz.</span>
-
-	</div>
-</footer>
-{% endblock %}
+			<li>Username: {{user.username}}</li>
+			<li>Staff: {{user.is_staff}}</li>
+			<li>Super: {{user.is_superuser}}</li>
+			{%else%}
+			<li>Not logged in.</li>
+			{%endif%}
+		</ul>
+		{%endblock%}
+	</aside>
+	<footer>
+		<!-- Footer -->
+		{%block footer%}
+		<section id="copyright">Copyright UCSC Score Team 2010-2011</section>
+		<section id="debug-tools"><a href="http://validator.w3.org/check/referer">W3C Validator</a></section>
+		{%endblock%}
+	</footer>
+	{# Uncomment below once we're ready for jQuery.
+		  Using Google's jQuery library may let us use a user-cached copy. #}
+	{#
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	#}
+</body>
 </html>
