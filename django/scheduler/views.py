@@ -1,15 +1,15 @@
 # Create your views here.
 from django.contrib.auth import logout
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseServerError
 from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.template import RequestContext, loader
 from scheduler.algorithm.algotest import Algorithm
 
 def index(request):
     return render_to_response('base.html', RequestContext(request))  
 
 def login(request):
-    return render_to_response('login.html')
+    return render_to_response('login.html', RequestContext(request))
 
 def algorithm(request):
     if request.user.is_staff:
@@ -28,6 +28,9 @@ def manual(request):
 #
 def placeholder(request):
     return render_to_response('placeholder.html', RequestContext(request))
+    
+#def error(request):
+#	return http.HttpResponseServerError(a_template.render(RequestContext(request, {})))
 #
 #def shoppingcart(request):
 #    return render_to_response('shoppingCart.html', RequestContext(request))

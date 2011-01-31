@@ -38,8 +38,9 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Trying to get algorithm working
-    (r'^algorithm/$', algorithm),
+#    (r'^algorithm/$', algorithm),
 )
+#handler500 = 'error'
 
 if settings.DEVEL:
     urlpatterns += patterns("django.views",

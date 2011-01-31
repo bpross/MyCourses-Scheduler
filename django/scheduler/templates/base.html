@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>BLOCK TITLE - Scheduler</title>
+	<title>{% block title %}Home{% endblock %} - SCORE Scheduler</title>
 	<link rel="stylesheet" href="/media/css/body.css">
 	<link rel="stylesheet" href="/media/css/nav.css">
 	<link rel="stylesheet" href="/media/css/banner.css">
-	{%block cass%}{%endblock%}
+	{% block css %}{% endblock %}
 	{#<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />#}
 </head>
 <body>
 	<header>
-		<h1>SCORE - {%block title%}UCSC Scheduler{% endblock %}</h1>
+		<h1>SCORE - {%block header%}UCSC Scheduler{% endblock %}</h1>
 	</header>
 	<nav>
 		<!-- Navigation-->
@@ -62,10 +62,9 @@
 		<section id="debug-tools"><a href="http://validator.w3.org/check/referer">W3C Validator</a></section>
 		{%endblock%}
 	</footer>
-	{# Uncomment below once we're ready for jQuery.
-		  Using Google's jQuery library may let us use a user-cached copy. #}
-	{#
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	#}
+	{% comment %} Uncomment below once we're ready for jQuery. 
+		  Using Google's jQuery library may let us use a user-cached copy. {% endcomment %}
+	
+	{# <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> #}
 </body>
 </html>
