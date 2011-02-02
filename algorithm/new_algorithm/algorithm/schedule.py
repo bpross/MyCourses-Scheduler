@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #Author: Benjamin Ross
-#Date: 11/15
+#Date: 11/15/10, Rev B 2/1/11
 
 """
 This is the schedule class, used to schedule the classes.
@@ -41,6 +41,7 @@ return schedule
 
 from configuration import Configuration
 import random
+from types import *
 
 def PrintStatic(a_string=''):
     print '\b%s%s'%(a_string, '\b'*len(a_string)),
@@ -177,7 +178,8 @@ class Schedule:
             #Places class in schedule
             while total_duration < classes.duration\
                       and temp_index < len(self.chromo_list):
-                    new_chromo = self.insert_chromosome(Chromosome(),temp_index)
+                    new_chromo = self.insert_chromosome(Chromosome(),\
+                                                        temp_index)
                     self.number_chromosomes += 1
                     #Checks to see if the class is already in the hashmap,
                     #if not Class object is added with value being location
@@ -282,8 +284,8 @@ class Schedule:
     def perform_crossover(self,start_index,end_index):
         """
         Performs a crossover:
-            Crossovers are where two schedules are combined at two random points,
-            taking the best chromosomes from either of the schedules
+            Crossovers are where two schedules are combined at two random
+            points,taking the best chromosomes from either of the schedules
         @param start_index: index of the hashmap to start the crossover
         @param end_index: index of the hashmap to end the crossover
         """
@@ -291,7 +293,8 @@ class Schedule:
         random_schedule = self.randomize_schedule()
         #Creats a list of hash values [(Class,index)]
         random_hash_list = random_schedule.hash_map.items()
-
+        check_position = False
+        
         while start_index < end_index:
             #Get the touple to get class and index
             swap_tuple = random_hash_list[start_index]
@@ -320,6 +323,13 @@ class Schedule:
 
                 #Getst the new Position for the Class
                 new_position = swap_tuple[1]
+                #Checks to see if the new position can be used
+                while not check_position:
+                    check_position = self.check_position(swap_class,\
+                                                         new_position)
+                    if not check_position:
+                        new_position += 1
+                        
                 #Updates the Hash Map with the new position
                 self.hash_map[swap_class] = new_position
 
@@ -338,7 +348,27 @@ class Schedule:
                     new_position += 1
 
                 start_index += 1
-                
+
+
+    def check_position(self,check_class,position):
+        """
+        Checks to see if the class can have a valid insert
+        """
+        duration = check_class.get_duration() + position
+        day_number = self.get_room_day_numbers(position)
+        old_day = day_number[0]
+        old_room = day_number[1]
+        while position <= duration:
+            day_number = self.get_room_day_numbers(position)
+            new_day = day_number[0]
+            new_room = day_number[1]
+            if new_day == old_day and new_room == old_room:
+                position += 1
+            else:
+                return False
+        return True
+        
+    
     def perform_mutations(self):
         """
         Performs mutations:
@@ -347,6 +377,7 @@ class Schedule:
         Based on the mutation size
         """
         count = 0
+        check_position = False
         while count < self.mutation_size:
             #Get random class to mutate
             random_class_index = random.randint(0,\
@@ -366,8 +397,16 @@ class Schedule:
                 cur_chromosome = self.get_chromosome_from_list(random_class\
                                                                ,old_position)
                 if new_position in cur_chromosome.position:
-                    count += 1
-                    
+                    while new_position not in cur_chromosome.position:
+                        new_position = random.randint(0,len(self.chromo_list))
+
+                #Checks to see if the new position can be used
+                while not check_position:
+                    check_position = self.check_position(random_class,\
+                                                         new_position)
+                    if not check_position:
+                        new_position += 1
+                        
                 #Updates the hash map with new position
                 self.hash_map[random_class] = new_position
                 cur_chromosome.position.append(new_position)
@@ -555,6 +594,10 @@ class Schedule:
         while count < len(self.chromo_list):
             #Gets the list at counter
             chromo_list = self.chromo_list[count]
+            if type(chromo_list) is ListType:
+                len_list = len(chromo_list)
+                if len_list > 1:
+                    print "CONFLICT!!"
             #Gets the tuple of (Day,Room)
             day_room = self.get_room_day_numbers(count)
             
