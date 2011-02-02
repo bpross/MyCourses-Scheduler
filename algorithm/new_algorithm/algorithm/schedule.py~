@@ -62,7 +62,7 @@ class Chromosome:
         
     def print_chromo(self):
         self._class.print_course_class()
-        print self.fitness
+        print chromosome.fitness
 
 class Schedule:
     """
@@ -523,7 +523,7 @@ class Schedule:
         #Seeds the random with system time
         random.seed()
         generations = 1
-        while self.get_overall_fitness() < 1.0 and generations <= 12500:
+        while self.get_overall_fitness() < 1.0 or generations <= 12500:
             #Get random points for crossover
             start_crossover = random.randint(0,self.config.get_num_classes())
             end_crossover = random.randint(0,self.config.get_num_classes())
