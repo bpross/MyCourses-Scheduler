@@ -5,6 +5,7 @@ from professor import Professor
 from course_class import CourseClass
 from room import Rooms
 from course import Course
+
 class Config:
     
     #######          This is what we'll need               ##############
@@ -124,7 +125,6 @@ class Config:
         for Course in course_list:
             Course.print_course()
 
-        return course_list
     # This section takes values from the database and stores them in room list 
     def get_room_list(self):
         from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
@@ -143,7 +143,6 @@ class Config:
     
         for Rooms in room_list:
             Rooms.print_room()
-        return room_list
     
     # This section takes values from the database and stores them in room list 
     def get_prof_list(self, course_list):
@@ -165,7 +164,6 @@ class Config:
     
         for Professor in prof_list:
             Professor.print_professor()
-        return prof_list
    
     def get_course_class_list(self):        
         from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
