@@ -6,7 +6,18 @@ from django.template import RequestContext, loader
 from scheduler.algorithm.algotest import Algorithm
 
 def index(request):
-    return render_to_response('base.html', RequestContext(request))  
+	if request.user.is_authenticated:
+		if request.user.is_staff:
+			if request.user.is_superuser: # Admin
+				return HttpResponseRedirect('/administrator')
+			else: # Manager
+				return render_to_response('base.html', RequestContext(request))
+		else: # Lecturer/Student
+			return render_to_response('base.html', RequestContext(request))
+	else: # Not logged in			
+		return render_to_response('base.html', RequestContext(request))  
+	
+
 
 def login(request):
     return render_to_response('login.html', RequestContext(request))

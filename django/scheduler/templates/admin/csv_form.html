@@ -1,0 +1,15 @@
+{% extends "admin.html" %}
+{% block title %}Admin{% endblock %}
+
+{% block header %}CSV Upload{% endblock %}
+
+
+{% block banner %}<h2>CSV Upload</h2>{% endblock %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="/administrator/csv/" method="post">
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
