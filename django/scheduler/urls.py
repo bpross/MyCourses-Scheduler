@@ -26,6 +26,9 @@ urlpatterns = patterns('',
 #    (r'^mymessages/', messages),
 #    (r'^settings/', mysettings),
 #
+
+	# The admin view
+	(r'^administrator/', include('administrator.urls')),
     # The student view
 #    (r'^student/', include('student.urls')),
     # The lecturer view
