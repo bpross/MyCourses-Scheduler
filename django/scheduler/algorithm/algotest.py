@@ -57,91 +57,18 @@ class Algorithm():
     course_class_list = configuration.get_course_class_list()
 
 
-    
+#From schedule_test.py
 
-"""    
-#######          This is what we'll need               ##############
-    def __init__(self,prof_list = None, course_list = None,
-                 room_list = None, classes_list = None):
-        if prof_list is None:
-            self.prof_list = None
-        else:
-            self.prof_list = prof_list
-        if course_list is None:
-            self.course_list = None
-        else:
-            self.course_list = course_list
-        if room_list is None:
-            self.room_list = None
-        else:
-            self.room_list = room_list
-        if classes_list is None:
-            self.classes_list = None
-        else:
-            self.classes_list = classes_list
+    from schedule import Schedule
 
-        self.empty = True
-        self.num_professors = 0
-        self.num_rooms = 0
-        self.num_classes = 0
-        self.num_courses = 0
+    test_schedule = Schedule()
 
+    test_schedule.algorithm()
 
-    def is_empty(self, Class):
-        return self.empty
+#    test_schedule.print_chromosomes()
 
+#    test_float = test_schedule.get_overall_fitness()
 
+#    print test_float
 
-
-
-# This section takes values from the database and stores them in course list 
-    print "This will print out all the courses currently in the database"
-
-    course_list = []
-    all_courses = Class.objects.all()
-    
-    for Class in all_courses:
-       new_course = Course()
-       new_course.id = Class.idClass
-       new_course.name = Class.Class
-       course_list.append(new_course)
-
-    for Course in course_list:
-        Course.print_course()
-
-# This section takes values from the database and stores them in room list 
-    room_list = []
-    all_rooms = Room.objects.all()
-    print "This will print out all of the Rooms currently in the database"
-
-    for Room in all_rooms:
-        print "Room = %s, Room ID = %d seats = %d" % (Room.RoomName, Room.idRoom, Room.SeatNum)
-        new_room = Rooms()
-        new_room.seat_num = Room.SeatNum
-        new_room.lab = Room.Lab
-        new_room.name = Room.RoomName
-        room_list.append(new_room)
-
-    for Rooms in room_list:
-        Rooms.print_room()
-
-# This section takes values from the database and stores them in room list 
-    
-    print "This will print out all of the professors currently in the database"
-    prof_list = []
-
-    all_lecturers = Lecturer.objects.all()
-    
-    for Lecturer in all_lecturers:
-        print "Lecturer name = %s, Lecturer ID = %d" % (Lecturer.Name, Lecturer.idLecturer)
-        new_prof = Professor()
-        new_prof.name = Lecturer.Name
-        new_prof.id = Lecturer.idLecturer
-        new_prof.course_list = course_list
-
-    for Professor in prof_list:
-        Professor.print_professor()
-
-"""
-    
 print "End Test"

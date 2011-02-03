@@ -87,7 +87,7 @@ class Configuration:
                 return room
 
         #Not in List
-        return False
+        return None
 
     #Returns the number of parsed rooms
     def get_num_rooms(self):
@@ -209,12 +209,12 @@ class Configuration:
             #Parse Professor
             if 'professor' in line:
                 words = line.split()
-                new_class.add_professor(int(words[2]))
+                new_class.add_professor(self.get_professor_by_id(int(words[2])))
 
             #parse Course
             elif 'course' in line:
                 words = line.split()
-                new_class.add_course(int(words[2]))
+                new_class.add_course(self.get_course_by_id(int(words[2])))
 
             #Parse Duration
             elif 'duration' in line:
