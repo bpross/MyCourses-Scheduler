@@ -9,6 +9,7 @@ from room import Rooms
 from course import Course
 from configuration import Configuration
 from algo_config import Config
+from datetime import date
 class Algorithm():
     # Create School in Database
     s = School(idSchool = 1, School = "UC Santa Cruz")
@@ -46,6 +47,16 @@ class Algorithm():
     l1.save()
     l2.save()
 
+    p1 = Period(idPeriod = 1, period = "first", StartDate = date.today(), EndDate = date.today(), InstructionBegins = date.today(), InstructionEnds = date.today())
+    p2 = Period(idPeriod = 2, period = "Second", StartDate = date.today(), EndDate = date.today(), InstructionBegins = date.today(), InstructionEnds = date.today())
+    p1.save()
+    p2.save()
+
+    cc1 = ClassInstance(idClass = c1, idClassInstance = 1, idPeriod = p1, ClassTime = "morning", Section = "Yes", idLecturer = l1, LecturerOfficeHours = "Afternoon", TAOfficeHours = "Night", idTA = 1, idBuilding = b, idRoom = r1)
+    cc2 = ClassInstance(idClass = c2, idClassInstance = 2, idPeriod = p2, ClassTime = "morning", Section = "Yes", idLecturer = l2, LecturerOfficeHours = "Afternoon", TAOfficeHours = "Night", idTA = 1, idBuilding = b, idRoom = r2)
+	
+    cc1.save()
+    cc2.save()
     configuration = Config()
 
     course_list = configuration.get_course_list()
@@ -59,9 +70,9 @@ class Algorithm():
 
 #From schedule_test.py
 
-#    from schedule import Schedule
+    from schedule import Schedule
 
-#    test_schedule = Schedule()
+    test_schedule = Schedule()
 
 #    test_schedule.algorithm()
 

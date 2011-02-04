@@ -8,7 +8,7 @@ from course import Course
 
 class Config:
     
-    #######          This is what we'll need               ##############
+#######          This is what we'll need               ##############
     def __init__(self,prof_list = None, course_list = None,
                  room_list = None, classes_list = None):
         if prof_list is None:
@@ -104,13 +104,9 @@ class Config:
 
 ###### parse_file
     def get_data(self):
-        print "Test1"
         self.get_course_list()
-        print "Test2"
         self.get_prof_list()
-        print "Test3"
         self.get_room_list()
-        print "Test4"
         self.get_course_class_list()
 
 
@@ -183,16 +179,18 @@ class Config:
 
         all_course_class = ClassInstance.objects.all()
         for ClassInstance in all_course_class:       
-            print "Class = %d, Lecturer = %d" % (CourseClass.idClass, CourseClass.idLecturer)
+
+            new_prof = ClassInstance.idLecturer
+            new_course = ClassInstance.idClass
+
+
             new_course_class = CourseClass()
-            new_course_class.professor = ClassInstance.idLecturer
-            new_course_class.course = ClassInstance.idClass
+            new_course_class.professor = new_prof.Name
+            new_course_class.course = new_course.Class
             new_course_class.durration = 1
             new_course_class.lab = 0
             self.classes_list.append(new_course_class)
-
-
-        for CourseClass in self.classes_list:
-            print "alsdfjaskdlfjaslfjdsajdfasdfl;ajsf;lkasdjf;klajsdf"
-            CourseClass.print_course_class()
+                      
+        for course_class in self.classes_list:
+            print "(Professer: %s Course: %s Durration: %d Lab: %d)" % (course_class.professor, course_class.course, course_class.durration, course_class.lab)
         
