@@ -9,7 +9,6 @@ from course import Course
 class Config:
     
     #######          This is what we'll need               ##############
-
     def __init__(self,prof_list = None, course_list = None,
                  room_list = None, classes_list = None):
         if prof_list is None:
@@ -103,6 +102,16 @@ class Config:
     def get_num_classes(self):
         return self.num_classes
 
+###### parse_file
+    def get_data(self):
+        print "Test1"
+        self.get_course_list()
+        print "Test2"
+        self.get_prof_list()
+        print "Test3"
+        self.get_room_list()
+        print "Test4"
+        self.get_course_class_list()
 
 
 
@@ -113,23 +122,23 @@ class Config:
         from course import Course
         print "This will print out all the courses currently in the database"
     
-        course_list = []
+        self.course_list = []
         all_courses = Class.objects.all()
         
         for Class in all_courses:
            new_course = Course()
            new_course.id = Class.idClass
            new_course.name = Class.Class
-           course_list.append(new_course)
+           self.course_list.append(new_course)
     
-        for Course in course_list:
+        for Course in self.course_list:
             Course.print_course()
 
     # This section takes values from the database and stores them in room list 
     def get_room_list(self):
         from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
         from room import Rooms
-        room_list = []
+        self.room_list = []
         all_rooms = Room.objects.all()
         print "This will print out all of the Rooms currently in the database"
     
@@ -139,18 +148,18 @@ class Config:
             new_room.seat_num = Room.SeatNum
             new_room.lab = Room.Lab
             new_room.name = Room.RoomName
-            room_list.append(new_room)
+            self.room_list.append(new_room)
     
-        for Rooms in room_list:
+        for Rooms in self.room_list:
             Rooms.print_room()
     
     # This section takes values from the database and stores them in room list 
-    def get_prof_list(self, course_list):
+    def get_prof_list(self):
         from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
         from professor import Professor
         
         print "This will print out all of the professors currently in the database"
-        prof_list = []
+        self.prof_list = []
     
         all_lecturers = Lecturer.objects.all()
         
@@ -159,10 +168,10 @@ class Config:
             new_prof = Professor()
             new_prof.name = Lecturer.Name
             new_prof.id = Lecturer.idLecturer
-            new_prof.course_list = course_list
-            prof_list.append(new_prof)
+#            new_prof.course_list = course_list
+            self.prof_list.append(new_prof)
     
-        for Professor in prof_list:
+        for Professor in self.prof_list:
             Professor.print_professor()
    
     def get_course_class_list(self):        
@@ -170,18 +179,20 @@ class Config:
         from course_class import CourseClass
     # This section takes values from the database and stores them in course clas list 
         print "This will print out all of the course classes currently in the database"
-        course_class_list = []
+        self.classes_list = []
 
         all_course_class = ClassInstance.objects.all()
         for ClassInstance in all_course_class:       
             print "Class = %d, Lecturer = %d" % (CourseClass.idClass, CourseClass.idLecturer)
-            
             new_course_class = CourseClass()
             new_course_class.professor = ClassInstance.idLecturer
             new_course_class.course = ClassInstance.idClass
             new_course_class.durration = 1
             new_course_class.lab = 0
-            course_class_list.append(new_course_class)
+            self.classes_list.append(new_course_class)
 
 
+        for CourseClass in self.classes_list:
+            print "alsdfjaskdlfjaslfjdsajdfasdfl;ajsf;lkasdjf;klajsdf"
+            CourseClass.print_course_class()
         

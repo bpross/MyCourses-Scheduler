@@ -52,18 +52,18 @@ class Algorithm():
 
     room_list = configuration.get_room_list()
 
-    prof_list = configuration.get_prof_list(course_list)
+    prof_list = configuration.get_prof_list()
 
     course_class_list = configuration.get_course_class_list()
 
 
 #From schedule_test.py
 
-    from schedule import Schedule
+#    from schedule import Schedule
 
-    test_schedule = Schedule()
+#    test_schedule = Schedule()
 
-    test_schedule.algorithm()
+#    test_schedule.algorithm()
 
 #    test_schedule.print_chromosomes()
 
