@@ -123,4 +123,5 @@ INSTALLED_APPS = (
     'scheduler.student',
     'scheduler.lecturer',
     'scheduler.manager',
+	 'scheduler.administrator',
 )
