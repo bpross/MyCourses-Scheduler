@@ -3,6 +3,7 @@
 # 11-15-10
 
 from django.db import models
+from django.contrib import admin
 
 # School:
 # Holds: school ID number, school name
@@ -13,6 +14,10 @@ class School(models.Model):
 
     def __unicode__(self):
         return self.School
+
+class SchoolAdmin(admin.ModelAdmin):
+    list_display = ('idSchool', 'School')
+    list_filter = ('idSchool', 'School')
 
 # Department:
 # Holds: the department ID, the department name, the deptartment's
@@ -27,6 +32,10 @@ class Department(models.Model):
     def __unicode__(self):
         return self.Department
 
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
+    list_filter = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
+
 # Class:
 # Holds: the class ID, the class name, a description of the class, the class's department ID
 # Returns: The class name
@@ -39,13 +48,21 @@ class Class(models.Model):
     def __unicode__(self):
         return self.Class
 
+class ClassAdmin(admin.ModelAdmin):
+    list_display = ('idDepartment', 'idClass', 'Class', 'ClassDescription')
+    list_filter = ('idDepartment', 'idClass', 'Class', 'ClassDescription')
+
 # Prerequisite:
 # Holds: the prerequisite ID, the prerequisite's class ID
 # Returns: nothing
 class Prerequisite(models.Model):
     idPrereq = models.IntegerField(primary_key=True)
     ClassID = models.ForeignKey(Class, to_field='idClass')
-   
+
+class PrerequisiteAdmin(admin.ModelAdmin):
+    list_display = ('idPrereq', 'ClassID')
+    list_filter = ('idPrereq', 'ClassID')
+
 # Building:
 # Holds: the building ID, the building name
 # Returns: The building name
@@ -55,6 +72,10 @@ class Building(models.Model):
 
     def __unicode__(self):
         return self.BldgName
+
+class BuildingAdmin(admin.ModelAdmin):
+    list_display = ('idBuilding', 'BldgName')
+    list_filter = ('idBuilding', 'BldgName')
 
 # Room:
 # Holds: the room ID, the room number, the type of room, the room name, the rooms' building ID
@@ -72,6 +93,11 @@ class Room(models.Model):
     def __unicode__(self):
         return self.RoomName
 
+class RoomAdmin(admin.ModelAdmin):
+    list_display = ('idBuilding', 'idRoom', 'RoomNumber', 'Type', 'RoomName', 'Lab', 'SeatNum')
+    list_filter = ('idBuilding', 'idRoom', 'RoomNumber', 'Type', 'RoomName', 'Lab', 'SeatNum')
+#   append seat_num to display/filter lists if uncommented in class above
+
 # Period:
 # Holds: 
 # Returns:
@@ -83,6 +109,10 @@ class Period(models.Model):
     EndDate = models.DateField()
     InstructionBegins = models.DateField()
     InstructionEnds = models.DateField()
+
+class PeriodAdmin(admin.ModelAdmin):
+    list_display = ('idPeriod', 'period', 'StartDate', 'EndDate', 'InstructionBegins', 'InstructionEnds')
+    list_filter = ('idPeriod', 'period', 'StartDate', 'EndDate', 'InstructionBegins', 'InstructionEnds')
 
 # Lecturer:
 # Holds: the lecturer ID, the lecturer's status, comments, the
@@ -97,6 +127,10 @@ class Lecturer(models.Model):
 
     def __unicode__(self):
         return self.Name
+
+class LecturerAdmin(admin.ModelAdmin):
+    list_display = ('idLecturer', 'Status', 'Name', 'Comment', 'idDepartment')
+    list_filter = ('idLecturer', 'Status', 'Name', 'Comment', 'idDepartment')
 
 # ClassInstance:
 # Holds: the class-instance ID, the scheduled time, the section, the
@@ -118,6 +152,10 @@ class ClassInstance(models.Model):
     idBuilding = models.ForeignKey(Building, to_field='idBuilding')
     idRoom = models.ForeignKey(Room, to_field='idRoom')
 
+class ClassInstanceAdmin(admin.ModelAdmin):
+    list_display = ('idClass', 'idClassInstance', 'idPeriod', 'ClassTime', 'Section', 'idLecturer', 'LecturerOfficeHours', 'TAOfficeHours', 'idTA', 'idBuilding', 'idRoom')
+    list_filter = ('idClass', 'idClassInstance', 'idPeriod', 'ClassTime', 'Section', 'idLecturer', 'LecturerOfficeHours', 'TAOfficeHours', 'idTA', 'idBuilding', 'idRoom')
+
 # ClassLab:
 # Holds: the lab ID, the lab name, the lab time, the lab's room ID, the lab's
 #   building ID, the lab's class-instance ID
@@ -133,7 +171,9 @@ class ClassLab(models.Model):
     def __unicode__(self):
         return self.LabName
 
-
+class ClassLabAdmin(admin.ModelAdmin):
+    list_display = ('idClassInstance', 'idClassLab', 'LabName', 'idRoom', 'idBuilding')
+    list_filter = ('idClassInstance', 'idClassLab', 'LabName', 'idRoom', 'idBuilding')
 
 # Person:
 # Holds: the person's ID, the persons's first name, middle initial, last
@@ -150,6 +190,10 @@ class Person(models.Model):
     def __unicode__(self):
         return self.LName
 
+class PersonAdmin(admin.ModelAdmin):
+    list_display = ('idPerson', 'FName', 'MInitial', 'LName', 'Suffix', 'Prefix')
+    list_filter = ('idPerson', 'FName', 'MInitial', 'LName', 'Suffix', 'Prefix')
+
 # Role:
 # Holds: the role ID, the role name
 # Returns: The role name
@@ -160,6 +204,10 @@ class Role(models.Model):
     def __unicode__(self):
         return self.Role
 
+class RoleAdmin(admin.ModelAdmin):
+    list_display = ('idRole', 'Role')
+    list_filter = ('idRole', 'Role')
+
 # PersonRole:
 # Holds: the Person-roles person ID and role ID
 # Returns: Nothing
@@ -167,4 +215,6 @@ class PersonRole(models.Model):
     idPerson = models.ForeignKey(Person, to_field='idPerson')
     idRole = models.ForeignKey(Role, to_field='idRole')
 
-
+class PersonRoleAdmin(admin.ModelAdmin):
+    list_display = ('idPerson', 'idRole')
+    list_filter = ('idPerson', 'idRole')
