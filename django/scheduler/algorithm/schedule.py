@@ -40,6 +40,8 @@ return schedule
 """
 
 from configuration import Configuration
+from scheduler.algorithm import models
+from scheduler.algorithm.models import *
 import random
 from types import *
 
@@ -599,6 +601,7 @@ class Schedule:
             #Gets the list at counter
             chromo_list = self.chromo_list[count]
             if type(chromo_list) is ListType:
+                
                 len_list = len(chromo_list)
                 if len_list > 1:
                     print "CONFLICT!!"
@@ -607,9 +610,16 @@ class Schedule:
             
             if chromo_list is not None:
                 for chromosomes in chromo_list:
+                    CourseInstance = ClassInstance.objects.get(chromosomes._class.get_id())
+                    curr_course_class = chromosomes._class
+                    Period = Period.objects.get(CourseInstance.idPeriod)
                     print "Day: " + str(day_room[0])
                     print "Hour: " + str(count%self.day_length+1)
                     print "Room: " + str(day_room[1])
+                    Professor = Lecturer.objects.get(curr_course_class.professor.get_id())
+                    Class = Class.objects.get()
+                    CourseInstance.idLecturer = Professor
+                    CourseInstance.idClass = Course
                     chromosomes.print_chromo()
                     print "\n\n"
                     

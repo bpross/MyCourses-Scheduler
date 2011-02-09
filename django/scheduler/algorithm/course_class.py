@@ -4,6 +4,8 @@
 """
 CourseClass
 """
+from course import Course
+from professor import Professor
 
 class CourseClass:
 
@@ -79,3 +81,7 @@ class CourseClass:
     #Adds/changes duration of the class
     def add_duration(self, duration):
         self.duration = duration
+
+    def print_course_class(self):
+        self.course.print_course()
+        self.professor.print_professor()
