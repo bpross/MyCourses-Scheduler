@@ -40,7 +40,6 @@ return schedule
 """
 
 from configuration import Configuration
-from algo_config import Config
 import random
 from types import *
 
@@ -145,9 +144,7 @@ class Schedule:
             self.config = Configuration()
 
         #Hard coded the file for now, will change with Django interface
-        self.config.parse_file('/Users/esteggall/Scheduler/django/scheduler/algorithm/config')
-		#Steggall's integration hack
-		#self.config
+        self.config.parse_file('config')
 
     def init_chromosomes(self):
         """
@@ -164,11 +161,12 @@ class Schedule:
                 #Initializes Empty List
                 self.chromo_list = ((self.day_length*self.num_days)*\
                                    (self.config.get_num_rooms()))*[None]
-                
+        
         #Seeds the random with system time
         random.seed()  
         for classes in self.config.classes_list:
-            
+            print "Placing classes"
+            print "DURATION: " + str(classes.duration)
             #Gets random spot for class
             rand = random.randint(0,len(self.chromo_list))
             
@@ -184,6 +182,7 @@ class Schedule:
                     new_chromo = self.insert_chromosome(Chromosome(),\
                                                         temp_index)
                     self.number_chromosomes += 1
+                    print "Number of chromosomes: " + str(self.number_chromosomes)
                     #Checks to see if the class is already in the hashmap,
                     #if not Class object is added with value being location
                     #in list Only adds when the class starts
@@ -208,6 +207,7 @@ class Schedule:
         #Figure out which room you are in
         data_tuple = self.get_room_day_numbers(hold_index)
         room_id = data_tuple[1]
+        print room_id
         #Get Room object
         room = self.config.get_room_by_id(room_id)
 
@@ -558,13 +558,14 @@ class Schedule:
             return schedule
         """
         #Loads the config for the rooms/classes
-        self.get_config()
+        #self.get_config()
         #Creates the first chromosome
         self.init_chromosomes()
         self.get_overall_fitness()
         #Seeds the random with system time
         random.seed()
         generations = 1
+        print "TEST!!!"
         while self.get_overall_fitness() < 1.0 and generations <= 12500:
             #Get random points for crossover
             start_crossover = random.randint(0,self.config.get_num_classes())
