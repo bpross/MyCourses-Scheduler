@@ -607,19 +607,28 @@ class Schedule:
                     print "CONFLICT!!"
             #Gets the tuple of (Day,Room)
             day_room = self.get_room_day_numbers(count)
-            
+            itor = 0
             if chromo_list is not None:
                 for chromosomes in chromo_list:
-                    CourseInstance = ClassInstance.objects.get(chromosomes._class.get_id())
+                    itor = itor + 1
+                    #Get course ID to work with
+                    CourseID = chromosomes._class.get_course_classid()
+                    #Use CourseInstance to store prof, course, period, room in
+                    CourseInstance = ClassInstance.objects.get(pk=CourseID)
+
+
                     curr_course_class = chromosomes._class
-                    Period = Period.objects.get(CourseInstance.idPeriod)
                     print "Day: " + str(day_room[0])
                     print "Hour: " + str(count%self.day_length+1)
                     print "Room: " + str(day_room[1])
-                    Professor = Lecturer.objects.get(curr_course_class.professor.get_id())
-                    Class = Class.objects.get()
+                 #   Period = Period(idPeriod = itor, period = str(count%self.day_length+1), StartDate = day_room[0], EndDate = day_room[0], InstructionBegins = day_room[0], InstructionEnds = day_room[0]) 
+                    ProfID = curr_course_class.get_professor_id()
+                    Professor = Lecturer.objects.get(pk=ProfID)
+                    ClassID = curr_course_class.get_course_id()
+                    Course = Class.objects.get(pk=ClassID)
                     CourseInstance.idLecturer = Professor
                     CourseInstance.idClass = Course
+                    CourseInstance.save()
                     chromosomes.print_chromo()
                     print "\n\n"
                     
