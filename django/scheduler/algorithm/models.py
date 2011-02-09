@@ -35,6 +35,7 @@ class Department(models.Model):
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
     list_filter = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
+    list_editable = ('idDepartment', 'Department', 'DeptAbbrev')
 
 # Class:
 # Holds: the class ID, the class name, a description of the class, the class's department ID
@@ -48,10 +49,12 @@ class Class(models.Model):
     def __unicode__(self):
         return self.Class
 
+
 class ClassAdmin(admin.ModelAdmin):
     list_display = ('idDepartment', 'idClass', 'Class', 'ClassDescription')
     list_filter = ('idDepartment', 'idClass', 'Class', 'ClassDescription')
-
+    list_editable = ('Class', 'ClassDescription')
+    list_display_links = ('idDepartment', 'idClass')
 # Prerequisite:
 # Holds: the prerequisite ID, the prerequisite's class ID
 # Returns: nothing
@@ -62,6 +65,7 @@ class Prerequisite(models.Model):
 class PrerequisiteAdmin(admin.ModelAdmin):
     list_display = ('idPrereq', 'ClassID')
     list_filter = ('idPrereq', 'ClassID')
+    list_display_link = ('idPrereq', 'ClassID')
 
 # Building:
 # Holds: the building ID, the building name
