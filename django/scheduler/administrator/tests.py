@@ -22,7 +22,6 @@ class SimpleTest(TestCase):
         testReader = csv.reader(file,delimiter = ',', quotechar = '|')
         for row in testReader:
             if row[0] == "professor":
-                
             elif row[0] == "department":
             elif row[0] == "school":
             elif row[0] == "building":
@@ -99,7 +98,7 @@ class SimpleTest(TestCase):
         file = open("/Users/esteggall/Scheduler/django/scheduler/administrator/"+ filename)
         testReader = csv.reader(file,delimiter = ',', quotechar = '|')
         for row in testReader:
-            course = Class.objects.get(pk=row[0];
+            Class = Class.objects.get(pk=row[0];
             if(course == NULL):
                 print "No class"
             period = Period.objects.get(pk=row[2])
@@ -114,7 +113,7 @@ class SimpleTest(TestCase):
             room = Room.objects.get(pk=row[9])
             if(building == NULL):
                 print "No room"
-            new_course_class = ClassInstance(idClass = course, idClassInstance = row[1], idPeriod = period, ClassTime = row[3], Section = row[4], idLecturer = professor, TAOfficeHours = row[6], idTA = row[7], idBuilding = building, idRoom = room)  
+            new_course_class = ClassInstance(idClass = Class, idClassInstance = row[1], idPeriod = period, ClassTime = row[3], Section = row[4], idLecturer = professor, TAOfficeHours = row[6], idTA = row[7], idBuilding = building, idRoom = room)  
             new_course_class.save()
 
 
