@@ -12,8 +12,8 @@ class School(models.Model):
     idSchool = models.IntegerField(primary_key=True)
     School = models.CharField(max_length=45)
 
-    def __unicode__(self):
-        return self.School
+#    def __unicode__(self):
+#        return self.School
 
 class SchoolAdmin(admin.ModelAdmin):
     list_display = ('idSchool', 'School')
@@ -29,8 +29,8 @@ class Department(models.Model):
     Department = models.CharField(max_length=45)
     DeptAbbrev = models.CharField(max_length=11)
 
-    def __unicode__(self):
-        return self.Department
+#    def __unicode__(self):
+#        return self.Department
 
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
@@ -45,8 +45,8 @@ class Class(models.Model):
     Class = models.CharField(max_length=45)
     ClassDescription = models.TextField()
 
-    def __unicode__(self):
-        return self.Class
+#    def __unicode__(self):
+#        return self.Class
 
 class ClassAdmin(admin.ModelAdmin):
     list_display = ('idDepartment', 'idClass', 'Class', 'ClassDescription')
@@ -70,8 +70,8 @@ class Building(models.Model):
     idBuilding = models.IntegerField(primary_key=True)
     BldgName = models.CharField(max_length=45)
 
-    def __unicode__(self):
-        return self.BldgName
+#    def __unicode__(self):
+#        return self.BldgName
 
 class BuildingAdmin(admin.ModelAdmin):
     list_display = ('idBuilding', 'BldgName')
@@ -90,8 +90,8 @@ class Room(models.Model):
     SeatNum = models.IntegerField(default=45)
 #	seat_num = models.IntegerField(primary_key=True)
 
-    def __unicode__(self):
-        return self.RoomName
+#    def __unicode__(self):
+#        return self.RoomName
 
 class RoomAdmin(admin.ModelAdmin):
     list_display = ('idBuilding', 'idRoom', 'RoomNumber', 'Type', 'RoomName', 'Lab', 'SeatNum')
@@ -125,8 +125,8 @@ class Lecturer(models.Model):
     Comment = models.TextField()
     idDepartment = models.ForeignKey(Department, to_field='idDepartment')
 
-    def __unicode__(self):
-        return self.Name
+#    def __unicode__(self):
+#        return self.Name
 
 class LecturerAdmin(admin.ModelAdmin):
     list_display = ('idLecturer', 'Status', 'Name', 'Comment', 'idDepartment')
@@ -168,8 +168,8 @@ class ClassLab(models.Model):
     idRoom = models.ForeignKey(Room, to_field='idRoom')
     idBuilding = models.ForeignKey(Building, to_field='idBuilding')
 
-    def __unicode__(self):
-        return self.LabName
+#    def __unicode__(self):
+#        return self.LabName
 
 class ClassLabAdmin(admin.ModelAdmin):
     list_display = ('idClassInstance', 'idClassLab', 'LabName', 'idRoom', 'idBuilding')
@@ -187,8 +187,8 @@ class Person(models.Model):
     Suffix = models.CharField(max_length=10, null=True)
     Prefix = models.CharField(max_length=10, null=True)
 
-    def __unicode__(self):
-        return self.LName
+#    def __unicode__(self):
+#        return self.LName
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('idPerson', 'FName', 'MInitial', 'LName', 'Suffix', 'Prefix')
@@ -201,8 +201,8 @@ class Role(models.Model):
     idRole = models.IntegerField(primary_key=True)
     Role = models.CharField(max_length=45)
 
-    def __unicode__(self):
-        return self.Role
+#    def __unicode__(self):
+#        return self.Role
 
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('idRole', 'Role')

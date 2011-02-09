@@ -209,4 +209,25 @@ class Config:
 
         for course_class in self.classes_list:
             print "(Professer: %s Course: %s Durration: %d Lab: %d)" % (course_class.professor, course_class.course, course_class.duration, course_class.lab)
-        
+
+    def print_database(self):
+        from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
+        from course_class import CourseClass
+
+        all_class_instance = ClassInstance.objects.all()
+        for ClassInstance in all_class_instance:
+            lecturer = ClassInstance.idLecturer
+            course = ClassInstance.idClass
+            print "Course Schedule(professor: %s Course: %s)" % (lecturer.Name, course.Class) 
+            
+        all_lecturers = Lecturer.objects.all()
+        for Lecturer in all_lecturers:
+            print "Lecturer name: %s, Lecturer ID: %d" % (Lecturer.Name, Lecturer.idLecturer)
+            
+        all_rooms = Room.objects.all()
+        for Room in all_rooms:
+            print "Room: %s, Room ID: %d seats: %d" % (Room.RoomName, Room.idRoom, Room.SeatNum)
+
+        all_courses = Class.objects.all()
+        for Class in all_courses:
+             print "Course: %s, Course ID: %d " % (Class.Class, Class.idClass) 
