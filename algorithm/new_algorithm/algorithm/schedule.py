@@ -271,6 +271,7 @@ class Schedule:
         Calculates the overall fitness of the schedule
         """
         total_fitness = 0
+        print "In overall fitness!!!"
         for chromosome_list in self.chromo_list:
             if chromosome_list:
                 for chromosomes in chromosome_list:
@@ -558,10 +559,12 @@ class Schedule:
         self.get_config()
         #Creates the first chromosome
         self.init_chromosomes()
+        print "BOOBS"
         self.get_overall_fitness()
         #Seeds the random with system time
         random.seed()
         generations = 1
+        print "TEST!!!"
         while self.get_overall_fitness() < 1.0 and generations <= 12500:
             #Get random points for crossover
             start_crossover = random.randint(0,self.config.get_num_classes())

@@ -40,8 +40,6 @@ return schedule
 """
 
 from configuration import Configuration
-from scheduler.algorithm import models
-from scheduler.algorithm.models import *
 import random
 from types import *
 
@@ -163,12 +161,11 @@ class Schedule:
                 #Initializes Empty List
                 self.chromo_list = ((self.day_length*self.num_days)*\
                                    (self.config.get_num_rooms()))*[None]
-        
+                
         #Seeds the random with system time
         random.seed()  
         for classes in self.config.classes_list:
-            print "Placing classes"
-            print "DURATION: " + str(classes.duration)
+            
             #Gets random spot for class
             rand = random.randint(0,len(self.chromo_list))
             
@@ -184,7 +181,6 @@ class Schedule:
                     new_chromo = self.insert_chromosome(Chromosome(),\
                                                         temp_index)
                     self.number_chromosomes += 1
-                    print "Number of chromosomes: " + str(self.number_chromosomes)
                     #Checks to see if the class is already in the hashmap,
                     #if not Class object is added with value being location
                     #in list Only adds when the class starts
@@ -209,7 +205,6 @@ class Schedule:
         #Figure out which room you are in
         data_tuple = self.get_room_day_numbers(hold_index)
         room_id = data_tuple[1]
-        print room_id
         #Get Room object
         room = self.config.get_room_by_id(room_id)
 
@@ -567,7 +562,6 @@ class Schedule:
         #Seeds the random with system time
         random.seed()
         generations = 1
-        print "TEST!!!"
         while self.get_overall_fitness() < 1.0 and generations <= 12500:
             #Get random points for crossover
             start_crossover = random.randint(0,self.config.get_num_classes())
@@ -601,34 +595,17 @@ class Schedule:
             #Gets the list at counter
             chromo_list = self.chromo_list[count]
             if type(chromo_list) is ListType:
-                
                 len_list = len(chromo_list)
                 if len_list > 1:
                     print "CONFLICT!!"
             #Gets the tuple of (Day,Room)
             day_room = self.get_room_day_numbers(count)
-            itor = 0
+            
             if chromo_list is not None:
                 for chromosomes in chromo_list:
-                    itor = itor + 1
-                    #Get course ID to work with
-                    CourseID = chromosomes._class.get_course_classid()
-                    #Use CourseInstance to store prof, course, period, room in
-                    CourseInstance = ClassInstance.objects.get(pk=CourseID)
-
-
-                    curr_course_class = chromosomes._class
                     print "Day: " + str(day_room[0])
                     print "Hour: " + str(count%self.day_length+1)
                     print "Room: " + str(day_room[1])
-                 #   Period = Period(idPeriod = itor, period = str(count%self.day_length+1), StartDate = day_room[0], EndDate = day_room[0], InstructionBegins = day_room[0], InstructionEnds = day_room[0]) 
-                    ProfID = curr_course_class.get_professor_id()
-                    Professor = Lecturer.objects.get(pk=ProfID)
-                    ClassID = curr_course_class.get_course_id()
-                    Course = Class.objects.get(pk=ClassID)
-                    CourseInstance.idLecturer = Professor
-                    CourseInstance.idClass = Course
-                    CourseInstance.save()
                     chromosomes.print_chromo()
                     print "\n\n"
                     

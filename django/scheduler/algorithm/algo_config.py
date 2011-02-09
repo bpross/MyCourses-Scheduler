@@ -184,15 +184,26 @@ class Config:
         all_course_class = ClassInstance.objects.all()
         for ClassInstance in all_course_class:       
 
-            new_prof = ClassInstance.idLecturer
-            new_course = ClassInstance.idClass
+            lecturer = ClassInstance.idLecturer
+            new_prof = Professor()
+            new_prof.name = lecturer.Name
+            new_prof.id = lecturer.idLecturer
+
+            Class = ClassInstance.idClass
+            new_course = Course()
+            new_course.id = Class.idClass
+            new_course.name = Class.Class
+            
+            
+            
 
 
             new_course_class = CourseClass()
-            new_course_class.professor = new_prof.Name
-            new_course_class.course = new_course.Class
+            new_course_class.professor = new_prof
+            new_course_class.course = new_course
             new_course_class.duration = 1
             new_course_class.lab = False
+            new_course_class.id = ClassInstance.idClassInstance
             self.classes_list.append(new_course_class)
             self.num_classes += 1
 

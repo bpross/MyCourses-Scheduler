@@ -106,7 +106,7 @@ class SimpleTest(TestCase):
     def store_course_class(self, filename = None):
         testReader = csv.reader(file,delimiter = ',', quotechar = '|')
         for row in testReader:
-            course = Class.objects.get(pk=row[0];
+            Class = Class.objects.get(pk=row[0];
             if(course == NULL):
                 print "No class"
             period = Period.objects.get(pk=row[2])

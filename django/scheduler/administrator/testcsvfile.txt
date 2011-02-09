@@ -1,2 +1,3 @@
 school, 1, UCSC
 building, 2, BE
+department, 1, 3, Comp Sci, CS
