@@ -72,9 +72,9 @@ class Algorithm():
 
     from schedule import Schedule
 
-    test_schedule = Schedule()
+    test_schedule = Schedule(None, configuration)
 
-#    test_schedule.algorithm()
+    test_schedule.algorithm()
 
 #    test_schedule.print_chromosomes()
 

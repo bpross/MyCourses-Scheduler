@@ -24,10 +24,10 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
         'NAME': 'django_schedule',                       
-        'USER': 'scheduler',                       
-        'PASSWORD': 'n0TH4N><h4xxx',                    
+        'USER': 'esteggall',                       
+        'PASSWORD': 'mabayar24',                    
         'HOST': '',                      # When empty, uses default (localhost) 
         'PORT': '',                      # Set to empty string for default. 
     }
@@ -123,5 +123,5 @@ INSTALLED_APPS = (
     'scheduler.student',
     'scheduler.lecturer',
     'scheduler.manager',
-	 'scheduler.administrator',
+	'scheduler.administrator',
 )

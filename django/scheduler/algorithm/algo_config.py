@@ -79,7 +79,7 @@ class Config:
                 return room
 
         #Not in List
-        return False
+        return None
 
     #Returns the number of parsed rooms
     def get_num_rooms(self):
@@ -126,7 +126,8 @@ class Config:
            new_course.id = Class.idClass
            new_course.name = Class.Class
            self.course_list.append(new_course)
-    
+           self.num_courses += 1
+
         for Course in self.course_list:
             Course.print_course()
 
@@ -144,8 +145,10 @@ class Config:
             new_room.seat_num = Room.SeatNum
             new_room.lab = Room.Lab
             new_room.name = Room.RoomName
+            new_room.id = Room.idRoom
             self.room_list.append(new_room)
-    
+            self.num_rooms += 1
+
         for Rooms in self.room_list:
             Rooms.print_room()
     
@@ -166,7 +169,8 @@ class Config:
             new_prof.id = Lecturer.idLecturer
 #            new_prof.course_list = course_list
             self.prof_list.append(new_prof)
-    
+            self.num_professors += 1
+
         for Professor in self.prof_list:
             Professor.print_professor()
    
@@ -187,10 +191,11 @@ class Config:
             new_course_class = CourseClass()
             new_course_class.professor = new_prof.Name
             new_course_class.course = new_course.Class
-            new_course_class.durration = 1
-            new_course_class.lab = 0
+            new_course_class.duration = 1
+            new_course_class.lab = False
             self.classes_list.append(new_course_class)
-                      
+            self.num_classes += 1
+
         for course_class in self.classes_list:
-            print "(Professer: %s Course: %s Durration: %d Lab: %d)" % (course_class.professor, course_class.course, course_class.durration, course_class.lab)
+            print "(Professer: %s Course: %s Durration: %d Lab: %d)" % (course_class.professor, course_class.course, course_class.duration, course_class.lab)
         
