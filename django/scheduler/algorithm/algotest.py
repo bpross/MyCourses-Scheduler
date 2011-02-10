@@ -67,16 +67,27 @@ class Algorithm():
 
     course_class_list = configuration.get_course_class_list()
 
+#    config = Configuration()
+
+#    course_list = config.
+
 
 #From schedule_test.py
 
     from schedule import Schedule
 
+
+#    configuration.print_database()
+
     test_schedule = Schedule(None, configuration)
 
-    test_schedule.algorithm()
+#    test_schedule.algorithm()
 
-#    test_schedule.print_chromosomes()
+    test_schedule.print_chromosomes()
+
+    print "              This what is in the Database"
+
+    configuration.print_database()
 
 #    test_float = test_schedule.get_overall_fitness()
 

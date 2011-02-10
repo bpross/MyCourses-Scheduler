@@ -11,7 +11,7 @@ class CourseClass:
 
     def __init__(self,professor = None, course = None,
                  num_seats = None, requires_lab = None,
-                 duration = None, id = None):
+                 duration = None):
 
         if professor is None:
             self.professor = None
@@ -33,10 +33,6 @@ class CourseClass:
             self.duration = None
         else:
             self.duration = duration
-        if id is None:
-            self.id = None
-        else:
-            self.id = course_classID
 
 
     #Returns True if another class has the same professor
@@ -49,12 +45,6 @@ class CourseClass:
     #Returns the Professor Teaching the Class
     def get_professor(self):
         return self.professor
-    #Returns the professor id
-    def get_professor_id(self):
-        return self.professor.id
-    #Returns the course id
-    def get_course_id(self):
-        return self.course.id
 
     #Adds/changes Professor Teaching the Class
     def add_professor(self,professor):
@@ -91,10 +81,6 @@ class CourseClass:
     #Adds/changes duration of the class
     def add_duration(self, duration):
         self.duration = duration
-
-    #Returns the ID of the course_class
-    def get_course_classid(self):
-        return self.id
 
     def print_course_class(self):
         self.course.print_course()
