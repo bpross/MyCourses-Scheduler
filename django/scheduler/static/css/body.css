@@ -12,9 +12,10 @@ header, footer, aside, section, nav {
 
 body {
 	margin: 0 auto;
-	width: 650px;
-	font 13px/22px Helvetica, Arial, sans-serif;
-	background: #f0f0f0;
+	width: 900px;
+	font 10px/22px Helvetica, Arial, sans-serif;
+	background: #90AEC6;
+	color: white;
 }
 
 h2 {
@@ -30,11 +31,50 @@ h3 {
 }
 
 p {
+	font 10px/22px Helvetica, Arial, sans-serif;
 	padding-bottom: 22px;
 }
 
+#main{
+	font 10px/22px Helvetica, Arial, sans-serif;
+	background: #1D3240;
+	background-size: 100%;
+	color: white;
+	border-radius: 22px;
+}
 aside {
 	float: right;
 	position: absolute;
 	right: 50px;
 }
+
+#banner {
+        display: table;
+}
+
+        #mainBanner{
+	    display: table-cell;
+	    width: 1000px;
+	    background: #EC1559;
+	    padding-top: 15px;
+	    color: #213240;
+        }
+
+#border{
+	display: table;
+}
+	
+	#mainBorder{
+	    display: table-cell;
+	    width: 700px;
+	    background: #213240;
+	}
+
+#buffer{
+	display: table;
+}
+	#mainBuffer{
+	    display: table-cell;
+	    padding-left: 20px;
+	    padding-right: 20px;
+	}
