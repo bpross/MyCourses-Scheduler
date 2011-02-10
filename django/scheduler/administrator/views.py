@@ -21,4 +21,4 @@ def upload_csv(request):
 	return render_to_response('admin/csv_form.html', {'form': form}, RequestContext(request))
 
 def home(request):
-	return render_to_response('admin.html', RequestContext(request))
+	return render_to_response('admin/admin.html', RequestContext(request))
