@@ -1,5 +1,6 @@
 from django.test import TestCase
 import csv
+from scheduler.algorithm.models import School, Department, Class, Prerequisite, Building,  Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole
 from professor import Professor
 from course_class import CourseClass
 from room import Rooms
@@ -48,7 +49,7 @@ class CSV:
         testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
         for row in testReader:
              print row[0], row[1]
-             new_school = models.School(idSchool = row[0], School = row[1]) 
+             new_school = School(idSchool = row[0], School = row[1]) 
              new_school.save()
 
     def store_room(self, filename = None):
@@ -129,7 +130,7 @@ class CSV:
 
     def print_database(self):
         from scheduler.algorithm import models
-        from scheduler.algorithm.models import *
+        from scheduler.algorithm.models import School, Department, Class, Prerequisite, Building,  Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole
         print "                         Contents of Database "
         all_schools = School.objects.all()
         if(all_schools !=None):
