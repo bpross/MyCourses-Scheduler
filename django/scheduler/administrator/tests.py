@@ -1,3 +1,4 @@
+
 """
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".
@@ -10,10 +11,18 @@ from csv_import import *
 class SimpleTest(TestCase):
     def test_basic_addition(self):
         csv_init = CSV()
-#        csv_init.print_database()
-        csv_init.csv_import("school.csv", "school")
-#        csv_import("professor.csv", "professor")
+        csv_init.print_database()
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/school.csv", "school")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/department.csv", "department")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/building.csv", "building")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/professor.csv", "professor")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/room.csv", "room")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course.csv", "course")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course_class.csv", "course_class")
+        
+        
     
+        csv_init.print_database()
 
 
 
