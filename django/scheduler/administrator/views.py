@@ -25,7 +25,8 @@ def upload_csv(request):
 		form = csv_form(request.POST, request.FILES)
 		if form.is_valid():
 			myCSV = CSV()
-			myCSV.csv_import(request.FILES['file'])
+			print "File type selected: %s" %(request.POST['type'])
+			myCSV.csv_import(request.FILES['file'], request.POST['type'])
 			html = "<html><body>Upload successful</body></html>"
 			return HttpResponse(html)
 	else:

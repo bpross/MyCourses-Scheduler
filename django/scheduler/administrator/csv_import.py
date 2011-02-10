@@ -1,8 +1,5 @@
-
 from django.test import TestCase
 import csv
-from scheduler.algorithm import models
-from scheduler.algorithm.models import *
 from professor import Professor
 from course_class import CourseClass
 from room import Rooms
@@ -11,32 +8,30 @@ from datetime import date
 
 class CSV:
 
-    def csv_import(self, filename = None, flag = None):
-        if filename is None:
+    def csv_import(self, file = None, flag = None):
+        if file is None:
             print "Error: Need file to parse"
-        else:
-            file = open(filename, 'r')
         if flag is None:
-            print "Error: File Type needs to be specified!"
+            print "Error: File type needs to be specified!"
         else:
             if flag is "professor":
                 self.store_professor(file)
-            elif flag is "department":
+            elif flag == "department":
                 self.store_department(file)
-            elif flag is "school":
+            elif flag == "school":
                 self.store_school(file)
-            elif flag is "building":
+            elif flag == "building":
                 self.store_building(file)
-            elif flag is "room":
+            elif flag == "room":
                 self.store_room(file)
-            elif flag is "course":
+            elif flag == "course":
                 self.store_course(file)
-            elif flag is "course_class":
+            elif flag == "course_class":
                 self.store_course_class(file)
-            elif flag is "period":
+            elif flag == "period":
                 self.store_period(file)
             else:
-                print "wrong place"
+                print "invalid type: type given is %s"%(flag)
 
     def store_professor(self, filename = None):
         testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
@@ -53,7 +48,7 @@ class CSV:
         testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
         for row in testReader:
              print row[0], row[1]
-             new_school = School(idSchool = row[0], School = row[1]) 
+             new_school = models.School(idSchool = row[0], School = row[1]) 
              new_school.save()
 
     def store_room(self, filename = None):
