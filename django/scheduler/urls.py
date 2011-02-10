@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 	# Splash page
     (r'^$', 'scheduler.views.index'),
         # Temporary algorithm runner
-    (r'^run-algorithm/', algorithm),
+    (r'^algorithm/', include('algorithm.urls'),
 	# Temporary manual link
     (r'^manual/', manual),
 
