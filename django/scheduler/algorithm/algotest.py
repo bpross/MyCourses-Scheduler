@@ -76,11 +76,12 @@ class Algorithm():
 
     from schedule import Schedule
 
+
 #    configuration.print_database()
 
     test_schedule = Schedule(None, configuration)
 
-    test_schedule.algorithm()
+#    test_schedule.algorithm()
 
     test_schedule.print_chromosomes()
 

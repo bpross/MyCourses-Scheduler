@@ -3,7 +3,6 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseServerError
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
-from scheduler.algorithm.algotest import Algorithm
 
 def index(request):
 	if request.user.is_authenticated:
@@ -21,11 +20,6 @@ def index(request):
 
 def login(request):
     return render_to_response('login.html', RequestContext(request))
-
-def algorithm(request):
-    if request.user.is_staff:
-       Algorithm()
-    return render_to_response('algorithm.html', RequestContext(request))
 
 def logout_page(request):
 	"""
