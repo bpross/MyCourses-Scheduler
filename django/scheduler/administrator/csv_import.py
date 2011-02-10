@@ -1,8 +1,8 @@
 
 from django.test import TestCase
 import csv
-from scheduler.algorithm import models
-from scheduler.algorithm.models import *
+#from scheduler.algorithm import models
+from scheduler.algorithm.models import School, Department, Class, Prerequisite, Building,  Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole
 from professor import Professor
 from course_class import CourseClass
 from room import Rooms
@@ -134,7 +134,7 @@ class CSV:
 
     def print_database(self):
         from scheduler.algorithm import models
-        from scheduler.algorithm.models import *
+        from scheduler.algorithm.models import School, Department, Class, Prerequisite, Building,  Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole
         print "                         Contents of Database "
         all_schools = School.objects.all()
         if(all_schools !=None):
