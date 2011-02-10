@@ -6,7 +6,19 @@ from django import forms
 from csv_import import CSV
 
 class csv_form(forms.Form):
-	file  = forms.FileField()
+	file  = forms.FileField(required=True)
+	type  = forms.TypedChoiceField(required=True,
+				choices=(("professor", "Professor"),
+						 ("department", "Department"),
+						 ("school", "School"),
+						 ("building", "Building"),
+						 ("room", "Room"),
+						 ("course", "Course"),
+						 ("course_class", "Course Class"),
+						 ("period", "Period"),
+						 ),
+				widget=forms.RadioSelect
+				)
 
 def upload_csv(request):
 	if request.method == 'POST':
