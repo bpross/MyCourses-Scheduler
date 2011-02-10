@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 	# Splash page
     (r'^$', 'scheduler.views.index'),
         # Temporary algorithm runner
-    (r'^algorithm/', include('algorithm.urls'),
+    (r'^algorithm/', include('algorithm.urls')),
 	# Temporary manual link
     (r'^manual/', manual),
 
@@ -40,8 +40,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    # Trying to get algorithm working
-#    (r'^algorithm/$', algorithm),
 )
 #handler500 = 'error'
 
