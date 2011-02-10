@@ -4,20 +4,20 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
-
-from django.test import TestCase
-import csv
-from scheduler.algorithm import models
-from scheduler.algorithm.models import *
-from professor import Professor
-from course_class import CourseClass
-from room import Rooms
-from course import Course
-from datetime import date
+from csv_import import *
 
 
 class SimpleTest(TestCase):
-    def test_basic_addition(self,filename = None, flag = None):
+    def test_basic_addition(self):
+        csv_init = CSV()
+#        csv_init.print_database()
+        csv_init.csv_import("school.csv", "school")
+#        csv_import("professor.csv", "professor")
+    
+
+
+
+"""
         if filename is None:
             print "Error: Need file to parse"
         else:
@@ -106,7 +106,7 @@ class SimpleTest(TestCase):
     def store_course_class(self, filename = None):
         testReader = csv.reader(file,delimiter = ',', quotechar = '|')
         for row in testReader:
-            Class = Class.objects.get(pk=row[0];
+            Class = Class.objects.get(pk=row[0]);
             if(course == NULL):
                 print "No class"
             period = Period.objects.get(pk=row[2])
@@ -142,4 +142,4 @@ class SimpleTest(TestCase):
                                 InstructionBegins = row[4], \
                                 InstructionEnds = row[5])
             new_period.save()    
-  
+"""  
