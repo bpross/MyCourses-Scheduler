@@ -10,31 +10,27 @@
 	{#<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />#}
 </head>
 <body>
-	<header>
-		<h1>SCORE - {%block header%}UCSC Scheduler{% endblock %}</h1>
-	</header>
+	<div id="border">
+	<div id="mainBorder">
+	<div id="buffer">
+	<div id="mainBuffer">
+	<div id="banner">
+		<div id="mainBanner">
+	 	<header>
+			<h1>SCORE - {%block header%}UCSC Scheduler{% endblock %}</h1>
+		</header>	
+		</div>
+	</div>
 	<nav>
 		<!-- Navigation-->
 		<ul>
 			<li><a href="/" title="Home">Home</a></li>
 			<li><a href="/manual/" title="Manual">Manual</a></li>
 			{%block nav%}
-			<li>
-				<a href="/login" title="Nav Link 2">Log in</a>
-				<ul>
-					<li><a href="#" title="Sub Nav 1">Sub Nav 1</a></li>
-				</ul>
-			</li>
+			<li><a href="/login" title="Nav Link 2">Log in</a></li>
 			{%endblock%}
 		</ul>
 	</nav>
-	<section id="banner">
-		<!-- Optional Banner -->
-		<header>
-			{%block banner%}<h2>Welcome to the scheduling site!</h2>{%endblock%}
-		</header>
-		<hr>
-	</section>
 	<section id="main">
 		<!-- Main content -->
 		{%block content%}
@@ -42,6 +38,10 @@
 		<p>If you're unable to log in, you'll need to contact the admin to activate your account.</p>
 		{%endblock%}
 	</section>
+	</div>
+	</div>
+	</div>
+	</div>
 	<aside>
 		<!-- Sidebar -->
 		{%block sidebar%}

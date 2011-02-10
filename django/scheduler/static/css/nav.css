@@ -4,28 +4,33 @@ nav { /* the structure of our head-menu */
 
 	list-style: none;
 	display: block;
-	padding: 0;
+	padding-bottom: 50px;
 	margin: 0;
-	border: 1px black;
+	background: #10C8CD;
 }    
 nav li, nav li ul li { /* the structure of the first items */
 	float: left;
 	position: relative;
-	width: 100px;
 }
 nav li a { /* the links inside our first items */
 	display: block;
+	position: relative;
+	width: 120px;
+	background: #10C8CD;
 }
 nav li a:hover { /* the roll-over styles for the links in our first items */
-	
+	background: #213240;
+	color: #213240;	
 }
 nav li ul { /* first items > submenu structure */
 	display: none;
 	position: absolute;
 	width: 100px;
+	padding-top: 10px;
 	top: 18px;
 	left: 0;
-	margin-left: -1px;
+	color: #213240;
+	
 }
 nav ul li { /* the structure of our submenu items */}
 li > ul { /* extra styles for Internet Explorer (behavior file) */
@@ -64,11 +69,20 @@ nav ul li {
 	nav ul li a {
 		display: block;
 		margin-right: 20px;
-		width: 140px;
+		width: 120px;
 		font-size: 14px;
 		line-height: 44px;
 		text-align: center;
 		text-decoration: none;
-		color #777;
+		color: #213240;
 	}
-		nav ul li a:hov
+		nav ul li a:hover {
+			display: block;
+			width: 120px;
+			font-size: 14px;
+			line-height: 44px;
+			text-align: center;
+			text-decoration: none;
+			color: white;
+	}
+	
