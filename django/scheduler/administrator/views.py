@@ -6,14 +6,27 @@ from django import forms
 from csv_import import CSV
 
 class csv_form(forms.Form):
-	file  = forms.FileField()
+	file  = forms.FileField(required=True)
+	type  = forms.TypedChoiceField(required=True,
+				choices=(("professor", "Professor"),
+						 ("department", "Department"),
+						 ("school", "School"),
+						 ("building", "Building"),
+						 ("room", "Room"),
+						 ("course", "Course"),
+						 ("course_class", "Course Class"),
+						 ("period", "Period"),
+						 ),
+				widget=forms.RadioSelect
+				)
 
 def upload_csv(request):
 	if request.method == 'POST':
 		form = csv_form(request.POST, request.FILES)
 		if form.is_valid():
 			myCSV = CSV()
-			myCSV.csv_import(request.FILES['file'])
+			print "File type selected: %s" %(request.POST['type'])
+			myCSV.csv_import(request.FILES['file'], request.POST['type'])
 			html = "<html><body>Upload successful</body></html>"
 			return HttpResponse(html)
 	else:
