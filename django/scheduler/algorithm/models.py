@@ -18,6 +18,7 @@ class School(models.Model):
 class SchoolAdmin(admin.ModelAdmin):
     list_display = ('idSchool', 'School')
     list_filter = ('idSchool', 'School')
+    search_fields = ['idSchool', 'School']
 
 # Department:
 # Holds: the department ID, the department name, the deptartment's
@@ -36,6 +37,7 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
     list_filter = ('idSchool', 'idDepartment', 'Department', 'DeptAbbrev')
     list_editable = ('idDepartment', 'Department', 'DeptAbbrev')
+    search_fields = ['Department', 'DeptAbbrev']
 
 # Class:
 # Holds: the class ID, the class name, a description of the class, the class's department ID
@@ -55,6 +57,8 @@ class ClassAdmin(admin.ModelAdmin):
     list_filter = ('idDepartment', 'idClass', 'Class', 'ClassDescription')
     list_editable = ('Class', 'ClassDescription')
     list_display_links = ('idDepartment', 'idClass')
+    search_fields = ['idClass', 'Class', 'ClassDescription']
+
 # Prerequisite:
 # Holds: the prerequisite ID, the prerequisite's class ID
 # Returns: nothing
@@ -66,6 +70,7 @@ class PrerequisiteAdmin(admin.ModelAdmin):
     list_display = ('idPrereq', 'ClassID')
     list_filter = ('idPrereq', 'ClassID')
     list_display_link = ('idPrereq', 'ClassID')
+    search_fields = ['idPrereq']
 
 # Building:
 # Holds: the building ID, the building name
@@ -80,6 +85,7 @@ class Building(models.Model):
 class BuildingAdmin(admin.ModelAdmin):
     list_display = ('idBuilding', 'BldgName')
     list_filter = ('idBuilding', 'BldgName')
+    search_fields = ['idBuilding', 'BldgName']
 
 # Room:
 # Holds: the room ID, the room number, the type of room, the room name, the rooms' building ID
@@ -101,6 +107,7 @@ class RoomAdmin(admin.ModelAdmin):
     list_display = ('idBuilding', 'idRoom', 'RoomNumber', 'Type', 'RoomName', 'Lab', 'SeatNum')
     list_filter = ('idBuilding', 'idRoom', 'RoomNumber', 'Type', 'RoomName', 'Lab', 'SeatNum')
 #   append seat_num to display/filter lists if uncommented in class above
+    search_fields = ['idRoom', 'RoomNumber', 'Type', 'RoomName', 'Lab', 'SeatNum']
 
 # Period:
 # Holds: 
@@ -117,6 +124,7 @@ class Period(models.Model):
 class PeriodAdmin(admin.ModelAdmin):
     list_display = ('idPeriod', 'period', 'StartDate', 'EndDate', 'InstructionBegins', 'InstructionEnds')
     list_filter = ('idPeriod', 'period', 'StartDate', 'EndDate', 'InstructionBegins', 'InstructionEnds')
+    search_fields = ['idPeriod', 'period']
 
 # Lecturer:
 # Holds: the lecturer ID, the lecturer's status, comments, the
@@ -135,6 +143,7 @@ class Lecturer(models.Model):
 class LecturerAdmin(admin.ModelAdmin):
     list_display = ('idLecturer', 'Status', 'Name', 'Comment', 'idDepartment')
     list_filter = ('idLecturer', 'Status', 'Name', 'Comment', 'idDepartment')
+    search_fields = ['idLecturer', 'Status', 'Name', 'Comment']
 
 # ClassInstance:
 # Holds: the class-instance ID, the scheduled time, the section, the
@@ -159,6 +168,7 @@ class ClassInstance(models.Model):
 class ClassInstanceAdmin(admin.ModelAdmin):
     list_display = ('idClass', 'idClassInstance', 'idPeriod', 'ClassTime', 'Section', 'idLecturer', 'LecturerOfficeHours', 'TAOfficeHours', 'idTA', 'idBuilding', 'idRoom')
     list_filter = ('idClass', 'idClassInstance', 'idPeriod', 'ClassTime', 'Section', 'idLecturer', 'LecturerOfficeHours', 'TAOfficeHours', 'idTA', 'idBuilding', 'idRoom')
+    search_fields = ['idClassInstance', 'ClassTime', 'Section', 'LecturerOfficeHours', 'idTA']
 
 # ClassLab:
 # Holds: the lab ID, the lab name, the lab time, the lab's room ID, the lab's
@@ -178,6 +188,7 @@ class ClassLab(models.Model):
 class ClassLabAdmin(admin.ModelAdmin):
     list_display = ('idClassInstance', 'idClassLab', 'LabName', 'idRoom', 'idBuilding')
     list_filter = ('idClassInstance', 'idClassLab', 'LabName', 'idRoom', 'idBuilding')
+    search_fields = ['idClassLab', 'LabName', 'LabTime']
 
 # Person:
 # Holds: the person's ID, the persons's first name, middle initial, last
@@ -197,6 +208,7 @@ class Person(models.Model):
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('idPerson', 'FName', 'MInitial', 'LName', 'Suffix', 'Prefix')
     list_filter = ('idPerson', 'FName', 'MInitial', 'LName', 'Suffix', 'Prefix')
+    search_fields = ['idPerson', 'FName', 'MInitial', 'LName', 'Suffix', 'Prefix']
 
 # Role:
 # Holds: the role ID, the role name
@@ -211,6 +223,7 @@ class Role(models.Model):
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('idRole', 'Role')
     list_filter = ('idRole', 'Role')
+    search_fields = ['idRole', 'Role']
 
 # PersonRole:
 # Holds: the Person-roles person ID and role ID
