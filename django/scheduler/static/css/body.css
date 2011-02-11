@@ -39,6 +39,7 @@ p {
 	font 10px/22px Helvetica, Arial, sans-serif;
 	background: #1D3240;
 	background-size: 100%;
+	padding-top: 10px 40px;
 	color: white;
 	border-radius: 22px;
 }
@@ -53,10 +54,13 @@ aside {
 }
 
         #mainBanner{
-	    display: table-cell;
+/*	    display: table-cell; */
+	    border: 2px solid #213240;
 	    width: 1000px;
 	    background: #EC1559;
-	    padding-top: 15px;
+	    -moz-border-radius: 25px;
+	    border-radius: 25px;
+	    padding-top: 10px 40px;
 	    color: #213240;
         }
 
@@ -67,6 +71,8 @@ aside {
 	#mainBorder{
 	    display: table-cell;
 	    width: 700px;
+	    -moz-border-radius: 25px;
+	    border-radius: 35px;
 	    background: #213240;
 	}
 
@@ -77,4 +83,5 @@ aside {
 	    display: table-cell;
 	    padding-left: 20px;
 	    padding-right: 20px;
+
 	}
