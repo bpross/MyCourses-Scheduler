@@ -4,13 +4,13 @@
 {% block header %}Admin{% endblock %}
 
 {% block nav %}
-<li><a href="/account/" title="Account">Account</a>
+<li class="sub"><a href="/account/" title="Account">Account</a>
 	<ul>
 		<li><a href="/logout/" title="Log out">Log out</a></li>
 	</ul>
 </li>
 <li><a href="/administrator/import/" title="CSV Import">CSV Import</a></li>
-<li><a href="/algorithm/status/" title="Status">Scheduler</a>
+<li class="sub"><a href="/algorithm/status/" title="Status">Scheduler</a>
 	<ul>
 		<li><a href="/algorithm/status/" title="Status">Scheduler Status</a></li>
 		<li><a href="/algorithm/run" title="Run the Scheduler">Run Scheduler</a></li>

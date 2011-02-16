@@ -1,71 +1,66 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>{% block title %}Home{% endblock %} - SCORE Scheduler</title>
-	<link rel="stylesheet" href="/media/css/body.css">
-	<link rel="stylesheet" href="/media/css/nav.css">
-	<link rel="stylesheet" href="/media/css/banner.css">
-	{% block css %}{% endblock %}
-	{#<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />#}
-</head>
-<body>
-	<div id="border">
-	<div id="mainBorder">
-	<div id="buffer">
-	<div id="mainBuffer">
-	<div id="banner">
-		<div id="mainBanner">
-	 	<header>
-			<h1>SCORE - {%block header%}UCSC Scheduler{% endblock %}</h1>
-		</header>	
-		</div>
-	</div>
+
+        <head>
+                <meta charset="utf-8"/>
+                <title>{% block title %}Home{% endblock %} - SCORE Scheduler</title>
+        
+                <!--[if lt IE ]>
+                        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+                <![endif]-->
+                
+                <link rel="stylesheet" media="all" href="/media/css/all.css"/>
+                {% block css %}{% endblock %}
+                <meta name="viewport" content="width=device-width; initial-scale=1"/>
+                <!-- Add "maximum-scale=1" to fix the Mobile Safari auto-zoom bug on orientation changes, 
+                        but keep in mind that it will disable user-zooming completely. Bad for accessibility. -->
+       <header>
+	   <div id="logo">
+              <hgroup>
+                  <h1>SCORE</h1>
+                  <h4>{%block header%}UCSC Scheduler{% endblock %}</h4>
+              </hgroup>
+           </div>
+       </header>
+
+        </head>
 	<nav>
-		<!-- Navigation-->
-		<ul>
-			<li><a href="/" title="Home">Home</a></li>
-			<li><a href="/manual/" title="Manual">Manual</a></li>
-			{%block nav%}
-			<li><a href="/login" title="Nav Link 2">Log in</a></li>
-			{%endblock%}
-		</ul>
-	</nav>
-	<section id="main">
-		<!-- Main content -->
-		{%block content%}
-		<p>This scheduling site is designed to handle all of your university course scheduling needs.</p>
-		<p>If you're unable to log in, you'll need to contact the admin to activate your account.</p>
-		{%endblock%}
-	</section>
-	</div>
-	</div>
-	</div>
-	</div>
-	<aside>
-		<!-- Sidebar -->
-		{%block sidebar%}
-		<ul>Debug Information
-			{% if user.is_authenticated %}
-			<li>Username: {{user.username}}</li>
-			<li>Staff: {{user.is_staff}}</li>
-			<li>Super: {{user.is_superuser}}</li>
-			{%else%}
-			<li>Not logged in.</li>
-			{%endif%}
-		</ul>
-		{%endblock%}
-	</aside>
-	<footer>
-		<!-- Footer -->
-		{%block footer%}
-		<section id="copyright">Copyright UCSC Score Team 2010-2011</section>
-		<section id="debug-tools"><a href="http://validator.w3.org/check/referer">W3C Validator</a></section>
-		{%endblock%}
-	</footer>
-	{% comment %} Uncomment below once we're ready for jQuery. 
-		  Using Google's jQuery library may let us use a user-cached copy. {% endcomment %}
-	
-	{# <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> #}
-</body>
+              <ul id="nav">
+                  <li class="current"><a href ="/" title="Home">Home</a></li>
+                  <li><a href ="/manual/" title="Manual">Manual</a></li>
+                  {%block nav%}
+                  <li><a href="/login" title="Nav Link 2">Log In</a></li>
+                  {%endblock%}
+              </ul>
+           </nav>
+       <div id="content">
+           <section class="hfeed">
+                {%block content%}
+                <h3>Welcome!</h3>
+                <p>The S.C.O.R.E MyCourses is an end-to-end scheduling system that automates and reduces the manual labor of scheduling university courses. We seek to provide universities an easy-to-use and automated service that can help reduce staff costs, reduce implementation costs and decrease the complications and time costliness of organizing an entire schedule.
+</p>
+<p>&nbsp</p>
+
+<p>The S.C.O.R.E MyCourses team started in mid September by a group of 5 engineering students taking a software methodology course. Following the software engineering process, we chose to do a course scheduling system as our class project because, like many other students and faculty, we felt that there were problems and issues with our current course student portal and we believe that we could develop a better one. 
+</p>
+<p>&nbsp</p>
+<p>
+The management of the S.C.O.R.E team includes Justin Lazaro, Will Crawford, Ben Ross, Erik Steggall, and Sabba Petri. Several of the team members have held a variety of roles in the technology industry experience in roles such as IT, QA, and Marketing at top technology firms including: Hewlett Packard, RiverBed Technologies, and Yahoo!.</p> 
+<p>&nbsp</p>
+<p>
+While we are still in the very early stages of development, we believe that our solution can provide incredible value to universities and ease the frustrations of faculty, students, and staff. In addition to a course scheduling system, we plan on expanding our product line to include an employee scheduling system and offer that as a Software-as-a-Service to businesses nationwide. </p>
+
+ <p>&nbsp</p>          
+<p>If you're unable to log in, you'll need to contact the admin to activate your account.</p>
+                {%endblock%}
+           </section>
+       </div>
+       <footer id="main-footer">
+           {%block footer%}
+           <section id="footer-1">
+               Copyright UCSC Score Team 2010-2011
+           </section>
+           {%endblock%}
+       </footer>
 </html>
+
