@@ -1,6 +1,7 @@
 from django.utils import unittest
 from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
 from algotest import Algorithm
+import os # This is for creating paths to test files.
 
 class test_AlgorithmTestCase(unittest.TestCase):
 
@@ -11,10 +12,10 @@ class test_AlgorithmTestCase(unittest.TestCase):
 		pass
 	
 	def test_saveData(self):
-	    # Create School in Database
-	    s = School(idSchool = 1, School = "UC Santa Cruz")
-	    # Save to Database
-    	s.save()
+		# Create School in Database
+		s = School(idSchool = 1, School = "UC Santa Cruz")
+		# Save to Database
+		s.save()
 		d = Department(idSchool = s, idDepartment = 1, Department = "CompSci", DeptAbbrev = "CMPS") 
 		d.save()
 		c1 = Class(idClass = 1, idDepartment = d, Class = "CMPS 115", ClassDescription = "Kickin ass")
