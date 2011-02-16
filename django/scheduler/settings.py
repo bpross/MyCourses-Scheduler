@@ -102,9 +102,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    # Uncomment the next line to enable the admin:
      'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
     # This line lets us do Django to UML.
     #'django_extensions',
@@ -112,5 +110,5 @@ INSTALLED_APPS = (
     'scheduler.student',
     'scheduler.lecturer',
     'scheduler.manager',
-	'scheduler.administrator',
+	 'scheduler.administrator',
 )
