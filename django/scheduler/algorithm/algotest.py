@@ -2,6 +2,7 @@
 print "Start Test"
 # Hopefully this will work
 # This statement imports all of the fields from interface/models.py
+from scheduler.administrator.csv_import import CSV
 from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
 from professor import Professor
 from course_class import CourseClass
@@ -15,8 +16,9 @@ class Algorithm():
     s = School(idSchool = 1, School = "UC Santa Cruz")
     # Save to Database
     s.save()
-
-
+#############################
+#   manual database entries #
+#############################
 
     d = Department(idSchool = s, idDepartment = 1, Department = "CompSci", DeptAbbrev = "CMPS") 
     d.save()
@@ -57,6 +59,33 @@ class Algorithm():
 	
     cc1.save()
     cc2.save()
+
+################################
+#   csv->database done here   #
+################################
+
+    csv_init = CSV()
+    csv_init.print_database()
+    csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/school.csv", "school")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/department.csv", "department")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/building.csv", "building")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/professor.csv", "professor")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/room.csv", "room")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course.csv", "course")
+        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course_class.csv", "course_class")
+
+
+
+    csv_init.print_database()
+
+
+################################
+#   call to database config    #
+################################
+
+
+
+
     configuration = Config()
 
     course_list = configuration.get_course_list()
@@ -67,21 +96,30 @@ class Algorithm():
 
     course_class_list = configuration.get_course_class_list()
 
+################################
+#   call to origional config   #
+################################
+   
+
 #    config = Configuration()
 
 #    course_list = config.
 
 
-#From schedule_test.py
+################################
+#   scheduler called here      #
+################################
+#   From schedule_test.py      #
+################################
 
     from schedule import Schedule
 
 
-#    configuration.print_database()
+    configuration.print_database()
 
     test_schedule = Schedule(None, configuration)
 
-#    test_schedule.algorithm()
+    test_schedule.algorithm()
 
     test_schedule.print_chromosomes()
 
@@ -89,8 +127,8 @@ class Algorithm():
 
     configuration.print_database()
 
-#    test_float = test_schedule.get_overall_fitness()
+    test_float = test_schedule.get_overall_fitness()
 
-#    print test_float
+    print test_float
 
 print "End Test"
