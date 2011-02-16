@@ -66,13 +66,13 @@ class Algorithm():
 
     csv_init = CSV()
     csv_init.print_database()
-    csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/school.csv", "school")
-        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/department.csv", "department")
-        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/building.csv", "building")
-        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/professor.csv", "professor")
-        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/room.csv", "room")
-        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course.csv", "course")
-        csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course_class.csv", "course_class")
+    csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/school.csv", "school"
+    csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/department.csv", "department")
+	csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/building.csv", "building")
+	csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/professor.csv", "professor")
+	csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/room.csv", "room")
+	csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course.csv", "course")
+	csv_init.csv_import("/Users/esteggall/Scheduler/django/scheduler/administrator/course_class.csv", "course_class")
 
 
 

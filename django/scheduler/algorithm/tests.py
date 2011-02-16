@@ -11,87 +11,49 @@ class test_AlgorithmTestCase(unittest.TestCase):
 		pass
 	
 	def test_saveData(self):
-		print "Start Test"
-		
-		# This statement imports all of the fields from interface/models.py
-		
-		
-		# Create School in Database
-		s = School(idSchool = 1, School = "UC Santa Cruz")
-		# Save to Database
-		s.save()
-		
-		#Save to python variables
-		name = s.School
-		num = s.idSchool
-		
-		# Create department
-		d = Department(idDepartment = 2, idSchool = s, Department = "CompSci", DeptAbbrev = "CMPS") 
-		
+	    # Create School in Database
+	    s = School(idSchool = 1, School = "UC Santa Cruz")
+	    # Save to Database
+    	s.save()
+		d = Department(idSchool = s, idDepartment = 1, Department = "CompSci", DeptAbbrev = "CMPS") 
 		d.save()
-
-		
-		
-		# Create class
-		c = Class(idDepartment = d, idClass = 3, Class = "Software Engineering", ClassDescription = "Made to kickass")
-		
-		c.save()
-		
-		# Create prerequisites
-		pre = Prerequisite(idPrereq = 4, ClassID = c)
-		
-		pre.save()
-		
-		
-		#Create Building
-		b = Building(idBuilding = 5, BldgName = "Baskin Engineering")
-		
-		#Save
+		c1 = Class(idClass = 1, idDepartment = d, Class = "CMPS 115", ClassDescription = "Kickin ass")
+		c1.Lab = False 
+		c1.SeatNum = 45
+		c2 = Class(idClass = 2, idDepartment = d, Class = "CMPS 130", ClassDescription = "Meh")
+		c2.Lab = False
+		c2.SeatNum = 45
+	
+		c1.save()
+		c2.save()
+	
+		b = Building(idBuilding = 1, BldgName = "BE")
+	
 		b.save()
-				
-		# Create Room
-		r = Room(idBuilding = b, idRoom = 6, RoomNumber = "BE105", Type = "Comp Lab", RoomName = "Home")
+	
+	
+		r1 = Room(idBuilding = b, idRoom = 1, RoomNumber = "BE105", Type = "Lab", RoomName = "Home")
+		r2 = Room(idBuilding = b, idRoom = 2, RoomNumber = "BE104", Type = "Not Lab", RoomName = "HomeJr")
+	
+		r1.save()
+		r2.save()
+	
+		l1 = Lecturer(idLecturer = 1, Status = "Active", Name = "Linda Werner", Comment = "Currently teaching CS115", idDepartment = d)
+		l2 = Lecturer(idLecturer = 2, Status = "Active", Name = "Patrick Tantalo", Comment = "Not teaching", idDepartment = d)
+	
+		l1.save()
+		l2.save()
+	
+		p1 = Period(idPeriod = 1, period = "first", StartDate = date.today(), EndDate = date.today(), InstructionBegins = date.today(), InstructionEnds = date.today())
+		p2 = Period(idPeriod = 2, period = "Second", StartDate = date.today(), EndDate = date.today(), InstructionBegins = date.today(), InstructionEnds = date.today())
+		p1.save()
+		p2.save()
+	
+		cc1 = ClassInstance(idClass = c1, idClassInstance = 1, idPeriod = p1, ClassTime = "morning", Section = "Yes", idLecturer = l1, LecturerOfficeHours = "Afternoon", TAOfficeHours = "Night", idTA = 1, idBuilding = b, idRoom = r1)
+		cc2 = ClassInstance(idClass = c2, idClassInstance = 2, idPeriod = p2, ClassTime = "morning", Section = "Yes", idLecturer = l2, LecturerOfficeHours = "Afternoon", TAOfficeHours = "Night", idTA = 1, idBuilding = b, idRoom = r2)
 		
-		# Save to Database
-		r.save()
-		
-		import datetime
-		# Create Period in database
-		p = Period(idPeriod = 7, period = "3rd", StartDate = datetime.datetime.now(), EndDate = datetime.datetime.now(), InstructionBegins = datetime.datetime.now(), InstructionEnds = datetime.datetime.now())
-		
-		# Save to database
-		p.save()
-		
-		# Create Lecturer
-		l = Lecturer(idLecturer = 8, Status = "Teaching", Name = "Linda Werner", Comment = "Works in San Jose on Tues/Thurs", idDepartment = d)
-		
-		l.save
-		
-		#Creates Class Instance
-		ci = ClassInstance(idClass = c, idClassInstance = 10, idPeriod = p, ClassTime = "Noon", Section = "yes", idLecturer = l, LecturerOfficeHours = "Afternoon", TAOfficeHours = "Morning", idTA = 11, idBuilding = b, idRoom = r)
-		
-		ci.save()
-		
-		#Creates Class Lab
-		cl = ClassLab(idClassInstance = ci, idClassLab = 12, LabName = "BE104", LabTime = "Noon", idRoom = r, idBuilding = b)
-		
-		cl.save()
-		
-		#Creates Person
-		p = Person(idPerson = 14, FName = "Erik", MInitial = 'Q', LName = "Steggall", Suffix = "None", Prefix = "None")
-		
-		p.save()
-		
-		# Create Role 
-		role = Role(idRole =15, Role = "Student")
-		
-		role.save()
-		
-		
-		#Create Person Role
-		pr = PersonRole(idPerson = p, idRole = role)
-		
-		pr.save()
+		cc1.save()
+		cc2.save()
 
 	def test_scheduler(self):
 		Algorithm();
