@@ -1,6 +1,7 @@
 from django.utils import unittest
 from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
 from algotest import Algorithm
+from datetime import date
 import os # This is for creating paths to test files.
 
 class test_AlgorithmTestCase(unittest.TestCase):

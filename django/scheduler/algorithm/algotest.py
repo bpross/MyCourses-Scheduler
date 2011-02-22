@@ -45,7 +45,7 @@ def Algorithm():
     test_schedule = Schedule(None, configuration)
     test_schedule.algorithm()
     test_schedule.print_chromosomes()
-    print "              This what is in the Database"
+    print "\n\n              This what is in the Database \n\n"
     configuration.print_database()
     test_float = test_schedule.get_overall_fitness()
     print test_float
