@@ -1,0 +1,405 @@
+/*	Less Framework 3
+	by Joni Korpi
+	http://lessframework.com	*/
+
+
+/*	Resets
+	------	*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup, 
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+	display: block;
+}
+
+a img {border: 0;}
+
+figure {position: relative;}
+figure img {width: 100%;}
+
+
+/*	Typography presets
+	------------------	*/
+
+.gigantic {
+	font-size: 123px;
+	line-height: 132px;
+	letter-spacing: -2px;
+}
+
+.huge, h1 {
+	font-size: 76px;
+	line-height: 84px;
+	letter-spacing: -2px;
+}
+
+.large, h2 {
+	font-size: 46px;
+	line-height: 48px;
+	letter-spacing: -1px;
+}
+
+.head_left, h4 {
+	font-size: 46px;
+	line-height: 48px;
+	letter-spacing: -2px;
+	margin: 5px;
+}
+
+.big, h3 {
+	font-size: 24px;
+	line-height: 36px;
+}
+
+.normal, body {
+	font: 16px/18px Palatino, Constantia, "Palatino Linotype", serif;
+}
+
+.small {
+	font-size: 13px;
+	line-height: 18px;
+} 
+p {
+	font-size: 16px;
+	line-height: 18px;
+}
+/*	Default 8-column layout
+	60 px columns, 24 px gutters, 60 px margins, 768 px total
+	---------------------------------------------------------
+	1     2      3      4      5      6      7      8     
+	60px  144px  228px  312px  396px  480px  564px  648px	*/
+
+body {
+	background: #313636;
+	padding: 84px 60px 0;
+	margin: 0;
+	color: #222;
+}
+
+header {
+	margin: 5px auto;
+	display: block;
+	background: #057D9F;
+	color: white;
+
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+ 
+	background: #057D9F; /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#39AECF', endColorstr='#057D9F'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#39AECF), to(#057D9F)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #39AECF,  #057D9F); /* for firefox 3.6+ */
+ 
+	border: solid 1px #6d6d6d;
+
+}
+
+nav {
+	margin: 5px;
+	padding: 7px 6px 0;
+	line-height: 100%;
+	border-radius: 2em;
+ 
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+ 
+	background: #A61700; /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2300', endColorstr='#A61700'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#FF2300), to(#A61700)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #FF2300,  #A61700); /* for firefox 3.6+ */
+ 
+	border: solid 1px #6d6d6d;
+}
+#nav li {
+	margin: 0 5px;
+	padding: 0 0 8px;
+	float: left;
+	position: relative;
+	list-style: none;
+}
+/* main level link */
+#nav a {
+	font-weight: bold;
+	color: #e7e5e5;
+	text-decoration: none;
+	display: block;
+	padding:  8px 20px;
+	margin: 0;
+	-webkit-border-radius: 1.6em;
+	-moz-border-radius: 1.6em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+/* main level link hover */
+#nav .current a, #nav li:hover > a {
+	background: #8BEA00; /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#AAF43D', endColorstr='#8BEA00'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#AAF43D), to(#8BEA00)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #AAF43D,  #8BEA00); /* for firefox 3.6+ */
+ 
+	color: #444;
+	border-top: solid 1px #f8f8f8;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+/* sub levels link hover */
+#nav ul li:hover a, #nav li:hover li a {
+	background: none;
+	border: none;
+	color: #666;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+#nav ul a:hover {
+	background: #8BEA00 !important; /* for non-css3 browsers */
+ 
+	color: #fff !important;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+/* level 2 list */
+#nav ul {
+	background: #ddd; /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cfcfcf'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cfcfcf)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #fff,  #cfcfcf); /* for firefox 3.6+ */
+ 
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 185px;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	border: solid 1px #b4b4b4;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+}
+/* dropdown */
+#nav li:hover > ul {
+	display: block;
+}
+#nav ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+#nav ul a {
+	font-weight: normal;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .9);
+}
+/* level 3+ list */
+#nav ul ul {
+	left: 181px;
+	top: -3px;
+}
+/* rounded corners for first and last child */
+#nav ul li:first-child > a {
+	-webkit-border-top-left-radius: 9px;
+	-moz-border-radius-topleft: 9px;
+	-webkit-border-top-right-radius: 9px;
+	-moz-border-radius-topright: 9px;
+}
+#nav ul li:last-child > a {
+	-webkit-border-bottom-left-radius: 9px;
+	-moz-border-radius-bottomleft: 9px;
+	-webkit-border-bottom-right-radius: 9px;
+	-moz-border-radius-bottomright: 9px;
+}
+/* clearfix */
+#nav:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+#nav {
+	display: inline-block;
+}
+html[xmlns] #nav {
+	display: block;
+}
+* html #nav {
+	height: 1%;
+}
+#content {
+	margin: 0px auto;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+
+	font-size: 1.1em;	
+}
+
+footer{
+	display: block;
+}
+
+	#main-footer {
+	    margin: 0px auto;
+	    padding: 15px;
+	    font-size: .8em;
+	    font-weight: bold;
+	    text-align: center;
+	    color: white;
+	}
+
+.hfeed, x:-moz-any-link, x:only-child {
+	float: left;
+}
+
+aside, x:-moz-any-link, x:only-child {
+	float: right;
+}
+
+#main-content, .hfeed{
+	padding: 10px 20px 20px 40px;
+	background: #fff;
+
+	-moz-border-radius-bottomleft: 0.8em;
+	-webkit-border-bottom-left-radius: 0.8em;
+	-moz-border-radius-topleft: 0.8em;
+	-webkit-border-top-left-radius: 0.8em;
+	-moz-border-radius-topright: 0.8em;
+	-webkit-border-top-right-radius: 0.8em;
+	-moz-border-radius-bottomright: 0.8em;
+	-webkit-border-bottom-right-radius: 0.8em;
+	display: block;
+
+}
+
+aside {
+	padding 10px 20px 20px 40px;
+	background: #fff;
+
+	-webkit-border-bottom-right-radius: 0.8em;
+	-moz-border-radius-bottomright: 0.8em;
+	-webkit-border-top-right-radius: 0.8em;
+	-moz-border-radius-topright: 0.8em;
+
+	display: block;
+
+}
+
+	aside ul{
+	    list-style: none;
+	    padding: 0px 0px 0px 6px;
+	}
+
+	aside ul li {
+	    line-height: 1.5em;
+	    font-size: 1.2em;
+	    border-bottom: 1px dotted #d9d9d9;
+	}
+
+	aside ul li a{
+	    padding: 10px 0px 10px 10px;
+	    display: block;
+	    font-weight: bold;
+	}
+
+	aside ul li a:hover{
+	    background: #f1f7f9;
+	}
+
+
+::selection 	 	{background: rgb(255,255,0);}
+::-moz-selection 	{background: rgb(255,255,0);}
+img::selection 		{background: transparent;}
+img::-moz-selection {background: transparent;}
+
+#example {
+	height: 600px;
+	background: rgb(60,97,158);
+}
+
+
+/*	13-column layout
+	60 px columns, 24 px gutters, 72 px margins, 1212 px total (extra space for scrollbars)
+	---------------------------------------------------------------------------------------
+	1     2      3      4      5      6      7      8      9      10     11     12     13
+	60px  144px  228px  312px  396px  480px  564px  648px  732px  816px  900px  984px  1068px	*/
+
+@media only screen and (min-width: 1212px) {
+	
+	body {
+		padding: 96px 72px 0;
+		width: 1068px;
+	}
+	
+}
+
+
+/*	5-column layout
+	60 px columns, 24 px gutters, 42 px margins, 480 px total
+	---------------------------------------------------------
+	1     2      3      4      5
+	60px  144px  228px  312px  396px	*/
+
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+	
+	body {
+		padding: 60px 42px 0;
+		width: 396px;
+		/* Prevents Mobile Safari from bumping up font sizes in landscape */
+		-webkit-text-size-adjust: 100%; 
+	}
+	
+}
+
+
+/*	3-column layout
+	60 px columns, 24 px gutters, 46 px margins, 320 px total
+	---------------------------------------------------------
+	1     2      3
+	60px  144px  228px	*/
+
+@media only screen and (max-width: 479px) {
+	
+	body {
+		padding: 48px 46px 0;
+		width: 228px;
+		/* Prevents Mobile Safari from bumping up font sizes in landscape */
+		-webkit-text-size-adjust: 100%;
+	}
+	
+}
+
+
+/*	Overrides for iPhone 4 
+	and other high device-pixel-ratio devices
+	-----------------------------------------	*/
+
+@media 
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min-device-pixel-ratio: 2) {
+	
+	#example {
+		background: rgb(255,158,97);
+	}
+	
+}
