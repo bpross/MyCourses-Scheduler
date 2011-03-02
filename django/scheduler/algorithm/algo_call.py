@@ -38,15 +38,14 @@ def Algorithm():
 ################################
 #   scheduler called here      #
 ################################
-#   From schedule_test.py      #
+#   From schedule.py           #
 ################################
 
-    configuration.print_database()
-    test_schedule = Schedule(None, configuration)
-    test_schedule.algorithm()
-    test_schedule.print_chromosomes()
-    print "\n\n              This what is in the Database \n\n"
-    configuration.print_database()
-    test_float = test_schedule.get_overall_fitness()
-    print test_float
-    print "End Test"
+#    configuration.print_database()
+    the_schedule = Schedule(None, configuration)
+    the_schedule.algorithm()
+#    the_schedule.print_chromosomes()
+#    print "\n\n              This what is in the Database \n\n"
+#    configuration.print_database()
+    the_fitness = test_schedule.get_overall_fitness()
+    print the_fitness

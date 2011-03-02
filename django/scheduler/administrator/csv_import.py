@@ -11,7 +11,7 @@ class CSV:
             print "Error: File type needs to be specified!"
             return False
         else:
-            if flag is "business":
+            if flag == "business":
                 return self.store_business(file)
             elif flag == "building":
                 return self.store_building(file)
