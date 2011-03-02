@@ -1,7 +1,6 @@
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseServerError
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from scheduler.algorithm.algotest import Algorithm
 from django import forms
 from csv_import import CSV
 
