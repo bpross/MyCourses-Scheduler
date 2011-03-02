@@ -112,3 +112,7 @@ INSTALLED_APPS = (
     'scheduler.manager',
 	 'scheduler.administrator',
 )
+
+FIXTURES_DIR = (
+	os.path.join(DIRNAME, 'fixtures'),
+)
