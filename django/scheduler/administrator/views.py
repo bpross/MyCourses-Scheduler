@@ -8,14 +8,10 @@ from csv_import import CSV
 class csv_form(forms.Form):
 	file  = forms.FileField(required=True)
 	type  = forms.TypedChoiceField(required=True,
-				choices=(("professor", "Professor"),
-						 ("department", "Department"),
-						 ("school", "School"),
+				choices=(("business", "Business"),
 						 ("building", "Building"),
-						 ("room", "Room"),
-						 ("course", "Course"),
-						 ("course_class", "Course Class"),
-						 ("period", "Period"),
+						 ("employer", "Employer"),
+						 ("employee", "Employee"),
 						 ),
 				widget=forms.RadioSelect
 				)
@@ -26,8 +22,12 @@ def upload_csv(request):
 		if form.is_valid():
 			myCSV = CSV()
 			print "File type selected: %s" %(request.POST['type'])
-			myCSV.csv_import(request.FILES['file'], request.POST['type'])
-			html = "<html><body>Upload successful</body></html>"
+			result = myCSV.csv_import(request.FILES['file'], request.POST['type'])
+			if result:
+				flag = "successful"
+			else:
+				flag = "failed"
+			html = "<html><body>Upload " + flag + ".</body></html>"
 			return HttpResponse(html)
 	else:
 		form = csv_form()

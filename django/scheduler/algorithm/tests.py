@@ -1,6 +1,7 @@
 from django.utils import unittest
 from algorithm.models import School, Department, Class, Prerequisite, Building, Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole 
 from algotest import Algorithm
+from administrator.models import *
 from datetime import date
 import os # This is for creating paths to test files.
 
@@ -56,6 +57,17 @@ class test_AlgorithmTestCase(unittest.TestCase):
 		
 		cc1.save()
 		cc2.save()
+
+#        DIRNAME = os.path.dirname(__file__)
+#        csv_init = CSV()
+#        csv_init.print_database()
+#        csv_init.csv_import("/Users/esteggall/Scheduler/django/administrator/school.csv"), "school")
+#        csv_init.csv_import('/Users/esteggall/Scheduler/django/administrator/department.csv'), "department")
+#        csv_init.csv_import('/Users/esteggall/Scheduler/django/administrator/professor.csv'), "professor")
+#        csv_init.csv_import('/Users/esteggall/Scheduler/django/administrator/room.csv'), "room")
+#        csv_init.csv_import('/Users/esteggall/Scheduler/django/administrator/course.csv'), "course")
+#        csv_init.csv_import('/Users/esteggall/Scheduler/django/administrator/course_class.csv'), "course_class")
+#        csv_init.print_database()
 
 	def test_scheduler(self):
 		Algorithm();

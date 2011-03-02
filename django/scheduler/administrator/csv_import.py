@@ -1,133 +1,62 @@
-from django.test import TestCase
 import csv
-from scheduler.algorithm.models import School, Department, Class, Prerequisite, Building,  Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole
-from professor import Professor
-from course_class import CourseClass
-from room import Rooms
-from course import Course
-from datetime import date
+from scheduler.algorithm.models import Business, Building, Employer, Employee
 
 class CSV:
 
     def csv_import(self, file = None, flag = None):
         if file is None:
             print "Error: Need file to parse"
+            return False
         if flag is None:
             print "Error: File type needs to be specified!"
+            return False
         else:
-            if flag is "professor":
-                self.store_professor(file)
-            elif flag == "department":
-                self.store_department(file)
-            elif flag == "school":
-                self.store_school(file)
+            if flag is "business":
+                return self.store_business(file)
             elif flag == "building":
-                self.store_building(file)
-            elif flag == "room":
-                self.store_room(file)
-            elif flag == "course":
-                self.store_course(file)
-            elif flag == "course_class":
-                self.store_course_class(file)
-            elif flag == "period":
-                self.store_period(file)
+                return self.store_building(file)
+            elif flag == "employer":
+                return self.store_employer(file)
+            elif flag == "employee":
+                return self.store_employee(file)
             else:
                 print "invalid type: type given is %s"%(flag)
+                return False
 
-    def store_professor(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            department = Department.objects.get(pk=1)
-            if(department == None):
-                print "No department yet"
-            new_professor = Lecturer(idLecturer = row[0], Status = row[1],\
-                                     Name = row[2], Comment = row[3],\
-                                     idDepartment = department) 
-            new_professor.save()
+    def store_business(self, filename = None):
+        businessReader = csv.reader(filename,delimiter = ',', quotechar = '|')
+        for row in businessReader:
+            new_business = Business(idBusiness = row[0], business_name = row[1]) 
+            # Letting users import id is probably a problem.
+            new_business.save()
+        return True
 
-    def store_school(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-             print row[0], row[1]
-             new_school = School(idSchool = row[0], School = row[1]) 
-             new_school.save()
+	def store_building(self, filename = None):
+		buildingReader = csv.reader(filename, delimiter = ',', quotechar = '|')
+		for row in buildingReader:
+			new_building = Building(idBuilding = row[0], building_name = row[1])
+			new_building.save()
+		return True
 
-    def store_room(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            building = Building.objects.get(pk=row[0])
-            if(building == None):
-                print "No Building yet"
-            new_room = Room(idBuilding = building, idRoom = row[1],\
-                            RoomNumber = row[2], Type = row[3],\
-                            RoomName = row[4])
-            new_room.save()
+	def store_employer(self, filename = None):
+		employerReader = csv.reader(filename, delimiter = ',', quotechar = '|')
+		for row in employerReader:
+			new_employer = Employer(idEmployer = row[0], employer_name = row[1], idBusiness = row[2])
+			# Instead of pulling idBusiness from the file, we should pull it from the current user account.
+			new_employer.save()
+		return True
 
-    def store_building(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            new_building = Building(idBuilding = row[0], BldgName = row[1])   
-            new_building.save()
+	def store_employee(self, filename = None):
+		employeeReader = csv.reader(filename, delimiter = ',', quotechar = '|')
+		for row in employeeReader:
+			new_employee = Employee(idEmployee = row[0], employee_first_name = row[1], 
+				employee_middle_name = row[2], employee_last_name = row[3], 
+				employee_position = row[4], idBusiness = row[5])
+			# Instead of pulling idBusiness from the file, we should pull it from the current user account.
+			new_employee.save()
+		return True
 
-    def store_course(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            department = Department.objects.get(pk=row[0])
-            if(department == None):
-                print "No department yet"
-            new_course = Class(idClass = row[1], idDepartment = department,\
-                               Class = row[2], ClassDescription = row[3])
-            new_course.save()
-
-    def store_department(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            school = School.objects.get(pk=row[0])
-            new_department = Department(idSchool = school, \
-                                        idDepartment = row[1],\
-                                        Department = row[2], \
-                                        DeptAbbrev = row[3])
-            new_department.save()
-
-    def store_course_class(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            Class = Class.objects.get(pk=row[0]);
-            if(course == None):
-                print "No class"
-            period = Period.objects.get(pk=row[2])
-            if(period == None):
-                print "No period"
-            professor = Lecturer.objects.get(pk=row[5])
-            if(professor == None):
-                print "No professor"
-            building = Building.objects.get(pk=row[8])
-            if(building == None):
-                print "No building yet"
-            room = Room.objects.get(pk=row[9])
-            if(building == None):
-                print "No room"
-            new_course_class = ClassInstance(idClass = course, \
-                                             idClassInstance = row[1], \
-                                             idPeriod = period, \
-                                             ClassTime = row[3], \
-                                             Section = row[4], \
-                                             idLecturer = professor,\
-                                             TAOfficeHours = row[6],\
-                                             idTA = row[7],\
-                                             idBuilding = building,\
-                                             idRoom = room)  
-            new_course_class.save()
-
-    def store_period(self, filename = None):
-        testReader = csv.reader(filename,delimiter = ',', quotechar = '|')
-        for row in testReader:
-            new_period = Period(idPeriod = row[0], period = row[1], \
-                                StartDate = row[2], EndDate = row[3], \
-                                InstructionBegins = row[4], \
-                                InstructionEnds = row[5])
-            new_period.save()    
-
+'''
     def print_database(self):
         from scheduler.algorithm import models
         from scheduler.algorithm.models import School, Department, Class, Prerequisite, Building,  Room, Period, Lecturer, ClassInstance, ClassLab, Person, Role, PersonRole
@@ -167,3 +96,4 @@ class CSV:
         if (all_courses != None):
             for Class in all_courses:
                 print "Course: %s, Course ID: %d " % (Class.Class, Class.idClass)
+'''
