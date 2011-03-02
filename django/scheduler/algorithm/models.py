@@ -10,8 +10,9 @@ from django.contrib import admin
 class Business(models.Model):
     idBusiness = models.IntegerField(primary_key=True)
     business_name = models.CharField(max_length=45)
+
     def __unicode__(self):
-      return business_name
+      return self.business_name
 class BusinessAdmin(admin.ModelAdmin):
     list_display = ('idBusiness', 'Business')
     list_display_links = ('idBusiness', 'business_name')
@@ -23,6 +24,7 @@ class Building(models.Model):
     idBuilding = models.IntegerField(primary_key=True)
     building_name = models.CharField(max_length=45)
     idBusiness = models.ForeignKey(Business, to_field='idBusiness')
+
     def __unicode__(self):
         return self.building_name
 class BuildingAdmin(admin.ModelAdmin):
@@ -37,7 +39,8 @@ class Employer(models.Model):
     idEmployer = models.IntegerField(primary_key=True)
     employer_name = models.CharField(max_length=45)
     idBusiness = models.ForeignKey(Business, to_field='idBusiness')
-    def __ unicode__(self):
+
+    def __unicode__(self):
         return self.employer_name  
 class EmployerAdmin(admin.ModelAdmin):
     list_display = ('idEmployer', 'employer_name', 'idBusiness')
@@ -63,7 +66,7 @@ class Employee(models.Model):
     employee_professional_skills = models.TextField()
     employee_employed = models.BooleanField(default=False)
     idBusiness = models.ForeignKey(Business, to_field='idBusiness')
-    
+
     def __unicode__(self):
         return u'%s %s %s' % (self.employee_last_name, self.employee_middle_name, self.employee_last_name)
 
