@@ -27,7 +27,7 @@ def upload_csv(request):
 				flag = "successful"
 			else:
 				flag = "failed"
-			html = "<html><body>Upload " + flag + ".</body></html>"
+			html = "<html><body>Upload %s.</body></html>" % (flag)
 			return HttpResponse(html)
 	else:
 		form = csv_form()
