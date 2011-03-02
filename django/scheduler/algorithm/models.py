@@ -1,9 +1,77 @@
-# CMPS 115 SCORE project
-# Prof: Linda Werner
-# 11-15-10
+# CMPS 194 business plan project
+# Prof: Charlie McDowell
+# 03-01-11
 
 from django.db import models
 from django.contrib import admin
+
+
+# Business
+class Businesss(models.Model):
+    idBusiness = models.IntegerField(primary_key=True)
+    business_name = models.CharField(max_length=45)
+    def __unicode__(self):
+      return business_name
+class BusinessAdmin(admin.ModelAdmin):
+    list_display = ('idBusiness', 'Business')
+    list_display_links = ('idBusiness', 'business_name')
+    list_filter = ('idBusiness', 'business_name')
+    search_fields = ('idBusiness', 'business_name')
+  
+# Building:
+class Building(models.Model):
+    idBuilding = models.IntegerField(primary_key=True)
+    building_name = models.CharField(max_length=45)
+    def __unicode__(self):
+        return self.building_name
+class BuildingAdmin(admin.ModelAdmin):
+    list_display = ('idBuilding', 'building_name')
+    list_display_links = ('idBuilding', 'building_name')
+    list_filter = ('idBuilding', 'building_name')
+    search_fields = ('idBuilding', 'building_name')
+
+# Employer
+class Employer(models.Model):
+    idEmployer = models.IntegerField(primary_key=True)
+    employer_name = models.CharField(max_length=45)
+    def __ unicode__(self):
+        return self.employer_name  
+class EmployerAdmin(admin.ModelAdmin):
+    list_display = ('idEmployer', 'employer_name')
+    list_display_links = ('idEmployer', 'employer_name')
+    list_filter = ('idEmployer', 'employer_name')
+    search_fields = ('idEmployer', 'employer_name')
+
+# Employee
+class Employee(models.Model):
+    idEmployee = models.IntegerField(primary_key= True)
+    employee_first_name = models.CharField(max_length=45)
+    employee_middle_name = models.CharField(max_length=45)
+    employee_last_name = models.CharField(max_length=45)
+    employee_position = models.CharField(max_length=45)
+    employee_availability = models.DateTimeField(auto_now=Flase, auto_now_add=False)
+    employee_start_date = models.DateField()
+    employee_end_date = models.DateField()
+    employee_medical_conditions = models.CharField(max_length=45)
+    employee_email = models.EmailField(max_length=75)
+    employee_phone_number = models.IntegerField(null=True)
+    employee_wage = models.IntegerField(null=True)
+    employee_education = models.CharField(max_length=45)
+    employee_professional_skills = models.TextField()
+    employee_employed = models.BooleanField(default=False)
+    def __unicode__(self):
+        return u'%s %s %s' % (self.employee_last_name, self.employee_middle_name, self.employee_last_name)
+
+
+
+
+
+
+
+
+
+
+"""
 
 # School:
 # Holds: school ID number, school name
@@ -74,21 +142,6 @@ class PrerequisiteAdmin(admin.ModelAdmin):
     list_filter = ('idPrereq', 'ClassID')
     search_fields = ('idPrereq', 'ClassID')
 
-# Building:
-# Holds: the building ID, the building name
-# Returns: The building name
-class Building(models.Model):
-    idBuilding = models.IntegerField(primary_key=True)
-    BldgName = models.CharField(max_length=45)
-
-#    def __unicode__(self):
-#        return self.BldgName
-
-class BuildingAdmin(admin.ModelAdmin):
-    list_display = ('idBuilding', 'BldgName')
-    list_display_links = ('idBuilding', 'BldgName')
-    list_filter = ('idBuilding', 'BldgName')
-    search_fields = ('idBuilding', 'BldgName')
 
 # Room:
 # Holds: the room ID, the room number, the type of room, the room name, the rooms' building ID
@@ -251,3 +304,4 @@ class PersonRoleAdmin(admin.ModelAdmin):
     list_display = ('idPerson', 'idRole')
     list_display_links = ('idPerson', 'idRole')
     list_filter = ('idPerson', 'idRole')
+"""
