@@ -13,8 +13,9 @@ class Business(models.Model):
 
     def __unicode__(self):
       return self.business_name
+
 class BusinessAdmin(admin.ModelAdmin):
-    list_display = ('idBusiness', 'Business')
+    list_display = ('idBusiness', 'business_name')
     list_display_links = ('idBusiness', 'business_name')
     list_filter = ('idBusiness', 'business_name')
     search_fields = ('idBusiness', 'business_name')
@@ -27,6 +28,7 @@ class Building(models.Model):
 
     def __unicode__(self):
         return self.building_name
+        
 class BuildingAdmin(admin.ModelAdmin):
     list_display = ('idBuilding', 'building_name', 'idBusiness')
     list_display_links = ('idBuilding', 'building_name', 'idBusiness')
@@ -42,6 +44,7 @@ class Employer(models.Model):
 
     def __unicode__(self):
         return self.employer_name  
+
 class EmployerAdmin(admin.ModelAdmin):
     list_display = ('idEmployer', 'employer_name', 'idBusiness')
     list_display_links = ('idEmployer', 'employer_name', 'idBusiness')
