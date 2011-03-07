@@ -1,20 +1,16 @@
 $(document).ready(function() {
 	$("input:radio[name=type]").change(function() {
 		if (this.value == "business") {
-			$("#tip").html("Hello world0");
+			$("#tip").text("Business is selected");
 		}
 		if (this.value == "building") {
-			$("#tip").html("Hello world1");
+			$("#tip").text("Building is selected");
 		}
 		if (this.value == "employer") {
-			$("#tip").html("Hello world2");
+			$("#tip").text("Employer is selected");
 		}
 		if (this.value == "employee") {
-		alert("success");
-			$("#tip").text("Hello world3");
-		}
-		else {
-			$("#tip").html("Hello world4");
+			$("#tip").text("Employee is selected");
 		}
 	});
 });
