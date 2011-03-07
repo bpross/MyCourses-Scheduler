@@ -11,5 +11,10 @@
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
-
+{# We should move the below div to a sidebar. #}
+<div style="float: right;"><span id="tip">Test</span>
 {% endblock %}
+
+{%block jquery%}<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/media/js/csvimport.js"></script>
+{%endblock%}
