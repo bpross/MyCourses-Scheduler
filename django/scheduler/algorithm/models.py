@@ -8,23 +8,22 @@ from django.contrib import admin
 
 # Business
 class Business(models.Model):
-    idBusiness = models.IntegerField(primary_key=True)
-    business_name = models.CharField(max_length=45)
+    business_name = models.CharField(max_length=45, primary_key=True)
 
     def __unicode__(self):
       return self.business_name
 
 class BusinessAdmin(admin.ModelAdmin):
-    list_display = ('idBusiness', 'business_name')
-    list_display_links = ('idBusiness', 'business_name')
-    list_filter = ('idBusiness', 'business_name')
-    search_fields = ('idBusiness', 'business_name')
+    list_display = ('business_name')
+    list_display_links = ('business_name')
+    list_filter = ('business_name')
+    search_fields = ('business_name')
   
 # Building:
 class Building(models.Model):
     idBuilding = models.IntegerField(primary_key=True)
     building_name = models.CharField(max_length=45)
-    idBusiness = models.ForeignKey(Business, to_field='idBusiness')
+    idBusiness = models.ForeignKey(Business, to_field='business_name')
 
     def __unicode__(self):
         return self.building_name
@@ -40,7 +39,7 @@ class BuildingAdmin(admin.ModelAdmin):
 class Employer(models.Model):
     idEmployer = models.IntegerField(primary_key=True)
     employer_name = models.CharField(max_length=45)
-    idBusiness = models.ForeignKey(Business, to_field='idBusiness')
+    idBusiness = models.ForeignKey(Business, to_field='business_name')
 
     def __unicode__(self):
         return self.employer_name  
@@ -51,9 +50,22 @@ class EmployerAdmin(admin.ModelAdmin):
     list_filter = ('idEmployer', 'employer_name', 'idBusiness')
     search_fields = ('idEmployer', 'employer_name', 'idBusiness')
 
+# Position
+class Position(models.Model):
+	position_name = models.CharField(max_length=45)
+	idBusiness = models.ForeignKey(Business, to_field='business_name')
+	def __unicode__(self):
+		return u'%s' % (self.position_name)
+
+class PositionAdmin(admin.ModelAdmin):
+	list_display = ('position_name', 'idBusiness')
+	list_display_links = ('position_name', 'idBusiness')
+	list_filter = ('position_name', 'idBusiness')
+	search_fields = ('position_name', 'idBusiness')
+
 # Employee
 class Employee(models.Model):
-    idEmployee = models.IntegerField(primary_key= True)
+    idEmployee = models.IntegerField(primary_key=True)
     employee_first_name = models.CharField(max_length=45)
     employee_middle_name = models.CharField(max_length=45)
     employee_last_name = models.CharField(max_length=45)
@@ -68,12 +80,8 @@ class Employee(models.Model):
     employee_education = models.CharField(max_length=45)
     employee_professional_skills = models.TextField()
     employee_employed = models.BooleanField(default=False)
-    idBusiness = models.ForeignKey(Business, to_field='idBusiness')
+    employee_position = models.ForeignKey(Position, to_field='position_name')
+    idBusiness = models.ForeignKey(Business, to_field='business_name')
 
     def __unicode__(self):
         return u'%s %s %s' % (self.employee_last_name, self.employee_middle_name, self.employee_last_name)
-
-
-
-
-
