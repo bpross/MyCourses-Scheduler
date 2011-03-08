@@ -87,7 +87,7 @@ body {
 	color: #222;
 }
 
-header {
+hgroup {
 	margin: 5px auto;
 	display: block;
 	background: #057D9F;
@@ -403,3 +403,42 @@ img::-moz-selection {background: transparent;}
 	}
 	
 }
+
+dl
+{
+        padding: 10px;
+}
+        dl dt
+        {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border: 1px solid #cccccc;
+                margin: 0;
+        }
+                dl dt a
+                {
+                        color: white;
+                        font-weight: bold;
+                        text-decoration: none;
+                        padding: 10px;
+                        display: block;
+ 			background: #313636; 
+                }
+        dl dd
+        {
+                margin: 0;
+                height: 0;
+                overflow: hidden;
+                -webkit-transition: height 1s ease;
+        }
+                dl dd p
+                {
+                        padding: 10px;
+                        margin: 0;
+                }
+        dl dd:target
+        {
+                height: auto;
+        }
+
+
