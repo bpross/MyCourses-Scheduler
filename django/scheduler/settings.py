@@ -109,7 +109,8 @@ INSTALLED_APPS = (
     'scheduler.algorithm',
     'scheduler.employee',
     'scheduler.manager',
-	 'scheduler.administrator',
+	'scheduler.administrator',
+	'scheduler.thecal',
 )
 
 FIXTURES_DIR = (
