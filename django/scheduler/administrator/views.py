@@ -34,3 +34,6 @@ def upload_csv(request):
 
 def home(request):
 	return render_to_response('admin/admin.html', RequestContext(request))
+
+def calendar(request):
+	return render_to_response('calendar.html', RequestContext(request))
