@@ -52,7 +52,8 @@ class EmployerAdmin(admin.ModelAdmin):
 
 # Position
 class Position(models.Model):
-	position_name = models.CharField(max_length=45)
+	position_name = models.CharField(max_length=45, unique=True)
+	# Unique should be FALSE. This is a BAD HACK to validate our models for now.
 	idBusiness = models.ForeignKey(Business, to_field='business_name')
 	def __unicode__(self):
 		return u'%s' % (self.position_name)
