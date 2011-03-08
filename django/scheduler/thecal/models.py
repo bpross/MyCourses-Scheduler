@@ -37,9 +37,9 @@ class inputShift(models.Model):
 
 class inputShiftAdmin(admin.ModelAdmin):
 	list_display = ('title', 'start', 'end', 'position')
-    list_display_links = ('name', 'position')
-    list_filter = ('name', 'position')
-    search_fields = ('name', 'position')
+    list_display_links = ('title', 'start', 'end', 'position')
+    list_filter = ('title', 'start', 'end', 'position')
+    search_fields = ('title', 'start', 'end', 'position')
 
 # Shift outputted by scheduler
 class outputShift(models.Model):
@@ -55,6 +55,10 @@ class outputShift(models.Model):
     # Can ManyToMany have multiple to_fields?
     def __unicode__(self):
         return self.title
+        
+class outputShiftAdmin(admin.ModelAdmin):
+	list_display = ('title', 'start', 'end', 'people', 'position')
+    list_filter = search_fields = list_display_links = list_display
 
 # Day
 class inputDay(models.Model):
@@ -64,6 +68,10 @@ class inputDay(models.Model):
     def __unicode__(self):
         return self.name
         
+class inputDayAdmin(admin.ModelAdmin):
+	list_display = ('name', 'shifts')
+    list_filter = search_fields = list_display_links = list_display
+        
 class outputDay(models.Model):
     name = models.CharField(primary_key=True, max_length=45)
     business = models.ForeignKey(algomodels.Business)
@@ -71,13 +79,20 @@ class outputDay(models.Model):
     def __unicode__(self):
         return self.name
 
-
+class outputDayAdmin(admin.ModelAdmin):
+	list_display = ('name', 'shifts')
+    list_filter = search_fields = list_display_links = list_display
+    
 # Week
 class inputWeek(models.Model):
     business = models.ForeignKey(algomodels.Business)
     start = models.DateTimeField(auto_now_add=False)
     end   = models.DateTimeField(auto_now=False, auto_now_add=False)
     days  = models.ManyToManyField(inputDay)
+    
+class inputWeekAdmin(admin.ModelAdmin):
+	list_display = ('start', 'end', 'days')
+    list_filter = search_fields = list_display_links = list_display
 
 class outputWeek(models.Model):
     business = models.ForeignKey(algomodels.Business)
@@ -85,4 +100,6 @@ class outputWeek(models.Model):
     end   = models.DateTimeField(auto_now=False, auto_now_add=False)
     days  = models.ManyToManyField(outputDay)
     
-    
+class outputWeekAdmin(admin.ModelAdmin):
+	list_display = ('start', 'end', 'days')
+    list_filter = search_fields = list_display_links = list_display
