@@ -6,4 +6,5 @@ urlpatterns = patterns('administrator.views',
     (r'^home/', 'home' ),
 	(r'^import/', 'upload_csv'),
 	(r'^csv/', 'upload_csv'),
+	(r'^calendar/', 'calendar'),
 )
