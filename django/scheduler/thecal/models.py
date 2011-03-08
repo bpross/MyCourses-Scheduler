@@ -57,7 +57,7 @@ class outputShift(models.Model):
 		return self.title
 		
 class outputShiftAdmin(admin.ModelAdmin):
-	list_display = ('title', 'start', 'end', 'people', 'position')
+	list_display = ('title', 'start', 'end', 'position')
 	list_filter = search_fields = list_display_links = list_display
 
 # Day
@@ -68,9 +68,6 @@ class inputDay(models.Model):
 	def __unicode__(self):
 		return self.name
 		
-class inputDayAdmin(admin.ModelAdmin):
-	list_display = ('name', 'shifts')
-	list_filter = search_fields = list_display_links = list_display
 		
 class outputDay(models.Model):
 	name = models.CharField(primary_key=True, max_length=45)
@@ -78,10 +75,6 @@ class outputDay(models.Model):
 	shifts = models.ManyToManyField(outputShift)
 	def __unicode__(self):
 		return self.name
-
-class outputDayAdmin(admin.ModelAdmin):
-	list_display = ('name', 'shifts')
-	list_filter = search_fields = list_display_links = list_display
 	
 # Week
 class inputWeek(models.Model):
@@ -91,7 +84,7 @@ class inputWeek(models.Model):
 	days  = models.ManyToManyField(inputDay)
 	
 class inputWeekAdmin(admin.ModelAdmin):
-	list_display = ('start', 'end', 'days')
+	list_display = ('start', 'end')
 	list_filter = search_fields = list_display_links = list_display
 
 class outputWeek(models.Model):
@@ -101,5 +94,5 @@ class outputWeek(models.Model):
 	days  = models.ManyToManyField(outputDay)
 	
 class outputWeekAdmin(admin.ModelAdmin):
-	list_display = ('start', 'end', 'days')
+	list_display = ('start', 'end')
 	list_filter = search_fields = list_display_links = list_display
