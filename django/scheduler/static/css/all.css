@@ -272,6 +272,10 @@ footer{
 	float: left;
 }
 
+.rfeed, x:-moz-any-link, x:only-child {
+	float: left;
+}
+
 aside, x:-moz-any-link, x:only-child {
 	float: right;
 }
@@ -279,6 +283,22 @@ aside, x:-moz-any-link, x:only-child {
 #main-content, .hfeed{
 	padding: 10px 20px 20px 40px;
 	background: #fff;
+
+	-moz-border-radius-bottomleft: 0.8em;
+	-webkit-border-bottom-left-radius: 0.8em;
+	-moz-border-radius-topleft: 0.8em;
+	-webkit-border-top-left-radius: 0.8em;
+	-moz-border-radius-topright: 0.8em;
+	-webkit-border-top-right-radius: 0.8em;
+	-moz-border-radius-bottomright: 0.8em;
+	-webkit-border-bottom-right-radius: 0.8em;
+	display: block;
+
+}
+
+#main-content, .rfeed{
+	padding: 10px 20px 20px 40px;
+	background: #ddd;
 
 	-moz-border-radius-bottomleft: 0.8em;
 	-webkit-border-bottom-left-radius: 0.8em;

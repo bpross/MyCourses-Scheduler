@@ -7,12 +7,16 @@
 {% block banner %}<h2>CSV Upload</h2>{% endblock %}
 
 {% block content %}
-<form enctype="multipart/form-data" action="/administrator/csv/" method="post">
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
-{# We should move the below div to a sidebar. #}
-<div style="float: right;"><span id="tip">Test</span>
+<div id="content">
+  <section class="hfeed">
+    <form enctype="multipart/form-data" action="/administrator/csv/" method="post">
+      {{ form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
+    {# We should move the below div to a sidebar. #}
+    <!-- <div style="float: right;"><span id="tip">Test</span> -->
+  </section>
+</div>
 {% endblock %}
 
 {%block jquery%}<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
