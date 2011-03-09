@@ -88,3 +88,10 @@ class Employee(models.Model):
 
 	def __unicode__(self):
 		return u'%s %s %s' % (self.employee_last_name, self.employee_middle_name, self.employee_last_name)
+
+class EmployeeAdmin(admin.ModelAdmin):
+	list_display = ('idEmployee', 'employee_first_name', 'employee_middle_name', 'employee_position', 'employee_availability', 'employee_start_date', 'employee_end_date', 'employee_medical_conditions', 'employee_email', 'employee_phone_number', 'employee_wage', 'employee_education', 'employee_professional_skills', 'employee_employed', 'employee_position', 'idBusiness')
+	list_display_links = ('idEmployee', 'employee_first_name', 'employee_middle_name', 'employee_position', 'employee_availability', 'employee_start_date', 'employee_end_date', 'employee_medical_conditions', 'employee_email', 'employee_phone_number', 'employee_wage', 'employee_education', 'employee_professional_skills', 'employee_employed', 'employee_position', 'idBusiness')
+	list_filter = ('idEmployee', 'employee_first_name', 'employee_middle_name', 'employee_position', 'employee_availability', 'employee_start_date', 'employee_end_date', 'employee_medical_conditions', 'employee_email', 'employee_phone_number', 'employee_wage', 'employee_education', 'employee_professional_skills', 'employee_employed', 'employee_position', 'idBusiness')
+	search_fields = ('idEmployee', 'employee_first_name', 'employee_middle_name', 'employee_position', 'employee_availability', 'employee_start_date', 'employee_end_date', 'employee_medical_conditions', 'employee_email', 'employee_phone_number', 'employee_wage', 'employee_education', 'employee_professional_skills', 'employee_employed', 'employee_position', 'idBusiness')
+	
