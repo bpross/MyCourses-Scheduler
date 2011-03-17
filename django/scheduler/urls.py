@@ -29,8 +29,8 @@ urlpatterns = patterns('',
 
 	# The admin view
 	(r'^administrator/', include('administrator.urls')),
-    # The student view
-#    (r'^student/', include('student.urls')),
+    # The calendar view
+    (r'^calendar/', include('thecal.urls')),
     # The lecturer view
 #    (r'^lecturer/', include('lecturer.urls')),
     # The manager view
